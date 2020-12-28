@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby WordPress Starter`,
-    description: `Kick off your next, great Gatsby project with this WordPress starter.`,
-    author: `@tomphill`,
+    title: `Alexander Artlett`,
+    description: `Gatbsy build of Alexander Artlett's portfolio site`,
+    author: `@artyrbruh`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
