@@ -1,0 +1,4 @@
+name: alexanderartlett
+recipe: wordpress
+config:
+  webroot: wordpress
