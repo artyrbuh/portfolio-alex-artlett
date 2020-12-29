@@ -113,8 +113,12 @@ exports.createPages = ({ graphql, actions }) => {
               node {
                 title
                 slug
-                technology
-                profession
+                technology {
+                  name
+                }
+                profession {
+                  name
+                }
                 wordpress_id
                 date
                 content
