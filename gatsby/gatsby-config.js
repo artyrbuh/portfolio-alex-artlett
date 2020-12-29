@@ -50,7 +50,8 @@ module.exports = {
           "**/users",
           "**/logo",
           "**/favicon",
-          "**/menus"
+          "**/menus",
+          "**/work"
         ],
       },
     },
