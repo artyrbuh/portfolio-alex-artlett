@@ -100,9 +100,86 @@ exports.createPages = ({ graphql, actions }) => {
               context: edge.node,
             })
           })
-          resolve()
         })
       })
     // ==== END POSTS ====
+    // ==== WORK (WORDPRESS NATIVE AND ACF) ====
+    .then(() => {
+      graphql(
+        `
+        {
+          allWordpressWpWork(filter:{slug:{ne:"dummy"}}) {
+            edges {
+              node {
+                title
+                slug
+                technology
+                profession
+                wordpress_id
+                date
+                content
+                featured_media {
+                  source_url
+                }
+                acf {
+                  layouts_work {
+                    ... on WordPressAcf_content_block {
+                      id
+                      include_available_for_hire_cta
+                      content
+                      cta {
+                        url
+                        target
+                        title
+                      }
+                      heading
+                    }
+                    ... on WordPressAcf_images_block {
+                      id
+                      images {
+                        image {
+                          source_url
+                        }
+                      }
+                      include_available_for_hire_cta
+                    }
+                    ... on WordPressAcf_video {
+                      id
+                      include_available_for_hire_cta
+                      video_preview {
+                        url {
+                          source_url
+                        }
+                        wordpress_id
+                      }
+                      youtube_url
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        `
+      ).then(result => {
+        if (result.errors) {
+          console.log(result.errors)
+          reject(result.errors)
+        }
+        const workTemplate = path.resolve("./src/templates/work.js")
+        // We want to create a detailed page for each
+        // post node. We'll just use the WordPress Slug for the slug.
+        // The Post ID is prefixed with 'POST_'
+        _.each(result.data.allWordpressWpWork.edges, edge => {
+          createPage({
+            path: `/work/${edge.node.slug}/`,
+            component: slash(workTemplate),
+            context: edge.node,
+          })
+        })
+        resolve()
+      })
+    })
+    // ==== END WORK ====
   })
 }
