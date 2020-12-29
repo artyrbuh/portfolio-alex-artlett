@@ -182,7 +182,7 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
+            "layout": "row",
             "sub_fields": [
                 {
                     "key": "field_5feaa112e20ae",
@@ -237,7 +237,7 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
+            "layout": "row",
             "sub_fields": [
                 {
                     "key": "field_5feaa126e20b1",
@@ -274,7 +274,7 @@
                     "collapsed": "",
                     "min": 0,
                     "max": 0,
-                    "layout": "table",
+                    "layout": "row",
                     "button_label": "",
                     "sub_fields": [
                         {
@@ -416,5 +416,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1609212543
+    "modified": 1609212789
 }
