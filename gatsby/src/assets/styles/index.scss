@@ -1,4 +1,13 @@
 @charset "utf-8";
 // If need, change your variables before importing Bulma
 $title-color: #ff0000;
+
 @import "~bulma/bulma.sass";
+
+@import "./common/variables";
+@import "./common/global";
+
+@import './components/burger';
+@import './components/menu';
+@import './components/nav';
+@import './components/offcanvas-menu';
