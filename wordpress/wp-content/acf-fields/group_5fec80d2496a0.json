@@ -1,0 +1,91 @@
+{
+    "key": "group_5fec80d2496a0",
+    "title": "Work Landing",
+    "fields": [
+        {
+            "key": "field_5fec80f72a41b",
+            "label": "Back to work CTA text",
+            "name": "back_to_work_cta_text",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "Back to my Selected work",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5fec81002a41c",
+            "label": "Work List",
+            "name": "work_list",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5fec811f2a41d",
+                    "label": "Work",
+                    "name": "work",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "show_in_graphql": 1,
+                    "post_type": [
+                        "work"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "object",
+                    "ui": 1
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-work.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_graphql": 0,
+    "graphql_field_name": "work_landing",
+    "modified": 1609335175
+}

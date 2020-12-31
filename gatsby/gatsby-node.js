@@ -16,15 +16,18 @@ exports.createPages = ({ graphql, actions }) => {
     // queries against the local WordPress graphql schema. Think of
     // it like the site has a built-in database constructed
     // from the fetched data that you can run queries against.
+
+    
  
     // ==== PAGES (WORDPRESS NATIVE) ====
     graphql(
       `
         {
-          allWordpressPage {
+          allWordpressPage(filter:{slug:{ne:"home"}}) {
             edges {
               node {
                 id
+                wordpress_id
                 slug
                 status
                 template
@@ -44,7 +47,8 @@ exports.createPages = ({ graphql, actions }) => {
         }
  
         // Create Page pages.
-        const pageTemplate = path.resolve("./src/templates/page.js")
+        const pageTemplate = path.resolve("./src/templates/page.js");
+        const workLandingTemplate = path.resolve("./src/templates/work-landing.js");
         // We want to create a detailed page for each
         // page node. We'll just use the WordPress Slug for the slug.
         // The Page ID is prefixed with 'PAGE_'
@@ -59,50 +63,91 @@ exports.createPages = ({ graphql, actions }) => {
             // optional but is often necessary so the template
             // can query data specific to each page.
             path: `/${edge.node.slug}/`,
-            component: slash(pageTemplate),
+            component: edge.node.template === "page-work.php" ? slash(workLandingTemplate) : slash(pageTemplate),
             context: edge.node,
           })
         })
       })
       // ==== END PAGES ====
  
-      // ==== POSTS (WORDPRESS NATIVE AND ACF) ====
-      .then(() => {
-        graphql(
-          `
-            {
-              allWordpressPost {
-                edges{
-                  node{
-                    id
-                    title
-                    slug
-                    excerpt
-                    content
+    // ==== WORK (WORDPRESS NATIVE AND ACF) ====
+    .then(() => {
+      graphql(
+        `
+        {
+          allWordpressWpWork(filter:{slug:{ne:"dummy"}}) {
+            edges {
+              node {
+                title
+                slug
+                wordpress_id
+                date
+                content
+                featured_media {
+                  source_url
+                }
+                acf {
+                  technologies
+                  professions
+                  main_technology
+                  layouts_work {
+                    ... on WordPressAcf_content_block {
+                      id
+                      include_available_for_hire_cta
+                      content
+                      cta {
+                        url
+                        target
+                        title
+                      }
+                      heading
+                    }
+                    ... on WordPressAcf_images_block {
+                      id
+                      images {
+                        image {
+                          source_url
+                        }
+                      }
+                      include_available_for_hire_cta
+                    }
+                    ... on WordPressAcf_video {
+                      id
+                      include_available_for_hire_cta
+                      video_preview {
+                        url {
+                          source_url
+                        }
+                        wordpress_id
+                      }
+                      youtube_url
+                    }
                   }
                 }
               }
             }
-          `
-        ).then(result => {
-          if (result.errors) {
-            console.log(result.errors)
-            reject(result.errors)
           }
-          const postTemplate = path.resolve("./src/templates/post.js")
-          // We want to create a detailed page for each
-          // post node. We'll just use the WordPress Slug for the slug.
-          // The Post ID is prefixed with 'POST_'
-          _.each(result.data.allWordpressPost.edges, edge => {
-            createPage({
-              path: `/post/${edge.node.slug}/`,
-              component: slash(postTemplate),
-              context: edge.node,
-            })
+        }
+        `
+      ).then(result => {
+        if (result.errors) {
+          console.log(result.errors)
+          reject(result.errors)
+        }
+        const workTemplate = path.resolve("./src/templates/work.js")
+        // We want to create a detailed page for each
+        // post node. We'll just use the WordPress Slug for the slug.
+        // The Post ID is prefixed with 'POST_'
+        _.each(result.data.allWordpressWpWork.edges, edge => {
+          createPage({
+            path: `/work/${edge.node.slug}/`,
+            component: slash(workTemplate),
+            context: edge.node,
           })
-          resolve()
         })
+        resolve()
       })
-    // ==== END POSTS ====
+    })
+    // ==== END WORK ====
   })
 }
