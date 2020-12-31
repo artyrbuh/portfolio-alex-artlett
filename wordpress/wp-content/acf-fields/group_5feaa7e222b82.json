@@ -20,6 +20,119 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_5febbffa330ef",
+            "label": "Thumbnail Image",
+            "name": "thumbnail_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5fec8e0d5ad91",
+            "label": "Technologies",
+            "name": "technologies",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "choices": {
+                "JavaScript": "JavaScript",
+                "Laravel": "Laravel",
+                "PHP": "PHP",
+                "React": "React",
+                "Vue": "Vue",
+                "WordPress": "WordPress",
+                "Blade": "Blade",
+                "Sass": "Sass"
+            },
+            "allow_custom": 0,
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
+        },
+        {
+            "key": "field_5fec8e8f5ad92",
+            "label": "Professions",
+            "name": "professions",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "choices": {
+                "Back End": "Back End",
+                "Front End": "Front End",
+                "Systems Setup": "Systems Setup"
+            },
+            "allow_custom": 0,
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
+        },
+        {
+            "key": "field_5fec91182c966",
+            "label": "Main Technology",
+            "name": "main_technology",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "choices": {
+                "JavaScript": "JavaScript",
+                "Laravel": "Laravel",
+                "PHP": "PHP",
+                "React": "React",
+                "Vue": "Vue",
+                "WordPress": "WordPress",
+                "None": "None"
+            },
+            "default_value": false,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
         }
     ],
     "location": [
@@ -39,5 +152,7 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1609214020
+    "show_in_graphql": 1,
+    "graphql_field_name": "work",
+    "modified": 1609339301
 }
