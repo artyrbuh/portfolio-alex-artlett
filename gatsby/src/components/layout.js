@@ -1,19 +1,12 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React, { useState, createContext } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
 import Header from "./header"
 import Footer from "./footer/footer"
 import "./layout.css"
+import Nav from "../components/nav/nav";
 
-export const UserStateContext = createContext()
+export const ThemeDataContext = createContext()
 
 const Layout = ({ children }) => {
 
@@ -47,7 +40,8 @@ const Layout = ({ children }) => {
 const [themeData, setThemeData] = useState(ThemeData)
 
   return (
-    <UserStateContext.Provider value={themeData}>
+    <ThemeDataContext.Provider value={themeData}>
+      <Nav/>
       <Header siteTitle={ThemeData.site.siteMetadata.title} />
       <div
         style={{
@@ -59,7 +53,7 @@ const [themeData, setThemeData] = useState(ThemeData)
         <main>{children}</main>
         <Footer/>
       </div>
-    </UserStateContext.Provider>
+    </ThemeDataContext.Provider>
   )
 }
 
