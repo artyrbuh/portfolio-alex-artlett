@@ -23,13 +23,7 @@ const Menu = () => {
                 }
             }
             `}
-            render={props => {
-                console.log('menu');
-                console.log(props);
-                return (
-                    <MenuList/>
-                )
-            }}
+            render={props => <MenuList props={props}/>}
             />
     )
 }

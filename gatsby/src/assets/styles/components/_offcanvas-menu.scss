@@ -6,11 +6,25 @@
     pointer-events: none;
     top: 0;
     left: 0;
-    background-color: rgba($white, 0.95);
+    background-color: rgba($black, 1);
     z-index: 2;
+    color: $white;
 
     &.expanded {
         opacity: 1;
         pointer-events: auto;
+    }
+
+    .columns {
+        height: 100vh;
+    }
+
+    .menu.menu--main {
+        li {
+            a {
+                color: $white;
+                font-size: 64px;
+            }
+        }
     }
 }

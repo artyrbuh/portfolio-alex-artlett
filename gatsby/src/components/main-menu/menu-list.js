@@ -1,17 +1,26 @@
 import React from 'react';
-import {graphql, StaticQuery, Link} from 'gatsby';
-import {ThemeDataContext} from '../layout';
+import {Link} from 'gatsby';
 
 
-const MenuList = () => {
+const MenuList = ({props}) => {
+    const menu = props.allWordpressWpApiMenusMenusItems.edges[0].node.items;
+
     return (
-        <ThemeDataContext.Consumer>
-            {themeData => {
-                console.log('theme data :')
-                console.log(themeData)
-                return (<div>hey</div>)
-            }}
-        </ThemeDataContext.Consumer>
+        <>
+            {menu.length ? (
+                <ul className="menu menu--main">
+                    {menu.map((el, i) => (
+                        <li key={i}>
+                            <Link to={el.object_slug}>
+                                {el.title}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <div>add menu items</div>
+            )}
+        </>
     )
 }
 

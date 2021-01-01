@@ -1,5 +1,6 @@
 import React, { useState, createContext } from "react"
 import {ThemeDataContext} from '../layout';
+import Menu from '../main-menu/menu';
 
 const OffcanvasMenu = ({expanded}) => (
     <ThemeDataContext.Consumer>
@@ -9,9 +10,9 @@ const OffcanvasMenu = ({expanded}) => (
             return (
                 <div className={`offcanvas-menu ${expanded ? 'expanded' : ''}`}>
                     <div className="container">
-                        <div className="columns">
+                        <div className="columns is-vcentered">
                             <div className="column">
-                                off canvas menu
+                                <Menu/>
                             </div>
                         </div>
                     </div>

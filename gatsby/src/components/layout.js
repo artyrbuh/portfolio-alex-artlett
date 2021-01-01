@@ -42,7 +42,6 @@ const [themeData, setThemeData] = useState(ThemeData)
   return (
     <ThemeDataContext.Provider value={themeData}>
       <Nav/>
-      <Header siteTitle={ThemeData.site.siteMetadata.title} />
       <div
         style={{
           margin: `0 auto`,
