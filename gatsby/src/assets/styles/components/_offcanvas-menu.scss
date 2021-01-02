@@ -10,20 +10,50 @@
     z-index: 2;
     color: $white;
 
+
     &.expanded {
         opacity: 1;
         pointer-events: auto;
     }
 
-    .columns {
-        height: 100vh;
+    .container {
+        width: 70vw;
+
+        .columns {
+            height: 100vh;
+        }
     }
 
+    .wrap--main-menu {
+        position: relative;
+
+        .designation-col {
+            position: absolute;
+            top: 10px;
+            left: -50px;
+            width: 50px;
+
+            p {
+                @extend %branding;
+                @extend %vertical-text;
+
+                transform-origin: bottom left;
+                transform: rotate(90deg) translateZ(0);
+                opacity: 0.25;
+            }
+        }
+    }
     .menu.menu--main {
         li {
             a {
+                @include scaling-font(45, 64, 45px, 64px);
+
                 color: $white;
-                font-size: 64px;
+                opacity: 0.7;
+
+                &:hover {
+                    opacity: 1;
+                }
             }
         }
     }
