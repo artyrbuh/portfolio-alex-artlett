@@ -1,0 +1,42 @@
+.contact-button {
+    width: 130px;
+    height: 130px;
+    border-radius: 200px;
+    position: fixed;
+    right: 50px;
+    top: 50px;
+    background-color: $black;
+    cursor: pointer;
+
+    .contact-text {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        margin: auto;
+        opacity: 1;
+    }
+
+    .close {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &.open {
+        background-color: $white;
+
+        .close {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .contact-text {
+            opacity: 0;
+        }
+    }
+}

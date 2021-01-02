@@ -5,6 +5,7 @@ import Header from "./header"
 import Footer from "./footer/footer"
 import "./layout.css"
 import Nav from "../components/nav/nav";
+import Contact from "../components/contact/contact";
 
 export const ThemeDataContext = createContext()
 
@@ -42,6 +43,7 @@ const [themeData, setThemeData] = useState(ThemeData)
   return (
     <ThemeDataContext.Provider value={themeData}>
       <Nav/>
+      <Contact/>
       <div
         style={{
           margin: `0 auto`,
