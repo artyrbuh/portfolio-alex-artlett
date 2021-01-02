@@ -1,0 +1,76 @@
+@mixin scaling-val($min-size, $max-size, $min-px-size, $max-px-size, $val: "font-size", $use-rem: true) {
+    $px-size-difference: $max-size - $min-size;
+  
+    @include mobile {
+      $small-px: ($min-px-size / 16px) * 1em;
+  
+      @if $use-rem {
+        $small-px: ($min-px-size / 16px) * 1rem;
+      }
+  
+      #{$val}: $small-px;
+    }
+  
+    @include tablet {
+      #{$val}: calc(#{$min-size}px + #{$px-size-difference} * ((100vw - 768px)) / 1200);
+    }
+  
+    @include desktop {
+      $large-px: ($max-px-size / 16px) * 1em;
+  
+      @if $use-rem {
+        $large-px: ($max-px-size / 16px) * 1rem;
+      }
+  
+      #{$val}: $large-px;
+    }
+  
+    @content;
+  }
+  
+  @mixin scaling-font($min-size, $max-size, $min-font-size, $max-font-size) {
+    @include scaling-val($min-size, $max-size, $min-font-size, $max-font-size, "font-size");
+  
+    @content;
+  }
+  
+  @mixin scaling-padding-bottom($min-size, $max-size, $min-bottom-size, $max-bottom-size) {
+    @include scaling-val($min-size, $max-size, $min-bottom-size, $max-bottom-size, "padding-bottom", true);
+  
+    @content;
+  }
+  
+  @mixin aa-nth-trans-delay__generic($t: 0.15, $increment: 0.075, $inc: 0, $property: "") {
+    $inc : 0;
+  
+    @for $i from 1 through 25 {
+      &:nth-child(#{$i}) {
+        @if $property != "" {
+          transition: #{$property} $transition;
+        }
+  
+        @if $property == "" {
+          transition: $transition;
+        }
+  
+        transition-delay: #{$inc}s;
+  
+        $inc : $inc + $increment;
+  
+        @content;
+      }
+    }
+  }
+  
+  @mixin hide-x-scrollbar($height: 40px) {
+    &::after {
+      display: block;
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: $height;
+      background-color: $white;
+      opacity: 1;
+    }
+  }

@@ -5,6 +5,10 @@ $title-color: #ff0000;
 @import "~bulma/bulma.sass";
 
 @import "./common/variables";
+@import "./utilities/extends";
+@import "./utilities/functions";
+@import "./utilities/mixin";
+
 @import "./common/global";
 
 @import './components/burger';
