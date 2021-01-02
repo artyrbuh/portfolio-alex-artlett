@@ -22,6 +22,7 @@ const Layout = ({ children }) => {
         options {
           copyright
           designation
+          email
           logo {
             url {
               source_url
@@ -34,6 +35,20 @@ const Layout = ({ children }) => {
             technology
           }
         }
+      }
+      allWordpressWpApiMenusMenusItems(filter: {name: {eq: "Footer"}}) {
+          edges {
+              node {
+                  name
+                  items {
+                      classes
+                      target
+                      title
+                      url
+                      object_slug
+                  }
+              }
+          }
       }
     }
   `)
