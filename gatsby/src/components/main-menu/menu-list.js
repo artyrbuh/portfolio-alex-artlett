@@ -10,7 +10,7 @@ const MenuList = ({props}) => {
             {menu.length ? (
                 <ul className="menu menu--main">
                     {menu.map((el, i) => (
-                        <li key={i}>
+                        <li key={i} className="menu-item">
                             <Link to={el.object_slug}>
                                 {el.title}
                             </Link>

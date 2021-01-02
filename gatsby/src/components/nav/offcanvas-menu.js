@@ -10,7 +10,7 @@ const OffcanvasMenu = ({expanded}) => (
                 <div className={`offcanvas-menu ${expanded ? 'expanded' : ''}`}>
                     <div className="container">
                         <div className="columns is-vcentered is-flex">
-                            <div className="column wrap--main-menu">
+                            <div className="column menu wrap--main-menu">
                                 <div className="designation-col">
                                     <div>
                                         <p>{title}</p>
