@@ -6,8 +6,8 @@ const ContactMenu = ({expanded}) => (
     <ThemeDataContext.Consumer>
         {themeData => {
             const menu = themeData.allWordpressWpApiMenusMenusItems.edges[0].node.items;
-            console.log(themeData)
             const email = themeData.wordpressAcfOptions.options.email;
+
             return (
                 <div className={`offcanvas-menu contact-menu ${expanded ? 'expanded' : ''}`}>
                     <div className="container wrap--contact-menu">
