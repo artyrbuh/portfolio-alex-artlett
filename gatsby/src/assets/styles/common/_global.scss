@@ -1,3 +1,17 @@
+body {
+    -webkit-font-smoothing: antialiased;
+    font-family: $font;
+
+    &:not(.single-work) {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    @include mobile() {
+        width: 100%;
+    }
+}
+
 .container {
     padding-right: 15px;
     padding-left: 15px;
