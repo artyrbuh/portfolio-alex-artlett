@@ -9,7 +9,6 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sass`,
-    `gatsby-plugin-stylelint`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
