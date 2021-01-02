@@ -7,7 +7,7 @@
     top: 0;
     left: 0;
     background-color: rgba($black, 1);
-    z-index: 2;
+    z-index: 3;
     color: $white;
 
 
@@ -43,16 +43,60 @@
             }
         }
     }
+
+    .menu-item {
+        a {
+            @include scaling-font(45, 64, 45px, 64px);
+
+            color: $white;
+            opacity: 0.7;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
     .menu.menu--main {
         li {
             a {
-                @include scaling-font(45, 64, 45px, 64px);
+                //
+            }
+        }
+    }
 
-                color: $white;
-                opacity: 0.7;
+    .email {
+        position: absolute;
+        color: rgba(255, 255, 255, 0.7);
+        bottom: 20px;
+        left: 0.75rem;
+    }
 
-                &:hover {
-                    opacity: 1;
+    &.contact-menu {
+        z-index: 1;
+        width: calc(100% - 50px);
+        left: 50px;
+
+        .wrap--contact-menu {
+            .menu {
+                .menu-item {
+                    text-align: center;
+                }
+            }
+        }
+
+        @include mobile {
+            .container {
+                flex-wrap: wrap;
+
+                .columns {
+                    flex-direction: column;
+                    align-items: center;
+
+                    .column {
+                        align-items: center;
+                        display: flex;
+                    }
                 }
             }
         }

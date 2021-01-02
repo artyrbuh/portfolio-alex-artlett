@@ -1,14 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Close from './close';
 import ContactText from './contact-text';
 
-const ContactButton = () => {
-    const [open, setOpen] = useState(false);
-    const toggleOpen = () => open === true ? setOpen(false) : setOpen(true);
-    let textPath = `<textPath xlink:href="#curve">contact me</textPath>`;
-
+const ContactButton = ({expanded, onClick}) => {
     return (
-        <div className={`contact-button ${open ? 'open' : ''}`}>
+        <div 
+            className={`contact-button ${expanded ? 'open' : ''}`}
+            onClick={onClick}>
             <ContactText/>
             <Close/>
         </div>
