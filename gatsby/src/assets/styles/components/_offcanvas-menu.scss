@@ -46,7 +46,7 @@
 
     .menu-item {
         a {
-            @include scaling-font(45, 64, 45px, 64px);
+            @extend .h1;
 
             color: $white;
             opacity: 0.7;

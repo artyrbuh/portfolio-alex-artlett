@@ -13,7 +13,14 @@ body {
 }
 
 .container {
+    max-width: 80vw !important;
     padding-right: 15px;
     padding-left: 15px;
-    max-width: 80vw;
+}
+
+.h1 {
+    @include scaling-font(45, 64, 45px, 64px);
+    @include scaling-val(50, 76, 50px, 76px, "line-height");
+
+    letter-spacing: -0.04em;
 }
