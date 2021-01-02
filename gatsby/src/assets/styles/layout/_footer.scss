@@ -1,0 +1,14 @@
+footer {
+    li a,
+    p {
+        @extend .h1;
+
+        color: $black;
+    }
+
+    @include desktop {
+        .column--menu {
+            text-align: right;
+        }   
+    }
+}

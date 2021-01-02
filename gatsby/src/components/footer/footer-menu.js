@@ -1,34 +1,27 @@
 import React from 'react';
-import {graphql, StaticQuery, Link} from 'gatsby';
+import {Link} from 'gatsby';
 
-const FooterMenu = () => {
+const FooterMenu = ({menu}) => {
     return (
-        <StaticQuery query={graphql`
-        {
-            allWordpressWpApiMenusMenusItems(filter: {name: {eq: "Footer"}}) {
-                edges {
-                    node {
-                        name
-                        items {
-                            classes
-                            target
-                            title
-                            url
-                            object_slug
-                        }
+        <>
+            {menu.length ? (
+                <ul>
+                    {
+                        menu.map((el,i) => (
+                            <li key={i}>
+                                <Link to={el.object_slug}>
+                                    {el.title}
+                                </Link>
+                            </li>
+                        ))
                     }
-                }
-            }
-        }
-        `}
-        render={props => {
-            console.log('footer menu');
-            console.log(props);
-            return (
-                <div></div>
-            )
-        }}
-        />
+                </ul>
+            ): (
+                <>
+                    nelson
+                </>
+            )}
+        </>
     )
 }
 

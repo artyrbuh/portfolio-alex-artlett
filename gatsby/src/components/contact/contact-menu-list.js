@@ -9,7 +9,10 @@ const ContactMenuList = ({menu}) => {
             {menu.length ? (
                 <>
                     {menu.map((el, i) => (
-                        <div className="column menu-item">
+                        <div 
+                            className="column menu-item"
+                            key={i}
+                        >
                             <Link to={el.object_slug}>
                                 {el.title}
                             </Link>
@@ -17,10 +20,11 @@ const ContactMenuList = ({menu}) => {
                     ))}
                 </>
                 ) : (
-                <>
-                    Add Contact Menu items
-                </>
-            )}
+                    <>
+                        Add Contact Menu items
+                    </>
+                )
+            }
         </>
     );
 }
