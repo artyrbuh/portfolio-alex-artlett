@@ -57,7 +57,7 @@
                     "key": "field_5fea9f8d368f5",
                     "label": "Content",
                     "name": "content",
-                    "type": "wysiwyg",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -66,11 +66,12 @@
                         "class": "",
                         "id": ""
                     },
+                    "show_in_graphql": 1,
                     "default_value": "",
-                    "tabs": "all",
-                    "toolbar": "full",
-                    "media_upload": 1,
-                    "delay": 0
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": ""
                 }
             ]
         },
@@ -454,5 +455,5 @@
     "description": "",
     "show_in_graphql": 1,
     "graphql_field_name": "home",
-    "modified": 1609285260
+    "modified": 1609656936
 }
