@@ -53,7 +53,7 @@ const Layout = ({ children }) => {
     }
   `)
 
-  const [themeData, setThemeData] = useState(ThemeData)
+  const [themeData] = useState(ThemeData)
   const [activeMenu, setActiveMenu] = useState("");
   const isMenu = (menu) => activeMenu === menu ? true : false;
   const toggleMenu = (menu)  => isMenu(menu) ? setActiveMenu("") : setActiveMenu(menu);

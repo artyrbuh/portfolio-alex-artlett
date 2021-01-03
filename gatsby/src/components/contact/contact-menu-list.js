@@ -6,7 +6,6 @@ const ContactMenuList = ({menu}) => {
     console.log(menu);
     return (
         <>
-            <a href="mailto:hello@alex.somc.as"></a>
             {menu.length ? (
                 <>
                     {menu.map((el, i) => (

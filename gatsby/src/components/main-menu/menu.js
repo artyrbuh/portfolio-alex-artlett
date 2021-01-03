@@ -1,5 +1,5 @@
 import React from 'react';
-import {graphql, StaticQuery, Link} from 'gatsby';
+import {graphql, StaticQuery} from 'gatsby';
 import MenuList from './menu-list';
 
 const Menu = () => {
