@@ -1,19 +1,13 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React, { useState, createContext } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
-import Header from "./header"
 import Footer from "./footer/footer"
 import "./layout.css"
+import Nav from "../components/nav/nav";
+import Contact from "../components/contact/contact";
 
-export const UserStateContext = createContext()
+export const ThemeDataContext = createContext(null);
+export const ActiveMenu = createContext(null);
 
 const Layout = ({ children }) => {
 
@@ -28,6 +22,7 @@ const Layout = ({ children }) => {
         options {
           copyright
           designation
+          email
           logo {
             url {
               source_url
@@ -41,25 +36,42 @@ const Layout = ({ children }) => {
           }
         }
       }
+      allWordpressWpApiMenusMenusItems(filter: {name: {eq: "Footer"}}) {
+          edges {
+              node {
+                  name
+                  items {
+                      classes
+                      target
+                      title
+                      url
+                      object_slug
+                  }
+              }
+          }
+      }
     }
   `)
 
-const [themeData, setThemeData] = useState(ThemeData)
+  const [themeData] = useState(ThemeData)
+  const [activeMenu, setActiveMenu] = useState("");
+  const isMenu = (menu) => activeMenu === menu ? true : false;
+  const toggleMenu = (menu)  => isMenu(menu) ? setActiveMenu("") : setActiveMenu(menu);
+  const toggleMainMenu = () => toggleMenu("main");
+  const toggleContactMenu = () => toggleMenu("contact");
+  
 
   return (
-    <UserStateContext.Provider value={themeData}>
-      <Header siteTitle={ThemeData.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
+    <ThemeDataContext.Provider value={themeData}>
+      <ActiveMenu.Provider value={{toggleMainMenu, toggleContactMenu, isMenu}}>
+        <Nav/>
+        <Contact/>
+      </ActiveMenu.Provider>
+      <div>
         <main>{children}</main>
         <Footer/>
       </div>
-    </UserStateContext.Provider>
+    </ThemeDataContext.Provider>
   )
 }
 

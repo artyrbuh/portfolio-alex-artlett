@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.3.0
+- Begin using Context for global state management
+- Develop and style Main Menu Components (non-animated)
+- Develop and style Contact Menu Components (non-animated)
+- Develop and style Footer Menu Components (non-animated)
+
 ## 0.2.0
 - Setup ACF Local storage
 - Add Fields for Options Page, Work Page, Home Page, Work Post Type

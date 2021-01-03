@@ -1,5 +1,5 @@
 import React from 'react';
-import {graphql, StaticQuery, Link} from 'gatsby';
+import {graphql, StaticQuery} from 'gatsby';
 import MenuList from './menu-list';
 
 const Menu = () => {
@@ -23,13 +23,7 @@ const Menu = () => {
                 }
             }
             `}
-            render={props => {
-                console.log('menu');
-                console.log(props);
-                return (
-                    <MenuList/>
-                )
-            }}
+            render={props => <MenuList props={props}/>}
             />
     )
 }

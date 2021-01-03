@@ -1,0 +1,26 @@
+body {
+    -webkit-font-smoothing: antialiased;
+    font-family: $font;
+
+    &:not(.single-work) {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    @include mobile() {
+        width: 100%;
+    }
+}
+
+.container {
+    max-width: 80vw !important;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.h1 {
+    @include scaling-font(45, 64, 45px, 64px);
+    @include scaling-val(50, 76, 50px, 76px, "line-height");
+
+    letter-spacing: -0.04em;
+}
