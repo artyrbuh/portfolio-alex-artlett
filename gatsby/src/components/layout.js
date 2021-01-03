@@ -6,8 +6,8 @@ import "./layout.css"
 import Nav from "../components/nav/nav";
 import Contact from "../components/contact/contact";
 
-export const ThemeDataContext = createContext()
-export const ActiveMenu = createContext()
+export const ThemeDataContext = createContext(null);
+export const ActiveMenu = createContext(null);
 
 const Layout = ({ children }) => {
 
@@ -53,12 +53,17 @@ const Layout = ({ children }) => {
     }
   `)
 
-const [themeData, setThemeData] = useState(ThemeData)
-const [activeMenu, setActiveMenu] = useState(ActiveMenu)
+  const [themeData, setThemeData] = useState(ThemeData)
+  const [activeMenu, setActiveMenu] = useState("");
+  const isMenu = (menu) => activeMenu === menu ? true : false;
+  const toggleMenu = (menu)  => isMenu(menu) ? setActiveMenu("") : setActiveMenu(menu);
+  const toggleMainMenu = () => toggleMenu("main");
+  const toggleContactMenu = () => toggleMenu("contact");
+  
 
   return (
     <ThemeDataContext.Provider value={themeData}>
-      <ActiveMenu.Provider value={activeMenu}>
+      <ActiveMenu.Provider value={{toggleMainMenu, toggleContactMenu, isMenu}}>
         <Nav/>
         <Contact/>
       </ActiveMenu.Provider>
