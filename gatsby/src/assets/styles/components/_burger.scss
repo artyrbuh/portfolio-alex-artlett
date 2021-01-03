@@ -1,0 +1,49 @@
+.burger {
+    width: 16px;
+    height: 12px;
+    position: relative;
+    cursor: pointer;
+
+    > div {
+        position: absolute;
+        height: 2px;
+        background-color: $black;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-radius: 5px;
+        width: 100%;
+
+        &:nth-child(1) {
+            bottom: unset;
+        }
+
+        &:nth-child(3) {
+            top: unset;
+        }
+    }
+}
+
+.burger-wrap {
+    &.expanded {
+        .burger {
+            > div {
+                &:nth-child(1) {
+                    transform: rotate(45deg);
+                    bottom: 0;
+                }
+    
+                &:nth-child(2) {
+                    width: 0;
+                }
+    
+                &:nth-child(3) {
+                    transform: rotate(-45deg);
+                    top: 0;
+                }
+            }
+        }
+    }
+}

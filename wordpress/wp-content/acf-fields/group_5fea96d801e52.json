@@ -43,6 +43,26 @@
             "mime_types": ""
         },
         {
+            "key": "field_5feff7beeed89",
+            "label": "Email",
+            "name": "email",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5fea97128191e",
             "label": "Copyright Text",
             "name": "copyright",
@@ -184,5 +204,5 @@
     "description": "",
     "show_in_graphql": 1,
     "graphql_field_name": "theme_settings",
-    "modified": 1609385332
+    "modified": 1609562068
 }

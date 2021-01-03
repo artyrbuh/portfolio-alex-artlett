@@ -1,0 +1,52 @@
+.contact-button {
+    @include scaling-val(90, 130, 90px, 130px, "width");
+    @include scaling-val(90, 130, 90px, 130px, "height");
+    @include scaling-val(20, 50, 20px, 50px, "right");
+    @include scaling-val(20, 50, 20px, 50px, "top");
+
+    border-radius: 200px;
+    position: fixed;
+    background-color: $black;
+    cursor: pointer;
+    z-index: 2;
+
+    .contact-text {
+        position: absolute;
+        top: rem(22px);
+        right: rem(22px);
+        margin: auto;
+        opacity: 1;
+    }
+
+    .close {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &.open {
+        background-color: $white;
+
+        .close {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .contact-text {
+            opacity: 0;
+        }
+    }
+
+    @media (max-width: $desktop) {
+        .contact-text {
+            transform: scale(0.75);
+            top: 5px;
+            right: 5px;
+        }
+    }
+}

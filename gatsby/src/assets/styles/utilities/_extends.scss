@@ -1,0 +1,10 @@
+%branding {
+    letter-spacing: 0.27em;
+    text-transform: uppercase;
+    font-family: $alatsi;
+}
+
+%vertical-text {
+    transform: rotate(-90deg);
+    white-space: nowrap;
+}
