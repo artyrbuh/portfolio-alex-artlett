@@ -19,7 +19,7 @@ const MenuList = ({props}) => {
                     {menu.map((el, i) => (
                         <li key={i} className="menu-item">
                             {el.object_slug !== "contact" ? (
-                                <Link to={`${el.object_slug === 'home' ? '/' : el.object_slug}`}>
+                                <Link to={`${el.object_slug === 'home' ? '/' : `/${el.object_slug}`}`}>
                                     {el.title}
                                 </Link>
                             ) : 

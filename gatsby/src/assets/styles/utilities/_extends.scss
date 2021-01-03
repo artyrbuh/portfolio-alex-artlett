@@ -8,3 +8,10 @@
     transform: rotate(-90deg);
     white-space: nowrap;
 }
+
+%cta { 
+    font-size: 10px;
+    line-height: 13px;
+    letter-spacing: 0.27em;
+    color: $primary;
+}

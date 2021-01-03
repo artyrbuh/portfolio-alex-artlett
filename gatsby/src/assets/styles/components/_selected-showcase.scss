@@ -1,0 +1,20 @@
+.selected-showcase--heading-wrap {
+    align-items: flex-end;
+
+    .column {
+        &:first-child {
+            p {
+                text-transform: lowercase;
+                font-weight: 700;
+                max-width: 115px;
+                line-height: 21.53px !important;
+            }
+        }
+
+        &:last-child {
+            a {
+                @extend %cta;
+            }
+        }
+    }
+}
