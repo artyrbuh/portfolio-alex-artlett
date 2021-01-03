@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 import "../assets/styles/index.scss"
+import ContentBlock from "../components/ui/content-block";
 
 const IndexPage = () => (
   <StaticQuery query={graphql`
@@ -62,23 +63,11 @@ const IndexPage = () => (
         const {about_block, experience_block, header, moving_text, selected_showcase} = props.allWordpressPage.edges[0].node.acf;
         return (
           <Layout>
+            <SEO title="Home" />
             <HomeHeader header={header}/>
             <SelectedShowcase selected_showcase={selected_showcase} />
-            <div className="container">
-              <div className="columns">
-                <div className="column">
-                  <SEO title="Home" />
-                  <h1>Hi people</h1>
-                  <p>Welcome to your new Gatsby site.</p>
-                  <p>Now go build something great.</p>
-                  <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-                    <Image />
-                  </div>
-                  <Link to="/page-2/">Go to page 2</Link> <br />
-                  <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-                </div>
-              </div>
-            </div>
+            <AboutSection about_block={about_block} />
+            
           </Layout>
           );
         }
@@ -149,6 +138,24 @@ export const SelectedShowcase = ({selected_showcase}) => (
       </>
     )}
   </>
-)
+);
+
+export const AboutSection = ({about_block}) => {
+  const {heading, content} = about_block;
+  return (
+    <div className="container">
+      <div className="columns">
+        <div className="column">
+          <Image />
+        </div>
+        <div className="column">
+          <ContentBlock heading={heading} content={content}/>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+//  export const ExperienceSection
 
 export default IndexPage
