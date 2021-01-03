@@ -1,13 +1,13 @@
 import React, { useState, createContext } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import Header from "./header"
 import Footer from "./footer/footer"
 import "./layout.css"
 import Nav from "../components/nav/nav";
 import Contact from "../components/contact/contact";
 
 export const ThemeDataContext = createContext()
+export const ActiveMenu = createContext()
 
 const Layout = ({ children }) => {
 
@@ -54,11 +54,14 @@ const Layout = ({ children }) => {
   `)
 
 const [themeData, setThemeData] = useState(ThemeData)
+const [activeMenu, setActiveMenu] = useState(ActiveMenu)
 
   return (
     <ThemeDataContext.Provider value={themeData}>
-      <Nav/>
-      <Contact/>
+      <ActiveMenu.Provider value={activeMenu}>
+        <Nav/>
+        <Contact/>
+      </ActiveMenu.Provider>
       <div>
         <main>{children}</main>
         <Footer/>
