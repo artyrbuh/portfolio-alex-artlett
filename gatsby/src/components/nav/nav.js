@@ -14,7 +14,7 @@ const Nav = () => {
     return (
         <>
             <div
-                className={`burger-wrap ${isMenu("main") ? 'expanded' : ''}`}
+                className={`burger-wrap ${isMenu("main") ? 'expanded' : ''} ${isMenu("contact") ? 'contact-menu-open' : ''}`}
                 onClick={toggleMainMenu}
             >
                 <Burger/>
