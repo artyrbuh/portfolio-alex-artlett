@@ -9,16 +9,20 @@ const FooterMenu = ({menu}) => {
                     {
                         menu.map((el,i) => (
                             <li key={i}>
-                                <Link to={el.object_slug}>
-                                    {el.title}
-                                </Link>
+                                {el.object_slug !== "email" ? (
+                                    <Link to={`${el.url}`} target="_blank">
+                                        {el.title}
+                                    </Link>
+                                ) : (
+                                    <a href={el.url}>{el.title}</a>
+                                )}
                             </li>
                         ))
                     }
                 </ul>
             ): (
                 <>
-                    nelson
+                    Add menu items
                 </>
             )}
         </>

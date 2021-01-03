@@ -1,14 +1,12 @@
 import React, {useContext } from "react"
 import {ThemeDataContext, ActiveMenu} from '../layout';
 import OffcanvasMenu from './offcanvas-menu';
+import {Link} from 'gatsby';
 import Burger from '../ui/burger';
 
 const Nav = () => {
     const themeData = useContext(ThemeDataContext);
     const {toggleMainMenu, isMenu} = useContext(ActiveMenu);
-
-    //const [expanded, setExpanded] = useState(false);
-    //const toggleExpand = () => expanded === true ? setExpanded(false) : setExpanded(true);
     const d = new Date();
     const title = themeData.site.siteMetadata.title;
     const {logo, designation} = themeData.wordpressAcfOptions.options;
@@ -25,10 +23,12 @@ const Nav = () => {
                 <div className={`nav--branding`}>
                     <span className="nav--branding__designation">{designation}</span>    
 
-                    <img 
-                        src={logo.url.source_url}
-                        className="logo"
-                    />
+                    <Link to="/">
+                        <img 
+                            src={logo.url.source_url}
+                            className="logo"
+                        />
+                    </Link>
 
                     <span className="nav--branding__title">{`${title} - ${d.getFullYear()}`}</span>
                 </div>
