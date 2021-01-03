@@ -67,6 +67,10 @@
             }
         }
     }
+
+    @include mobile {
+        left: -50px;
+    }
 }
 
 .burger-wrap {
@@ -91,6 +95,12 @@
             > div {
                 background-color: $white;
             }
+        }
+    }
+
+    @include mobile {
+        &.contact-menu-open {
+            background-color: $white;
         }
     }
 }

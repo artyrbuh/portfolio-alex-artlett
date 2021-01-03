@@ -72,8 +72,6 @@
 
     &.contact-menu {
         z-index: 1;
-        width: calc(100% - 50px);
-        left: 50px;
 
         .wrap--contact-menu {
             height: 100vh;
@@ -83,6 +81,11 @@
                     text-align: center;
                 }
             }
+        }
+
+        @include tablet {
+            width: calc(100% - 50px);
+            left: 50px;
         }
 
         @include mobile {

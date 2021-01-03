@@ -6,7 +6,7 @@ footer {
         color: $black;
     }
 
-    @include desktop {
+    @include tablet {
         .column--menu {
             text-align: right;
         }   
