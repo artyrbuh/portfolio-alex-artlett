@@ -41,7 +41,8 @@ li {
     letter-spacing: -0.04em;
 }
 
-p {
-    @include scaling-font(20, 24, 20px, 24px);
+p,
+li {
+    @include scaling-font(18, 24, 18px, 24px);
     @include scaling-val(28, 34, 28px, 34px, "line-height");
 }
