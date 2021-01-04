@@ -5,6 +5,7 @@ import Image from "../components/image"
 import SEO from "../components/seo"
 import "../assets/styles/index.scss"
 import ContentBlock from "../components/ui/content-block";
+import ExperienceList from "../components/ui/experience-list";
 
 const IndexPage = () => (
   <StaticQuery query={graphql`
@@ -64,10 +65,10 @@ const IndexPage = () => (
         return (
           <Layout>
             <SEO title="Home" />
-            <HomeHeader header={header}/>
+            <HomeHeader header={header} />
             <SelectedShowcase selected_showcase={selected_showcase} />
             <AboutSection about_block={about_block} />
-            
+            <ExperienceSection experience_block={experience_block} />
           </Layout>
           );
         }
@@ -102,8 +103,8 @@ export const SelectedShowcase = ({selected_showcase}) => (
   <>
     {selected_showcase.showcase.length ? (
       <>
-        <div className="container">
-          <div className="columns selected-showcase--heading-wrap">
+        <div className="container selected-showcase--heading-wrap">
+          <div className="columns ">
             <div className="column">
               <p>{selected_showcase.heading}</p>
             </div>
@@ -112,7 +113,7 @@ export const SelectedShowcase = ({selected_showcase}) => (
             </div>
           </div>
         </div>
-        <div className="container">
+        <div className="container selected-showcase--wrap">
           <div className="columns">
             <div className="column">
               and is farmor good
@@ -146,7 +147,7 @@ export const AboutSection = ({about_block}) => {
     <div className="container">
       <div className="columns">
         <div className="column">
-          <Image />
+          {/*<Image stye/>*/}
         </div>
         <div className="column">
           <ContentBlock heading={heading} content={content}/>
@@ -156,6 +157,21 @@ export const AboutSection = ({about_block}) => {
   );
 }
 
-//  export const ExperienceSection
+export const ExperienceSection = ({experience_block}) => {
+  const {heading, experience_list} = experience_block;
+
+  return (
+    <div className="container">
+      <div className="columns">
+        <div className="column"></div>
+        <div className="column">
+          <ContentBlock heading={heading}>
+              <ExperienceList experience_list={experience_list} />
+          </ContentBlock>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default IndexPage
