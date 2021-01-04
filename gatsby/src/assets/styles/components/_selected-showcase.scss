@@ -1,5 +1,7 @@
 .selected-showcase--heading-wrap {
-    align-items: flex-end;
+    .columns {
+        align-items: flex-end;
+    }
 
     .column {
         &:first-child {
@@ -17,4 +19,8 @@
             }
         }
     }
+}
+
+.selected-showcase--wrap {
+    @include scaling-val(100, 147, 100px, 147px, "margin-bottom");
 }
