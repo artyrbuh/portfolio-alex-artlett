@@ -115,31 +115,9 @@ export const SelectedShowcase = ({selected_showcase}) => (
         </div>
         <div className="container selected-showcase--wrap">
           <div className="columns">
-            <div className="column is-full">
-              <div>
-                and is farmor good
-              </div>
-            </div>
-            <div className="column is-half">
-              <div>
-                and is farmor good
-              </div>
-            </div>
-            <div className="column is-full">
-              <div>
-                and is farmor good
-              </div>
-            </div>
-            <div className="column is-half">
-              <div>
-                and is farmor good
-              </div>
-            </div>
-            <div className="column is-full">
-              <div>
-                and is farmor good
-              </div>
-            </div>
+            {selected_showcase.showcase.map((el, i) => <ShowcaseItem key={i} item={el.selected_work}/>)}
+            <div className="column is-half selected-showcase--cta"></div>
+            <div className="column is-half"></div>
           </div>        
         </div>
       </>
@@ -150,6 +128,16 @@ export const SelectedShowcase = ({selected_showcase}) => (
     )}
   </>
 );
+
+export const ShowcaseItem = ({item}) => {
+  const {thumbnail_image, thumbnail_text} = item.acf;
+  const colSize = thumbnail_text.length >= 3 ? 'is-full' : 'is-half';
+  return (
+    <div className={`column ${colSize}`}>
+      <div>{item.post_title}</div>
+    </div>
+  );
+}
 
 export const AboutSection = ({about_block}) => {
   const {heading, content} = about_block;
