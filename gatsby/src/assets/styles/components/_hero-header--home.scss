@@ -1,4 +1,6 @@
 .hero-header--home {
+    @include scaling-val(26, 51, 26px, 51px, "margin-bottom");
+
     position: relative;
 
     &.is-fullheight {
