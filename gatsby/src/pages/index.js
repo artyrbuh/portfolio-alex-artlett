@@ -115,20 +115,30 @@ export const SelectedShowcase = ({selected_showcase}) => (
         </div>
         <div className="container selected-showcase--wrap">
           <div className="columns">
-            <div className="column">
-              and is farmor good
+            <div className="column is-full">
+              <div>
+                and is farmor good
+              </div>
             </div>
-            <div className="column">
-              and is farmor good
+            <div className="column is-half">
+              <div>
+                and is farmor good
+              </div>
             </div>
-            <div className="column">
-              and is farmor good
+            <div className="column is-full">
+              <div>
+                and is farmor good
+              </div>
             </div>
-            <div className="column">
-              and is farmor good
+            <div className="column is-half">
+              <div>
+                and is farmor good
+              </div>
             </div>
-            <div className="column">
-              and is farmor good
+            <div className="column is-full">
+              <div>
+                and is farmor good
+              </div>
             </div>
           </div>        
         </div>
