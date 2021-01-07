@@ -161,7 +161,7 @@
                     "key": "field_5ff16da1e05b4",
                     "label": "Text",
                     "name": "text",
-                    "type": "text",
+                    "type": "image",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -171,11 +171,16 @@
                         "id": ""
                     },
                     "show_in_graphql": 1,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "return_format": "url",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
                 }
             ]
         }
@@ -199,5 +204,5 @@
     "description": "",
     "show_in_graphql": 1,
     "graphql_field_name": "work",
-    "modified": 1609933097
+    "modified": 1610018124
 }

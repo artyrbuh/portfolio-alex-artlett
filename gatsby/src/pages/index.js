@@ -34,7 +34,9 @@ const IndexPage = () => (
                             source_url
                           }
                           thumbnail_text {
-                            text
+                            text {
+                              source_url
+                            }
                           }
                         }
                       }
@@ -134,7 +136,18 @@ export const ShowcaseItem = ({item}) => {
   const colSize = thumbnail_text.length >= 3 ? 'is-full' : 'is-half';
   return (
     <div className={`column ${colSize}`}>
-      <div>{item.post_title}</div>
+      <div>
+        {thumbnail_text.length && (
+          <div className="thumbnail-text-wrap">
+            {thumbnail_text.map((el, i) => (
+              <img 
+                src={el.text.source_url} 
+                className="thumbnail-text"
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
