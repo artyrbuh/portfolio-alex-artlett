@@ -72,6 +72,7 @@ const IndexPage = () => (
             <SelectedShowcase selected_showcase={selected_showcase} />
             <AboutSection about_block={about_block} />
             <ExperienceSection experience_block={experience_block} />
+            <MovingText />
           </Layout>
           );
         }
@@ -203,6 +204,12 @@ export const ExperienceSection = ({experience_block}) => {
         </div>
       </div>
     </div>
+  );
+}
+
+export const MovingText = () => {
+  return (
+    <div className="moving-text"></div>
   );
 }
 
