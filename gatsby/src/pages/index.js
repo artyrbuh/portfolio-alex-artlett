@@ -50,6 +50,7 @@ const IndexPage = () => (
                   experience_block {
                     experience_list {
                       company
+                      position
                       description
                       end_year
                       start_year
