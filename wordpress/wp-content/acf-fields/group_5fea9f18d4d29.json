@@ -334,6 +334,26 @@
                             "maxlength": ""
                         },
                         {
+                            "key": "field_5ff874499b4a6",
+                            "label": "Position",
+                            "name": "position",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "show_in_graphql": 1,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
                             "key": "field_5feaa162e20b5",
                             "label": "Description",
                             "name": "description",
@@ -455,5 +475,5 @@
     "description": "",
     "show_in_graphql": 1,
     "graphql_field_name": "home",
-    "modified": 1609656936
+    "modified": 1610118235
 }
