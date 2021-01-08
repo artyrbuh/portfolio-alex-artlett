@@ -1,14 +1,21 @@
 footer {
+    @include scaling-val(68, 158, 68px, 158px, "padding-bottom");
+
     li a,
     p {
-        @extend .h1;
+        @include scaling-font(18, 66, 18px, 66px);
+        @include scaling-val(21, 76, 21px, 76px, "line-height");
 
         color: $black;
     }
 
-    @include tablet {
-        .column--menu {
-            text-align: right;
-        }   
+    .column--copyright {
+        p {
+            @include scaling-val(145, 550, 145px, 550px, "max-width");
+        }
+    }
+
+    .column--menu {
+        @extend .has-text-right;
     }
 }

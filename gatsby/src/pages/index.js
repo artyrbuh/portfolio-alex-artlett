@@ -28,6 +28,7 @@ const IndexPage = () => (
                     showcase {
                       selected_work {
                         post_title
+                        post_name
                         wordpress_id
                         acf {
                           thumbnail_image {
@@ -136,20 +137,25 @@ export const SelectedShowcase = ({selected_showcase}) => (
 export const ShowcaseItem = ({item}) => {
   const {thumbnail_image, thumbnail_text} = item.acf;
   const colSize = thumbnail_text.length >= 3 ? 'is-full' : 'is-half';
+
+  console.log(item);
+
   return (
     <div className={`column ${colSize}`}>
-      <div>
-        {thumbnail_text.length && (
-          <div className="thumbnail-text-wrap">
-            {thumbnail_text.map((el, i) => (
-              <img 
-                src={el.text.source_url} 
-                className="thumbnail-text"
-              />
-            ))}
-          </div>
-        )}
-      </div>
+      <Link to={`/work/${item.post_name}`}>
+        <div className="showcase-inner">
+          {thumbnail_text.length && (
+            <div className="thumbnail-text-wrap">
+              {thumbnail_text.map((el, i) => (
+                <img 
+                  src={el.text.source_url} 
+                  className="thumbnail-text"
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      </Link>
     </div>
   );
 }

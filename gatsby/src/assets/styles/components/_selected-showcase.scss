@@ -45,7 +45,7 @@
             
             display: inline-block;
 
-            > div {
+            .showcase-inner {
                 background-color: $pale-red;
                 width: 100%;
                 position: relative;
@@ -70,7 +70,7 @@
             &.is-full {
                 width: calc(100% - 20vw);
                 
-                > div {
+                .showcase-inner {
                     @include scaling-val(278, 750, 278px, 750px, "height");
 
                     .thumbnail-text-wrap {
@@ -99,7 +99,7 @@
             &.is-half {
                 width: calc(65% - 20vw);
 
-                > div {
+                .showcase-inner {
                     @include scaling-val(193, 444, 193px, 444px, "height");
                     @include scaling-val(32, 75, 32px, 75px, "margin-bottom");
                     
