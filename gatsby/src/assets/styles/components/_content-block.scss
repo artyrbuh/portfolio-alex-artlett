@@ -34,4 +34,14 @@
             }
         }
     }
+
+    @include mobile {
+        .content-block--header {
+            p {
+                &::before {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
 }
