@@ -9,6 +9,10 @@ footer {
         color: $black;
     }
 
+    .columns {
+        @extend .is-mobile;
+    }
+
     .column--copyright {
         p {
             @include scaling-val(145, 550, 145px, 550px, "max-width");
