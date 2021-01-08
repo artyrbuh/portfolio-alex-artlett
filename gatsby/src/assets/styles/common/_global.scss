@@ -2,8 +2,8 @@ body {
     -webkit-font-smoothing: antialiased;
     font-family: $font;
     color: $black;
-    //overflow-x: hidden;
-    //overflow-y: auto;
+    width: 100%;
+    overflow-x: hidden;
 
     @include mobile() {
         width: 100%;
