@@ -68,7 +68,9 @@
                 "Vue": "Vue",
                 "WordPress": "WordPress",
                 "Blade": "Blade",
-                "Sass": "Sass"
+                "Sass": "Sass",
+                "AngularJS": "AngularJS",
+                "Firebase": "Firebase"
             },
             "allow_custom": 0,
             "default_value": [],
@@ -94,7 +96,8 @@
             "choices": {
                 "Back End": "Back End",
                 "Front End": "Front End",
-                "Systems Setup": "Systems Setup"
+                "Systems Setup": "Systems Setup",
+                "Full Stack": "Full Stack"
             },
             "allow_custom": 0,
             "default_value": [],
@@ -133,6 +136,53 @@
             "return_format": "value",
             "ajax": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_5ff16d97e05b3",
+            "label": "Thumbnail Text",
+            "name": "thumbnail_text",
+            "type": "repeater",
+            "instructions": "Add as many words",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "collapsed": "",
+            "min": 1,
+            "max": 3,
+            "layout": "row",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5ff16da1e05b4",
+                    "label": "Text",
+                    "name": "text",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "show_in_graphql": 1,
+                    "return_format": "url",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -154,5 +204,5 @@
     "description": "",
     "show_in_graphql": 1,
     "graphql_field_name": "work",
-    "modified": 1609339301
+    "modified": 1610018124
 }

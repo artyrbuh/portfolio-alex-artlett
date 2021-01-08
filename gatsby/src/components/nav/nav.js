@@ -1,7 +1,7 @@
-import React, {useContext } from "react"
-import {ThemeDataContext, ActiveMenu} from '../layout';
+import React, { useContext } from "react"
+import { ThemeDataContext, ActiveMenu } from '../layout';
 import OffcanvasMenu from './offcanvas-menu';
-import {Link} from 'gatsby';
+import { Link } from 'gatsby';
 import Burger from '../ui/burger';
 
 const Nav = () => {
@@ -14,7 +14,11 @@ const Nav = () => {
     return (
         <>
             <div
-                className={`burger-wrap ${isMenu("main") ? 'expanded' : ''} ${isMenu("contact") ? 'contact-menu-open' : ''}`}
+                className={`
+                    burger-wrap 
+                    ${isMenu("main") ? 'expanded' : ''} 
+                    ${isMenu("contact") ? 'contact-menu-open' : ''}`
+                }
                 onClick={toggleMainMenu}
             >
                 <Burger/>

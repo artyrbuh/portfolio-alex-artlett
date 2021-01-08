@@ -1,0 +1,11 @@
+.moving-text {
+    position: relative;
+    width: 100%;
+    background-size: cover;
+    background-repeat: repeat-x;
+    background-image: url('../images/front-end-developer-text.svg');
+    pointer-events: none;
+
+    @include scaling-val(64, 220, 64px, 220px, "height");
+    @include scaling-val(10, 40, 10px, 40px, "top");
+}
