@@ -39,11 +39,11 @@
         overflow-x: scroll;
         white-space: nowrap;
         align-items: center;
-        //display: flex;
       
         .column {
+            @include scaling-val(0, 13, 0px, 13px, "margin-right");
+            
             display: inline-block;
-            margin-right: 26px;
 
             > div {
                 background-color: $pale-red;
@@ -71,12 +71,13 @@
                 width: calc(100% - 20vw);
                 
                 > div {
-                    @include scaling-val(178, 750, 178px, 750px, "height");
+                    @include scaling-val(278, 750, 278px, 750px, "height");
 
                     .thumbnail-text-wrap {
                         .thumbnail-text {
+                            @include scaling-val(5, 15, 5px, 15px, "padding");
+
                             max-height: 33%;
-                            padding: 15px;
     
                             &:first-child {
                                 bottom: unset;
@@ -99,13 +100,14 @@
                 width: calc(65% - 20vw);
 
                 > div {
-                    @include scaling-val(93, 344, 93px, 344px, "height");
-                    @include scaling-val(0, 75, 0px, 75px, "margin-bottom");
+                    @include scaling-val(193, 444, 193px, 444px, "height");
+                    @include scaling-val(32, 75, 32px, 75px, "margin-bottom");
                     
                     .thumbnail-text-wrap {
                         .thumbnail-text {
+                            @include scaling-val(5, 15, 5px, 15px, "padding");
+
                             max-height: 50%;
-                            padding: 20px;
     
                             &:first-child {
                                 bottom: unset;
@@ -123,6 +125,86 @@
                 &:nth-child(4n) {
                     margin-bottom: unset;
                     @include scaling-val(0, 200, 0px, 200px, "margin-top");
+                }
+            }
+
+            &.is-quarter {
+                width: calc(40% - 20vw);
+                flex: none;
+            }
+
+            &.selected-showcase--cta {
+                text-align: center;
+                margin: unset !important;
+
+                .showcase-cta {
+                    @include scaling-val(278, 750, 278px, 750px, "height");
+
+                    display: block;
+                    margin: unset;
+                    height: unset;
+                    background-color: unset;
+                    position: relative;
+
+                    .showcase-cta__arrow {
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        height: 1px;
+                        width: 70%;
+                        background-color: $black;
+                        margin: auto;
+                        max-width: 360px;
+                        z-index: 1;
+
+                        &::before,
+                        &::after {
+                            content: "";
+                            height: 25px;
+                            width: 1px;
+                            background-color: $black;
+                            right: 0;
+                            top: 0;
+                            bottom: 0;
+                            margin: auto;
+                            position: absolute;
+                        }
+
+                        &::before {
+                            top: -25px;
+                            transform: rotate(-45deg);
+                            transform-origin: bottom left;
+                        }
+
+                        &::after {
+                            bottom: -25px;
+                            transform: rotate(45deg);
+                            transform-origin: top right;
+                        }
+                    }
+
+                    svg {
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto;
+                        left: 0;
+                        right: 0;
+                    }
+                }
+
+                @media (max-width: 1023px) {
+                    svg {
+                        width: auto;
+                        max-height: 80%;
+                        height: 100%;
+                    }
+                }
+
+                @media (min-width: 1024px) {
+                    width: calc(50% - 20vw);
                 }
             }
         }
