@@ -1,10 +1,20 @@
 # CHANGELOG
 
+## 0.4.0
+- Develop home page
+- Develop and style Home Header component (to be animated)
+- Develop and style Selected Showcase component (to be animated)
+- Develop and style About Section component (to be animated)
+- Develop and style Experience component (to be animated)
+- Develop and style Moving Text component (to be animated)
+- Develop reusable, modular Modal component (to be animated)
+- Develop Experience Modal based off of Modal component, integrate it into Experience List component
+
 ## 0.3.0
 - Begin using Context for global state management
-- Develop and style Main Menu Components (non-animated)
-- Develop and style Contact Menu Components (non-animated)
-- Develop and style Footer Menu Components (non-animated)
+- Develop and style Main Menu Components (to be animated)
+- Develop and style Contact Menu Components (to be animated)
+- Develop and style Footer Menu Components (to be animated)
 
 ## 0.2.0
 - Setup ACF Local storage

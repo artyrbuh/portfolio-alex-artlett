@@ -2,8 +2,6 @@ import React from 'react';
 import {Link} from 'gatsby';
 
 const ContactMenuList = ({menu}) => {
-    console.log('contact menu')
-    console.log(menu);
     return (
         <>
             {menu.length ? (

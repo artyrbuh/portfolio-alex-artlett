@@ -1,0 +1,24 @@
+.hero-header--home {
+    @include scaling-val(26, 51, 26px, 51px, "margin-bottom");
+
+    position: relative;
+
+    &.is-fullheight {
+        .hero-body {
+            align-items: flex-end;
+        }
+    }
+
+    h1 {
+        @include scaling-val(70, 100, 70px, 100px, "margin-bottom");
+        @extend .h1-jumbo;
+
+        max-width: 990px;
+    }
+
+    .home-header-text {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}

@@ -1,0 +1,212 @@
+.selected-showcase--heading-wrap {
+    @include scaling-val(30, 42, 30px, 42px, "margin-bottom");
+
+    .columns {
+        @extend .is-mobile;
+
+        align-items: flex-end;
+    }
+
+    .column {
+        &:first-child {
+            p {
+                text-transform: lowercase;
+                font-weight: 700;
+                max-width: 115px;
+                line-height: 21.53px !important;
+            }
+        }
+
+        &:last-child {
+            a {
+                @extend %cta;
+            }
+        }
+    }
+}
+
+.selected-showcase--wrap {
+    @include scaling-val(100, 147, 100px, 147px, "margin-bottom");
+
+    position: relative;
+    overflow: visible;
+    white-space: nowrap;
+    max-width: unset !important;
+    width: 100%;
+    left: 10vw;
+
+    .columns {
+        overflow-x: scroll;
+        white-space: nowrap;
+        align-items: center;
+      
+        .column {
+            @include scaling-val(0, 13, 0px, 13px, "margin-right");
+            
+            display: inline-block;
+
+            .showcase-inner {
+                background-color: $pale-red;
+                width: 100%;
+                position: relative;
+                height: 100%;
+
+                .thumbnail-text-wrap {
+                    img {
+                        display: block;
+                        height: 100%;
+                        width: auto;
+                        position: absolute;
+                        margin: 0;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        margin: auto;
+                    }
+                }
+            }
+
+            &.is-full {
+                width: calc(100% - 20vw);
+                
+                .showcase-inner {
+                    @include scaling-val(278, 750, 278px, 750px, "height");
+
+                    .thumbnail-text-wrap {
+                        .thumbnail-text {
+                            @include scaling-val(5, 15, 5px, 15px, "padding");
+
+                            max-height: 33%;
+    
+                            &:first-child {
+                                bottom: unset;
+                            }
+
+                            &:nth-child(2) {
+                                left: unset;
+                            }
+    
+                            &:last-child {
+                                top: unset;
+                                right: unset;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.is-half {
+                width: calc(65% - 20vw);
+
+                .showcase-inner {
+                    @include scaling-val(193, 444, 193px, 444px, "height");
+                    @include scaling-val(32, 75, 32px, 75px, "margin-bottom");
+                    
+                    .thumbnail-text-wrap {
+                        .thumbnail-text {
+                            @include scaling-val(5, 15, 5px, 15px, "padding");
+
+                            max-height: 50%;
+    
+                            &:first-child {
+                                bottom: unset;
+                                right: unset;
+                            }
+    
+                            &:last-child {
+                                top: unset;
+                                left: unset;
+                            }
+                        }
+                    }
+                }
+
+                &:nth-child(4n) {
+                    margin-bottom: unset;
+                    @include scaling-val(0, 200, 0px, 200px, "margin-top");
+                }
+            }
+
+            &.is-quarter {
+                width: calc(40% - 20vw);
+                flex: none;
+            }
+
+            &.selected-showcase--cta {
+                text-align: center;
+                margin: unset !important;
+
+                .showcase-cta {
+                    @include scaling-val(278, 750, 278px, 750px, "height");
+
+                    display: block;
+                    margin: unset;
+                    height: unset;
+                    background-color: unset;
+                    position: relative;
+
+                    .showcase-cta__arrow {
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        height: 1px;
+                        width: 70%;
+                        background-color: $black;
+                        margin: auto;
+                        max-width: 360px;
+                        z-index: 1;
+
+                        &::before,
+                        &::after {
+                            content: "";
+                            height: 25px;
+                            width: 1px;
+                            background-color: $black;
+                            right: 0;
+                            top: 0;
+                            bottom: 0;
+                            margin: auto;
+                            position: absolute;
+                        }
+
+                        &::before {
+                            top: -25px;
+                            transform: rotate(-45deg);
+                            transform-origin: bottom left;
+                        }
+
+                        &::after {
+                            bottom: -25px;
+                            transform: rotate(45deg);
+                            transform-origin: top right;
+                        }
+                    }
+
+                    svg {
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto;
+                        left: 0;
+                        right: 0;
+                    }
+                }
+
+                @media (max-width: 1023px) {
+                    svg {
+                        width: auto;
+                        max-height: 80%;
+                        height: 100%;
+                    }
+                }
+
+                @media (min-width: 1024px) {
+                    width: calc(50% - 20vw);
+                }
+            }
+        }
+    }
+}

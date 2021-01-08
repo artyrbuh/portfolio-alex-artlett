@@ -1,0 +1,38 @@
+.experience-list {
+    li {
+        padding-top: 23px;
+        padding-bottom: 23px;
+        position: relative;
+        cursor: pointer;
+
+        &::after {
+            content: "";
+            height: 1px;
+            width: 100%;
+            background-color: $black;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        > span {
+            display: inline-block;
+
+            &:last-child {
+                @extend .is-pulled-right;
+            }
+        }
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+}

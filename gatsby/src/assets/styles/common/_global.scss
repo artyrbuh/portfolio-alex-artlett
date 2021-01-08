@@ -1,11 +1,9 @@
 body {
     -webkit-font-smoothing: antialiased;
     font-family: $font;
-
-    &:not(.single-work) {
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
+    color: $black;
+    width: 100%;
+    overflow-x: hidden;
 
     @include mobile() {
         width: 100%;
@@ -18,9 +16,33 @@ body {
     padding-left: 15px;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h5,
+p,
+li {
+    color: $black;
+}
+
 .h1 {
     @include scaling-font(45, 64, 45px, 64px);
     @include scaling-val(50, 76, 50px, 76px, "line-height");
 
     letter-spacing: -0.04em;
+}
+
+.h1-jumbo {
+    @include scaling-font(76, 96, 76px, 96px);
+    @include scaling-val(76, 96, 76px, 96px, "line-height");
+
+    letter-spacing: -0.04em;
+}
+
+p,
+li {
+    @include scaling-font(18, 24, 18px, 24px);
+    @include scaling-val(28, 34, 28px, 34px, "line-height");
 }

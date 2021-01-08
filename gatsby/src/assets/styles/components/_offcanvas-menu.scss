@@ -40,6 +40,9 @@
                 transform-origin: bottom left;
                 transform: rotate(90deg) translateZ(0);
                 opacity: 0.25;
+                color: $white;
+                font-size: 13px;
+                line-height: unset;
             }
 
             @include mobile {
