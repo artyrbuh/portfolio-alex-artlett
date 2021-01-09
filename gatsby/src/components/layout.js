@@ -13,11 +13,6 @@ const Layout = ({ children, classes }) => {
 
   const ThemeData = useStaticQuery(graphql`
     query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
       wordpressAcfOptions {
         options {
           copyright
