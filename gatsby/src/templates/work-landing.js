@@ -1,17 +1,44 @@
-import React from 'react';
+import React, { useState, createContext, useContext }  from 'react';
 import Layout from '../components/layout'
 import {graphql, StaticQuery, Link} from 'gatsby';
+import WorkBarNav from '../components/ui/work-nav-bar';
+import WorkContainer from '../components/ui/work-container';
 
-export default ({pageContext}) => {
+export const WorkPageContext = createContext(null);
+
+const WorkPage = ({pageContext}) => {
     console.log(pageContext);
     const {content, id, slug, status, template, title, wordpress_id} = pageContext;
+
+    const [activeTech, setActiveTech] = useState([]);
+    const [activeProfession, setActiveProfession] = useState([]);
+
+    const toggleFilters = (filter, arr) => {
+        let filterSet, setFilterSet;
+
+        switch(arr) {
+            case "tech":
+                filterSet = activeTech;
+                setFilterSet = setActiveTech;
+            case "profession":
+                filterSet = activeProfession;
+                setFilterSet = setActiveProfession;
+        }
+
+        if(filterSet.includes(filter)) {
+            setFilterSet(filterSet.filter(item => item !== filter));
+        } else {
+            setFilterSet(filterSet => [...filterSet, filter]);
+        }
+    };
+
+
     return (
-        <Layout>
-            <div>
+        <Layout classes="work-layout">
+            {/*<div>
                 <h1 dangerouslySetInnerHTML={{__html: pageContext.title}}/>
                 <div dangerouslySetInnerHTML={{__html: pageContext.content}} />
-                this is the work landing page bruh
-            </div>
+            </div>*/}
             <StaticQuery query={graphql`
                 {
                     wordpressPage(slug: {eq: "work"}) {
@@ -43,13 +70,23 @@ export default ({pageContext}) => {
             render={props => {
                 console.log(props);
                 return (
-                    <div>the</div>
+                  <WorkPageContext.Provider value={{activeTech, activeProfession, toggleFilters}}>
+                    <WorkBarNav>
+                      <h2>selected work</h2>
+                    </WorkBarNav>
+                    <WorkContainer>
+                      you take mgself control
+                    </WorkContainer>
+                    
+                  </WorkPageContext.Provider>
                 );
             }}
             />
         </Layout>
     );
 }
+
+export default WorkPage;
 
 
 /*
