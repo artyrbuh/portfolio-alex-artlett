@@ -1,0 +1,106 @@
+/*
+.work-layout {
+    @include fullhd {
+        .work-wrap,
+        footer .container {
+            max-width: 70vw !important;
+            margin-right: unset !important;
+            margin-right: 5vw !important;
+        }
+    }
+}
+*/
+
+.work-nav-bar {
+    h2 {
+        @extend .h2;
+        @include scaling-val(45, 52, 45px, 52px, "line-height");
+        @include scaling-val(30, 73, 45px, 73px, "margin-bottom");
+
+        font-family: $font-jumbo;
+    }
+
+    @include tablet {
+        position: fixed;
+        left: 50px;
+        height: 100%;
+        top: 0;
+
+        &::after {
+            width: 1px;
+            height: 100%;
+            background-color: $black;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            content: "";
+            position: absolute;
+        }
+    }
+}
+
+
+@include tablet-only {
+    .work-nav-bar {
+        padding: 30px 20px;
+        width: 200px;
+    }
+
+    .work-layout {
+        .work-wrap,
+        footer .container {
+            max-width: 61vw !important;
+            margin-right: unset !important;
+            margin-right: 5vw !important;
+        }
+    }
+}
+
+@include desktop-only {
+    .work-nav-bar {
+        padding: 30px 20px;
+        width: 225px;
+    }
+
+    .work-layout {
+        .work-wrap,
+        footer .container {
+            max-width: 55vw !important;
+            margin-right: unset !important;
+            margin-right: 15vw !important;
+        }
+    }
+}
+
+@include widescreen-only {
+    .work-nav-bar {
+        padding: 40px 30px;
+        width: 250px;
+    }
+
+    .work-layout {
+        .work-wrap,
+        footer .container {
+            max-width: 65vw !important;
+            margin-right: unset !important;
+            margin-right: 5vw !important;
+        }
+    }
+}
+
+@include fullhd {
+    .work-nav-bar {
+        padding: 50px 40px;
+        width: 275px;
+    }
+
+    .work-layout {
+        .work-wrap,
+        footer .container {
+            max-width: 70vw !important;
+            margin-right: unset !important;
+            margin-right: 5vw !important;
+        }
+    }
+}
