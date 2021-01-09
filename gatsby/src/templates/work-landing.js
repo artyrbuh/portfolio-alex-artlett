@@ -1,8 +1,7 @@
 import React, { useState, createContext, useContext }  from 'react';
 import Layout from '../components/layout'
 import {graphql, StaticQuery, Link} from 'gatsby';
-import WorkBarNav from '../components/ui/work-nav-bar';
-import WorkContainer from '../components/ui/work-container';
+import {WorkContainer, WorkBarNav, WorkLayout} from '../components/ui/work';
 
 export const WorkPageContext = createContext(null);
 
@@ -34,7 +33,7 @@ const WorkPage = ({pageContext}) => {
 
 
     return (
-        <Layout classes="work-layout">
+        <WorkLayout>
             {/*<div>
                 <h1 dangerouslySetInnerHTML={{__html: pageContext.title}}/>
                 <div dangerouslySetInnerHTML={{__html: pageContext.content}} />
@@ -75,54 +74,15 @@ const WorkPage = ({pageContext}) => {
                       <h2>selected work</h2>
                     </WorkBarNav>
                     <WorkContainer>
-                      you take mgself control
+                        enter content here
                     </WorkContainer>
                     
                   </WorkPageContext.Provider>
                 );
             }}
             />
-        </Layout>
+        </WorkLayout>
     );
 }
 
 export default WorkPage;
-
-
-/*
-{
-  wordpressPage(wordpress_id: {eq: 11}) {
-    title
-    wordpress_id
-    slug
-    content
-    acf {
-      back_to_work_cta_text
-      work_list {
-        work {
-          wordpress_id
-        }
-      }
-    }
-  }
-}
-*/
-
-/*
-query MyQuery {
-  wordpressWpWork(wordpress_id: {eq: 75}) {
-    technology {
-      name
-    }
-    profession {
-      name
-    }
-    title
-    acf {
-      thumbnail_image {
-        source_url
-      }
-    }
-  }
-}
-*/
