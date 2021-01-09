@@ -1,0 +1,1 @@
+export const as_slug = (text) =>  text.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
