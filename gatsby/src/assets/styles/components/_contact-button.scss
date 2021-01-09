@@ -2,7 +2,7 @@
     @include scaling-val(90, 130, 90px, 130px, "width");
     @include scaling-val(90, 130, 90px, 130px, "height");
     @include scaling-val(20, 50, 20px, 50px, "right");
-    @include scaling-val(20, 50, 20px, 50px, "top");
+    @include scaling-val(100, 50, 100px, 50px, "top");
 
     border-radius: 200px;
     position: fixed;

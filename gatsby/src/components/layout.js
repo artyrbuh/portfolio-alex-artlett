@@ -23,6 +23,7 @@ const Layout = ({ children, classes }) => {
           copyright
           designation
           email
+          name
           logo {
             url {
               source_url

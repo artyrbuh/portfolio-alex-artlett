@@ -1,5 +1,4 @@
 import React, { useState, createContext, useContext }  from 'react';
-import Layout from '../components/layout'
 import {graphql, StaticQuery, Link} from 'gatsby';
 import {WorkContainer, WorkBarNav, WorkLayout} from '../components/ui/work';
 
