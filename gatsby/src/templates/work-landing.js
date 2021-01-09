@@ -1,42 +1,40 @@
 import React, { useState, createContext, useContext }  from 'react';
 import {graphql, StaticQuery, Link} from 'gatsby';
+import { ThemeDataContext } from '../components/layout';
 import {WorkContainer, WorkBarNav, WorkLayout} from '../components/ui/work';
+import { FilterButtons, FilterWrap } from '../components/ui/filter';
+import {as_slug} from '../core/util/helpers';
 
 export const WorkPageContext = createContext(null);
 
-const WorkPage = ({pageContext}) => {
-    console.log(pageContext);
-    const {content, id, slug, status, template, title, wordpress_id} = pageContext;
+const WorkPage = () => {
+    const [filterList, setFiltersList] = useState([]);
 
-    const [activeTech, setActiveTech] = useState([]);
-    const [activeProfession, setActiveProfession] = useState([]);
+    //check if a particular filter is active
+    const isFilterActive = (filter) => filterList.includes(filter);
 
-    const toggleFilters = (filter, arr) => {
-        let filterSet, setFilterSet;
-
-        switch(arr) {
-            case "tech":
-                filterSet = activeTech;
-                setFilterSet = setActiveTech;
-            case "profession":
-                filterSet = activeProfession;
-                setFilterSet = setActiveProfession;
-        }
-
-        if(filterSet.includes(filter)) {
-            setFilterSet(filterSet.filter(item => item !== filter));
+    //toggle on or off a particular filter
+    const toggleFilters = (filter) => {
+        if(filterList.includes(filter)) {
+          setFiltersList(filterList.filter(item => item !== filter));
         } else {
-            setFilterSet(filterSet => [...filterSet, filter]);
+          setFiltersList(filterList => [...filterList, filter]);
         }
     };
 
+    //turn off particular array of filters
+    const resetFilters = (filters) => {
+      const currFiltersFlattened = filters.map((a) => a.slug);
+      const newFilterList = filterList.filter(el => !currFiltersFlattened.includes(el));
+
+     setFiltersList(newFilterList);
+    }
+
+    //check if any of the selected array of filters have values
+    const filtersAreNotEmpty = (filters) => filters.some(i => filterList.includes(i.slug));
 
     return (
         <WorkLayout>
-            {/*<div>
-                <h1 dangerouslySetInnerHTML={{__html: pageContext.title}}/>
-                <div dangerouslySetInnerHTML={{__html: pageContext.content}} />
-            </div>*/}
             <StaticQuery query={graphql`
                 {
                     wordpressPage(slug: {eq: "work"}) {
@@ -68,20 +66,46 @@ const WorkPage = ({pageContext}) => {
             render={props => {
                 console.log(props);
                 return (
-                  <WorkPageContext.Provider value={{activeTech, activeProfession, toggleFilters}}>
-                    <WorkBarNav>
-                      <h2>selected work</h2>
-                    </WorkBarNav>
-                    <WorkContainer>
-                        enter content here
-                    </WorkContainer>
-                    
+                  <WorkPageContext.Provider value={{isFilterActive, toggleFilters, resetFilters, filtersAreNotEmpty}}>
+                    <WorkPageInner/>
                   </WorkPageContext.Provider>
                 );
             }}
             />
         </WorkLayout>
     );
+}
+
+export const WorkPageInner = ({children}) => {
+  const themeData = useContext(ThemeDataContext);
+
+  let { professions, technologies } = themeData.wordpressAcfOptions.options;
+
+  const asObj = (name) => {
+    return {
+      name: name,
+      slug: as_slug(name),
+    }
+  }
+
+  technologies = technologies.map((a) => asObj(a.technology));
+  professions = professions.map((a) => asObj(a.profession));
+
+  return (
+    <>
+      {children && children}
+      <WorkBarNav>
+        <h2>selected work</h2>
+        <FilterWrap>
+          <FilterButtons filters={technologies} />
+          <FilterButtons filters={professions} />
+        </FilterWrap>
+      </WorkBarNav>
+      <WorkContainer>
+          enter content here
+      </WorkContainer>
+    </>
+  )
 }
 
 export default WorkPage;
