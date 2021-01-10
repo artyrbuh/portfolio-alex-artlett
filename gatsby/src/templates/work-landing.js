@@ -97,7 +97,7 @@ export const WorkPageInner = ({children}) => {
           <FilterButtons filters={professions} />
         </FilterWrap>
       </WorkBarNav>
-      <WorkContainer>
+      <WorkContainer classes="work-landing">
         {children && children}
         <WorkList/>
       </WorkContainer>

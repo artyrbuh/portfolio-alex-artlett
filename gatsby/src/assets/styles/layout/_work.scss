@@ -114,3 +114,31 @@
         }
     }
 }
+
+.work-wrap {
+    &.work-landing {
+        @include widescreen {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(calc(50% - 38px), 2fr));
+            grid-row-gap: 75px;
+            grid-column-gap: 38px;
+
+            > .work-post-wrap {
+                display: flex;
+                height: 750px;
+
+                &:nth-child(odd) {
+                    align-items: flex-start;
+                }
+
+                &:nth-child(even) {
+                    align-items: flex-end;
+                }
+            }
+        }
+    }
+}
+
+.work-post {
+    //
+}

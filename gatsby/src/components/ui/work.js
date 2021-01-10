@@ -4,14 +4,10 @@ import {WorkPageContext} from "../../templates/work-landing";
 import { ThemeDataContext } from '../../components/layout';
 import {slugify_array, as_obj} from "../../core/util/helpers";
 
-export const WorkContainer = ({children}) => {
+export const WorkContainer = ({children, classes}) => {
     return (
-        <div className="container work-wrap">
-            <div className="columns">
-                <div className="column">
-                    {children && children}
-                </div>
-            </div>                    
+        <div className={`container work-wrap ${classes ? classes : ''}`}>
+            {children && children}
         </div>
     )
 }
@@ -96,27 +92,39 @@ export const WorkList = ({}) => {
 
                     if(postHasSelectedTechFilters(technologies) && postHasSelectedProfessionFilters(professions)) {
                         postCount++;
+
                         return(
-                            <div key={i}>
-                                {el.post_title}
-                            </div>
+                            <>
+                                <WorkLandingPost item={el} key={i}/>
+                            </>
                         );
                     } 
                 } else {
                     postCount++;
+
                     return (   
-                        <div key={i}>
-                            {el.post_title}
-                        </div>
+                        <>
+                            <WorkLandingPost item={el} key={i}/>
+                        </>
                     );
                 }
             })}
 
             {postCount === 0 && (
-                <div>
+                <>
                     <p>No posts, please <span onClick={resetAllFilters}>reset the filters</span> and try again</p>
-                </div>
+                </>
             )} 
         </>
+    )
+}
+
+export const WorkLandingPost = ({item}) => {
+    return (
+        <div className="work-post-wrap">
+            <div className="work-post">
+                {item.post_title}
+            </div>
+        </div>
     )
 }
