@@ -10,21 +10,21 @@ export const FilterWrap = ({children}) => {
 }
 
 export const FilterButtons = ({filters, classes}) => {
-    const { isFilterActive, toggleFilters, resetFilters, filtersAreNotEmpty } = useContext(WorkPageContext);
+    const { isFilterActive, toggleFilters, resetFilters, hasGroupOfFilters } = useContext(WorkPageContext);
 
     if(filters.length) {
         return (
             <ul className={`work-filters ${classes ? classes : ''}`}>
                 <li 
                     onClick={() => resetFilters(filters)}
-                    className={`${!filtersAreNotEmpty(filters) ? 'is-active' : ''}`}
+                    className={`${!hasGroupOfFilters(filters) ? 'is-active' : ''}`}
                 >All</li>
                 {filters.map((el, i) => (
                     <li 
                         key={i}
                         onClick={() => toggleFilters(el.slug)}
                         className={`${isFilterActive(el.slug) ? 'is-active' : ''}`}
-                    >{el.slug}</li>
+                    >{el.name}</li>
                 ))}
             </ul>
         );

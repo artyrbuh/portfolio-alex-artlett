@@ -1,9 +1,9 @@
 import React, { useState, createContext, useContext }  from 'react';
 import {graphql, StaticQuery, Link} from 'gatsby';
 import { ThemeDataContext } from '../components/layout';
-import {WorkContainer, WorkBarNav, WorkLayout} from '../components/ui/work';
+import {WorkContainer, WorkBarNav, WorkLayout, WorkList} from '../components/ui/work';
 import { FilterButtons, FilterWrap } from '../components/ui/filter';
-import {as_slug} from '../core/util/helpers';
+import {as_slug, as_obj, slugify_array} from '../core/util/helpers';
 
 export const WorkPageContext = createContext(null);
 
@@ -27,11 +27,13 @@ const WorkPage = () => {
       const currFiltersFlattened = filters.map((a) => a.slug);
       const newFilterList = filterList.filter(el => !currFiltersFlattened.includes(el));
 
-     setFiltersList(newFilterList);
+      setFiltersList(newFilterList);
     }
 
+    const resetAllFilters = () => setFiltersList([]);
+
     //check if any of the selected array of filters have values
-    const filtersAreNotEmpty = (filters) => filters.some(i => filterList.includes(i.slug));
+    const hasGroupOfFilters = (filters, filtersArray = filterList) => filters.some(i => filtersArray.includes(i.slug));
 
     return (
         <WorkLayout>
@@ -64,9 +66,11 @@ const WorkPage = () => {
                 }
             `}
             render={props => {
-                console.log(props);
+                const { back_to_work_cta_text, work_list } = props.wordpressPage.acf;
+
                 return (
-                  <WorkPageContext.Provider value={{isFilterActive, toggleFilters, resetFilters, filtersAreNotEmpty}}>
+                  <WorkPageContext.Provider
+                    value={{isFilterActive, toggleFilters, resetFilters, hasGroupOfFilters, work_list, filterList, back_to_work_cta_text, resetAllFilters}}>
                     <WorkPageInner/>
                   </WorkPageContext.Provider>
                 );
@@ -81,19 +85,11 @@ export const WorkPageInner = ({children}) => {
 
   let { professions, technologies } = themeData.wordpressAcfOptions.options;
 
-  const asObj = (name) => {
-    return {
-      name: name,
-      slug: as_slug(name),
-    }
-  }
-
-  technologies = technologies.map((a) => asObj(a.technology));
-  professions = professions.map((a) => asObj(a.profession));
+  technologies = technologies.map((a) => as_obj(a.technology));
+  professions = professions.map((a) => as_obj(a.profession));
 
   return (
     <>
-      {children && children}
       <WorkBarNav>
         <h2>selected work</h2>
         <FilterWrap>
@@ -102,7 +98,8 @@ export const WorkPageInner = ({children}) => {
         </FilterWrap>
       </WorkBarNav>
       <WorkContainer>
-          enter content here
+        {children && children}
+        <WorkList/>
       </WorkContainer>
     </>
   )
