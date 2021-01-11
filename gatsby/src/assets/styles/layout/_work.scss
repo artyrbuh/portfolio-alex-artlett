@@ -141,6 +141,45 @@
     }
 }
 
+
+.work-post {
+    width: 100%;
+    
+    .work-post--featured-img {
+        width: 100%;
+    }
+
+    .work-post--detail {
+        display: grid;
+        grid-template-columns: auto auto;
+
+        .name {
+            h3 {
+                max-width: 220px;
+            }
+        }
+
+        .meta {
+            .meta-list {
+                @extend .has-text-right;
+
+                width: 145px;
+                float: right;
+                padding-top: 16px;
+
+                li {
+                    font-family: $daily-tabloid-jnl;
+                    font-size: 16px;
+                    line-height: 18px;
+                    letter-spacing: 0.2em;
+                    text-align: right;
+                    display: inline;
+                }
+            }
+        }
+    }
+}
+
 //temp styles
 @include widescreen {
     .work-post {

@@ -39,10 +39,17 @@ li {
 }
 
 .h2 {
+    @include scaling-font(30, 40, 30px, 40px);
+    @include scaling-val(27, 41, 27px, 41px, "line-height");
+
+    letter-spacing: -0.01em;
+}
+
+.h3 {
     @include scaling-font(45, 57, 45px, 57px);
     @include scaling-val(50, 66, 50px, 66px, "line-height");
 
-    letter-spacing: -0.01em;
+    letter-spacing: -0.04em;
 }
 
 .h1-jumbo {
@@ -60,4 +67,8 @@ li {
 
 h1 {
     @extend .h1;
+}
+
+h3 {
+    @extend .h3;
 }
