@@ -121,8 +121,11 @@ export const WorkList = ({}) => {
 
 export const WorkLandingPost = ({item}) => {
     return (
-        <div className="work-post-wrap">
-            <div className="work-post">
+        <div className={`work-post-wrap`}>
+            <div className={`work-post work-post--${item.post_name}`}>
+                <div className="work-post--featured-img">
+
+                </div>
                 {item.post_title}
             </div>
         </div>

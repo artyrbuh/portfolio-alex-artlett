@@ -122,6 +122,8 @@
             grid-template-columns: repeat(auto-fit, minmax(calc(50% - 38px), 2fr));
             grid-row-gap: 75px;
             grid-column-gap: 38px;
+            padding-bottom: 75px;
+            padding-top: 87px;
 
             > .work-post-wrap {
                 display: flex;
@@ -139,6 +141,47 @@
     }
 }
 
-.work-post {
-    //
+//temp styles
+@include widescreen {
+    .work-post {
+        width: 100%;
+
+        .work-post--featured-img {
+            background-color: $pale-red;
+            width: 100%;
+        }
+    
+        &.work-post--vee-design {
+            .work-post--featured-img {
+                height: 513px;
+            }
+        }
+
+        &.work-post--assure-programs {
+            .work-post--featured-img {
+                height: 458px;
+            }
+        }
+
+        &.work-post--choremaster {
+            max-width: 396px;
+
+            .work-post--featured-img {
+                height: 231px;
+            }
+        }
+
+        &.work-post--petrichor-co {
+            .work-post--featured-img {
+                height: 316px;
+            }
+        }
+
+        &.work-post--panthera {
+            .work-post--featured-img {
+                height: 316px;
+            }
+        }
+    }
 }
+

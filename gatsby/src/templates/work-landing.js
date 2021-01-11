@@ -59,6 +59,7 @@ const WorkPage = () => {
                                         }
                                     }
                                     post_title
+                                    post_name
                                 }
                             }
                         }
