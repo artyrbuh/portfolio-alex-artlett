@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.5.0
+- Develop Landing Work Page
+- Develop reusable core Work Layout Components
+- Develop Mobile version of global nav (to be animated)
+- Develop and style work filter components (to be animated)
+- Develop 2 column masonry style work listing (to be animated)
+- Introduce helpers function file
+
 ## 0.4.0
 - Develop home page
 - Develop and style Home Header component (to be animated)
