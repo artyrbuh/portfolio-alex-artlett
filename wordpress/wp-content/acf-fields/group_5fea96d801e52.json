@@ -19,6 +19,26 @@
             "endpoint": 0
         },
         {
+            "key": "field_5ff94f40c8d13",
+            "label": "Name",
+            "name": "name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "Alex Artlett",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5fea96f98191d",
             "label": "Logo",
             "name": "logo",
@@ -204,5 +224,5 @@
     "description": "",
     "show_in_graphql": 1,
     "graphql_field_name": "theme_settings",
-    "modified": 1609562068
+    "modified": 1610174287
 }

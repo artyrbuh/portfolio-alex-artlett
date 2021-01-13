@@ -9,20 +9,16 @@ import Contact from "../components/contact/contact";
 export const ThemeDataContext = createContext(null);
 export const ActiveMenu = createContext(null);
 
-const Layout = ({ children }) => {
+const Layout = ({ children, classes }) => {
 
   const ThemeData = useStaticQuery(graphql`
     query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
       wordpressAcfOptions {
         options {
           copyright
           designation
           email
+          name
           logo {
             url {
               source_url
@@ -67,7 +63,7 @@ const Layout = ({ children }) => {
         <Nav/>
         <Contact/>
       </ActiveMenu.Provider>
-      <div>
+      <div className={`${classes ? classes : ''}`}>
         <main>{children}</main>
         <Footer/>
       </div>

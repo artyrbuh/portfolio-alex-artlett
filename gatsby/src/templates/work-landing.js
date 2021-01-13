@@ -1,17 +1,42 @@
-import React from 'react';
-import Layout from '../components/layout'
+import React, { useState, createContext, useContext }  from 'react';
 import {graphql, StaticQuery, Link} from 'gatsby';
+import { ThemeDataContext } from '../components/layout';
+import {WorkContainer, WorkBarNav, WorkLayout, WorkList} from '../components/ui/work';
+import { FilterButtons, FilterWrap } from '../components/ui/filter';
+import {as_slug, as_obj, slugify_array} from '../core/util/helpers';
 
-export default ({pageContext}) => {
-    console.log(pageContext);
-    const {content, id, slug, status, template, title, wordpress_id} = pageContext;
+export const WorkPageContext = createContext(null);
+
+const WorkPage = () => {
+    const [filterList, setFiltersList] = useState([]);
+
+    //check if a particular filter is active
+    const isFilterActive = (filter) => filterList.includes(filter);
+
+    //toggle on or off a particular filter
+    const toggleFilters = (filter) => {
+        if(filterList.includes(filter)) {
+          setFiltersList(filterList.filter(item => item !== filter));
+        } else {
+          setFiltersList(filterList => [...filterList, filter]);
+        }
+    };
+
+    //turn off particular array of filters
+    const resetFilters = (filters) => {
+      const currFiltersFlattened = filters.map((a) => a.slug);
+      const newFilterList = filterList.filter(el => !currFiltersFlattened.includes(el));
+
+      setFiltersList(newFilterList);
+    }
+
+    const resetAllFilters = () => setFiltersList([]);
+
+    //check if any of the selected array of filters have values
+    const hasGroupOfFilters = (filters, filtersArray = filterList) => filters.some(i => filtersArray.includes(i.slug));
+
     return (
-        <Layout>
-            <div>
-                <h1 dangerouslySetInnerHTML={{__html: pageContext.title}}/>
-                <div dangerouslySetInnerHTML={{__html: pageContext.content}} />
-                this is the work landing page bruh
-            </div>
+        <WorkLayout>
             <StaticQuery query={graphql`
                 {
                     wordpressPage(slug: {eq: "work"}) {
@@ -34,6 +59,7 @@ export default ({pageContext}) => {
                                         }
                                     }
                                     post_title
+                                    post_name
                                 }
                             }
                         }
@@ -41,51 +67,43 @@ export default ({pageContext}) => {
                 }
             `}
             render={props => {
-                console.log(props);
+                const { back_to_work_cta_text, work_list } = props.wordpressPage.acf;
+
                 return (
-                    <div>the</div>
+                  <WorkPageContext.Provider
+                    value={{isFilterActive, toggleFilters, resetFilters, hasGroupOfFilters, work_list, filterList, back_to_work_cta_text, resetAllFilters}}>
+                    <WorkPageInner/>
+                  </WorkPageContext.Provider>
                 );
             }}
             />
-        </Layout>
+        </WorkLayout>
     );
 }
 
+export const WorkPageInner = ({children}) => {
+  const themeData = useContext(ThemeDataContext);
 
-/*
-{
-  wordpressPage(wordpress_id: {eq: 11}) {
-    title
-    wordpress_id
-    slug
-    content
-    acf {
-      back_to_work_cta_text
-      work_list {
-        work {
-          wordpress_id
-        }
-      }
-    }
-  }
-}
-*/
+  let { professions, technologies } = themeData.wordpressAcfOptions.options;
 
-/*
-query MyQuery {
-  wordpressWpWork(wordpress_id: {eq: 75}) {
-    technology {
-      name
-    }
-    profession {
-      name
-    }
-    title
-    acf {
-      thumbnail_image {
-        source_url
-      }
-    }
-  }
+  technologies = technologies.map((a) => as_obj(a.technology));
+  professions = professions.map((a) => as_obj(a.profession));
+
+  return (
+    <>
+      <WorkBarNav>
+        <h2>selected work</h2>
+        <FilterWrap>
+          <FilterButtons filters={technologies} />
+          <FilterButtons filters={professions} />
+        </FilterWrap>
+      </WorkBarNav>
+      <WorkContainer classes="work-landing">
+        {children && children}
+        <WorkList/>
+      </WorkContainer>
+    </>
+  )
 }
-*/
+
+export default WorkPage;
