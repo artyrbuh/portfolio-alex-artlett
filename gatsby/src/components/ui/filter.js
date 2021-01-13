@@ -1,11 +1,72 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {WorkPageContext} from '../../templates/work-landing';
 
 export const FilterWrap = ({children}) => {
+    const [hideFilters, setHideFilters] = useState(true);
+    const [height, setHeight] = useState("unset");
+    const getWidth = () => window.innerWidth 
+    || document.documentElement.clientWidth 
+    || document.body.clientWidth;
+    let currWidth = useCurrentWidth();
+  
+    //bind window width to state prop
+    function useCurrentWidth() {
+        // save current window width in the state object
+        let [width, setWidth] = useState(getWidth());
+
+        useEffect(() => {
+            // timeoutId for debounce mechanism
+            let timeoutId = null;
+            const resizeListener = () => {
+                // prevent execution of previous setTimeout
+                clearTimeout(timeoutId);
+                // change width from the state object after 150 milliseconds
+                timeoutId = setTimeout(() => setWidth(getWidth()), 50);
+            };
+
+            // set resize listener
+            window.addEventListener('resize', resizeListener);
+
+            return () => {
+                // remove resize listener
+                window.removeEventListener('resize', resizeListener);
+            }
+        }, [])
+
+        return width;
+    }
+    
+    //hide filters by changing height to 0, or show filters by setting the div to calculated the height
+    useEffect(() => {
+        if(hideFilters === true) {
+            setHeight("0");
+        } else {
+            calcFiltersHeight();
+        }
+    }, [hideFilters]);
+
+    //when the window is resized, recalculate the width of the filters div
+    useEffect(() => {
+        if(hideFilters !== true) {
+            calcFiltersHeight();
+        }
+    }, [currWidth]);
+
+    const calcFiltersHeight = () => {
+        const height = document.querySelector('.work-filters-wrap > div').clientHeight;
+        console.log(height);
+        setHeight(`${height}px`);
+    }
+
     return (
-        <div className="work-filters-wrap">
-            {children && children}
-        </div>
+        <>
+            <div className="toggle-filters" onClick={() => setHideFilters(!hideFilters)}>
+                <a>{`${hideFilters ? 'Show' : 'Hide'}`} filters</a>
+            </div>
+            <div className="work-filters-wrap" style={{height}}>
+                <div>{children && children}</div>
+            </div>
+        </>
     );
 }
 
