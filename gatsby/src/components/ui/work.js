@@ -1,5 +1,6 @@
 import React, {useContext} from "react";
 import Layout from "../layout";
+import {Link} from "gatsby";
 import {WorkPageContext} from "../../templates/work-landing";
 import { ThemeDataContext } from '../../components/layout';
 import {slugify_array, as_obj} from "../../core/util/helpers";
@@ -122,30 +123,35 @@ export const WorkList = ({}) => {
 export const WorkLandingPost = ({item}) => {
     const {post_name, post_title, acf } = item;
     const {main_technology, professions} = acf;
-    console.log(acf);
+
     return (
         <div className={`work-post-wrap`}>
             <div className={`work-post work-post--${post_name}`}>
-                <div className="work-post--featured-img"></div>
-                <div className="work-post--detail">
-                    <div className="name">
-                        <h3>{post_title}</h3>
+                <Link to={`/work/${post_name}`}>
+                    <div className="work-post--featured-img"></div>
+                    <div className="work-post--detail">
+                        <div className="name">
+                            <h3>{post_title}</h3>
+                        </div>
+                        <div className="meta">
+                            <ul className="meta-list">
+                                {main_technology && (
+                                    <li>{main_technology}</li>
+                                )}
+                                
+                                {professions.length && (
+                                    <>
+                                        {professions.map((el, i) => (
+                                            <>
+                                                ― <li key={i}>{el}</li>
+                                            </>
+                                        ))}
+                                    </>
+                                )}
+                            </ul>
+                        </div>
                     </div>
-                    <div className="meta">
-                        <ul className="meta-list">
-                            <li>{main_technology}</li>
-                            {professions.length && (
-                                <>
-                                    {professions.map((el, i) => (
-                                        <>
-                                            ― <li key={i}>{el}</li>
-                                        </>
-                                    ))}
-                                </>
-                            )}
-                        </ul>
-                    </div>
-                </div>
+                </Link>
             </div>
         </div>
     )
