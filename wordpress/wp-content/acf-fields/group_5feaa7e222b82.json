@@ -71,7 +71,8 @@
                 "Sass": "Sass",
                 "Shopify": "Shopify",
                 "AngularJS": "AngularJS",
-                "Firebase": "Firebase"
+                "Firebase": "Firebase",
+                "Gatsby": "Gatsby"
             },
             "allow_custom": 0,
             "default_value": [],
@@ -128,6 +129,7 @@
                 "Vue": "Vue",
                 "WordPress": "WordPress",
                 "Shopify": "Shopify",
+                "Gatsby": "Gatsby",
                 "None": "None"
             },
             "default_value": false,
@@ -205,5 +207,5 @@
     "description": "",
     "show_in_graphql": 1,
     "graphql_field_name": "work",
-    "modified": 1610366080
+    "modified": 1610540898
 }
