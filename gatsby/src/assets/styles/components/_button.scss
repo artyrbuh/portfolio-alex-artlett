@@ -1,0 +1,17 @@
+.button {
+    border-radius: 65px;
+    background-color: transparent;
+    font-size: 15px;
+    line-height: 21px;
+    letter-spacing: -0.04em;
+    color: $black;
+    border-color: $black;
+    text-transform: lowercase;
+
+    &.is-active,
+    &:hover {
+        background-color: $black;
+        color: $white;
+        border-color: $black;
+    }
+}

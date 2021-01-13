@@ -3,6 +3,7 @@
 @import "~bulma/bulma.sass";
 
 //common and util
+@import "../fonts/typography.css";
 @import "./common/variables";
 @import "./utilities/extends";
 @import "./utilities/functions";
@@ -14,6 +15,8 @@
 @import './components/menu';
 @import './components/nav';
 @import './components/close';
+@import './components/modal';
+@import './components/button';
 @import './components/offcanvas-menu';
 @import './components/contact-button';
 @import './components/hero-header--home';
@@ -21,7 +24,8 @@
 @import './components/content-block';
 @import './components/experience-list';
 @import './components/moving-text';
-@import './components/modal';
+@import './components/filters';
 
 //layouts
+@import './layout/work';
 @import './layout/footer';

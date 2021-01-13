@@ -69,8 +69,10 @@
                 "WordPress": "WordPress",
                 "Blade": "Blade",
                 "Sass": "Sass",
+                "Shopify": "Shopify",
                 "AngularJS": "AngularJS",
-                "Firebase": "Firebase"
+                "Firebase": "Firebase",
+                "Gatsby": "Gatsby"
             },
             "allow_custom": 0,
             "default_value": [],
@@ -96,8 +98,7 @@
             "choices": {
                 "Back End": "Back End",
                 "Front End": "Front End",
-                "Systems Setup": "Systems Setup",
-                "Full Stack": "Full Stack"
+                "Systems Setup": "Systems Setup"
             },
             "allow_custom": 0,
             "default_value": [],
@@ -127,6 +128,8 @@
                 "React": "React",
                 "Vue": "Vue",
                 "WordPress": "WordPress",
+                "Shopify": "Shopify",
+                "Gatsby": "Gatsby",
                 "None": "None"
             },
             "default_value": false,
@@ -204,5 +207,5 @@
     "description": "",
     "show_in_graphql": 1,
     "graphql_field_name": "work",
-    "modified": 1610018124
+    "modified": 1610540898
 }

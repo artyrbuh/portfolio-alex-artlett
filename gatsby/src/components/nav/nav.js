@@ -8,8 +8,8 @@ const Nav = () => {
     const themeData = useContext(ThemeDataContext);
     const {toggleMainMenu, isMenu} = useContext(ActiveMenu);
     const d = new Date();
-    const title = themeData.site.siteMetadata.title;
-    const {logo, designation} = themeData.wordpressAcfOptions.options;
+    //const title = themeData.site.siteMetadata.title;
+    const {logo, designation, name} = themeData.wordpressAcfOptions.options;
 
     return (
         <>
@@ -34,7 +34,7 @@ const Nav = () => {
                         />
                     </Link>
 
-                    <span className="nav--branding__title">{`${title} - ${d.getFullYear()}`}</span>
+                    <span className="nav--branding__title">{`${name} - ${d.getFullYear()}`}</span>
                 </div>
             </div>
             <OffcanvasMenu expanded={isMenu("main")} />

@@ -1,0 +1,63 @@
+.work-filters {
+    @include scaling-val(46, 91, 46px, 91px, "padding-bottom");
+
+    position: relative;
+
+    li {
+        @extend .button;
+
+        margin-right: 5px;
+        margin-bottom: 9px;
+
+        &:first-child {
+            text-transform: unset;
+        }
+    }
+
+    &::after {
+        @include scaling-val(23, 45, 23px, 45px, "bottom");
+
+        content: "";
+        height: 1px;
+        width: 26px;
+        background-color: $black;
+        position: absolute;
+        left: 10px;
+    }
+
+    &:last-child {
+        padding-bottom: 0 !important;
+
+        &::after {
+            display: none;
+        }
+    }
+}
+
+.toggle-filters {
+    a {
+        @extend %cta;
+
+        display: block;
+        margin-bottom: 15px;
+    }
+}
+
+@include mobile {
+    .work-filters-wrap {
+        transition: 0.15s;
+        overflow: hidden;
+    }
+}
+
+@include tablet {
+    .toggle-filters {
+        display: none;
+    }
+
+    .work-filters-wrap {
+        > div {
+            height: unset !important;
+        }
+    }
+}

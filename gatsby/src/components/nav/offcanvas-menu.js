@@ -3,8 +3,9 @@ import {ThemeDataContext} from '../layout';
 import Menu from '../main-menu/menu';
 
 const OffcanvasMenu = ({expanded}) => {
+    const d = new Date();
     const themeData = useContext(ThemeDataContext);
-    const title = themeData.site.siteMetadata.title;
+    const name = themeData.wordpressAcfOptions.options.name;
 
     return (
         <div className={`offcanvas-menu ${expanded ? 'expanded' : ''}`}>
@@ -13,7 +14,7 @@ const OffcanvasMenu = ({expanded}) => {
                     <div className="column menu wrap--main-menu">
                         <div className="designation-col">
                             <div>
-                                <p>{title}</p>
+                                <p>{name} - {d.getFullYear()}</p>
                             </div>
                         </div>
                         <Menu/>

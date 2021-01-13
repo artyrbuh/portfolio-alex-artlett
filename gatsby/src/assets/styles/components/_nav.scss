@@ -1,55 +1,29 @@
 .nav {
+    background-color: $white;
+    z-index: 2;
     position: fixed;
     left: 0;
     top: 0;
-    width: 50px;
-    height: 100vh;
-    background-color: $white;
-    z-index: 1;
-    
-    &::after {
-        content: "";
-        position: absolute;
-        right: 0;
-        height: 100%;
-        width: 1px;
-        background-color: $black;
-    }
-
-    &::before {
-        content: "";
-        position: absolute;
-        top: 100px;
-        width: 100%;
-        height: 1px;
-        background-color: $black;
-    }
 
     .nav--branding {
         position: absolute;
-        top: 100px;
         height: 100%;
         width: 100%;
 
         .logo {
             margin: auto;
-            top: -100px;
             bottom: 0;
             left: 0;
             right: 0;
             position: absolute;
             max-height: 50px;
             height: 100%;
-            width: autp
+            width: auto;
+            top: 0;
         }
 
         > span {
-            transform: rotate(-90deg);
             white-space: nowrap;
-            position: absolute;
-            left: 0;
-            right: 0;
-            margin: auto;
             font-family: $alatsi;
             font-weight: 400;
             font-size: 10px;
@@ -57,19 +31,87 @@
             opacity: 0.7;
             letter-spacing: 0.27em;
             text-transform: uppercase;
+        }
+    }
 
-            &.nav--branding__designation {
-                top: 160px;
+    @include tablet {
+        width: 50px;
+        height: 100vh;
+        
+        &::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            height: 100%;
+            width: 1px;
+            background-color: $black;
+        }
+    
+        &::before {
+            content: "";
+            position: absolute;
+            top: 100px;
+            width: 100%;
+            height: 1px;
+            background-color: $black;
+        }
+    
+        .nav--branding {
+            top: 100px;
+    
+            .logo {
+                top: -100px;
             }
-
-            &.nav--branding__title {
-                bottom: 150px;
+    
+            > span {
+                transform: rotate(-90deg);
+                position: absolute;
+                left: 0;
+                right: 0;
+                margin: auto;
+    
+                &.nav--branding__designation {
+                    top: 160px;
+                }
+    
+                &.nav--branding__title {
+                    bottom: 150px;
+                }
             }
         }
     }
 
     @include mobile {
-        left: -50px;
+        height: 70px;
+        width: 100%;
+
+        &::after {
+            position: absolute;
+            bottom: 0;
+            height: 1px;
+            width: 100%;
+            background-color: $black;
+            content: "";
+        }
+
+        .nav--branding {
+            .logo {
+                right: unset;
+                left: 83px;
+            }
+
+            .nav--branding__designation {
+                display: none;
+            }
+
+            .nav--branding__title {
+                position: absolute;
+                bottom: 0;
+                margin: auto;
+                right: 23px;
+                top: 25px;
+            }
+        }
     }
 }
 
@@ -83,7 +125,7 @@
 
     .burger {
         position: absolute;
-        top: 16px;
+        top: 0;
         bottom: 0;
         left: 0;
         right: 0;
@@ -102,5 +144,36 @@
         &.contact-menu-open {
             background-color: $white;
         }
+
+        height: 70px;
+        width: 62px;
+
+        &::before,
+        &::after {
+            background-color: $black;
+            position: absolute;
+            content: "";
+        }
+
+        &::after {
+            right: 0;
+            height: 100%;
+            width: 1px;
+            
+        }
+
+        &::before {
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            left: 0;
+        }
+    }
+}
+
+// allow space for fixed nav on mobile
+@include mobile {
+    main {
+        padding-top: 70px;
     }
 }

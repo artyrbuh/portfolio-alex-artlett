@@ -1,0 +1,238 @@
+.work-nav-bar {
+    h2 {
+        @extend .h2;
+        @include scaling-val(45, 52, 45px, 52px, "line-height");
+        @include scaling-val(30, 73, 45px, 73px, "margin-bottom");
+
+        font-family: $font-jumbo;
+    }
+
+    @include tablet {
+        position: fixed;
+        left: 50px;
+        height: 100%;
+        top: 0;
+
+        &::after {
+            width: 1px;
+            height: 100%;
+            background-color: $black;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            content: "";
+            position: absolute;
+        }
+    }
+}
+
+@include mobile {
+    .work-nav-bar {
+        position: relative;
+        padding: 30px 15px;
+        margin-bottom: 45px;
+
+        h2 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        &::after {
+            bottom: 0;
+            left: 0;
+            content: "";
+            width: 100%;
+            height: 1px;
+            background-color: $black;
+            position: absolute;
+        }
+    }
+}
+
+
+@include tablet-only {
+    .work-nav-bar {
+        padding: 30px 20px;
+        width: 200px;
+    }
+
+    .work-layout {
+        .work-wrap,
+        footer .container {
+            max-width: 61vw !important;
+            margin-right: unset !important;
+            margin-right: 5vw !important;
+        }
+    }
+}
+
+@include desktop-only {
+    .work-nav-bar {
+        padding: 30px 20px;
+        width: 225px;
+    }
+
+    .work-layout {
+        .work-wrap,
+        footer .container {
+            max-width: 55vw !important;
+            margin-right: unset !important;
+            margin-right: 15vw !important;
+        }
+    }
+}
+
+@include widescreen-only {
+    .work-nav-bar {
+        padding: 40px 30px;
+        width: 250px;
+    }
+
+    .work-layout {
+        .work-wrap,
+        footer .container {
+            max-width: 65vw !important;
+            margin-right: unset !important;
+            margin-right: 5vw !important;
+        }
+    }
+}
+
+@include fullhd {
+    .work-nav-bar {
+        padding: 50px 40px;
+        width: 275px;
+    }
+
+    .work-layout {
+        .work-wrap,
+        footer .container {
+            max-width: 70vw !important;
+            margin-right: unset !important;
+            margin-right: 5vw !important;
+        }
+    }
+}
+
+.work-wrap {
+    &.work-landing {
+        @include widescreen {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(calc(50% - 38px), 2fr));
+            grid-row-gap: 75px;
+            grid-column-gap: 38px;
+            padding-bottom: 75px;
+            padding-top: 87px;
+
+            > .work-post-wrap {
+                display: flex;
+                height: 750px;
+
+                &:nth-child(odd) {
+                    align-items: flex-start;
+                }
+
+                &:nth-child(even) {
+                    align-items: flex-end;
+                }
+            }
+        }
+    }
+}
+
+
+.work-post {
+    width: 100%;
+    
+    .work-post--featured-img {
+        width: 100%;
+    }
+
+    .work-post--detail {
+        display: grid;
+        grid-template-columns: auto auto;
+
+        .name {
+            h3 {
+                max-width: 220px;
+                padding-top: 7px;
+            }
+        }
+
+        .meta {
+            .meta-list {
+                @extend .has-text-right;
+
+                width: 145px;
+                float: right;
+                padding-top: 16px;
+
+                li {
+                    font-family: $daily-tabloid-jnl;
+                    font-size: 16px;
+                    line-height: 18px;
+                    letter-spacing: 0.2em;
+                    text-align: right;
+                    display: inline;
+                }
+            }
+        }
+    }
+}
+
+.work-post {
+    @include scaling-val(46, 70, 46px, 70px, "margin-bottom");
+
+    width: 100%;
+
+    .work-post--featured-img {
+        background-color: $pale-red;
+        width: 100%;
+        height: 400px;
+    }
+
+    a {
+        color: $black;
+    }
+}
+
+//temp styles
+@include widescreen {
+    .work-post {
+        width: 100%;
+    
+        &.work-post--vee-design {
+            .work-post--featured-img {
+                height: 513px;
+            }
+        }
+
+        &.work-post--assure-programs {
+            .work-post--featured-img {
+                height: 458px;
+            }
+        }
+
+        &.work-post--choremaster {
+            max-width: 396px;
+
+            .work-post--featured-img {
+                height: 231px;
+            }
+        }
+
+        &.work-post--petrichor-co {
+            .work-post--featured-img {
+                height: 316px;
+            }
+        }
+
+        &.work-post--panthera {
+            .work-post--featured-img {
+                height: 316px;
+            }
+        }
+    }
+}
+
