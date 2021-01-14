@@ -3,10 +3,15 @@ footer {
 
     li a,
     p {
-        @include scaling-font(18, 66, 18px, 66px);
-        @include scaling-val(21, 76, 21px, 76px, "line-height");
+        @include scaling-font(18, 50, 18px, 50px);
+        @include scaling-val(21, 60, 21px, 60px, "line-height");
 
         color: $black;
+
+        @include widescreen {
+            font-size: 66px;
+            line-height: 76px;
+        }
     }
 
     .columns {
