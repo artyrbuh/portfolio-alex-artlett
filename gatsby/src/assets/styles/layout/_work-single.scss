@@ -1,0 +1,8 @@
+.work-single--header {
+    .featured-image {
+        //@include scaling-val(212, 568, 212px, 568px, "height");
+        height: 568px;
+        width: 100%;
+        background-color: $pale-red;
+    }
+}
