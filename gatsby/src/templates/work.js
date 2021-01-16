@@ -29,6 +29,7 @@ export default ({pageContext}) => {
                 </WorkBarNav>
                 <WorkContainer>
                     <WorkHeader/>
+                    <WorkLayouts/>
                 </WorkContainer>
             </WorkLayout>
         </WorkSingleContext.Provider>
@@ -103,3 +104,51 @@ const InlineList = ({list}) => (
         ))} 
     </>
 )
+
+const WorkLayouts = () => {
+    const { layouts_work } = useContext(WorkSingleContext);
+
+    if(layouts_work.length) {
+        return (
+            <>
+                {layouts_work.map((el, i) => {
+                    switch(true) {
+                        case el.id.includes("content_block"):
+                            return <WorkContentBlock data={el} i={i}/>
+                        
+                        case el.id.includes("images_block"):
+                            return <WorkImagesBlock data={el} i={i}/>
+
+                        case el.id.includes("images_block"):
+                            return <WorkVideoBlock data={el} i={i}/>
+                    }
+                })}    
+            </>
+        );
+        
+    } else {
+        return (
+            <>
+                Add Layouts
+            </>
+        )
+    }
+}
+
+const WorkContentBlock = ({el, i}) => {
+    return (
+        <>WorkContentBlock</>
+    );
+}
+
+const WorkImagesBlock = ({el, i}) => {
+    return (
+        <>WorkImagesBlock</>
+    );
+}
+
+const WorkVideoBlock = ({el, i}) => {
+    return (
+        <>WorkVideoBlock</>
+    );
+}
