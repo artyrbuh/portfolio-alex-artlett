@@ -75,7 +75,7 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
         {
-          allWordpressWpWork(filter:{slug:{ne:"dummy"}}) {
+          allWordpressWpWork(filter: {slug: {ne: "dummy"}}) {
             edges {
               node {
                 title
@@ -112,6 +112,10 @@ exports.createPages = ({ graphql, actions }) => {
                         }
                       }
                       include_available_for_hire_cta
+                      caption {
+                        alignment
+                        content
+                      }
                     }
                     ... on WordPressAcf_video {
                       id
@@ -123,9 +127,21 @@ exports.createPages = ({ graphql, actions }) => {
                         wordpress_id
                       }
                       youtube_url
+                      caption {
+                        alignment
+                        content
+                      }
                     }
                   }
                 }
+              }
+              previous {
+                slug
+                title
+              }
+              next {
+                slug
+                title
               }
             }
           }
@@ -144,7 +160,7 @@ exports.createPages = ({ graphql, actions }) => {
           createPage({
             path: `/work/${edge.node.slug}/`,
             component: slash(workTemplate),
-            context: edge.node,
+            context: {content: edge.node, previous: edge.previous, next: edge.next},
           })
         })
         resolve()

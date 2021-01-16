@@ -1,4 +1,6 @@
-.content-block {
+.work-content-block {
+    @include scaling-val(56, 73, 56px, 73px, "margin-bottom");
+    
     .content-block--content {
         max-width: 590px;
 

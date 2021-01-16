@@ -45,3 +45,30 @@
         }
     }
 }
+
+.work-footer-nav {
+    @include scaling-val(45, 187, 45px, 187px, "padding-bottom");
+
+    svg {
+        position: relative;
+        top: 7px;
+    }
+
+    .left {
+        @extend .has-text-left;
+
+        svg {
+            margin-right: 10px;
+        }
+    }
+
+    .right {
+        @extend .has-text-right;
+
+        svg {
+            transform: rotate(180deg);
+            margin-left: 10px;
+            top: 9px;
+        }
+    }
+}
