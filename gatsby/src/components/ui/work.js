@@ -13,17 +13,17 @@ export const WorkContainer = ({children, classes}) => {
     )
 }
 
-export const WorkBarNav = ({children}) => {
+export const WorkBarNav = ({children, classes}) => {
     return (
-        <div className="work-nav-bar">
+        <div className={`work-nav-bar ${classes ? classes : ''}`}>
             {children && children}
         </div>
     );
 }
 
-export const WorkLayout = ({children}) => {
+export const WorkLayout = ({children, classes}) => {
     return (
-        <Layout classes="work-layout">
+        <Layout classes={`work-layout ${classes ? classes : ''}`}>
             {children && children}
         </Layout>
     );

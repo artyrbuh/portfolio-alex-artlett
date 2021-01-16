@@ -1,8 +1,48 @@
+.work-single {
+    @include mobile {
+        .work-nav-bar {
+            margin-bottom: 0;
+        }
+    }
+}
+
 .work-single--header {
+    @include scaling-val(17, 50, 17px, 50px, "padding-bottom");
+
+    padding-top: 56px;
+
+    h1 {
+        font-family: $font-jumbo; 
+        text-align: center;
+    }
+
     .featured-image {
-        //@include scaling-val(212, 568, 212px, 568px, "height");
-        height: 568px;
+        height: auto;
         width: 100%;
-        background-color: $pale-red;
+    }
+
+    h4 {
+        //
+        @include scaling-font(25, 40, 25px, 40px);
+        @include scaling-val(28, 41, 28px, 41px, "line-height");
+
+        margin-bottom: 11px;
+    }
+
+    p {
+        @include scaling-font(14, 24, 14px, 24px);
+        @include scaling-val(18, 28, 18px, 28px, "line-height");
+
+        color: rgba($black, 0.4);
+    }
+
+    @include mobile {
+        padding-top: 0;
+
+        .featured-image {
+            width: calc(100% + 30px);
+            position: relative;
+            left: -15px;
+        }
     }
 }
