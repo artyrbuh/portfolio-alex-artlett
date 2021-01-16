@@ -50,6 +50,18 @@
     }
 }
 
+@include tablet {
+    .work-layout {
+        .work-wrap,
+        footer .container {
+            position: relative;
+            padding-left: 30px;
+            padding-right: 30px;
+            margin: 0;
+            max-width: unset !important;
+        }
+    }
+}
 
 @include tablet-only {
     .work-nav-bar {
@@ -60,9 +72,8 @@
     .work-layout {
         .work-wrap,
         footer .container {
-            max-width: 60vw !important;
-            margin-right: unset !important;
-            margin-right: 5vw !important;
+            left: 250px;
+            width: calc(100% - 250px);
         }
     }
 }
@@ -76,9 +87,8 @@
     .work-layout {
         .work-wrap,
         footer .container {
-            max-width: 65vw !important;
-            margin-right: unset !important;
-            margin-right: 5vw !important;
+            left: 275px;
+            width: calc(100% - 275px);
         }
     }
 }
@@ -92,9 +102,8 @@
     .work-layout {
         .work-wrap,
         footer .container {
-            max-width: 65vw !important;
-            margin-right: unset !important;
-            margin-right: 5vw !important;
+            left: 300px;
+            width: calc(100% - 300px);
         }
     }
 }
@@ -108,9 +117,8 @@
     .work-layout {
         .work-wrap,
         footer .container {
-            max-width: 70vw !important;
-            margin-right: unset !important;
-            margin-right: 5vw !important;
+            left: 325px;
+            width: calc(100% - 325px);
         }
     }
 }
