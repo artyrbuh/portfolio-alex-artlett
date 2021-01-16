@@ -96,6 +96,7 @@ exports.createPages = ({ graphql, actions }) => {
                       id
                       include_available_for_hire_cta
                       content
+                      alignment
                       cta {
                         url
                         target

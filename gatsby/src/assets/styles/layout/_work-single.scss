@@ -7,7 +7,7 @@
 }
 
 .work-single--header {
-    @include scaling-val(17, 50, 17px, 50px, "padding-bottom");
+    @include scaling-val(55, 142, 55px, 142px, "padding-bottom");
 
     padding-top: 56px;
 
@@ -22,7 +22,6 @@
     }
 
     h4 {
-        //
         @include scaling-font(25, 40, 25px, 40px);
         @include scaling-val(28, 41, 28px, 41px, "line-height");
 
@@ -39,7 +38,7 @@
     @include mobile {
         padding-top: 0;
 
-        .featured-image {
+        .featured-image-wrap {
             width: calc(100% + 30px);
             position: relative;
             left: -15px;

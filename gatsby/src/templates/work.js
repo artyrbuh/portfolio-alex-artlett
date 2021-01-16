@@ -5,7 +5,6 @@ import { WorkBarNav, WorkContainer, WorkLayout } from '../components/ui/work';
 const WorkSingleContext = createContext(null);
 
 export default ({pageContext}) => {
-    console.log(pageContext);
     const {acf, featured_media, slug, title} = pageContext;
     const {layouts_work, main_technology, professions, technologies, project_year} = acf;
 
@@ -79,16 +78,16 @@ const WorkHeader = () =>  {
 
     return (
         <div className="work-single--header">
-            <div className="">
+            <div className="featured-image-wrap">
                 <img src={featured_media.source_url} className="featured-image"/>
-
+            </div>
                 <h4>{title} ― {project_year}</h4>
                 <p className="project-meta">
                     <InlineList list={professions}/>
                     <br/>
                     <InlineList list={technologies}/> 
                 </p>
-            </div>
+            
         </div>
     )
 };
@@ -135,19 +134,29 @@ const WorkLayouts = () => {
     }
 }
 
-const WorkContentBlock = ({el, i}) => {
+const WorkContentBlock = ({data, i}) => {
+    console.log(data);
+    const {content, cta, heading, include_available_for_hire_cta, alignment} = data;
+
     return (
-        <>WorkContentBlock</>
+        <div className={`work-block content-block ${alignment}`}>
+            {content && (
+                <div 
+                    className={`content-block--content`}
+                    dangerouslySetInnerHTML={{__html: content}}>
+                </div>
+            )}
+        </div>
     );
 }
 
-const WorkImagesBlock = ({el, i}) => {
+const WorkImagesBlock = ({data, i}) => {
     return (
         <>WorkImagesBlock</>
     );
 }
 
-const WorkVideoBlock = ({el, i}) => {
+const WorkVideoBlock = ({data, i}) => {
     return (
         <>WorkVideoBlock</>
     );

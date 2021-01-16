@@ -1,0 +1,30 @@
+.content-block {
+    .content-block--content {
+        max-width: 590px;
+
+        p {
+            @include scaling-font(25, 40, 25px, 40px);
+            @include scaling-val(33, 46, 33px, 46px, "line-height");
+    
+            letter-spacing: -0.04em;
+        }
+    }
+
+    &.center {
+        @include desktop {
+            .content-block--content {
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+        }
+    }
+
+    &.right {
+        @include desktop {
+            .content-block--content {
+                margin-left: auto;
+            }
+        }
+    }
+}
