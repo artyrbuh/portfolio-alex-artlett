@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import {Link} from "gatsby";
 import { WorkBarNav, WorkContainer, WorkLayout } from '../components/ui/work';
+import AAImage from '../components/ui/image';
 
 const WorkSingleContext = createContext(null);
 
@@ -160,11 +161,30 @@ const WorkImagesBlock = ({data, i}) => {
      */
     const {caption, images, include_available_for_hire_cta} = data;
     
-    return (
-        <div className={`work-block work-content-images content-images--${images.length}`}>
-            dsa
-        </div>
-    );
+    if(images.length) {
+        return (
+            <div className={`work-block work-content-images`}>
+                <div className={`content-images-grid content-images--${images.length}`}>
+                    {images.map((el, i) => (
+                        <div className="work-content-images--image">
+                            <AAImage image={el.image}/>
+                        </div>
+                    ))}
+                </div>
+
+                {caption && (
+                    <div 
+                        className={`content-images--caption ${caption.alignment}`}
+                        dangerouslySetInnerHTML={{__html: caption.content}}
+                    />
+                )}
+            </div>
+        );        
+    } else {
+        return (
+            <>Add Images</>
+        )
+    }
 }
 
 const WorkVideoBlock = ({data, i}) => {
