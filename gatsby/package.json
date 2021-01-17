@@ -29,7 +29,8 @@
   },
   "devDependencies": {
     "gatsby-plugin-stylelint": "^3.2.0",
-    "prettier": "2.1.0"
+    "prettier": "2.1.0",
+    "react-player": "^2.7.2"
   },
   "keywords": [
     "gatsby"
