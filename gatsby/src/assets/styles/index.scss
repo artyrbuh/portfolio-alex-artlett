@@ -8,12 +8,14 @@
 @import "./utilities/extends";
 @import "./utilities/functions";
 @import "./utilities/mixin";
+@import "./utilities/animation";
 @import "./common/global";
 
 //components
 @import './components/burger';
 @import './components/menu';
 @import './components/nav';
+@import './components/hire-me-cta';
 @import './components/close';
 @import './components/modal';
 @import './components/button';

@@ -4,6 +4,7 @@ import { WorkBarNav, WorkContainer, WorkLayout } from '../components/ui/work';
 import AAImage from '../components/ui/image';
 import fitty from "fitty";
 import AAButton from '../components/ui/button';
+import HireMe from '../components/ui/hire-me-cta';
 
 const WorkSingleContext = createContext(null);
 
@@ -129,6 +130,9 @@ const WorkContentBlock = ({data, i}) => {
 
     return (
         <div className={`work-block work-content-block ${alignment}`}>
+            {include_available_for_hire_cta && (
+                <HireMe/>
+            )}
             {content && (
                 <div 
                     className={`content-block--content`}
@@ -137,7 +141,7 @@ const WorkContentBlock = ({data, i}) => {
 
             {cta && (
                 <div className={`content-block--content content-block--cta`}>
-                    <AAButton url={cta.url} title={cta.title} target={'_blank'}/>
+                    <AAButton url={cta.url} title={cta.title} target={cta.target}/>
                 </div>
             )}
         </div>
@@ -155,6 +159,9 @@ const WorkImagesBlock = ({data, i}) => {
     if(images.length) {
         return (
             <div className={`work-block work-content-images`}>
+                {include_available_for_hire_cta && (
+                    <HireMe/>
+                )}
                 <div className={`content-images-grid content-images--${images.length}`}>
                     {images.map((el, i) => (
                         <div className="work-content-images--image">

@@ -39,7 +39,6 @@
 
     div.featured-image {
         @include scaling-val(212, 568, 212px, 568px, "height");
-        //@include scaling-val(17, 50, 17px, 50px, "margin-bottom");
         
         background-color: $pale-red;
     }

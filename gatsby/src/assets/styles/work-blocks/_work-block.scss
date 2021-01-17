@@ -1,3 +1,10 @@
 .work-block {
-    //
+    position: relative;
+
+    .hire-me-cta {
+        @include scaling-val(0, 85, 0px, 85px, "right");
+        
+        position: absolute;
+        top: -50px;
+    }
 }
