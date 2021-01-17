@@ -91,6 +91,7 @@ exports.createPages = ({ graphql, actions }) => {
                   professions
                   main_technology
                   project_year
+                  project_website
                   layouts_work {
                     ... on WordPressAcf_content_block {
                       id

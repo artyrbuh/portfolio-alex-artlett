@@ -10,6 +10,10 @@
     
             letter-spacing: -0.04em;
         }
+
+        &.content-block--cta {
+            @include scaling-val(30, 40, 30px, 40px, "padding-top");
+        }
     }
 
     &.center {

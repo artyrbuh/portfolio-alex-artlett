@@ -3,16 +3,17 @@ import {Link} from "gatsby";
 import { WorkBarNav, WorkContainer, WorkLayout } from '../components/ui/work';
 import AAImage from '../components/ui/image';
 import fitty from "fitty";
+import AAButton from '../components/ui/button';
 
 const WorkSingleContext = createContext(null);
 
 export default ({pageContext}) => {
     const {previous, next} = pageContext;
     const {acf, featured_media, slug, title} = pageContext.content;
-    const {layouts_work, main_technology, professions, technologies, project_year} = acf;
-
+    const {layouts_work, main_technology, professions, technologies, project_year, project_website} = acf;
+    console.log(pageContext.content);
     return (
-        <WorkSingleContext.Provider value={{featured_media, slug, title, layouts_work, main_technology, professions, technologies, project_year, previous, next}}>
+        <WorkSingleContext.Provider value={{featured_media, slug, title, layouts_work, main_technology, professions, technologies, project_year, previous, next, project_website}}>
             <WorkLayout classes={`work-single work-single--${slug}`}>
                 <WorkBarNav>
                     <Link to={`/work`} className="back-cta">
@@ -40,7 +41,7 @@ export default ({pageContext}) => {
 }
 
 const WorkHeader = () =>  {
-    const { title, featured_media, project_year, main_technology,professions, technologies } = useContext(WorkSingleContext);
+    const { title, featured_media, project_year, main_technology,professions, technologies, project_website } = useContext(WorkSingleContext);
 
     const containerRef = React.useRef();
     const elRef = React.useRef();
@@ -66,9 +67,11 @@ const WorkHeader = () =>  {
                 )}
                 
             </div>
-                <h4
-                    dangerouslySetInnerHTML={{__html: `${title} ― ${project_year}`}}
-                />
+                <a href={project_website} target="_blank">
+                    <h4
+                        dangerouslySetInnerHTML={{__html: `${title} ― ${project_year}`}}
+                    />
+                </a>
                 <p className="project-meta">
                     <InlineList list={professions}/>
                     <br/>
@@ -129,7 +132,12 @@ const WorkContentBlock = ({data, i}) => {
             {content && (
                 <div 
                     className={`content-block--content`}
-                    dangerouslySetInnerHTML={{__html: content}}>
+                    dangerouslySetInnerHTML={{__html: content}}/>
+            )}
+
+            {cta && (
+                <div className={`content-block--content content-block--cta`}>
+                    <AAButton url={cta.url} title={cta.title} target={'_blank'}/>
                 </div>
             )}
         </div>
