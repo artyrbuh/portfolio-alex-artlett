@@ -10,10 +10,24 @@
     @include scaling-val(55, 142, 55px, 142px, "padding-bottom");
 
     padding-top: 56px;
+    position: relative;
 
     h1 {
+        display: none;
         font-family: $font-jumbo; 
         text-align: center;
+        display: inline-block;
+        white-space: nowrap;
+        position: absolute;
+        top: 50px;
+
+        @include mobile {
+            display: none !important;
+        }
+
+        @include tablet {
+            display: block !important;
+        }
     }
 
     .featured-image {

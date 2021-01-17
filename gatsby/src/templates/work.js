@@ -1,7 +1,8 @@
-import React, {createContext, useContext, useState, useEffect} from 'react';
+import React, {createContext, useContext, useState, useEffect, useRef} from 'react';
 import {Link} from "gatsby";
 import { WorkBarNav, WorkContainer, WorkLayout } from '../components/ui/work';
 import AAImage from '../components/ui/image';
+import fitty from "fitty";
 
 const WorkSingleContext = createContext(null);
 
@@ -9,7 +10,6 @@ export default ({pageContext}) => {
     const {previous, next} = pageContext;
     const {acf, featured_media, slug, title} = pageContext.content;
     const {layouts_work, main_technology, professions, technologies, project_year} = acf;
-    
 
     return (
         <WorkSingleContext.Provider value={{featured_media, slug, title, layouts_work, main_technology, professions, technologies, project_year, previous, next}}>
@@ -42,47 +42,22 @@ export default ({pageContext}) => {
 const WorkHeader = () =>  {
     const { title, featured_media, project_year, main_technology,professions, technologies } = useContext(WorkSingleContext);
 
-    const getWidth = () => window.innerWidth 
-    || document.documentElement.clientWidth 
-    || document.body.clientWidth;
-    let currWidth = useCurrentWidth();
-  
-    //bind window width to state prop
-    function useCurrentWidth() {
-        // save current window width in the state object
-        let [width, setWidth] = useState(getWidth());
+    const containerRef = React.useRef();
+    const elRef = React.useRef();
 
-        useEffect(() => {
-            // timeoutId for debounce mechanism
-            let timeoutId = null;
-            const resizeListener = () => {
-                // prevent execution of previous setTimeout
-                clearTimeout(timeoutId);
-                // change width from the state object after 150 milliseconds
-                timeoutId = setTimeout(() => setWidth(getWidth()), 50);
-            };
-
-            // set resize listener
-            window.addEventListener('resize', resizeListener);
-
-            return () => {
-                // remove resize listener
-                window.removeEventListener('resize', resizeListener);
-            }
-        }, [])
-
-        return width;
-    }
-
-    useEffect(() => {
-        
-    }, [currWidth]);
-
-    console.log(featured_media.source_url);
+    React.useEffect(() => {
+        fitty(elRef.current, {
+          multiLine: false,
+          minSize: 10
+        });
+      }, []);
 
     return (
-        <div className="work-single--header">
+        <div className="work-single--header" ref={containerRef}>
             <div className="featured-image-wrap">
+                <h1 
+                    ref={elRef}
+                >{title}</h1>
                 <img src={featured_media.source_url} className="featured-image"/>
             </div>
                 <h4>{title} ― {project_year}</h4>
