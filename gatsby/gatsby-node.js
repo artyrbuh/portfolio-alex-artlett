@@ -122,10 +122,7 @@ exports.createPages = ({ graphql, actions }) => {
                       id
                       include_available_for_hire_cta
                       video_preview {
-                        url {
-                          source_url
-                        }
-                        wordpress_id
+                        source_url
                       }
                       youtube_url
                       caption {
