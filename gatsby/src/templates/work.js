@@ -5,6 +5,9 @@ import AAImage from '../components/ui/image';
 import fitty from "fitty";
 import AAButton from '../components/ui/button';
 import HireMe from '../components/ui/hire-me-cta';
+import Modal from '../components/ui/modal';
+import Close from '../components/ui/close';
+import ReactPlayer from 'react-player';
 
 const WorkSingleContext = createContext(null);
 
@@ -99,6 +102,7 @@ const WorkLayouts = () => {
     const { layouts_work } = useContext(WorkSingleContext);
 
     if(layouts_work && layouts_work.length) {
+        console.log(layouts_work)
         return (
             <>
                 {layouts_work.map((el, i) => {
@@ -109,7 +113,7 @@ const WorkLayouts = () => {
                         case el.id.includes("images_block"):
                             return <WorkImagesBlock data={el} i={i} key={i}/>
 
-                        case el.id.includes("images_block"):
+                        case el.id.includes("video"):
                             return <WorkVideoBlock data={el} i={i} key={i}/>
                     }
                 })}    
@@ -172,7 +176,7 @@ const WorkImagesBlock = ({data, i}) => {
 
                 {caption && (
                     <div 
-                        className={`content-images--caption ${caption.alignment}`}
+                        className={`content-media--caption ${caption.alignment}`}
                         dangerouslySetInnerHTML={{__html: caption.content}}
                     />
                 )}
@@ -186,8 +190,69 @@ const WorkImagesBlock = ({data, i}) => {
 }
 
 const WorkVideoBlock = ({data, i}) => {
+    console.log(data)
+    const [modalLaunched, setModalLaunched] = useState(false);
+    const [playing, setPlaying] = useState(false);
+
+
+    const handleClose = () => { 
+        setModalLaunched(false);
+        setPlaying(false);
+    }
+    const handleShow = () => {
+        setModalLaunched(true);
+        setPlaying(true);
+    }
+
+    const {caption, include_available_for_hire_cta, video_preview, youtube_url} = data;
     return (
-        <>WorkVideoBlock</>
+        <>
+            <div className="work-block work-video-block">
+                {include_available_for_hire_cta && (
+                    <HireMe/>
+                )}
+
+                <div 
+                    className="work-video-block--preview"
+                    onClick={handleShow}
+                >
+                    <img src={video_preview.source_url} />
+                    <svg className="play-btn" x="0px" y="0px" width="408.221px" height="408.221px" viewBox="0 0 408.221 408.221" >
+                        <path d="M204.11,0C91.388,0,0,91.388,0,204.111c0,112.725,91.388,204.11,204.11,204.11c112.729,0,204.11-91.385,204.11-204.11    C408.221,91.388,316.839,0,204.11,0z M286.547,229.971l-126.368,72.471c-17.003,9.75-30.781,1.763-30.781-17.834V140.012    c0-19.602,13.777-27.575,30.781-17.827l126.368,72.466C303.551,204.403,303.551,220.217,286.547,229.971z"/>
+                    </svg>
+                </div>
+
+                {caption && (
+                    <div 
+                        className={`content-media--caption ${caption.alignment}`}
+                        dangerouslySetInnerHTML={{__html: caption.content}}
+                    />
+                )}                
+            </div>
+
+            <Modal 
+                isActive={modalLaunched} 
+                closeMenu={handleClose}
+                classes={`video-modal`}>
+                <header className="modal-card-head">
+                    <div 
+                        onClick={handleClose} 
+                        className="close-modal"
+                    >
+                        <Close/>
+                    </div>
+                </header>
+                <section className="modal-card-body">
+                    <ReactPlayer 
+                        className="video-modal--video-player"
+                        controls={true}
+                        url={youtube_url}
+                        playing={playing}
+
+                    />
+                </section>
+            </Modal>
+        </>
     );
 }
 

@@ -1,0 +1,33 @@
+.work-video-block {
+    @include scaling-val(76, 124, 76px, 124px, "margin-bottom");
+
+    .work-video-block--preview {
+        cursor: pointer;
+        position: relative;
+
+        img {
+            margin-bottom: 0;
+        }
+
+        .play-btn {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 150px;
+            height: 150px;
+
+            @include scaling-val(100, 150, 100px, 150px, "width");
+            @include scaling-val(100, 150, 100px, 150px, "height");
+        }
+    }
+}
+
+.modal.video-modal {
+    .video-modal--video-player {
+        height: 461px !important;
+        width: 100% !important;
+    }
+}
