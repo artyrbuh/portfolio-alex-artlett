@@ -75,7 +75,7 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
         {
-          allWordpressWpWork(filter:{slug:{ne:"dummy"}}) {
+          allWordpressWpWork(filter: {slug: {ne: "dummy"}}) {
             edges {
               node {
                 title
@@ -90,11 +90,14 @@ exports.createPages = ({ graphql, actions }) => {
                   technologies
                   professions
                   main_technology
+                  project_year
+                  project_website
                   layouts_work {
                     ... on WordPressAcf_content_block {
                       id
                       include_available_for_hire_cta
                       content
+                      alignment
                       cta {
                         url
                         target
@@ -110,20 +113,33 @@ exports.createPages = ({ graphql, actions }) => {
                         }
                       }
                       include_available_for_hire_cta
+                      caption {
+                        alignment
+                        content
+                      }
                     }
                     ... on WordPressAcf_video {
                       id
                       include_available_for_hire_cta
                       video_preview {
-                        url {
-                          source_url
-                        }
-                        wordpress_id
+                        source_url
                       }
                       youtube_url
+                      caption {
+                        alignment
+                        content
+                      }
                     }
                   }
                 }
+              }
+              previous {
+                slug
+                title
+              }
+              next {
+                slug
+                title
               }
             }
           }
@@ -142,7 +158,7 @@ exports.createPages = ({ graphql, actions }) => {
           createPage({
             path: `/work/${edge.node.slug}/`,
             component: slash(workTemplate),
-            context: edge.node,
+            context: {content: edge.node, previous: edge.previous, next: edge.next},
           })
         })
         resolve()

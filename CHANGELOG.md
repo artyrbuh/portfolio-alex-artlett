@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.6.0
+- Develop Single Work Template (to be animated)
+- Refactor Work layout to use relative positioning 
+- Add UI components AAImg, HireMeCTA, AAButton (to be animated)
+- Develop and style work block WorkContentBlock (to be animated)
+- Develop and style work block WorkImagesBlock (to be animated)
+- Develop and style work block WorkVideoBlock (to be animated)
+
 ## 0.5.0
 - Develop Landing Work Page
 - Develop reusable core Work Layout Components

@@ -1,0 +1,26 @@
+.hire-me-cta {
+    position: relative;
+    cursor: pointer;
+
+    .hire-me-cta--wave {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        font-size: 2.75rem;
+        height: 75px;
+        width: 50px;
+    }
+
+    @include mobile {
+        transform: scale(0.7);
+    }
+
+    &.rotate {
+        .hire-me-cta--text {
+            animation: rotating 40s linear infinite;
+        }
+    }
+}
