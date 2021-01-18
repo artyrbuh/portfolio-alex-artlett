@@ -15,7 +15,7 @@ export default ({pageContext}) => {
     const {previous, next} = pageContext;
     const {acf, featured_media, slug, title} = pageContext.content;
     const {layouts_work, main_technology, professions, technologies, project_year, project_website} = acf;
-    console.log(pageContext.content);
+
     return (
         <WorkSingleContext.Provider value={{featured_media, slug, title, layouts_work, main_technology, professions, technologies, project_year, previous, next, project_website}}>
             <WorkLayout classes={`work-single work-single--${slug}`}>
@@ -102,7 +102,6 @@ const WorkLayouts = () => {
     const { layouts_work } = useContext(WorkSingleContext);
 
     if(layouts_work && layouts_work.length) {
-        console.log(layouts_work)
         return (
             <>
                 {layouts_work.map((el, i) => {
@@ -190,7 +189,6 @@ const WorkImagesBlock = ({data, i}) => {
 }
 
 const WorkVideoBlock = ({data, i}) => {
-    console.log(data)
     const [modalLaunched, setModalLaunched] = useState(false);
     const [playing, setPlaying] = useState(false);
 
@@ -258,9 +256,6 @@ const WorkVideoBlock = ({data, i}) => {
 
 const WorkFooterNav = ({}) => {
     const { previous, next } = useContext(WorkSingleContext);
-
-    console.log(previous)
-    console.log(next)
 
     return (
         <div className="columns work-footer-nav">
