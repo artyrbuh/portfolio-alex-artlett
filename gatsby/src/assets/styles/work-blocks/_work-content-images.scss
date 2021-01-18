@@ -35,27 +35,4 @@
             }
         }
     }
-
-    .content-images--caption {
-        p {
-            @include scaling-val(42, 26, 42px, 26px,"padding-top");
-
-            max-width: 375px;
-        }
-
-        @include desktop {
-            &.right {
-                p {
-                    margin-left: auto;
-                }
-            }
-
-            &.center {
-                p {
-                    margin-left: auto;
-                    margin-right: auto;
-                }                
-            }
-        }
-    }
 }
