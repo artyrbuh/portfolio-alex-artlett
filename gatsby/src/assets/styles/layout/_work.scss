@@ -7,6 +7,35 @@
         font-family: $font-jumbo;
     }
 
+    h4 {
+        @include scaling-val(20, 29, 20px, 29px, "line-height");
+
+        max-width: 110px;
+        font-family: $font-jumbo;
+        text-transform: uppercase;
+    }
+
+    .back-cta {
+        @include mobile {
+            svg,
+            img,
+            h4 {
+                display: inline-block;
+            }
+
+            svg,
+            img {
+                position: relative;
+                top: 7px;
+                margin-right: 10px;
+            }
+
+            h4 {
+                max-width: unset;
+            }
+        }
+    }
+
     @include tablet {
         position: fixed;
         left: 50px;
@@ -50,6 +79,18 @@
     }
 }
 
+@include tablet {
+    .work-layout {
+        .work-wrap,
+        footer .container {
+            position: relative;
+            padding-left: 45px;
+            padding-right: 45px;
+            margin: 0;
+            max-width: unset !important;
+        }
+    }
+}
 
 @include tablet-only {
     .work-nav-bar {
@@ -60,9 +101,8 @@
     .work-layout {
         .work-wrap,
         footer .container {
-            max-width: 60vw !important;
-            margin-right: unset !important;
-            margin-right: 5vw !important;
+            left: 250px;
+            width: calc(100% - 250px);
         }
     }
 }
@@ -76,9 +116,8 @@
     .work-layout {
         .work-wrap,
         footer .container {
-            max-width: 65vw !important;
-            margin-right: unset !important;
-            margin-right: 5vw !important;
+            left: 275px;
+            width: calc(100% - 275px);
         }
     }
 }
@@ -92,9 +131,8 @@
     .work-layout {
         .work-wrap,
         footer .container {
-            max-width: 65vw !important;
-            margin-right: unset !important;
-            margin-right: 5vw !important;
+            left: 300px;
+            width: calc(100% - 300px);
         }
     }
 }
@@ -108,9 +146,8 @@
     .work-layout {
         .work-wrap,
         footer .container {
-            max-width: 70vw !important;
-            margin-right: unset !important;
-            margin-right: 5vw !important;
+            left: 325px;
+            width: calc(100% - 325px);
         }
     }
 }

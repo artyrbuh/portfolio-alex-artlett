@@ -1,8 +1,96 @@
+.work-single {
+    @include mobile {
+        .work-nav-bar {
+            margin-bottom: 0;
+        }
+    }
+}
+
 .work-single--header {
+    @include scaling-val(55, 142, 55px, 142px, "padding-bottom");
+
+    padding-top: 56px;
+    position: relative;
+
+    h1 {
+        display: none;
+        font-family: $font-jumbo; 
+        text-align: center;
+        display: inline-block;
+        white-space: nowrap;
+        position: absolute;
+        top: 50px;
+
+        @include mobile {
+            display: none !important;
+        }
+
+        @include tablet {
+            display: block !important;
+        }
+    }
+
     .featured-image {
-        //@include scaling-val(212, 568, 212px, 568px, "height");
-        height: 568px;
+        @include scaling-val(17, 50, 17px, 50px, "margin-bottom");
+
+        height: auto;
         width: 100%;
+    }
+
+    div.featured-image {
+        @include scaling-val(212, 568, 212px, 568px, "height");
+        
         background-color: $pale-red;
+    }
+
+    h4 {
+        @include scaling-font(25, 40, 25px, 40px);
+        @include scaling-val(28, 41, 28px, 41px, "line-height");
+
+        margin-bottom: 11px;
+    }
+
+    p {
+        @include scaling-font(14, 24, 14px, 24px);
+        @include scaling-val(18, 28, 18px, 28px, "line-height");
+
+        color: rgba($black, 0.4);
+    }
+
+    @include mobile {
+        padding-top: 0;
+
+        .featured-image-wrap {
+            width: calc(100% + 30px);
+            position: relative;
+            left: -15px;
+        }
+    }
+}
+
+.work-footer-nav {
+    @include scaling-val(45, 187, 45px, 187px, "padding-bottom");
+
+    svg {
+        position: relative;
+        top: 7px;
+    }
+
+    .left {
+        @extend .has-text-left;
+
+        svg {
+            margin-right: 10px;
+        }
+    }
+
+    .right {
+        @extend .has-text-right;
+
+        svg {
+            transform: rotate(180deg);
+            margin-left: 10px;
+            top: 9px;
+        }
     }
 }

@@ -1,0 +1,34 @@
+@-webkit-keyframes rotating {
+    from {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+    to {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  }
+  
+  @-o-keyframes rotating {
+    from {
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+    to {
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes rotating {
+    from {
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+    to {
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  }

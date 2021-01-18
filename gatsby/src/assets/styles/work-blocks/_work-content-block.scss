@@ -1,0 +1,36 @@
+.work-content-block {
+    @include scaling-val(76, 124, 76px, 124px, "margin-bottom");
+    
+    .content-block--content {
+        max-width: 590px;
+
+        p {
+            @include scaling-font(25, 40, 25px, 40px);
+            @include scaling-val(33, 46, 33px, 46px, "line-height");
+    
+            letter-spacing: -0.04em;
+        }
+
+        &.content-block--cta {
+            @include scaling-val(30, 40, 30px, 40px, "padding-top");
+        }
+    }
+
+    &.center {
+        @include desktop {
+            .content-block--content {
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+        }
+    }
+
+    &.right {
+        @include desktop {
+            .content-block--content {
+                margin-left: auto;
+            }
+        }
+    }
+}
