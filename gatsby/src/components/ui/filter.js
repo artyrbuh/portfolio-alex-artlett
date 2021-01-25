@@ -4,9 +4,9 @@ import {WorkPageContext} from '../../templates/work-landing';
 export const FilterWrap = ({children}) => {
     const [hideFilters, setHideFilters] = useState(true);
     const [height, setHeight] = useState("unset");
-    const getWidth = () => window.innerWidth 
+    const getWidth = () => typeof window !== 'undefined' && typeof document !== 'undefined' ? window.innerWidth 
     || document.documentElement.clientWidth 
-    || document.body.clientWidth;
+    || document.body.clientWidth : 0;
     let currWidth = useCurrentWidth();
   
     //bind window width to state prop
