@@ -32,3 +32,25 @@
       transform: rotate(0deg);
     }
   }
+
+
+
+@keyframes moving-more-text-left {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -277px;
+  }
+}
+
+@keyframes moving-more-text-right {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 277px;
+  }
+}
+
+  

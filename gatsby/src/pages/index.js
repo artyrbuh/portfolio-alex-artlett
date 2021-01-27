@@ -143,7 +143,7 @@ export const ShowcaseItem = ({item}) => {
   console.log(item);
 
   return (
-    <div className={`column ${colSize}`}>
+    <div className={`column ${colSize} work-element`}>
       <Link to={`/work/${item.post_name}`}>
         <div className="showcase-inner">
           {thumbnail_text.length && (

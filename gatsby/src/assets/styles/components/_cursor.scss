@@ -1,0 +1,88 @@
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    contain: layout style size;
+    pointer-events: none;
+    transition: 0.15s;
+
+    &:before,
+    .cursor--work-element {
+        content: "";
+        position: absolute;
+        top: -24px;
+        left: -24px;
+        display: block;
+        width: 48px;
+        height: 48px;
+        transform: scale(0.2);
+        background: #000;
+        border-radius: 50%;
+        transition: 0.15s all ease-in-out;
+    }
+
+    .cursor--inner {
+        display: block;
+        height: 350px;
+        width: 350px ;
+        border-radius: 100%;
+        overflow: hidden;
+        transform: scale(0);
+        margin: -175px 0 0 -175px;
+        position: relative;
+    }
+
+    .cursor--work-element {
+        opacity: 1;
+        pointer-events: none;
+        background-color: $red;
+        height: 152px;
+        width: 152px;
+        top: -76px;
+        left: -76px;
+        overflow: hidden;
+        transform: scale(0) rotate(-45deg);
+
+
+        .view-more-text--wrapper {
+            position: relative;
+            top: -4px;
+
+            .view-more-text {
+                width: 100%;
+                background-size: cover;
+                background-repeat: repeat-x;
+                height: 27px;
+                margin-bottom: 8px;
+    
+                &.white {
+                    background-image: url('../images/more-white.svg');
+                }
+    
+                &.black {
+                    background-image: url('../images/more-black.svg');
+                }
+
+                &:nth-child(odd) {
+                    animation: moving-more-text-left 150s linear infinite;
+                }
+
+                &:nth-child(even) {
+                    animation: moving-more-text-right 150s linear infinite;
+                }
+
+                &.black {
+                    animation: moving-more-text-left 70s linear infinite;
+                }
+            }
+        }
+    }
+
+    &.work-element {
+        .cursor--work-element {
+            transform: scale(1) rotate(-45deg);
+            opacity: 1;
+        }
+    }
+}

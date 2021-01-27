@@ -5,6 +5,7 @@ import Footer from "./footer/footer"
 import "./layout.css"
 import Nav from "../components/nav/nav";
 import Contact from "../components/contact/contact";
+import Cursor from "./ui/cursor"
 
 export const ThemeDataContext = createContext(null);
 export const ActiveMenu = createContext(null);
@@ -59,6 +60,7 @@ const Layout = ({ children, classes }) => {
 
   return (
     <ThemeDataContext.Provider value={themeData}>
+      <Cursor />
       <ActiveMenu.Provider value={{toggleMainMenu, toggleContactMenu, isMenu}}>
         <Nav/>
         <Contact/>

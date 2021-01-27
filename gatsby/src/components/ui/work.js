@@ -126,7 +126,7 @@ export const WorkLandingPost = ({item}) => {
 
     return (
         <div className={`work-post-wrap`}>
-            <div className={`work-post work-post--${post_name}`}>
+            <div className={`work-post work-post--${post_name} work-element`}>
                 <Link to={`/work/${post_name}`}>
                     <div className="work-post--featured-img"></div>
                     <div className="work-post--detail">
