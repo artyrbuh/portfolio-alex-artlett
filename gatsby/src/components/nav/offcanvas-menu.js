@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useRef, useState} from "react"
 import {ThemeDataContext, ActiveMenu} from '../layout';
 import Menu from '../main-menu/menu';
-import {TweenLite, Power3} from 'gsap'
+import {TweenLite} from 'gsap';
 
 const OffcanvasMenu = ({expanded}) => {
     const d = new Date();
@@ -12,7 +12,10 @@ const OffcanvasMenu = ({expanded}) => {
     let menuRef = useRef(null);
     let menuInner = useRef(null);
     let menuInnerBG = useRef(null);
-    let [delay, setDelay] = useState(0)
+    let sideTextRef = useRef(null);
+    let [delay, setDelay] = useState(0);
+
+    const sideText = () => `${name} - ${d.getFullYear()}`.split('').map((el) => <span>{el}</span>);
 
     useEffect(() => {
         if(activeMenu === "main") {
@@ -22,6 +25,7 @@ const OffcanvasMenu = ({expanded}) => {
             }
 
             openMenu();
+            animateSideText();
         } else if((activeMenu === "" && initialClick == true) || (activeMenu == "contact" && initialClick == true)) {
             //close menu if no active menu or if active menu is contact menu
             closeMenu();
@@ -80,6 +84,22 @@ const OffcanvasMenu = ({expanded}) => {
         );
     }
 
+    const animateSideText = () => {
+        TweenLite.from(sideTextRef.children, 
+            {
+                delay: .8,
+                duration: .4,
+                transformOrigin: 'right top',
+                opacity: 0,
+                left: 5,
+                ease: 'power3.inOut',
+                stagger: {
+                  amount: 0.3
+                }
+            }
+        );
+    }
+
     return (
         <div 
             className={`offcanvas-menu ${expanded ? '' : ''}`}
@@ -93,7 +113,7 @@ const OffcanvasMenu = ({expanded}) => {
                         <div className="column menu wrap--main-menu">
                             <div className="designation-col">
                                 <div>
-                                    <p>{name} - {d.getFullYear()}</p>
+                                    <p ref={el => sideTextRef = el}>{sideText()}</p>
                                 </div>
                             </div>
                             <Menu/>
