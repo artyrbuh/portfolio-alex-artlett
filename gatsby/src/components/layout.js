@@ -67,7 +67,7 @@ const Layout = ({ children, classes }) => {
 
       setTimeout(() => {
         setDisabled(false);
-      }, 1200)
+      }, 2000)
   }
 
   const toggleMenu = (menu)  => { 
@@ -101,7 +101,7 @@ const Layout = ({ children, classes }) => {
   return (
     <ThemeDataContext.Provider value={themeData}>
       <Cursor />
-      <ActiveMenu.Provider value={{toggleMainMenu, toggleContactMenu, isMenu, activeMenu, mainMenuActive, contactMenuActive, disabled, initialClick}}>
+      <ActiveMenu.Provider value={{toggleMainMenu, toggleContactMenu, isMenu, activeMenu, mainMenuActive, setMainMenuActive, contactMenuActive, setContactMenuActive, disabled, initialClick}}>
         <Nav/>
         <Contact/>
       </ActiveMenu.Provider>
