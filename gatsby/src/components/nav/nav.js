@@ -8,7 +8,6 @@ const Nav = () => {
     const themeData = useContext(ThemeDataContext);
     const {toggleMainMenu, isMenu, disabled} = useContext(ActiveMenu);
     const d = new Date();
-    //const title = themeData.site.siteMetadata.title;
     const {logo, designation, name} = themeData.wordpressAcfOptions.options;
 
     return (
