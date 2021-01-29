@@ -1,23 +1,43 @@
 .offcanvas-menu {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    pointer-events: none;
-    top: 0;
-    left: 0;
-    background-color: rgba($black, 1);
-    z-index: 3;
-    color: $white;
+    display: none;
+
+    .offcanvas-menu--inner {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        //opacity: 0;
+        //pointer-events: none;
+        top: 0;
+        left: 0;
+        background-color: rgba($black, 1);
+        z-index: 3;
+        color: $white;
+        overflow: hidden;
+    }
+
+    .offcanvas-bg {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: rgba($pale-red, 1);
+        z-index: 2;
+        overflow: hidden;
+    }
 
 
     &.expanded {
-        opacity: 1;
-        pointer-events: auto;
+        //opacity: 1;
+        //pointer-events: auto;
+        display: block;
     }
 
     .container {
         width: 70vw;
+        background-color: $black;
 
         .columns {
             height: 100vh;
