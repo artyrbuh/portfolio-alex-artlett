@@ -3,7 +3,6 @@ import {TweenLite} from 'gsap';
 export const slideOpenMenuDown = (menuRef, menuInnerBG, menuInner, delay = 0) => {
     TweenLite.to(menuRef, 
         {
-            duration: delay,
             css: {display: 'block'}
         }
     );
@@ -15,6 +14,7 @@ export const slideOpenMenuDown = (menuRef, menuInnerBG, menuInner, delay = 0) =>
       });
     TweenLite.from([menuInnerBG, menuInner], 
         {
+            delay: delay,
             duration: .8,
             height: 0,
             transformOrigin: 'right top',
