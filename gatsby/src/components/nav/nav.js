@@ -6,7 +6,7 @@ import Burger from '../ui/burger';
 
 const Nav = () => {
     const themeData = useContext(ThemeDataContext);
-    const {toggleMainMenu, isMenu} = useContext(ActiveMenu);
+    const {toggleMainMenu, isMenu, disabled} = useContext(ActiveMenu);
     const d = new Date();
     //const title = themeData.site.siteMetadata.title;
     const {logo, designation, name} = themeData.wordpressAcfOptions.options;
@@ -19,6 +19,7 @@ const Nav = () => {
                     ${isMenu("main") ? 'expanded' : ''} 
                     ${isMenu("contact") ? 'contact-menu-open' : ''}`
                 }
+                disabled={disabled} 
                 onClick={toggleMainMenu}
             >
                 <Burger/>
