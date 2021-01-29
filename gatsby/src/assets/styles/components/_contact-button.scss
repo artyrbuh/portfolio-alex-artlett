@@ -8,7 +8,7 @@
     position: fixed;
     background-color: $black;
     cursor: pointer;
-    z-index: 2;
+    z-index: 5;
 
     .contact-text {
         position: absolute;
@@ -25,7 +25,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        opacity: 0;
+        //opacity: 0;
         pointer-events: none;
     }
 
@@ -47,6 +47,15 @@
             transform: scale(0.75);
             top: 5px;
             right: 5px;
+        }
+    }
+
+    &[disabled] {
+        pointer-events: none !important;
+        cursor: unset;
+
+        .close {
+            pointer-events: none !important;
         }
     }
 }
