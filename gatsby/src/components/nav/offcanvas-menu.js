@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useRef, useState} from "react"
 import {ThemeDataContext, ActiveMenu} from '../layout';
 import Menu from '../main-menu/menu';
-import {TweenLite} from 'gsap';
+import { slideCloseMenuUp, slideOpenMenuDown, animateSideText } from "../../core/animation/menu";
 
 const OffcanvasMenu = ({expanded}) => {
     const d = new Date();
@@ -24,81 +24,13 @@ const OffcanvasMenu = ({expanded}) => {
                 setDelay(2.2);
             }
 
-            openMenu();
-            animateSideText();
+            slideOpenMenuDown(menuRef, menuInnerBG, menuInner, delay);
+            animateSideText(sideTextRef);
         } else if((activeMenu === "" && initialClick == true) || (activeMenu == "contact" && initialClick == true)) {
             //close menu if no active menu or if active menu is contact menu
-            closeMenu();
+            slideCloseMenuUp(menuRef, menuInnerBG, menuInner);
         }
     }, [activeMenu]);
-
-    //animate in the menu
-    const openMenu = () => {
-        TweenLite.to(menuRef, 
-            {
-                duration: delay,
-                css: {display: 'block'}
-            }
-        );
-        TweenLite.to([menuInnerBG, menuInner], {
-            duration: 0,
-            opacity: 1,
-            height: '100%',
-            skewY: 0,
-          });
-        TweenLite.from([menuInnerBG, menuInner], 
-            {
-                duration: .8,
-                height: 0,
-                transformOrigin: 'right top',
-                skewY: 4,
-                ease: 'power3.inOut',
-                stagger: {
-                  amount: 0.1
-                }
-            }
-        );
-    }
-
-    //animate out the menu
-    const closeMenu = () => {
-        TweenLite.to([menuInner, menuInnerBG], 
-            {
-                duration: .8,
-                height: 0,
-                transformOrigin: 'right top',
-                ease: 'power3.inOut',
-                skewY: 4,
-                stagger: {
-                  amount: 0.07
-                }
-            }
-        );
-
-        TweenLite.to(menuRef, 
-            {
-                duration: 1,
-                skewY: 0,
-                css: {display: 'none'}
-            }
-        );
-    }
-
-    const animateSideText = () => {
-        TweenLite.from(sideTextRef.children, 
-            {
-                delay: .8,
-                duration: .4,
-                transformOrigin: 'right top',
-                opacity: 0,
-                left: 5,
-                ease: 'power3.inOut',
-                stagger: {
-                  amount: 0.3
-                }
-            }
-        );
-    }
 
     return (
         <div 
@@ -107,7 +39,6 @@ const OffcanvasMenu = ({expanded}) => {
         >
             <div className="offcanvas-bg" ref={el => menuInnerBG = el}></div>
             <div ref={el => menuInner = el} className="offcanvas-menu--inner">
-                
                 <div className="container">
                     <div className="columns is-vcentered is-flex">
                         <div className="column menu wrap--main-menu">
