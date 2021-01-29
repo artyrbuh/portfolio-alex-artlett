@@ -6,7 +6,7 @@ import { slideCloseMenuUp, slideOpenMenuDown, animateSideText } from "../../core
 const OffcanvasMenu = ({expanded}) => {
     const d = new Date();
     const themeData = useContext(ThemeDataContext);
-    const {activeMenu, contactMenuActive, initialClick} = useContext(ActiveMenu);
+    const {activeMenu, contactMenuActive, initialClick, setMainMenuActive, setContactMenuActive} = useContext(ActiveMenu);
     const name = themeData.wordpressAcfOptions.options.name;
 
     let menuRef = useRef(null);
@@ -22,6 +22,7 @@ const OffcanvasMenu = ({expanded}) => {
             //if contact menu is already open, it will 
             if(contactMenuActive === true) {
                 setDelay(2.2);
+                setContactMenuActive(false);
             }
 
             slideOpenMenuDown(menuRef, menuInnerBG, menuInner, delay);
@@ -29,6 +30,7 @@ const OffcanvasMenu = ({expanded}) => {
         } else if((activeMenu === "" && initialClick == true) || (activeMenu == "contact" && initialClick == true)) {
             //close menu if no active menu or if active menu is contact menu
             slideCloseMenuUp(menuRef, menuInnerBG, menuInner);
+            setMainMenuActive(false);
         }
     }, [activeMenu]);
 
