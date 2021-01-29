@@ -1,31 +1,76 @@
-import React, {useContext} from 'react';
-import {ActiveMenu} from '../layout';
+import React, {useContext, useEffect, useState, useRef} from 'react';
+import {ActiveMenu, ThemeDataContext} from '../layout';
 import {Link} from 'gatsby';
+import {TweenLite} from 'gsap';
+import { textAsSpans } from '../../core/util/helpers';
 
 
 const MenuList = ({props}) => {
     const {toggleContactMenu} = useContext(ActiveMenu);
     const menu = props.allWordpressWpApiMenusMenusItems.edges[0].node.items;
 
+    let menuItems = useRef(null);
+    
+    let [delay, setDelay] = useState(.15);
+
+    const {activeMenu, contactMenuActive} = useContext(ActiveMenu);
+    
+    const getChildrenToAnimate = () => {
+        let els = [];
+        
+        for(var i = 0; i < menuItems.children.length; i++) {
+            els.push(menuItems.children[i].firstElementChild)
+        }
+
+        return els;
+    }
+
     const openContactMenu = (e) => {
         e.preventDefault();
         toggleContactMenu();
     }
 
+    useEffect(() => {
+        if(activeMenu === "main") {
+            if(contactMenuActive === true) {
+                setDelay(2.2);
+            }
+
+            animateMenuItems();
+        }
+    }, [activeMenu]);
+
+    const animateMenuItems = () => {
+        TweenLite.from(getChildrenToAnimate(), {
+            delay: delay,
+            duration: 1.2,
+            y: 170,
+            skewY: 9,
+            ease: 'power3.inOut',
+            stagger: {
+                amount: .30
+            }
+        });
+    }
+
     return (
         <>
             {menu.length ? (
-                <ul className="menu menu--main">
+                <ul className="menu menu--main" ref={el => menuItems = el}>
                     {menu.map((el, i) => (
                         <li key={i} className="menu-item">
                             {el.object_slug !== "contact" ? (
-                                <Link to={`${el.object_slug === 'home' ? '/' : `/${el.object_slug}`}`}>
-                                    {el.title}
+                                <Link 
+                                    to={`${el.object_slug === 'home' ? '/' : `/${el.object_slug}`}`}
+                                >
+                                    {textAsSpans(el.title)}
                                 </Link>
                             ) : 
                             (
-                                <a onClick={(e) => openContactMenu(e)}>
-                                    {el.title}
+                                <a 
+                                    onClick={(e) => openContactMenu(e)}
+                                >
+                                    {textAsSpans(el.title)}
                                 </a>
                             )}
                         </li>

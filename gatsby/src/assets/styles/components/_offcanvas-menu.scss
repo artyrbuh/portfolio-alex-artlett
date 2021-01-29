@@ -63,6 +63,10 @@
                 color: $white;
                 font-size: 13px;
                 line-height: unset;
+
+                span {
+                    position: relative;
+                }
             }
 
             @include mobile {
@@ -73,14 +77,38 @@
     }
 
     .menu-item {
+        overflow: hidden;
+        position: relative;
+
         a {
             @extend .h1;
 
             color: $white;
-            opacity: 0.7;
+            display: block;
+            color: #fff;
+            text-decoration: none;
+
+            span {
+                $delay: 0.05;
+                opacity: 0.7;
+
+                @for $i from 1 through 10 {
+                    &:nth-child(#{$i}) {
+                        transition: 0.2s;
+                        transition-delay: #{$delay}s;
+                    }
+
+                    $delay : $delay + 0.05;
+                }
+            }
 
             &:hover {
-                opacity: 1;
+                transform: translate(0px, 0px) skew(4deg,0) !important;
+                transition: 0.35s;
+
+                span {
+                    opacity: 1;
+                }
             }
         }
     }
