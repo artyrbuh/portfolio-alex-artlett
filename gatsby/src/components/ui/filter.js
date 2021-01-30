@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
+import { textAsSpans } from "../../core/util/helpers";
 import {WorkPageContext} from '../../templates/work-landing';
 
 export const FilterWrap = ({children}) => {
@@ -61,7 +62,10 @@ export const FilterWrap = ({children}) => {
     return (
         <>
             <div className="toggle-filters" onClick={() => setHideFilters(!hideFilters)}>
-                <a>{`${hideFilters ? 'Show' : 'Hide'}`} filters</a>
+                <a className="hoverable-cta">
+                    <span>{ textAsSpans(`${hideFilters ? 'Show' : 'Hide'} filters`)}</span>
+                    <span>{ textAsSpans(`${hideFilters ? 'Show' : 'Hide'} filters`)}</span>
+                </a>
             </div>
             <div className="work-filters-wrap" style={{height}}>
                 <div>{children && children}</div>
