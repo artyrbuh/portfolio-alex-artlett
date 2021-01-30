@@ -6,6 +6,7 @@ import SEO from "../components/seo"
 import "../assets/styles/index.scss"
 import ContentBlock from "../components/ui/content-block";
 import ExperienceList from "../components/ui/experience-list";
+import { textAsSpans } from "../core/util/helpers";
 
 const IndexPage = () => (
   <StaticQuery query={graphql`
@@ -114,7 +115,13 @@ export const SelectedShowcase = ({selected_showcase}) => (
               <p>{selected_showcase.heading}</p>
             </div>
             <div className="column has-text-right">
-              <Link to={`/work`}>View All</Link>
+              <Link 
+                to={`/work`} 
+                className="hoverable-cta"
+              >
+                <span>{textAsSpans("View All")}</span>
+                <span>{textAsSpans("View All")}</span>
+              </Link>
             </div>
           </div>
         </div>

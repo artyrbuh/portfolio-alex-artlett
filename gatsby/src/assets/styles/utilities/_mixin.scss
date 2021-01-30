@@ -74,3 +74,14 @@
       opacity: 1;
     }
   }
+
+  @mixin nth-delay($num: 10, $delay: 0.05, $transition: 0.2s) {
+    @for $i from 1 through $num {
+      &:nth-child(#{$i}) {
+          transition: $transition;
+          transition-delay: #{$delay}s;
+      }
+
+      $delay : $delay + 0.05;
+    }
+  }
