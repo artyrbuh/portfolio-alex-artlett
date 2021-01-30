@@ -1,7 +1,12 @@
-import React from 'react';
+import React, {useRef, useEffect, useContext, useState} from 'react';
 import {Link} from 'gatsby';
+import {ActiveMenu} from '../layout';
+import { textAsSpans } from '../../core/util/helpers';
 
 const ContactMenuList = ({menu}) => {
+    const {activeMenu, mainMenuActive, setMainMenuActive, setContactMenuActive, initialClick} = useContext(ActiveMenu);
+    const [delay, setDelay] = useState(0);
+
     return (
         <>
             {menu.length ? (
@@ -13,10 +18,10 @@ const ContactMenuList = ({menu}) => {
                         >
                             {el.object_slug !== "email" ? (
                                 <Link to={`${el.url}`} target="_blank">
-                                    {el.title}
+                                    {textAsSpans(el.title)}
                                 </Link>
                             ) : (
-                                <a href={el.url}>{el.title}</a>
+                                <a href={el.url}>{textAsSpans(el.title)}</a>
                             )}
                         </div>
                     ))}

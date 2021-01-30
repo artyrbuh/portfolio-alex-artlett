@@ -104,11 +104,11 @@ export const slideCloseMenuUp = (menuRef, menuInnerBG, menuInner) => {
     );
 }
 
-export const animateSideText = (sideTextRef) => {
+export const animateSideText = (sideTextRef, delay = .8, duration = .8) => {
     TweenLite.from(sideTextRef.children, 
         {
-            delay: .8,
-            duration: .4,
+            delay: delay,
+            duration: duration,
             transformOrigin: 'right top',
             opacity: 0,
             left: 5,

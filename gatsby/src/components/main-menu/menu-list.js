@@ -3,6 +3,7 @@ import {ActiveMenu, ThemeDataContext} from '../layout';
 import {Link} from 'gatsby';
 import {TweenLite} from 'gsap';
 import { textAsSpans } from '../../core/util/helpers';
+import { staggerItemsSkewUpDown } from '../../core/animation';
 
 
 const MenuList = ({props}) => {
@@ -36,22 +37,10 @@ const MenuList = ({props}) => {
                 setDelay(2.2);
             }
 
-            animateMenuItems();
+            staggerItemsSkewUpDown(getChildrenToAnimate());
         }
     }, [activeMenu]);
 
-    const animateMenuItems = () => {
-        TweenLite.from(getChildrenToAnimate(), {
-            delay: delay,
-            duration: 1.2,
-            y: 170,
-            skewY: 9,
-            ease: 'power3.inOut',
-            stagger: {
-                amount: .30
-            }
-        });
-    }
 
     return (
         <>
