@@ -1,7 +1,7 @@
 import React, {useContext, useRef, useState, useEffect} from "react"
 import {ThemeDataContext, ActiveMenu} from '../layout';
 import ContactMenuList from "./contact-menu-list";
-import { slideCloseMenuUp, slideOpenMenuDown } from "../../core/animation/menu";
+import { slideOpenMenuRight, slideCloseMenuLeft } from "../../core/animation/menu";
 
 const ContactMenu = ({expanded}) => {
     let menuRef = useRef(null);
@@ -17,12 +17,11 @@ const ContactMenu = ({expanded}) => {
                 //setDelay(4.2);
                 setMainMenuActive(false);
             }
-            slideOpenMenuDown(menuRef, menuInnerBG, menuInner, delay);
+            slideOpenMenuRight(menuRef, menuInnerBG, menuInner, delay);
         } else if((activeMenu === "" && initialClick == true) || (activeMenu == "main" && initialClick == true)) {
             //close menu if no active menu or if active menu is contact menu
-            console.log('what');
             setContactMenuActive(false);
-            slideCloseMenuUp(menuRef, menuInnerBG, menuInner);
+            slideCloseMenuLeft(menuRef, menuInnerBG, menuInner);
         }
     }, [activeMenu]);
 
