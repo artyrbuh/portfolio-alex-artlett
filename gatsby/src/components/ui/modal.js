@@ -114,7 +114,7 @@ const Modal = ({isActive, children, closeMenu, classes}) => {
         >
             <div 
                 className="modal-background" 
-                onClick={() =>  closeMenu()}
+                onClick={() => !disabled && closeMenu()}
                 ref={el => modalBG = el}
             ></div>
             <div 
