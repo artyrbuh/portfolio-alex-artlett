@@ -1,0 +1,18 @@
+$colors: (
+	"white": $white,
+	"black": $black,
+    "red": $red,
+    "pale-red": $pale-red,
+);
+
+@each $color-name, $color-val in $colors {
+    .aa-#{$color-name}--bg {
+        background: unset !important;
+        background-image: unset !important;
+        background-color: $color-val !important;
+    }
+
+    .aa-#{$color-name}--text {
+        color: $color-val !important;
+    }
+}
