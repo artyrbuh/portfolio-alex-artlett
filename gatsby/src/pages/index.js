@@ -1,12 +1,13 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 import {graphql, StaticQuery, Link} from 'gatsby';
 import Layout from "../components/layout"
-import Image from "../components/image"
+//import Image from "../components/image"
 import SEO from "../components/seo"
 import "../assets/styles/index.scss"
 import ContentBlock from "../components/ui/content-block";
 import ExperienceList from "../components/ui/experience-list";
 import { textAsSpans } from "../core/util/helpers";
+import {TweenLite} from "gsap";
 
 const IndexPage = () => (
   <StaticQuery query={graphql`
@@ -216,8 +217,34 @@ export const ExperienceSection = ({experience_block}) => {
 }
 
 export const MovingText = () => {
+  const [x, setX] = useState(0);
+  const [prevY, setPrevY] = useState(0);
+  const inc = 4;
+
+  const onScroll = () => {
+    const scrollY = typeof window !== 'undefined' ? window.scrollY : 0;
+    const scrollingDown = scrollY > prevY;
+    const scrollingUp = scrollY < prevY;
+
+    scrollingDown && setX(x => x = x + inc);
+    scrollingUp && setX(x => x = x - inc);
+    setPrevY(window.scrollY);
+  }
+
+  useEffect(() => {
+    if(typeof window !== 'undefined') {
+      window.addEventListener("scroll", onScroll);
+    }
+
+    return () => {
+      if(typeof window !== 'undefined') {
+        window.removeEventListener("scroll", onScroll);
+      } 
+    }
+  })
+
   return (
-    <div className="moving-text"></div>
+    <div className="moving-text" style={{backgroundPositionX: x}}></div>
   );
 }
 

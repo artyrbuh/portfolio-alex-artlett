@@ -5,6 +5,7 @@
     background-repeat: repeat-x;
     background-image: url('../images/front-end-developer-text.svg');
     pointer-events: none;
+    transition: .1s;
 
     @include scaling-val(64, 220, 64px, 220px, "height");
     @include scaling-val(10, 40, 10px, 40px, "top");

@@ -8,8 +8,8 @@ body {
     font-family: $font;
     color: $black;
     width: 100%;
-    overflow-x: hidden;
-    overscroll-behavior-y: none;
+    //overflow-x: hidden;
+    //overscroll-behavior-y: none;
 
     @include mobile() {
         width: 100%;
