@@ -1,9 +1,17 @@
 .experience-list {
+    position: relative;
+
+    @include scaling-val(0, -23, 0px, -23px, "margin-top");
+
     li {
         padding-top: 23px;
         padding-bottom: 23px;
+        padding-left: 0;
+        padding-right: 0;
         position: relative;
         cursor: pointer;
+        transition: .35s;
+        transition-delay: .15s;
 
         &::after {
             content: "";
@@ -17,21 +25,59 @@
 
         > span {
             display: inline-block;
+            pointer-events: none;
 
             &:last-child {
                 @extend .is-pulled-right;
             }
         }
 
-        &:first-child {
-            padding-top: 0;
-        }
-
         &:last-child {
-            padding-bottom: 0;
-
             &::after {
                 display: none;
+            }
+        }
+
+        &:hover {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
+
+    .experience-list--hover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: $pale-red;   
+        padding-top: 23px;
+        padding-bottom: 23px;
+        width: 100%;
+        z-index: -1;
+        pointer-events: none;
+        overflow: hidden;
+
+        span {
+            opacity: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        &::after {
+            content: "";
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            display: block;
+            left: 0;
+            top: 0;
+            z-index: 1;
+            background-color: $white;
+            transition: .45s;
+        }
+
+        &.show {
+            &::after {
+                height: 0;
             }
         }
     }

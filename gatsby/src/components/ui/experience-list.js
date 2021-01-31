@@ -1,11 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import ExperienceModal from './experience-modal';
+import {TweenLite} from 'gsap';
 
 const ExperienceList = ({experience_list}) => {
-
+    let ul, hover = useRef(null);
+    const [prevY, setPrevY] = useState(0);
+    const [showHover, setShowHover] = useState(false);
     const [modalLaunched, setModalLaunched] = useState(false);
     const [modalContent, setModalContent] = useState("");
-
+    
     const totalYears = (start_year, end_year) => {
         let total;
 
@@ -24,22 +27,56 @@ const ExperienceList = ({experience_list}) => {
         setModalContent(el);
     };
 
+    /*
+     * Allow hover to follow direction of mouse
+     */
+    const liHover = (e, i) => {
+        const y = parseInt(e.target.clientHeight) * i;
+        let skewY = y > prevY ? 5 : -5;;
+
+        setPrevY(y);
+
+        TweenLite.to(hover, {
+            skewY,
+            ease: 'power3.inEaseOut',
+        })
+
+        TweenLite.to(hover, {
+            duration: .45,
+            delay: .1,
+            y: y,
+            skewY: 0,
+            ease: 'power3.inEaseOut',
+        });
+    }
 
     if(experience_list.length) {
         return (
             <>
-                <ul className="experience-list">
+                <ul 
+                    className="experience-list"
+                    ref={el => ul = el}
+                    onMouseEnter={() => setShowHover(true)}
+                    onMouseLeave={() => setShowHover(false)}
+                >
                     {experience_list.map((el, i) => {
                         return (
                             <li 
                                 key={i}
                                 onClick={() => launchModal(el)}
+                                onMouseEnter={(e) => liHover(e, i)}
                             >
                                 <span>{el.company}</span>
                                 <span>{totalYears(el.start_year, el.end_year)} years</span>
                             </li>
                         );
                     })}
+                    <p 
+                        className={`experience-list--hover ${showHover ? 'show' : ''}`}
+                        ref={el => hover = el}
+                    >
+                        <span>h o v e r</span>
+                    </p>
                 </ul>
                 <ExperienceModal 
                     isActive={modalLaunched}
