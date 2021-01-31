@@ -6,6 +6,7 @@
     contain: layout style size;
     pointer-events: none;
     transition: 0.15s;
+    transition-property: transform;
     mix-blend-mode: difference;
 
     &:before,
