@@ -30,9 +30,9 @@ const ExperienceList = ({experience_list}) => {
     /*
      * Allow hover to follow direction of mouse
      */
-    const liHover = (e, i) => {
+    const liEnter = (e, i) => {
         const y = parseInt(e.target.clientHeight) * i;
-        let skewY = y > prevY ? 5 : -5;;
+        let skewY = y > prevY ? 4 : -4;
 
         setPrevY(y);
 
@@ -64,7 +64,7 @@ const ExperienceList = ({experience_list}) => {
                             <li 
                                 key={i}
                                 onClick={() => launchModal(el)}
-                                onMouseEnter={(e) => liHover(e, i)}
+                                onMouseEnter={(e) => liEnter(e, i)}
                             >
                                 <span>{el.company}</span>
                                 <span>{totalYears(el.start_year, el.end_year)} years</span>
