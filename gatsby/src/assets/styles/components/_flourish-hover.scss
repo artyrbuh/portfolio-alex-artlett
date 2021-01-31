@@ -1,0 +1,32 @@
+.flourish-hover {
+    position: relative;
+
+    .flourish-one,
+    .flourish-two {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+    }
+
+    .flourish-one {
+        transition: .35s;
+        transition-delay: 0.1s;
+    }
+
+    .flourish-two {
+        transition: .35s;
+        transition-delay: 0.5s;
+    }
+
+    &:hover,
+    &.hover {
+        .flourish-one,
+        .flourish-two {
+            width: 100%;
+        }
+    }
+}
