@@ -2,10 +2,11 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10;
+    z-index: 99;
     contain: layout style size;
     pointer-events: none;
     transition: 0.15s;
+    mix-blend-mode: difference;
 
     &:before,
     .cursor--work-element {
@@ -17,8 +18,11 @@
         width: 48px;
         height: 48px;
         transform: scale(0.2);
-        background: #000;
+        background: $white;
         border-radius: 50%;
+    }
+
+    &:before {
         transition: 0.15s all ease-in-out;
     }
 
@@ -43,7 +47,6 @@
         left: -76px;
         overflow: hidden;
         transform: scale(0) rotate(-45deg);
-
 
         .view-more-text--wrapper {
             position: relative;
@@ -80,9 +83,16 @@
     }
 
     &.work-element {
+        mix-blend-mode: unset;
+
         .cursor--work-element {
+            transition: 0.15s all ease-in-out;
             transform: scale(1) rotate(-45deg);
             opacity: 1;
+        }
+
+        &:before {
+            transform: scale(1);
         }
     }
 }

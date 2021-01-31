@@ -12,6 +12,7 @@
         cursor: pointer;
         transition: .35s;
         transition-delay: .15s;
+        z-index: 2;
 
         &::after {
             content: "";
@@ -53,7 +54,7 @@
         padding-top: 23px;
         padding-bottom: 23px;
         width: 100%;
-        z-index: -1;
+        z-index: 1;
         pointer-events: none;
         overflow: hidden;
 

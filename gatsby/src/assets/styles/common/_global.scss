@@ -1,7 +1,9 @@
+/*
 html,
 body {
   height: 100%;
 }
+*/
 
 body {
     -webkit-font-smoothing: antialiased;
@@ -10,10 +12,16 @@ body {
     width: 100%;
     //overflow-x: hidden;
     //overscroll-behavior-y: none;
+    background-color: $white;
 
     @include mobile() {
         width: 100%;
     }
+}
+
+main,
+footer {
+    //background-color: $white;
 }
 
 .app-wrap {
