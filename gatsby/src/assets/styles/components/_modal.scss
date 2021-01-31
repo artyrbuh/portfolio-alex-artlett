@@ -1,6 +1,9 @@
 .aa-modal {
     .modal-card {
         padding: 20px;
+        position: relative;
+        transform: scale(1);
+        opacity: 1;
 
         .modal-card-head {
             padding: 10px 20px;
