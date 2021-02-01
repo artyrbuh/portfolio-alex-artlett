@@ -1,5 +1,7 @@
 .flourish-hover {
     position: relative;
+    transition: 0.55s;
+    //transition-delay: 0.75s;
 
     .flourish-one,
     .flourish-two {
@@ -13,17 +15,20 @@
     }
 
     .flourish-one {
-        transition: .35s;
+        transition: .5s;
         transition-delay: 0.1s;
     }
 
     .flourish-two {
-        transition: .35s;
+        transition: .5s;
         transition-delay: 0.5s;
     }
 
     &:hover,
     &.hover {
+        //color: rgba($red, 0);
+        transition-delay: 0;
+
         .flourish-one,
         .flourish-two {
             width: 100%;

@@ -62,9 +62,10 @@ export const FilterWrap = ({children}) => {
     return (
         <>
             <div className="toggle-filters" onClick={() => setHideFilters(!hideFilters)}>
-                <a className="hoverable-cta">
-                    <span>{ textAsSpans(`${hideFilters ? 'Show' : 'Hide'} filters`)}</span>
-                    <span>{ textAsSpans(`${hideFilters ? 'Show' : 'Hide'} filters`)}</span>
+                <a className="flourish-hover">
+                    {`${hideFilters ? 'Show' : 'Hide'} filters`}
+                    <span className="flourish-one aa-black--text">{`${hideFilters ? 'Show' : 'Hide'} filters`}</span>
+                    {/*<span className="flourish-two aa-red--text">{`${hideFilters ? 'Show' : 'Hide'} filters`}</span>*/}
                 </a>
             </div>
             <div className="work-filters-wrap" style={{height}}>
