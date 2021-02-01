@@ -6,7 +6,7 @@
     > span {
         &:first-child {
             position: relative;
-            transform: skewY(0deg);
+            //transform: skewY(0deg);
             display: block;
             transition: .3s;
 
@@ -29,7 +29,7 @@
             display: block;
             right: 0;
             margin: auto;
-            transform: skewY(3deg);
+            //transform: skewY(3deg);
             transition: .3s;
 
             > span {
@@ -50,7 +50,7 @@
     &:hover {
         > span {
             &:first-child {
-                transform: skewY(3deg);
+                //transform: skewY(3deg);
 
                 > span {
                     top: -12px;
@@ -59,7 +59,7 @@
             }
 
             &:last-child {
-                transform: skewY(0deg);
+                //transform: skewY(0deg);
 
                 > span {
                     top: 0;
