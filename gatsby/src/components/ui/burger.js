@@ -28,10 +28,12 @@ const Burger = () => {
         }, "start");
 
         tl
+            /*
             .to(burger, .35, {
                 ease: "power3.easeInOut",
                 rotate: `180deg`
             }, 0)
+            */
             .to(line2, .25, {
                 ease: "power3.easeInOut",
                 width: 0,
@@ -64,10 +66,12 @@ const Burger = () => {
         });
 
         tl
+            /*
             .to(burger, .35, {
                 ease: "power3.easeInOut",
                 rotate: `0deg`
             }, 0)
+            */
             .to(line1, .25, {
                 ease: "power3.easeInOut",
                 rotate: `0deg`
