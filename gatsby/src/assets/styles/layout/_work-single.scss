@@ -31,7 +31,7 @@
     }
 
     .featured-image {
-        @include scaling-val(17, 50, 17px, 50px, "margin-bottom");
+        @include scaling-val(12, 45, 12px, 45px, "margin-bottom");
 
         height: auto;
         width: 100%;
@@ -51,8 +51,42 @@
         display: inline-block;
         clear: both;
 
-        span {
+        > span {
             display: inline-block;
+            padding-right: 50px;
+            overflow: hidden;
+            position: relative;
+            padding-top: 5px;
+
+            &::after {
+                background-color: $pale-red;
+                height: 40px;
+                width: 40px;
+                content: "";
+                position: absolute;
+                right: 4px;
+                top: -4px;
+                bottom: 0;
+                margin: auto;
+                border-radius: 100%;
+                transition: .35s;
+                transition-delay: .35s;
+                transform: scale(0);
+            }
+
+            img {
+                transform: rotate(180deg) skewY(3deg);
+                position: absolute;
+                top: -5px;
+                bottom: 0;
+                margin: auto;
+                right: -30px;
+                transition: .35s;
+                transition-delay: .25s;
+                //transform: rotate(180deg) skewY(0deg);
+                //right: 10px;
+                z-index: 1;
+            }
 
             .inner-container {
                 overflow: hidden;
@@ -71,42 +105,53 @@
 
                     &:nth-child(1) {
                         background-color: $pale-red;
-                        transition: $transition;
-                        transition-delay: 0.25s;
+                        transition: 0.45s;
+                        transition-delay: 0.35s;
                     }
                     
                     &:nth-child(2) {
                         background-color: $red;
-                        transition: $transition;
-                        transition-delay: 0.15s;
+                        transition: 0.45s;
+                        transition-delay: 0.25s;
                     }
                     
                     &:nth-child(3) {
                         background-color: $black;
-                        transition: $transition;
-                        transition-delay: 0.05s;
+                        transition: 0.45s;
+                        transition-delay: 0.15s;
                     }
                 }
             }
         }
 
         &:hover {
-            .inner-container {
-                span {
-                    width: 100%;
-                    right: unset;
-                    left: 0;
+            > span {
+                img {
+                    transform: rotate(180deg) skewY(0deg);
+                    right: 10px;
+                }
 
-                    &:nth-child(3) {
-                        transition-delay: 0.25s;
-                    }
-                    
-                    &:nth-child(2) {
-                        transition-delay: 0.15s;
-                    }
-                    
-                    &:nth-child(1) {
-                        transition-delay: 0.05s;
+                &::after {
+                    transform: scale(1);
+                }
+
+                .inner-container {
+                    span {
+                        width: 100%;
+                        right: unset;
+                        left: 0;
+    
+                        &:nth-child(3) {
+                            transition-delay: 0.35s;
+                        }
+                        
+                        &:nth-child(2) {
+                            transition-delay: 0.25s;
+                        }
+                        
+                        &:nth-child(1) {
+                            transition-delay: 0.15s;
+                        }
                     }
                 }
             }

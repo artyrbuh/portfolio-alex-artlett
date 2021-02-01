@@ -8,6 +8,7 @@ import HireMe from '../components/ui/hire-me-cta';
 import Modal from '../components/ui/modal';
 import Close from '../components/ui/close';
 import ReactPlayer from 'react-player';
+import leftArrow from '../assets/images/left-arrow.svg'
 
 const WorkSingleContext = createContext(null);
 
@@ -79,6 +80,8 @@ const WorkHeader = () =>  {
                                 <span></span>
                                 <span></span>
                             </span>
+
+                            <img src={leftArrow}/>
                         </span>
                     </h4>
                 </a>
