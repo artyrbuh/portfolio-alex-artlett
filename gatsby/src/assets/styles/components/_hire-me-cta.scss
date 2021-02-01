@@ -23,4 +23,10 @@
             animation: rotating 40s linear infinite;
         }
     }
+
+    &:hover {
+        .hire-me-cta--wave {
+            animation: wave-animation 1.75s linear infinite;
+        }
+    }
 }
