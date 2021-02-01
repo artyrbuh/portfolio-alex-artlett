@@ -47,7 +47,70 @@
         @include scaling-font(25, 40, 25px, 40px);
         @include scaling-val(28, 41, 28px, 41px, "line-height");
 
-        margin-bottom: 11px;
+        margin-bottom: 5px;
+        display: inline-block;
+        clear: both;
+
+        span {
+            display: inline-block;
+
+            .inner-container {
+                overflow: hidden;
+                position: relative;
+                display: inline-block;
+                padding-bottom: 6px;
+                
+                span {
+                    content: "";
+                    background-color: $black;
+                    height: 3px;
+                    width: 0%;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;          
+
+                    &:nth-child(1) {
+                        background-color: $pale-red;
+                        transition: $transition;
+                        transition-delay: 0.25s;
+                    }
+                    
+                    &:nth-child(2) {
+                        background-color: $red;
+                        transition: $transition;
+                        transition-delay: 0.15s;
+                    }
+                    
+                    &:nth-child(3) {
+                        background-color: $black;
+                        transition: $transition;
+                        transition-delay: 0.05s;
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            .inner-container {
+                span {
+                    width: 100%;
+                    right: unset;
+                    left: 0;
+
+                    &:nth-child(3) {
+                        transition-delay: 0.25s;
+                    }
+                    
+                    &:nth-child(2) {
+                        transition-delay: 0.15s;
+                    }
+                    
+                    &:nth-child(1) {
+                        transition-delay: 0.05s;
+                    }
+                }
+            }
+        }
     }
 
     p {

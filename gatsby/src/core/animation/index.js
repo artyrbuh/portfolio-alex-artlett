@@ -54,3 +54,48 @@ export const staggerItemsSkewUpDown = (refs, delay = 0, y = 170, stagger = 0.3) 
         }
     });
 }
+
+export const staggerInFromLeft = (refs, delay = 0, stagger = 0.3) => {
+
+    TweenLite.to(refs, {
+        duration: 0,
+        x: `-100%`,
+        //css: {display: 'block'}
+    });
+
+
+    TweenLite.to(refs, {
+        delay: 0,
+        duration: .75,
+        x: `0`,
+        ease: 'power3.easeInOut', 
+        stagger: {
+            amount: stagger
+        }
+    })
+}
+
+export const staggerOutToRight = (refs, delay = 0, stagger = 0.3) => {
+    TweenLite.to(refs, {
+        duration: 0,
+        x: `0`,
+        //css: {display: 'block'}
+    });
+
+    TweenLite.to(refs, {
+        delay: 0,
+        duration: .75,
+        x: `100%`,
+        ease: 'power3.easeInOut', 
+        stagger: {
+            amount: stagger
+        }
+    });
+
+    TweenLite.to(refs, {
+        delay: 1,
+        x: `-100%`,
+        ///css: {display: 'none'},
+        duration: 0
+    });
+}

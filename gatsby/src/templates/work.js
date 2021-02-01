@@ -45,17 +45,16 @@ export default ({pageContext}) => {
 }
 
 const WorkHeader = () =>  {
-    const { title, featured_media, project_year, main_technology,professions, technologies, project_website } = useContext(WorkSingleContext);
+    const { title, featured_media, project_year, professions, technologies, project_website } = useContext(WorkSingleContext);
+    const containerRef = useRef();
+    const elRef = useRef();
 
-    const containerRef = React.useRef();
-    const elRef = React.useRef();
-
-    React.useEffect(() => {
+    useEffect(() => {
         fitty(elRef.current, {
-          multiLine: false,
-          minSize: 10
+            multiLine: false,
+            minSize: 10
         });
-      }, []);
+    }, []);
 
     return (
         <div className="work-single--header" ref={containerRef}>
@@ -72,9 +71,16 @@ const WorkHeader = () =>  {
                 
             </div>
                 <a href={project_website} target="_blank">
-                    <h4
-                        dangerouslySetInnerHTML={{__html: `${title} ― ${project_year}`}}
-                    />
+                    <h4>
+                        <span className="">
+                            <span className="inner-container">
+                                {title} ― {project_year}
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </span>
+                    </h4>
                 </a>
                 <p className="project-meta">
                     <InlineList list={professions}/>
