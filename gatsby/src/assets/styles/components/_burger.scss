@@ -3,6 +3,7 @@
     height: 12px;
     position: relative;
     cursor: pointer;
+    overflow: hidden;
 
     > div {
         position: absolute;
@@ -15,6 +16,7 @@
         margin: auto;
         border-radius: 5px;
         width: 100%;
+        //transition: .35s;
 
         &:nth-child(1) {
             bottom: unset;
@@ -24,9 +26,28 @@
             top: unset;
         }
     }
+
+    &:hover {
+        > div {
+            &:nth-child(1) {
+                //
+            }
+
+            &:nth-child(3) {
+                //
+            }
+        }
+    }
 }
 
 .burger-wrap {
+    .burger {
+        > div {
+            //transition: .35s;
+            //transition-delay: 1.35s;
+        }
+    }
+
     &.expanded {
         .burger {
             > div {

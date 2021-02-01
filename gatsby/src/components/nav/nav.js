@@ -12,28 +12,16 @@ const Nav = () => {
 
     return (
         <>
-            <div
-                className={`
-                    burger-wrap 
-                    ${isMenu("main") ? 'expanded' : ''} 
-                    ${isMenu("contact") ? 'contact-menu-open' : ''}`
-                }
-                disabled={disabled} 
-                onClick={toggleMainMenu}
-            >
-                <Burger/>
-            </div>
+            <Burger/>
             <div className="nav">
                 <div className={`nav--branding`}>
                     <span className="nav--branding__designation">{designation}</span>    
-
                     <Link to="/">
                         <img 
                             src={logo.url.source_url}
                             className="logo"
                         />
                     </Link>
-
                     <span className="nav--branding__title">{`${name} - ${d.getFullYear()}`}</span>
                 </div>
             </div>
