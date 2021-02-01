@@ -94,7 +94,7 @@ const Burger = () => {
         <div
             className={`
                     burger-wrap 
-                    ${mainMenuActive ? '' : ''} 
+                    ${mainMenuActive ? 'expanded' : ''} 
                     ${contactMenuActive ? 'contact-menu-open' : ''}
                 `
             }

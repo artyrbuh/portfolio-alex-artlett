@@ -14,7 +14,7 @@ const ContactButton = ({expanded, onClick}) => {
         }
 
         if(!mainMenuActive) {
-            scaleInRotate(contactRef, .75);
+            scaleInRotate(contactRef, 1);
         }
     }, [mainMenuActive]);
 
