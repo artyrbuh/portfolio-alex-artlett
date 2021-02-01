@@ -16,3 +16,44 @@
     color: $primary;
     text-transform: uppercase;
 }
+
+.dashing-hover-line {
+    position: relative;
+  
+    &::after {
+      content: "";
+      background-color: $black;
+      height: 3px;
+      width: 0%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transition: $transition;
+    }
+  
+    &:hover {
+      &::after {
+        width: 100%;
+        right: unset;
+        left: 0;
+      }
+    }
+  
+    &--primary {
+      &::after {
+        background-color: $red;
+      }
+    }
+  
+    &--secondary {
+      &::after {
+        background-color: $black;
+      }
+    }
+
+    &--white {
+        &::after {
+          background-color: $white;
+        }
+      }
+  }
