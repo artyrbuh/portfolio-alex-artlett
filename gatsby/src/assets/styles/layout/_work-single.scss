@@ -179,26 +179,126 @@
 .work-footer-nav {
     @include scaling-val(45, 187, 45px, 187px, "padding-bottom");
 
-    svg {
-        position: relative;
-        top: 7px;
+    p {
+        display: inline-block;
+
+        .dashing-hover-line {
+            &::after {
+                bottom: -3px;
+            }
+        }
+
+        span.arrow {
+            height: 32px;
+            width: 32px;
+            overflow: hidden;
+            display: inline-block;
+            position: relative;
+
+            svg {
+                position: absolute;
+                top: 14px;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                margin: auto;
+                transition: $transition;
+
+                &:first-child {
+                    transition-delay: 0.15s;
+                }
+
+                &:last-child {
+                    transition-delay: 0.1s;
+                }
+            }
+        }
+
+        &:hover {
+            span.arrow {
+                svg {
+                    &:first-child {
+                        transition-delay: 0.1s;
+                    }
+    
+                    &:last-child {
+                        transition-delay: 0.15s;
+                    }
+                }
+            }
+        }
     }
 
     .left {
         @extend .has-text-left;
 
-        svg {
-            margin-right: 10px;
+        p {
+            span.arrow {
+                margin-right: 12px;
+
+                svg {
+                    right: unset;
+
+                    &:first-child {
+                        left: 2px;
+                    }
+
+                    &:last-child {
+                        left: 30px;
+                    }
+                }
+            }
+
+            &:hover {
+                span.arrow {
+                    svg {
+                        &:first-child {
+                            left: -30px;
+                        }
+
+                        &:last-child {
+                            left: 2px;
+                        }
+                    }
+                }
+            }
         }
     }
 
     .right {
         @extend .has-text-right;
 
-        svg {
-            transform: rotate(180deg);
-            margin-left: 10px;
-            top: 9px;
+        p {
+            span.arrow {
+                margin-left: 12px;
+
+                svg {
+                    transform: rotate(180deg);
+                    left: unset;
+
+                    &:first-child {
+                        right: 2px;
+                    }
+
+                    &:last-child {
+                        right: 30px;
+                    }
+                }
+            }
+
+            &:hover {
+                span.arrow {
+                    svg {
+                        &:first-child {
+                            right: -30px;
+                        }
+    
+                        &:last-child {
+                            right: 2px;
+                        }
+                    }
+                }
+            }
         }
     }
 }
