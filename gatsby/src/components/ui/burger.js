@@ -22,7 +22,7 @@ const Burger = () => {
     const activateBurger = () => {
         let tl = new TimelineLite({delay: .35});
 
-        tl.to([line1, line2, line3], .45, {
+        tl.to([line1, line2, line3], .1, {
             ease: "power3.easeInOut",
             css: {backgroundColor: "#fff"}
         }, "start");

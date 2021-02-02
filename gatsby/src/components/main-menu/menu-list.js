@@ -37,7 +37,7 @@ const MenuList = ({props}) => {
                 setDelay(2.2);
             }
 
-            staggerItemsSkewUpDown(getChildrenToAnimate(), 0.4);
+            staggerItemsSkewUpDown(getChildrenToAnimate());
         }
     }, [activeMenu]);
 
@@ -51,15 +51,19 @@ const MenuList = ({props}) => {
                             {el.object_slug !== "contact" ? (
                                 <Link 
                                     to={`${el.object_slug === 'home' ? '/' : `/${el.object_slug}`}`}
+                                    className="flourish-hover"
                                 >
-                                    {textAsSpans(el.title)}
+                                    {el.title}
+                                    <span className="flourish-one aa-red--text">{el.title}</span>
                                 </Link>
                             ) : 
                             (
                                 <a 
                                     onClick={(e) => openContactMenu(e)}
+                                    className="flourish-hover"
                                 >
-                                    {textAsSpans(el.title)}
+                                    {el.title}
+                                    <span className="flourish-one aa-red--text">{el.title}</span>
                                 </a>
                             )}
                         </li>
