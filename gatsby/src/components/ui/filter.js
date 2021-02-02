@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
-import { textAsSpans } from "../../core/util/helpers";
 import {WorkPageContext} from '../../templates/work-landing';
+import AAButton from "./button";
 
 export const FilterWrap = ({children}) => {
     const [hideFilters, setHideFilters] = useState(true);
@@ -65,7 +65,6 @@ export const FilterWrap = ({children}) => {
                 <a className="flourish-hover">
                     {`${hideFilters ? 'Show' : 'Hide'} filters`}
                     <span className="flourish-one aa-black--text">{`${hideFilters ? 'Show' : 'Hide'} filters`}</span>
-                    {/*<span className="flourish-two aa-red--text">{`${hideFilters ? 'Show' : 'Hide'} filters`}</span>*/}
                 </a>
             </div>
             <div className="work-filters-wrap" style={{height}}>
@@ -81,16 +80,22 @@ export const FilterButtons = ({filters, classes}) => {
     if(filters.length) {
         return (
             <ul className={`work-filters ${classes ? classes : ''}`}>
-                <li 
-                    onClick={() => resetFilters(filters)}
-                    className={`${!hasGroupOfFilters(filters) ? 'is-active' : ''}`}
-                >All</li>
+                <li>
+                    <AAButton 
+                        action={() => resetFilters(filters)} 
+                        title={`All`}
+                        classes={`${!hasGroupOfFilters(filters) ? 'is-active' : ''}`}
+                    />
+                </li>
+                
                 {filters.map((el, i) => (
-                    <li 
-                        key={i}
-                        onClick={() => toggleFilters(el.slug)}
-                        className={`${isFilterActive(el.slug) ? 'is-active' : ''}`}
-                    >{el.name}</li>
+                    <li key={i}>
+                        <AAButton 
+                            action={() => toggleFilters(el.slug)} 
+                            title={el.name}
+                            classes={`${isFilterActive(el.slug) ? 'is-active' : ''}`}
+                        />
+                    </li>
                 ))}
             </ul>
         );

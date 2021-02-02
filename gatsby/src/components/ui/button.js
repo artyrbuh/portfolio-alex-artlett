@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
 import { textAsSpans } from "../../core/util/helpers";
 
-const AAButton = ({url, target, title}) => {
+const AAButton = ({url, target, title, classes, action}) => {
     let button = useRef(null);
     let [bgPos, setBgPos] = useState({x: 0, y: 0});
 
@@ -16,18 +16,24 @@ const AAButton = ({url, target, title}) => {
 
     return (
         <a 
-            className="button hoverable-cta--wrap"
-            href={url}
-            target={target}
+            className={`button hoverable-cta--wrap ${classes ? classes : ''}`}
+            {... url ? {href: url} : {}}
+            {... target ? {target: target} : {}}
             ref={el => button = el}
             onMouseEnter={setHoverPos}
             onMouseLeave={setHoverPos}
+            onClick={action}
         >   
             <span className="button--border">
                 <span 
                     className="button--bg"
                     style={{left: `${bgPos.x}px`, top: `${bgPos.y}px`}}
                 ></span>
+                <span className="button--active-bg">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
             </span>
             <span className="button--text hoverable-cta">
                 <span className="hoverable--text">{textAsSpans(title)}</span>

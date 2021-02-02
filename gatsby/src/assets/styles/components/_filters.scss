@@ -4,10 +4,13 @@
     position: relative;
 
     li {
-        @extend .button;
-
         margin-right: 5px;
         margin-bottom: 9px;
+        display: inline-block;
+
+        .button {
+            //display: inline-block;
+        }
 
         &:first-child {
             text-transform: unset;
