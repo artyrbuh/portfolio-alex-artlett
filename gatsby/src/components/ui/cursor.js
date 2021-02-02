@@ -1,5 +1,4 @@
 import React, {useEffect, useState, useRef} from "react";
-//import { TweenLite, Power3 } from "gsap";
 import { getMousePos } from "../../core/util/helpers";
 
 const Cursor = () => {
@@ -7,6 +6,7 @@ const Cursor = () => {
     let cursorWorkElement = useRef(null);
 
     const [cursorHover, setCursorHover] = useState(false);
+    const [hideCursor, setHideCursor] = useState(false);
     const [mouse, setMouse] = useState({ x: 0, y: 0 });
     
 
@@ -20,6 +20,11 @@ const Cursor = () => {
         document.querySelectorAll(".work-element").forEach((el) => {
             el.addEventListener("mouseover", () => setCursorHover(true));
             el.addEventListener("mouseout", () => setCursorHover(false));
+        });
+
+        document.querySelectorAll(".button").forEach((el) => {
+            el.addEventListener("mouseover", () => setHideCursor(true));
+            el.addEventListener("mouseout", () => setHideCursor(false));
         });
     }
 
@@ -37,33 +42,21 @@ const Cursor = () => {
                     el.removeEventListener("mouseover", () => setCursorHover(true));
                     el.removeEventListener("mouseout", () => setCursorHover(false));
                 });
+
+                document.querySelectorAll(".button").forEach((el) => {
+                    el.removeEventListener("mouseover", () => setHideCursor(true));
+                    el.removeEventListener("mouseout", () => setHideCursor(false));
+                });
             }
         }
     });
 
-    /*
-    useEffect(() => {
-        if(cursorHover) {
-            //
-            TweenLite.to(cursorWorkElement, 0.35, {
-                opacity: 1,
-                transform: `scale(1) rotate(45deg)`,
-                ease: Power3.easeIn
-              });
-        } else {
-            //
-            TweenLite.to(cursorWorkElement, .35, {
-                opacity: 0,
-                transform: `scale(0) rotate(45deg)`,
-                ease: Power3.easeOut
-            });
-        }
-    }, [cursorHover])
-    */
-
     return (
         <div 
-            className={`cursor ${cursorHover ? 'work-element' : ''}`}
+            className={`
+                cursor ${cursorHover ? 'work-element' : ''}
+                ${hideCursor ? 'hide-cursor' : ''}
+            `}
             ref={el => cursor = el}
             style={{transform: `translateX(${mouse.x}px) translateY(${mouse.y}px)`}}
         >

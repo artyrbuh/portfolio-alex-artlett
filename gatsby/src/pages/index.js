@@ -116,12 +116,11 @@ export const SelectedShowcase = ({selected_showcase}) => (
               <p>{selected_showcase.heading}</p>
             </div>
             <div className="column has-text-right">
-              <Link 
-                to={`/work`} 
-                className="hoverable-cta"
-              >
-                <span>{textAsSpans("View All")}</span>
-                <span>{textAsSpans("View All")}</span>
+              <Link to={`/work`} className="hoverable-cta--wrap">
+                <span className="hoverable-cta">
+                  <span className="hoverable--text">{textAsSpans("View All")}</span>
+                  <span className="hoverable--text">{textAsSpans("View All")}</span>
+                </span>
               </Link>
             </div>
           </div>

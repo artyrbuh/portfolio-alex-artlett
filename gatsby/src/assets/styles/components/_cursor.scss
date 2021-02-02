@@ -96,4 +96,10 @@
             transform: scale(1);
         }
     }
+
+    &.hide-cursor {
+        &:before {
+            transform: scale(0);
+        }
+    }
 }

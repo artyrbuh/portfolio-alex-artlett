@@ -1,69 +1,68 @@
-.hoverable-cta {
-    position: relative; 
-    overflow: hidden;
-    display: inline-block;
-
-    > span {
-        &:first-child {
-            position: relative;
-            //transform: skewY(0deg);
-            display: block;
-            transition: .3s;
-
-            > span {
+.hoverable-cta--wrap {
+    .hoverable-cta {
+        position: relative; 
+        overflow: hidden;
+        display: inline-block;
+    
+        .hoverable--text {
+            &:first-child {
                 position: relative;
-                opacity: 1;
-                top: 0;
-                display: inline;
-
-                @include nth-delay();
+                display: block;
+                transition: .3s;
+    
+                > span {
+                    position: relative;
+                    opacity: 1;
+                    top: 0;
+                    display: inline;
+    
+                    @include nth-delay();
+                }
             }
-        }
-
-        &:last-child {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: block;
-            right: 0;
-            margin: auto;
-            //transform: skewY(3deg);
-            transition: .3s;
-
-            > span {
-                position: relative;
-                top: 12px;
+    
+            &:last-child {
+                position: absolute;
+                top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
+                display: block;
                 right: 0;
                 margin: auto;
-                opacity: 0;
-
-                @include nth-delay($delay: 0.0105);
+                transition: .3s;
+    
+                > span {
+                    position: relative;
+                    top: 12px;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    right: 0;
+                    margin: auto;
+                    opacity: 0;
+    
+                    @include nth-delay($delay: 0.0105);
+                }
             }
         }
     }
 
+
     &:hover {
-        > span {
-            &:first-child {
-                //transform: skewY(3deg);
-
-                > span {
-                    top: -12px;
-                    opacity: 0;
+        .hoverable-cta {
+            .hoverable--text {
+                &:first-child {
+                    > span {
+                        top: -12px;
+                        opacity: 0;
+                    }
                 }
-            }
-
-            &:last-child {
-                //transform: skewY(0deg);
-
-                > span {
-                    top: 0;
-                    opacity: 1;
+    
+                &:last-child {
+                    > span {
+                        top: 0;
+                        opacity: 1;
+                    }
                 }
             }
         }
