@@ -17,11 +17,15 @@ const ContactMenuList = ({menu}) => {
                             key={i}
                         >
                             {el.object_slug !== "email" ? (
-                                <Link to={`${el.url}`} target="_blank">
-                                    {textAsSpans(el.title)}
+                                <Link to={`${el.url}`} target="_blank" className="flourish-hover">
+                                    {el.title}
+                                    <span className="flourish-one aa-red--text">{el.title}</span>
                                 </Link>
                             ) : (
-                                <a href={el.url}>{textAsSpans(el.title)}</a>
+                                <a href={el.url} className="flourish-hover">
+                                    {el.title}
+                                    <span className="flourish-one aa-red--text">{el.title}</span>
+                                </a>
                             )}
                         </div>
                     ))}

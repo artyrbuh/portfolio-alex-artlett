@@ -10,11 +10,15 @@ const FooterMenu = ({menu}) => {
                         menu.map((el,i) => (
                             <li key={i}>
                                 {el.object_slug !== "email" ? (
-                                    <Link to={`${el.url}`} target="_blank">
+                                    <Link to={`${el.url}`} target="_blank" className="flourish-hover skew-hover">
                                         {el.title}
+                                        <span className="flourish-one aa-red--text">{el.title}</span>
                                     </Link>
                                 ) : (
-                                    <a href={el.url}>{el.title}</a>
+                                    <a href={el.url} className="flourish-hover skew-hover">
+                                        {el.title}
+                                        <span className="flourish-one aa-red--text">{el.title}</span>
+                                    </a>
                                 )}
                             </li>
                         ))

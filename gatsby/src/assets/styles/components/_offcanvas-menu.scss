@@ -36,7 +36,7 @@
     }
 
     .container {
-        width: 70vw;
+        //width: 70vw;
         background-color: $black;
 
         .columns {
@@ -84,7 +84,7 @@
             @extend .h1;
 
             color: $white;
-            display: block;
+            display: inline-block;
             color: #fff;
             text-decoration: none;
 

@@ -16,3 +16,13 @@ $colors: (
         color: $color-val !important;
     }
 }
+
+.skew-hover {
+    transform: skewX(0deg);
+    transition: 0.15s;
+    display: inline-block;
+
+    &:hover {
+        transform: skewX(4deg);
+    }
+}
