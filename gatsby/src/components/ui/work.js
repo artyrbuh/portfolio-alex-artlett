@@ -1,7 +1,7 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import Layout from "../layout";
 import {Link} from "gatsby";
-import {WorkPageContext} from "../../templates/work-landing";
+import WorkPage, {WorkPageContext} from "../../templates/work-landing";
 import { ThemeDataContext } from '../../components/layout';
 import {slugify_array, as_obj} from "../../core/util/helpers";
 
@@ -38,13 +38,14 @@ export const WorkList = ({}) => {
     professions = professions.map((a) => as_obj(a.profession));
     
     //capture work list and filters and functions from page context
-    let {work_list, filterList, hasGroupOfFilters, resetAllFilters} = useContext(WorkPageContext);
+    let {work_list, filterList, hasGroupOfFilters, resetAllFilters, workItems, setWorkItems} = useContext(WorkPageContext);
     work_list = work_list.map(el => el.work);
 
     //capture active filters of type (either active tech filters, or active profession filters)
     const activeFilterOfType = (type) => type.filter((el) => filterList.includes(el.slug)); 
     const activeTechFilters = () => activeFilterOfType(technologies);
     const activeProfessionFilters = () => activeFilterOfType(professions);
+
 
     //check if a individual post has currently applied filters
     const postHasSelectedFiltersOfType = (type, filters) => {
@@ -83,33 +84,44 @@ export const WorkList = ({}) => {
     const postHasSelectedProfessionFilters = (filters) => postHasSelectedFiltersOfType("professions", filters);
     let postCount = 0;
 
+
+    //listen to changes for filters
+    useEffect(() => {
+        //if change, temp disable filtering
+        setWorkItems({
+            disabled: true
+        });
+        
+        let count = 0;
+        const items = work_list.filter((el) => {
+            if(filterList.length) {
+                let {professions, technologies} = el.acf;
+                professions = slugify_array(professions);
+                technologies = slugify_array(technologies);
+
+                if(postHasSelectedTechFilters(technologies) && postHasSelectedProfessionFilters(professions)) {
+                    count++;
+                    return el;
+                } 
+            } else {
+                count++;
+                return el;
+            }
+        });
+
+        //re enable
+        setWorkItems({
+            disabled: false,
+            count: count,
+            items: items
+        });
+    }, [filterList]);
+
     return (
         <>
-            {work_list.map((el, i) => {
-                if(filterList.length) {
-                    let {professions, technologies} = el.acf;
-                    professions = slugify_array(professions);
-                    technologies = slugify_array(technologies);
-
-                    if(postHasSelectedTechFilters(technologies) && postHasSelectedProfessionFilters(professions)) {
-                        postCount++;
-
-                        return(
-                            <>
-                                <WorkLandingPost item={el} key={i}/>
-                            </>
-                        );
-                    } 
-                } else {
-                    postCount++;
-
-                    return (   
-                        <>
-                            <WorkLandingPost item={el} key={i}/>
-                        </>
-                    );
-                }
-            })}
+            {
+                workItems.items.map((el, i) => <WorkLandingPost item={el} key={i}/>)
+            }
 
             {postCount === 0 && (
                 <>

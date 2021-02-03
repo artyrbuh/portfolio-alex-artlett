@@ -3,7 +3,7 @@ import {graphql, StaticQuery, Link} from 'gatsby';
 import { ThemeDataContext } from '../components/layout';
 import {WorkContainer, WorkBarNav, WorkLayout, WorkList} from '../components/ui/work';
 import { FilterButtons, FilterWrap } from '../components/ui/filter';
-import {as_slug, as_obj, slugify_array} from '../core/util/helpers';
+import { as_obj } from '../core/util/helpers';
 
 export const WorkPageContext = createContext(null);
 
@@ -21,6 +21,12 @@ const WorkPage = () => {
           setFiltersList(filterList => [...filterList, filter]);
         }
     };
+
+    const [workItems, setWorkItems] = useState({
+      items: [],
+      disabled: false,
+      count: 0,
+    });
 
     //turn off particular array of filters
     const resetFilters = (filters) => {
@@ -71,7 +77,9 @@ const WorkPage = () => {
 
                 return (
                   <WorkPageContext.Provider
-                    value={{isFilterActive, toggleFilters, resetFilters, hasGroupOfFilters, work_list, filterList, back_to_work_cta_text, resetAllFilters}}>
+                    value={
+                      {isFilterActive, toggleFilters, resetFilters, hasGroupOfFilters, work_list, filterList, back_to_work_cta_text, resetAllFilters, workItems, setWorkItems}
+                    }>
                     <WorkPageInner/>
                   </WorkPageContext.Provider>
                 );
