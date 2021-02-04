@@ -146,6 +146,21 @@
                     background-color: unset;
                     position: relative;
 
+                    .circle {
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        margin: auto;
+                        width: 100px;
+                        height: 100px;
+                        background-color: $pale-red;
+                        border-radius: 100%;
+                        transform: scale(0);
+                        transition: transform .35s ease-in-out;
+                    }
+
                     .showcase-cta__arrow {
                         position: absolute;
                         top: 0;
@@ -158,6 +173,7 @@
                         margin: auto;
                         max-width: 360px;
                         z-index: 1;
+                        transition: width .35s ease-in-out;
 
                         &::before,
                         &::after {
@@ -170,6 +186,7 @@
                             bottom: 0;
                             margin: auto;
                             position: absolute;
+                            transition: height .35s ease-in-out;
                         }
 
                         &::before {
@@ -183,6 +200,24 @@
                             transform: rotate(45deg);
                             transform-origin: top right;
                         }
+
+                        &.red-arrow {
+                            background-color: $red;
+
+                            &::before,
+                            &::after {
+                                background-color: $red;
+                            }
+                        }
+
+                        &.white-arrow {
+                            background-color: $white;
+
+                            &::before,
+                            &::after {
+                                background-color: $white;
+                            }
+                        }
                     }
 
                     svg {
@@ -192,6 +227,11 @@
                         margin: auto;
                         left: 0;
                         right: 0;
+
+                        &.hover-text {
+                            opacity: 0;
+                            transition: 0.8s ease-in-out;
+                        }
                     }
                 }
 
@@ -205,6 +245,24 @@
 
                 @media (min-width: 1024px) {
                     width: calc(50% - 20vw);
+                }
+
+                &:hover {
+                    .showcase-cta {
+                        .circle {
+                            transform: scale(4.5);
+                        }
+
+                        .showcase-cta__arrow {
+                            width: 100%;
+                        }
+                    }
+
+                    svg.hover-text {
+                        top: 16px;
+                        left: 16px;
+                        opacity: 0.1;
+                    }
                 }
             }
         }
