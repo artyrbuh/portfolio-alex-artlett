@@ -5,6 +5,17 @@
         @include scaling-val(30, 73, 45px, 73px, "margin-bottom");
 
         font-family: $font-jumbo;
+
+        > span {
+            //@extend %branding;
+            @extend %cta;
+            
+            display: block;
+            color: $black;
+            letter-spacing: 0;
+            font-family: $alatsi;
+            font-size: 13px;
+        }
     }
 
     h4 {
@@ -65,7 +76,7 @@
 
         h2 {
             margin-top: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         &::after {
@@ -166,6 +177,7 @@
             > .work-post-wrap {
                 display: flex;
                 height: 750px;
+                position: relative;
 
                 &:nth-child(odd) {
                     align-items: flex-start;
@@ -179,6 +191,81 @@
     }
 }
 
+/*
+.work-post-wrap  {
+    .work-post {
+        position: relative;
+    
+        .work-post--wiper {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+    
+            &::before,
+            &::after {
+                position: absolute;
+                height: 0;
+                width: 100%;
+                transition: 0.75s;
+                content: "";
+            }
+    
+            &::before {
+                background-color: $pale-red;
+            }
+    
+            &::after {
+                transition-delay: 0.45s;
+                background-color: $white;
+            }
+        }
+    }
+
+    &.in-transit {
+        .work-post--wiper {
+            &::before,
+            &::after {
+                height: 100%;
+            }
+        }
+    }
+}
+*/
+
+.work-landing {
+    .work-landing--wipers {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        //display: none;
+
+        .work-landing--wiper {
+            //transform: skewY(0deg);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            //left: 0;
+            position: fixed;
+            display: none;
+            //background-color: $pale-red;
+            //transform: translate(0px, -100%) skewY(6deg);
+
+            &:first-child {
+                background-color: $pale-red;
+            }
+    
+            &:last-child {
+                background-color: $white;
+            }
+        }
+    }
+}
 
 .work-post {
     width: 100%;

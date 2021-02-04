@@ -1,9 +1,10 @@
-import React, { useState, createContext, useContext }  from 'react';
+import React, { useState, createContext, useContext, useRef, useEffect }  from 'react';
 import {graphql, StaticQuery, Link} from 'gatsby';
 import { ThemeDataContext } from '../components/layout';
 import {WorkContainer, WorkBarNav, WorkLayout, WorkList} from '../components/ui/work';
 import { FilterButtons, FilterWrap } from '../components/ui/filter';
 import { as_obj } from '../core/util/helpers';
+import {TweenLite} from "gsap";
 
 export const WorkPageContext = createContext(null);
 
@@ -15,6 +16,10 @@ const WorkPage = () => {
 
     //toggle on or off a particular filter
     const toggleFilters = (filter) => {
+        if(workItems.initialClick !== true) {
+          setWorkItems({...workItems, initialClick: true});
+        }
+        
         if(filterList.includes(filter)) {
           setFiltersList(filterList.filter(item => item !== filter));
         } else {
@@ -26,10 +31,15 @@ const WorkPage = () => {
       items: [],
       disabled: false,
       count: 0,
+      initialClick: false
     });
 
     //turn off particular array of filters
     const resetFilters = (filters) => {
+      if(workItems.initialClick !== true) {
+        setWorkItems({...workItems, initialClick: true});
+      }
+
       const currFiltersFlattened = filters.map((a) => a.slug);
       const newFilterList = filterList.filter(el => !currFiltersFlattened.includes(el));
 
@@ -97,10 +107,65 @@ export const WorkPageInner = ({children}) => {
   technologies = technologies.map((a) => as_obj(a.technology));
   professions = professions.map((a) => as_obj(a.profession));
 
+  let { filterList, workItems } = useContext(WorkPageContext);
+
+  let wiperOne, wiperTwo = useRef();
+  
+  useEffect(() => {
+    if(workItems.initialClick === true) {
+      TweenLite.to([wiperOne, wiperTwo], {
+        css: {display: 'block'},
+      });
+
+      TweenLite.to([wiperOne, wiperTwo], {
+        y: `-100%`,
+        skewY: 6,
+        duration: 0
+      });
+
+      TweenLite.to([wiperOne, wiperTwo], {
+        y: `0%`,
+        duration: .75,
+        delay: 0.25,
+        skewY: 0,
+        transformOrigin: 'right top',
+        ease: 'power3.easeInOut',
+        stagger: {
+          amount: 0.1
+        }
+      });
+
+      TweenLite.to([wiperTwo, wiperOne], {
+        y: `100%`,
+        delay: 0.9,
+        duration: 1.2, 
+        skewY: -6,
+        stagger: {
+          amount: 0.2
+        }
+      });
+
+      TweenLite.to([wiperOne], {
+        y: `-100%`,
+        css: {display: 'none'},
+        duration: 0,
+        delay: 1,
+        skewY: 0,
+      });
+    }
+  }, [filterList]);
+
   return (
     <>
       <WorkBarNav>
-        <h2>selected work</h2>
+        <h2>
+          selected work
+          <span class="flourish-hover">
+              {workItems.items.length} projects
+              <span class="flourish-one aa-red--text">{workItems.items.length} projects</span>
+          </span>
+        </h2>
+
         <FilterWrap>
           <FilterButtons filters={technologies} />
           <FilterButtons filters={professions} />
@@ -109,6 +174,10 @@ export const WorkPageInner = ({children}) => {
       <WorkContainer classes="work-landing">
         {children && children}
         <WorkList/>
+        <div className="work-landing--wipers">
+          <div className="work-landing--wiper" ref={el => wiperOne = el}></div>
+          <div className="work-landing--wiper" ref={el => wiperTwo = el}></div>
+        </div>
       </WorkContainer>
     </>
   )

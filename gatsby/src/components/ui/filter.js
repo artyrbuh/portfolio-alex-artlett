@@ -75,7 +75,7 @@ export const FilterWrap = ({children}) => {
 }
 
 export const FilterButtons = ({filters, classes}) => {
-    const { isFilterActive, toggleFilters, resetFilters, hasGroupOfFilters } = useContext(WorkPageContext);
+    const { isFilterActive, toggleFilters, resetFilters, hasGroupOfFilters, workItems } = useContext(WorkPageContext);
 
     if(filters.length) {
         return (
@@ -84,6 +84,7 @@ export const FilterButtons = ({filters, classes}) => {
                     <AAButton 
                         action={() => resetFilters(filters)} 
                         title={`All`}
+                        disabled={workItems.disabled}
                         classes={`${!hasGroupOfFilters(filters) ? 'is-active' : ''}`}
                     />
                 </li>
@@ -93,6 +94,7 @@ export const FilterButtons = ({filters, classes}) => {
                         <AAButton 
                             action={() => toggleFilters(el.slug)} 
                             title={el.name}
+                            disabled={workItems.disabled}
                             classes={`${isFilterActive(el.slug) ? 'is-active' : ''}`}
                         />
                     </li>

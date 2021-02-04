@@ -29,7 +29,7 @@ export const WorkLayout = ({children, classes}) => {
     );
 }
 
-export const WorkList = ({}) => {
+export const WorkList = () => {
     const themeData = useContext(ThemeDataContext);
 
     //capture the proffession and technology filters, convert them into an object with name and slug
@@ -82,52 +82,61 @@ export const WorkList = ({}) => {
     //abstracted functions for checking if post contains active tech or active professions filters
     const postHasSelectedTechFilters = (filters) => postHasSelectedFiltersOfType("tech", filters);
     const postHasSelectedProfessionFilters = (filters) => postHasSelectedFiltersOfType("professions", filters);
-    let postCount = 0;
 
 
     //listen to changes for filters
     useEffect(() => {
         //if change, temp disable filtering
         setWorkItems({
-            disabled: true
+            ...workItems,
+            disabled: true,
+            inTransit: true,
         });
-        
-        let count = 0;
-        const items = work_list.filter((el) => {
-            if(filterList.length) {
-                let {professions, technologies} = el.acf;
-                professions = slugify_array(professions);
-                technologies = slugify_array(technologies);
 
-                if(postHasSelectedTechFilters(technologies) && postHasSelectedProfessionFilters(professions)) {
+        //console.log(workItemsRef.current.children[0].children)
+
+        setTimeout(() => {
+            let count = 0;
+            const items = work_list.filter((el) => {
+                if(filterList.length) {
+                    let {professions, technologies} = el.acf;
+                    professions = slugify_array(professions);
+                    technologies = slugify_array(technologies);
+    
+                    if(postHasSelectedTechFilters(technologies) && postHasSelectedProfessionFilters(professions)) {
+                        count++;
+                        return el;
+                    } 
+                } else {
                     count++;
                     return el;
-                } 
-            } else {
-                count++;
-                return el;
-            }
-        });
+                }
+            }); 
+            
+            //re enable
+            setWorkItems({
+                ...workItems,
+                disabled: false,
+                count: count,
+                items: items,
+                inTransit: false,
+            });
+        }, 1100);
 
-        //re enable
-        setWorkItems({
-            disabled: false,
-            count: count,
-            items: items
-        });
+        
     }, [filterList]);
 
     return (
         <>
-            {
-                workItems.items.map((el, i) => <WorkLandingPost item={el} key={i}/>)
-            }
-
-            {postCount === 0 && (
+            {workItems.items.length ? (
+                <>
+                    {workItems.items.map((el, i) => <WorkLandingPost item={el} key={i}/>)}    
+                </>
+            ) : (
                 <>
                     <p>No posts, please <span onClick={resetAllFilters}>reset the filters</span> and try again</p>
                 </>
-            )} 
+            )}
         </>
     )
 }
@@ -136,9 +145,12 @@ export const WorkLandingPost = ({item}) => {
     const {post_name, post_title, acf } = item;
     const {main_technology, professions} = acf;
 
+    //let {workItems} = useContext(WorkPageContext);
+
     return (
         <div className={`work-post-wrap`}>
             <div className={`work-post work-post--${post_name} work-element`}>
+                <div className="work-post--wiper"></div>
                 <Link to={`/work/${post_name}`}>
                     <div className="work-post--featured-img"></div>
                     <div className="work-post--detail">

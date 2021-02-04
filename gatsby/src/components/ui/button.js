@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
 import { textAsSpans } from "../../core/util/helpers";
 
-const AAButton = ({url, target, title, classes, action}) => {
+const AAButton = ({url, target, title, classes, action, disabled}) => {
     let button = useRef(null);
     let [bgPos, setBgPos] = useState({x: 0, y: 0});
 
@@ -23,6 +23,7 @@ const AAButton = ({url, target, title, classes, action}) => {
             onMouseEnter={setHoverPos}
             onMouseLeave={setHoverPos}
             onClick={action}
+            disabled={disabled}
         >   
             <span className="button--border">
                 <span 
