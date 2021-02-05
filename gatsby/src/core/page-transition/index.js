@@ -28,10 +28,10 @@ export const PageTransition = ({ children, delay }) => {
             });
 
             TweenLite.to([wiperTwo, wiperOne], {
-                skewY: -4,
-                duration: .6,
+                skewX: -3,
+                duration: .7,
                 delay: 0,
-                y: `100%`,
+                x: `100%`,
                 ease: 'power3.inOut',
                 stagger: {
                     amount: 0.1
@@ -54,16 +54,16 @@ export const PageTransition = ({ children, delay }) => {
                 css: {display: 'block'},
             });
             TweenLite.to([wiperOne, wiperTwo], {
-                skewY: 6,
-                y: `-110%`,
+                skewX: 3,
+                x: `-110%`,
                 duration: 0    
             });
 
             TweenLite.to([wiperOne, wiperTwo], {
-                skewY: 0,
-                duration: .6,
+                skewX: 0,
+                duration: .7,
                 delay: 0.1,
-                y: `0`,
+                x: `0`,
                 ease: 'power3.inOut',
                 stagger: {
                     amount: 0.1
