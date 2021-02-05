@@ -1,10 +1,11 @@
 import React, { useState, createContext, useContext, useRef, useEffect }  from 'react';
-import {graphql, StaticQuery, Link} from 'gatsby';
+import {graphql, StaticQuery} from 'gatsby';
 import { ThemeDataContext } from '../components/layout';
 import {WorkContainer, WorkBarNav, WorkLayout, WorkList} from '../components/ui/work';
 import { FilterButtons, FilterWrap } from '../components/ui/filter';
 import { as_obj } from '../core/util/helpers';
 import {TweenLite} from "gsap";
+import { PageTransition } from '../core/page-transition';
 
 export const WorkPageContext = createContext(null);
 
@@ -52,6 +53,7 @@ const WorkPage = () => {
     const hasGroupOfFilters = (filters, filtersArray = filterList) => filters.some(i => filtersArray.includes(i.slug));
 
     return (
+      <PageTransition>
         <WorkLayout>
             <StaticQuery query={graphql`
                 {
@@ -96,6 +98,7 @@ const WorkPage = () => {
             }}
             />
         </WorkLayout>
+      </PageTransition>
     );
 }
 

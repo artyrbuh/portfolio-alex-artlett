@@ -1,9 +1,9 @@
 import React, {useContext, useEffect} from "react";
 import Layout from "../layout";
-import {Link} from "gatsby";
-import WorkPage, {WorkPageContext} from "../../templates/work-landing";
+import {WorkPageContext} from "../../templates/work-landing";
 import { ThemeDataContext } from '../../components/layout';
 import {slugify_array, as_obj} from "../../core/util/helpers";
+import { AALink } from "../../core/page-transition";
 
 export const WorkContainer = ({children, classes}) => {
     return (
@@ -151,7 +151,7 @@ export const WorkLandingPost = ({item}) => {
         <div className={`work-post-wrap`}>
             <div className={`work-post work-post--${post_name} work-element`}>
                 <div className="work-post--wiper"></div>
-                <Link to={`/work/${post_name}`}>
+                <AALink to={`/work/${post_name}`}>
                     <div className="work-post--featured-img"></div>
                     <div className="work-post--detail">
                         <div className="name">
@@ -175,7 +175,7 @@ export const WorkLandingPost = ({item}) => {
                             </ul>
                         </div>
                     </div>
-                </Link>
+                </AALink>
             </div>
         </div>
     )

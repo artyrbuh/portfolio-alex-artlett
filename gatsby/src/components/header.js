@@ -1,6 +1,6 @@
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import { AALink } from "../core/page-transition";
 import Menu from './main-menu/menu';
 
 const Header = ({ siteTitle }) => {
@@ -20,7 +20,7 @@ const Header = ({ siteTitle }) => {
         }}
       >
         <h1 style={{ margin: 0 }}>
-          <Link
+          <AALink
             to="/"
             style={{
               color: `white`,
@@ -28,7 +28,7 @@ const Header = ({ siteTitle }) => {
             }}
           >
             {siteTitle}
-          </Link>
+          </AALink>
         </h1>
         <Menu/>
       </div>

@@ -1,12 +1,7 @@
-import React, {useRef, useEffect, useContext, useState} from 'react';
+import React from 'react';
 import {Link} from 'gatsby';
-import {ActiveMenu} from '../layout';
-import { textAsSpans } from '../../core/util/helpers';
 
 const ContactMenuList = ({menu}) => {
-    const {activeMenu, mainMenuActive, setMainMenuActive, setContactMenuActive, initialClick} = useContext(ActiveMenu);
-    const [delay, setDelay] = useState(0);
-
     return (
         <>
             {menu.length ? (

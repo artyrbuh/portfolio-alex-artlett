@@ -1,9 +1,7 @@
 import React, {useContext, useEffect, useState, useRef} from 'react';
-import {ActiveMenu, ThemeDataContext} from '../layout';
-import {Link} from 'gatsby';
-import {TweenLite} from 'gsap';
-import { textAsSpans } from '../../core/util/helpers';
+import {ActiveMenu} from '../layout';
 import { staggerItemsSkewUpDown } from '../../core/animation';
+import { AALink } from '../../core/page-transition';
 
 
 const MenuList = ({props}) => {
@@ -49,13 +47,13 @@ const MenuList = ({props}) => {
                     {menu.map((el, i) => (
                         <li key={i} className="menu-item">
                             {el.object_slug !== "contact" ? (
-                                <Link 
+                                <AALink 
                                     to={`${el.object_slug === 'home' ? '/' : `/${el.object_slug}`}`}
                                     className="flourish-hover"
                                 >
                                     {el.title}
                                     <span className="flourish-one aa-red--text">{el.title}</span>
-                                </Link>
+                                </AALink>
                             ) : 
                             (
                                 <a 

@@ -1,12 +1,12 @@
 import React, { useContext } from "react"
 import { ThemeDataContext, ActiveMenu } from '../layout';
 import OffcanvasMenu from './offcanvas-menu';
-import { Link } from 'gatsby';
 import Burger from '../ui/burger';
+import { AALink } from "../../core/page-transition";
 
 const Nav = () => {
     const themeData = useContext(ThemeDataContext);
-    const {toggleMainMenu, isMenu, disabled} = useContext(ActiveMenu);
+    const { isMenu } = useContext(ActiveMenu);
     const d = new Date();
     const {logo, designation, name} = themeData.wordpressAcfOptions.options;
 
@@ -16,12 +16,12 @@ const Nav = () => {
             <div className="nav">
                 <div className={`nav--branding`}>
                     <span className="nav--branding__designation">{designation}</span>    
-                    <Link to="/">
+                    <AALink to="/">
                         <img 
                             src={logo.url.source_url}
                             className="logo"
                         />
-                    </Link>
+                    </AALink>
                     <span className="nav--branding__title">{`${name} - ${d.getFullYear()}`}</span>
                 </div>
             </div>
