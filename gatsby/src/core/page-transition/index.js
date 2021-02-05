@@ -22,55 +22,62 @@ export const PageTransition = ({ children, delay }) => {
 
     useEffect(() => {
         if(state.initialLoad === true && state.loaded === false) {
-            TweenLite.to([wiperOne, wiperTwo], {
-                skewY: 0,
-                duration: 0    
-            });
-
-            TweenLite.to([wiperTwo, wiperOne], {
-                skewX: -3,
-                duration: .7,
-                delay: 0,
-                x: `100%`,
-                ease: 'power3.inOut',
-                stagger: {
-                    amount: 0.1
-                }
-            });
-
-            TweenLite.to([wiperOne, wiperTwo], {
-                duration: 0,
-                delay: .5,
-                css: {display: "none"}
-            });
-            
+            slideIn();
             setState({...state, loaded: true});
         }
     }, [state.initialLoad]);
 
     useEffect(() => {
         if(state.inTransit) {
-            TweenLite.to([wiperOne, wiperTwo], {
-                css: {display: 'block'},
-            });
-            TweenLite.to([wiperOne, wiperTwo], {
-                skewX: 3,
-                x: `-110%`,
-                duration: 0    
-            });
-
-            TweenLite.to([wiperOne, wiperTwo], {
-                skewX: 0,
-                duration: .7,
-                delay: 0.1,
-                x: `0`,
-                ease: 'power3.inOut',
-                stagger: {
-                    amount: 0.1
-                }
-            });
+            slideOut();
         }
-    }, [state.inTransit])
+    }, [state.inTransit]);
+
+    const slideIn = () => {
+        TweenLite.to([wiperOne, wiperTwo], {
+            skewY: 0,
+            duration: 0    
+        });
+
+        TweenLite.to([wiperTwo, wiperOne], {
+            skewX: -3,
+            duration: .7,
+            delay: 0,
+            x: `100%`,
+            ease: 'power3.inOut',
+            stagger: {
+                amount: 0.1
+            }
+        });
+
+        TweenLite.to([wiperOne, wiperTwo], {
+            duration: 0,
+            delay: .5,
+            css: {display: "none"}
+        });
+    }
+
+    const slideOut = () => {
+        TweenLite.to([wiperOne, wiperTwo], {
+            css: {display: 'block'},
+        });
+        TweenLite.to([wiperOne, wiperTwo], {
+            skewX: 3,
+            x: `-110%`,
+            duration: 0    
+        });
+
+        TweenLite.to([wiperOne, wiperTwo], {
+            skewX: 0,
+            duration: .7,
+            delay: 0.1,
+            x: `0`,
+            ease: 'power3.inOut',
+            stagger: {
+                amount: 0.1
+            }
+        });
+    }
 
     return (
         <div>
@@ -90,6 +97,17 @@ export const AALink = ({to, delay, children, className}) => {
 
     const onClick = (e) => {
         e.preventDefault();
+        
+        if(typeof document !== "undefined") {
+            if(document.location.pathname !== `${to}`) {
+                goToPage();
+            }
+        } else {
+            goToPage();
+        }
+    }
+
+    const goToPage = () => {
         setState({...state, inTransit: true});
         setTimeout(() => {
             navigate(to);
