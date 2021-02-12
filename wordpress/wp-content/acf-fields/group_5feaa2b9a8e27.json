@@ -120,6 +120,22 @@
                             "ui": 0,
                             "ui_on_text": "",
                             "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_60248901bb2cc",
+                            "label": "Call To Action",
+                            "name": "call_to_action",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "show_in_graphql": 1,
+                            "return_format": "array"
                         }
                     ],
                     "min": "",
@@ -420,5 +436,5 @@
     "description": "",
     "show_in_graphql": 1,
     "graphql_field_name": "work_layouts",
-    "modified": 1610785747
+    "modified": 1613007116
 }

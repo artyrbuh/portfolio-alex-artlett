@@ -143,16 +143,15 @@ export const WorkList = () => {
 
 export const WorkLandingPost = ({item}) => {
     const {post_name, post_title, acf } = item;
-    const {main_technology, professions} = acf;
-
-    //let {workItems} = useContext(WorkPageContext);
+    const {main_technology, professions, thumbnail_image} = acf;
+    const img = thumbnail_image !== null ? thumbnail_image.source_url : '';
 
     return (
         <div className={`work-post-wrap`}>
             <div className={`work-post work-post--${post_name} work-element`}>
                 <div className="work-post--wiper"></div>
                 <AALink to={`/work/${post_name}`}>
-                    <div className="work-post--featured-img"></div>
+                    <div className="work-post--featured-img" style={{backgroundImage: `url(${img}`}}></div>
                     <div className="work-post--detail">
                         <div className="name">
                             <h3>{post_title}</h3>
@@ -178,5 +177,5 @@ export const WorkLandingPost = ({item}) => {
                 </AALink>
             </div>
         </div>
-    )
+    );
 }

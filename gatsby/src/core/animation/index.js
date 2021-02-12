@@ -55,6 +55,19 @@ export const staggerItemsSkewUpDown = (refs, delay = 0, y = 170, stagger = 0.3) 
     });
 }
 
+export const staggerItemsTo = (refs, delay = 0, y = -170, stagger = 0.3) => {
+    TweenLite.to(refs, {
+        delay: delay,
+        duration: 1.2,
+        y: y,
+        skewY: 9,
+        ease: 'power3.inOut',
+        stagger: {
+            amount: stagger
+        }
+    });
+}
+
 export const staggerInFromLeft = (refs, delay = 0, stagger = 0.3) => {
 
     TweenLite.to(refs, {

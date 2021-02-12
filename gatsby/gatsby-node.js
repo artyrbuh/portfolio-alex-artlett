@@ -67,10 +67,13 @@ exports.createPages = ({ graphql, actions }) => {
             context: edge.node,
           })
         })
+
+        //resolve()
       })
       // ==== END PAGES ====
  
     // ==== WORK (WORDPRESS NATIVE AND ACF) ====
+
     .then(() => {
       graphql(
         `
@@ -87,47 +90,47 @@ exports.createPages = ({ graphql, actions }) => {
                   source_url
                 }
                 acf {
-                  technologies
-                  professions
                   main_technology
-                  project_year
+                  professions
                   project_website
+                  project_year
+                  technologies
                   layouts_work {
-                    ... on WordPressAcf_content_block {
+                    ... on WordPressAcf_video {
                       id
-                      include_available_for_hire_cta
-                      content
-                      alignment
-                      cta {
-                        url
-                        target
-                        title
+                      youtube_url
+                      video_preview {
+                        source_url
                       }
-                      heading
+                      include_available_for_hire_cta
+                      caption {
+                        alignment
+                        content
+                      }
                     }
                     ... on WordPressAcf_images_block {
                       id
+                      caption {
+                        alignment
+                        content
+                      }
+                      include_available_for_hire_cta
                       images {
                         image {
                           source_url
                         }
                       }
-                      include_available_for_hire_cta
-                      caption {
-                        alignment
-                        content
-                      }
                     }
-                    ... on WordPressAcf_video {
+                    ... on WordPressAcf_content_block {
                       id
                       include_available_for_hire_cta
-                      video_preview {
-                        source_url
-                      }
-                      youtube_url
-                      caption {
-                        alignment
-                        content
+                      content
+                      heading
+                      alignment
+                      call_to_action {
+                        target
+                        title
+                        url
                       }
                     }
                   }
@@ -164,6 +167,7 @@ exports.createPages = ({ graphql, actions }) => {
         resolve()
       })
     })
+
     // ==== END WORK ====
   })
 }
