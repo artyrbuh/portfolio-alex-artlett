@@ -3,10 +3,17 @@
 
     position: relative;
 
+    //initially hidden, gsap will unhide on first render
+    visibility: hidden;
+
     &.is-fullheight {
         .hero-body {
             align-items: flex-end;
         }
+    }
+
+    .home-header-text--wrap {
+        display: none;
     }
 
     h1 {
@@ -18,16 +25,16 @@
         font-size: 44px;
         line-height: 48px;
 
-        @include tablet {
+        //@include tablet {
             > span {
                 display: block;
                 overflow: hidden;
                 
                 > span {
-                    //
+                    display: block;
                 }
             }
-        }
+        //}
 
         @include tablet {
             font-size: 59px;
@@ -51,7 +58,17 @@
         right: 0;
     }
 
+    @media (max-width: 1023px) {
+        &.is-fullheight {
+            min-height: 70vh;
+        }        
+    }
+
     @include mobile {
+        h1 {
+            max-width: 460px;
+        }
+
         .hero-body {
             padding-left: 0;
         }
@@ -69,7 +86,7 @@
         }
 
         &.is-fullheight {
-            min-height: 50vh;
+            min-height: 60vh;
         }
     }
 }
