@@ -1,13 +1,32 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect, useContext, createContext} from 'react'
 import ExperienceModal from './experience-modal';
 import {TweenLite} from 'gsap';
+
+export const ExperienceContext = createContext(null);
+
+export const ExperienceWrapper = ({children}) => {
+    const [modalLaunched, setModalLaunched] = useState(false);
+    const [modalContent, setModalContent] = useState("");
+    const launchModal = (el) => {
+        setModalLaunched(true);
+        setModalContent(el);
+    };
+
+    return (
+        <ExperienceContext.Provider value={{modalLaunched, setModalLaunched, modalContent, setModalContent, launchModal}}>
+            {children}
+        </ExperienceContext.Provider>
+    );
+}
 
 const ExperienceList = ({experience_list}) => {
     let ul, hover = useRef(null);
     const [prevY, setPrevY] = useState(0);
     const [showHover, setShowHover] = useState(false);
-    const [modalLaunched, setModalLaunched] = useState(false);
-    const [modalContent, setModalContent] = useState("");
+    //const [modalLaunched, setModalLaunched] = useState(false);
+    //const [modalContent, setModalContent] = useState("");
+    const {modalLaunched, setModalLaunched, modalContent, setModalContent, launchModal} = useContext(ExperienceContext);
+
     
     const totalYears = (start_year, end_year) => {
         let total;
@@ -22,10 +41,12 @@ const ExperienceList = ({experience_list}) => {
         return (total > 0) ? total : (total + 1);
     };
 
+    /*
     const launchModal = (el) => {
         setModalLaunched(true);
         setModalContent(el);
     };
+    */
 
     /*
      * Allow hover to follow direction of mouse
@@ -78,11 +99,6 @@ const ExperienceList = ({experience_list}) => {
                         <span>h o v e r</span>
                     </p>
                 </ul>
-                <ExperienceModal 
-                    isActive={modalLaunched}
-                    content={modalContent}
-                    closeMenu={() => setModalLaunched(false)}
-                />
             </>
         )
     } else {
@@ -93,5 +109,16 @@ const ExperienceList = ({experience_list}) => {
         )
     }
 };
+
+export const ExperienceModalWithContext = () => {
+    const {modalLaunched, setModalLaunched, modalContent, setModalContent, launchModal} = useContext(ExperienceContext);
+    return (
+        <ExperienceModal 
+            isActive={modalLaunched}
+            content={modalContent}
+            closeMenu={() => setModalLaunched(false)}
+        />
+    );
+}
 
 export default ExperienceList;

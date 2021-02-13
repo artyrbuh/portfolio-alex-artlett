@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import "../assets/styles/index.scss"
 import ContentBlock from "../components/ui/content-block";
-import ExperienceList from "../components/ui/experience-list";
+import ExperienceList, { ExperienceWrapper, ExperienceModalWithContext } from "../components/ui/experience-list";
 import { textAsSpans } from "../core/util/helpers";
 import { PageTransition, AALink } from "../core/page-transition";
 import { staggerItemsSkewUpDown, staggerItemsTo } from "../core/animation";
@@ -75,14 +75,17 @@ const IndexPage = () => (
           
           return (
               <Layout>
-                <SkewScrollContainer>
-                  <SEO title="Home" />
-                  <HomeHeader header={header}/>
-                  <SelectedShowcase selected_showcase={selected_showcase} />
-                  <AboutSection about_block={about_block} />
-                  <ExperienceSection experience_block={experience_block} />
-                  <MovingText />
-                </SkewScrollContainer>
+                <ExperienceWrapper>
+                  <SkewScrollContainer>
+                    <SEO title="Home" />
+                    <HomeHeader header={header}/>
+                    <SelectedShowcase selected_showcase={selected_showcase} />
+                    <AboutSection about_block={about_block} />
+                    <ExperienceSection experience_block={experience_block} />
+                    <MovingText />
+                  </SkewScrollContainer>
+                  <ExperienceModalWithContext/>
+                </ExperienceWrapper>
               </Layout>
             );
           }
