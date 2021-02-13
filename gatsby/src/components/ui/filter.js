@@ -82,9 +82,8 @@ export const FilterButtons = ({filters, classes}) => {
             <ul className={`work-filters ${classes ? classes : ''}`}>
                 <li>
                     <AAButton 
-                        action={() => resetFilters(filters)} 
+                        action={() => !workItems.disabled && resetFilters(filters)} 
                         title={`All`}
-                        disabled={workItems.disabled}
                         classes={`${!hasGroupOfFilters(filters) ? 'is-active' : ''}`}
                     />
                 </li>
