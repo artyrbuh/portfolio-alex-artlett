@@ -5,6 +5,7 @@ import { ThemeDataContext } from '../../components/layout';
 import {slugify_array, as_obj} from "../../core/util/helpers";
 import { AALink } from "../../core/page-transition";
 import SkewScrollContainer from "./SkewScroll";
+import leftArrow from "../../assets/images/left-arrow.svg";
 
 export const WorkContainer = ({children, classes}) => {
     return (
@@ -156,13 +157,22 @@ export const WorkLandingPost = ({item, key}) => {
 
     return (
         <div className={`work-post-wrap`} key={key}>
-            <div className={`work-post work-post--${post_name} work-element`}>
+            <div className={`work-post work-post--${post_name} work-element triple-line-hover`}>
                 <div className="work-post--wiper"></div>
                 <AALink to={`/work/${post_name}`}>
                     <div className="work-post--featured-img" style={{backgroundImage: `url(${img}`}}></div>
                     <div className="work-post--detail">
                         <div className="name">
-                            <h3>{post_title}</h3>
+                            <h3>
+                                <span className="outer-container">
+                                    <span className="inner-container">
+                                        {post_title}
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </span>
+                                </span>
+                            </h3>
                         </div>
                         <div className="meta">
                             <ul className="meta-list">
@@ -179,6 +189,9 @@ export const WorkLandingPost = ({item, key}) => {
                                         ))}
                                     </>
                                 )}
+                                <div className="hover-arrow">
+                                    <img src={leftArrow}/>
+                                </div>
                             </ul>
                         </div>
                     </div>
