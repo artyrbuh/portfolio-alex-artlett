@@ -109,9 +109,17 @@ $btn-transition: 0.35s;
     &.is-active {
         transform: scale(1) !important;
 
+        .button--border {
+            .button--bg {
+                width: 275px;
+                height: 275px;
+            }
+        }
+
         .button--active-bg {
             > span {
                 width: 100%;
+                transition: 0 !important;
                 /*
                 &:nth-child(1) {
                     background-color: $pale-red;

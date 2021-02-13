@@ -26,15 +26,15 @@ const AAButton = ({url, target, title, classes, action, disabled}) => {
             disabled={disabled}
         >   
             <span className="button--border">
-                <span 
-                    className="button--bg"
-                    style={{left: `${bgPos.x}px`, top: `${bgPos.y}px`}}
-                ></span>
                 <span className="button--active-bg">
                     <span></span>
                     <span></span>
                     <span></span>
                 </span>
+                <span 
+                    className="button--bg"
+                    style={{left: `${bgPos.x}px`, top: `${bgPos.y}px`}}
+                ></span>
             </span>
             <span className="button--text hoverable-cta">
                 <span className="hoverable--text">{textAsSpans(title)}</span>
