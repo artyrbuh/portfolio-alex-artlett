@@ -11,7 +11,6 @@ export const ThemeDataContext = createContext(null);
 export const ActiveMenu = createContext(null);
 
 const Layout = ({ children, classes }) => {
-
   const ThemeData = useStaticQuery(graphql`
     query SiteTitleQuery {
       wordpressAcfOptions {
@@ -110,7 +109,7 @@ const Layout = ({ children, classes }) => {
         <Footer/>
       </div>
     </ThemeDataContext.Provider>
-  )
+  );
 }
 
 Layout.propTypes = {

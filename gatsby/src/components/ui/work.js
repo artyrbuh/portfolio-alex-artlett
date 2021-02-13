@@ -4,19 +4,24 @@ import {WorkPageContext} from "../../templates/work-landing";
 import { ThemeDataContext } from '../../components/layout';
 import {slugify_array, as_obj} from "../../core/util/helpers";
 import { AALink } from "../../core/page-transition";
+import SkewScrollContainer from "./SkewScroll";
 
 export const WorkContainer = ({children, classes}) => {
     return (
-        <div className={`container work-wrap ${classes ? classes : ''}`}>
-            {children && children}
-        </div>
+        <SkewScrollContainer>
+            <div className={`container work-wrap ${classes ? classes : ''}`}>
+                {children && children}
+            </div>
+        </SkewScrollContainer>
     )
 }
 
 export const WorkBarNav = ({children, classes}) => {
     return (
         <div className={`work-nav-bar ${classes ? classes : ''}`}>
-            {children && children}
+            <div>
+                {children && children}
+            </div>
         </div>
     );
 }
@@ -141,13 +146,16 @@ export const WorkList = () => {
     )
 }
 
-export const WorkLandingPost = ({item}) => {
+export const WorkLandingPost = ({item, key}) => {
     const {post_name, post_title, acf } = item;
     const {main_technology, professions, thumbnail_image} = acf;
+
+    console.log(thumbnail_image)
+
     const img = thumbnail_image !== null ? thumbnail_image.source_url : '';
 
     return (
-        <div className={`work-post-wrap`}>
+        <div className={`work-post-wrap`} key={key}>
             <div className={`work-post work-post--${post_name} work-element`}>
                 <div className="work-post--wiper"></div>
                 <AALink to={`/work/${post_name}`}>
@@ -177,5 +185,5 @@ export const WorkLandingPost = ({item}) => {
                 </AALink>
             </div>
         </div>
-    );
+    )
 }

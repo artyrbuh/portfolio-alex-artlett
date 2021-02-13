@@ -6,7 +6,6 @@ import { FilterButtons, FilterWrap } from '../components/ui/filter';
 import { as_obj } from '../core/util/helpers';
 import {TweenLite} from "gsap";
 import { PageTransition } from '../core/page-transition';
-
 export const WorkPageContext = createContext(null);
 
 const WorkPage = () => {
@@ -177,9 +176,9 @@ export const WorkPageInner = ({children}) => {
       <WorkContainer classes="work-landing">
         {children && children}
         <WorkList/>
-        <div className="work-landing--wipers">
-          <div className="work-landing--wiper" ref={el => wiperOne = el}></div>
-          <div className="work-landing--wiper" ref={el => wiperTwo = el}></div>
+          <div className="work-landing--wipers">
+            <div className="work-landing--wiper" ref={el => wiperOne = el}></div>
+            <div className="work-landing--wiper" ref={el => wiperTwo = el}></div>
         </div>
       </WorkContainer>
     </>

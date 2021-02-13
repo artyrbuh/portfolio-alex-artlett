@@ -10,6 +10,7 @@ import { textAsSpans } from "../core/util/helpers";
 import { PageTransition, AALink } from "../core/page-transition";
 import { staggerItemsSkewUpDown, staggerItemsTo } from "../core/animation";
 import { TweenLite } from "gsap";
+import SkewScrollContainer from "../components/ui/SkewScroll";
 
 const IndexPage = () => (
   <PageTransition>
@@ -74,12 +75,14 @@ const IndexPage = () => (
           
           return (
               <Layout>
-                <SEO title="Home" />
-                <HomeHeader header={header}/>
-                <SelectedShowcase selected_showcase={selected_showcase} />
-                <AboutSection about_block={about_block} />
-                <ExperienceSection experience_block={experience_block} />
-                <MovingText />
+                <SkewScrollContainer>
+                  <SEO title="Home" />
+                  <HomeHeader header={header}/>
+                  <SelectedShowcase selected_showcase={selected_showcase} />
+                  <AboutSection about_block={about_block} />
+                  <ExperienceSection experience_block={experience_block} />
+                  <MovingText />
+                </SkewScrollContainer>
               </Layout>
             );
           }

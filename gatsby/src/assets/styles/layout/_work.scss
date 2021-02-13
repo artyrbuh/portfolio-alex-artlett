@@ -1,4 +1,6 @@
 .work-nav-bar {
+    z-index: 1;
+
     h2 {
         @extend .h2;
         @include scaling-val(45, 52, 45px, 52px, "line-height");
