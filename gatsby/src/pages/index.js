@@ -100,7 +100,7 @@ export const HomeHeader = ({header}) => {
       <HeaderText />
       <div className="hero-body">
         <div className="container">
-          <h1>{header.content}</h1>
+          <h1 dangerouslySetInnerHTML={{__html: header.content}}/>
         </div>
       </div>
     </section>

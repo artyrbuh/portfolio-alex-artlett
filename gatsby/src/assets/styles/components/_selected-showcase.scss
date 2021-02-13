@@ -35,6 +35,10 @@
     width: 100%;
     left: 10vw;
 
+    @include mobile {
+        left: 0;
+    }
+
     .columns {
         overflow-x: scroll;
         white-space: nowrap;

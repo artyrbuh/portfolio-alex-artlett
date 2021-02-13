@@ -11,14 +11,65 @@
 
     h1 {
         @include scaling-val(70, 100, 70px, 100px, "margin-bottom");
-        @extend .h1-jumbo;
+        //@extend .h1-jumbo;
 
-        max-width: 990px;
+        //max-width: 990px;
+        
+        font-size: 44px;
+        line-height: 48px;
+
+        @include tablet {
+            > span {
+                display: block;
+                overflow: hidden;
+                
+                > span {
+                    //
+                }
+            }
+        }
+
+        @include tablet {
+            font-size: 59px;
+            line-height: 60px;
+        }
+
+        @include desktop {
+            font-size: 80px;
+            line-height: 86px;
+        }
+
+        @include widescreen {
+            font-size: 96px;
+            line-height: 96px;
+        }
     }
 
     .home-header-text {
         position: absolute;
         top: 0;
         right: 0;
+    }
+
+    @include mobile {
+        .hero-body {
+            padding-left: 0;
+        }
+        
+        .container {
+            padding-left: 10px;
+            padding-right: 20px;
+        }
+        
+        .home-header-text {
+            position: absolute;
+            top: -85px;
+            right: 0;
+            width: 100%;
+        }
+
+        &.is-fullheight {
+            min-height: 50vh;
+        }
     }
 }
