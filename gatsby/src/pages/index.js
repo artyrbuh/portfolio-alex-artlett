@@ -56,6 +56,7 @@ const IndexPage = () => (
                     experience_block {
                       experience_list {
                         company
+                        contract
                         position
                         description
                         end_year
@@ -75,9 +76,9 @@ const IndexPage = () => (
           
           return (
               <Layout>
+                <SEO title="Home" />
                 <ExperienceWrapper>
                   <SkewScrollContainer>
-                    <SEO title="Home" />
                     <HomeHeader header={header}/>
                     <SelectedShowcase selected_showcase={selected_showcase} />
                     <AboutSection about_block={about_block} />

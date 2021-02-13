@@ -23,9 +23,8 @@ const ExperienceList = ({experience_list}) => {
     let ul, hover = useRef(null);
     const [prevY, setPrevY] = useState(0);
     const [showHover, setShowHover] = useState(false);
-    //const [modalLaunched, setModalLaunched] = useState(false);
-    //const [modalContent, setModalContent] = useState("");
-    const {modalLaunched, setModalLaunched, modalContent, setModalContent, launchModal} = useContext(ExperienceContext);
+
+    const {launchModal} = useContext(ExperienceContext);
 
     
     const totalYears = (start_year, end_year) => {
@@ -40,13 +39,6 @@ const ExperienceList = ({experience_list}) => {
 
         return (total > 0) ? total : (total + 1);
     };
-
-    /*
-    const launchModal = (el) => {
-        setModalLaunched(true);
-        setModalContent(el);
-    };
-    */
 
     /*
      * Allow hover to follow direction of mouse
@@ -88,7 +80,12 @@ const ExperienceList = ({experience_list}) => {
                                 onMouseEnter={(e) => liEnter(e, i)}
                             >
                                 <span>{el.company}</span>
-                                <span>{totalYears(el.start_year, el.end_year)} years</span>
+                                {el.contract ? (
+                                    <span>Contract</span>
+                                ) : (
+                                    <span>{totalYears(el.start_year, el.end_year)} year{totalYears(el.start_year, el.end_year) > 1 ? `s` : ''}</span>
+                                )}
+                                
                             </li>
                         );
                     })}
@@ -111,7 +108,7 @@ const ExperienceList = ({experience_list}) => {
 };
 
 export const ExperienceModalWithContext = () => {
-    const {modalLaunched, setModalLaunched, modalContent, setModalContent, launchModal} = useContext(ExperienceContext);
+    const {modalLaunched, setModalLaunched, modalContent} = useContext(ExperienceContext);
     return (
         <ExperienceModal 
             isActive={modalLaunched}
