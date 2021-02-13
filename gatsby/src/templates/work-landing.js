@@ -139,8 +139,8 @@ export const WorkPageInner = ({children}) => {
 
       TweenLite.to([wiperTwo, wiperOne], {
         y: `100%`,
-        delay: 0.9,
-        duration: 1.2, 
+        delay: 1,
+        duration: .8, 
         skewY: -6,
         stagger: {
           amount: 0.2
@@ -151,7 +151,7 @@ export const WorkPageInner = ({children}) => {
         y: `-100%`,
         css: {display: 'none'},
         duration: 0,
-        delay: 1,
+        delay: 2.5,
         skewY: 0,
       });
     }
@@ -176,11 +176,11 @@ export const WorkPageInner = ({children}) => {
       <WorkContainer classes="work-landing">
         {children && children}
         <WorkList/>
-          <div className="work-landing--wipers">
+      </WorkContainer>
+      <div className="work-landing--wipers">
             <div className="work-landing--wiper" ref={el => wiperOne = el}></div>
             <div className="work-landing--wiper" ref={el => wiperTwo = el}></div>
         </div>
-      </WorkContainer>
     </>
   )
 }
