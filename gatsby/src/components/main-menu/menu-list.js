@@ -35,7 +35,7 @@ const MenuList = ({props}) => {
                 setDelay(2.2);
             }
 
-            staggerItemsSkewUpDown(getChildrenToAnimate(), 0);
+            staggerItemsSkewUpDown(getChildrenToAnimate(), 0, 170, 0.3, .45);
         }
     }, [activeMenu]);
 
