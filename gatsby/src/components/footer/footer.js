@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {ThemeDataContext} from '../layout';
+import SkewScrollContainer from '../ui/SkewScroll';
 import FooterMenu from './footer-menu';
 
 const Footer = () => {
@@ -8,18 +9,20 @@ const Footer = () => {
   const copyright = themeData.wordpressAcfOptions.options.copyright;
 
   return (
-    <footer>
-    <div className="container">
-      <div className="columns">
-        <div className="column column--copyright">
-          <p>{copyright}</p>
+    <SkewScrollContainer>
+      <footer>
+        <div className="container">
+          <div className="columns">
+            <div className="column column--copyright">
+              <p>{copyright}</p>
+            </div>
+            <div className="column column--menu">
+              <FooterMenu menu={menu}/>
+            </div>
+          </div>
         </div>
-        <div className="column column--menu">
-          <FooterMenu menu={menu}/>
-        </div>
-      </div>
-    </div>
-  </footer>
+      </footer>
+    </SkewScrollContainer>
   );
 }
 
