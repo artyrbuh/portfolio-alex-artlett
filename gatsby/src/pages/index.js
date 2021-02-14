@@ -121,7 +121,7 @@ export const HomeHeader = ({header}) => {
 
       TweenLite.from(getH1Pieces(), {
         y: `190%`,
-        delay: 1.15,
+        delay: 1.45,
         skewY: 7,
         duration: .65,
         stagger: {
@@ -137,7 +137,7 @@ export const HomeHeader = ({header}) => {
       TweenLite.from(hugeText, {
         delay: 1,
         skewY: 7,
-        duration: .45,
+        duration: .65,
         y: `-400px`
       })
 
