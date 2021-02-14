@@ -64,3 +64,22 @@ export const distance = (x1,y1,x2,y2) => {
 export const textAsSpans = (text) => {
   return text.split('').map(el => <span>{el}</span>);
 }
+
+export const shuffle = (array) => {
+  let currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
