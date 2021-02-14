@@ -2,6 +2,7 @@
     @include scaling-val(46, 91, 46px, 91px, "padding-bottom");
 
     position: relative;
+    opacity: 0;
 
     li {
         margin-right: 5px;

@@ -1,6 +1,8 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState, useRef} from "react";
 import {WorkPageContext} from '../../templates/work-landing';
 import AAButton from "./button";
+import {TweenLite} from "gsap";
+import { staggerItemsSkewUpDown } from "../../core/animation";
 
 export const FilterWrap = ({children}) => {
     const [hideFilters, setHideFilters] = useState(true);
@@ -74,12 +76,29 @@ export const FilterWrap = ({children}) => {
     );
 }
 
-export const FilterButtons = ({filters, classes}) => {
+export const FilterButtons = ({filters, classes, animateOnLoad = false}) => {
     const { isFilterActive, toggleFilters, resetFilters, hasGroupOfFilters, workItems } = useContext(WorkPageContext);
+    
+    let buttons = useRef(null);
+    const [initialLoad, setInitialLoad] = useState(true);
+
+    useEffect(() => {
+        if(initialLoad) {
+            TweenLite.to(buttons, {
+                duration: 0,
+                css: {opacity: 1}
+            });
+
+            if(animateOnLoad) {
+                staggerItemsSkewUpDown(buttons.children, .15, 400, 0.4, 1.25, 3, 0);
+            }
+            setInitialLoad(false);
+        }
+    }, [])
 
     if(filters.length) {
         return (
-            <ul className={`work-filters ${classes ? classes : ''}`}>
+            <ul className={`work-filters ${classes ? classes : ''}`} ref={el => buttons = el}>
                 <li>
                     <AAButton 
                         action={() => !workItems.disabled && resetFilters(filters)} 

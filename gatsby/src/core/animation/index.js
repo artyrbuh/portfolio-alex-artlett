@@ -42,12 +42,13 @@ export const staggerWidthsIn = (refs, delay = 0, stagger = 0.2) => {
     })
 }
 
-export const staggerItemsSkewUpDown = (refs, delay = 0, y = 170, stagger = 0.3, duration = 1.2) => {
+export const staggerItemsSkewUpDown = (refs, delay = 0, y = 170, stagger = 0.3, duration = 1.2, skewY = 9, opacity = 1) => {
     TweenLite.from(refs, {
         delay: delay,
         duration: duration,
         y: y,
-        skewY: 9,
+        skewY: skewY,
+        opacity: opacity,
         ease: 'power3.inOut',
         stagger: {
             amount: stagger

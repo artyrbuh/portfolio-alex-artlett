@@ -41,7 +41,7 @@ export const PageTransition = ({ children, delay }) => {
 
         TweenLite.to([wiperTwo, wiperOne], {
             skewX: -3,
-            duration: .87,
+            duration: .7,
             delay: 0,
             x: `100%`,
             ease: 'power3.inOut',
@@ -69,7 +69,7 @@ export const PageTransition = ({ children, delay }) => {
 
         TweenLite.to([wiperOne, wiperTwo], {
             skewX: 0,
-            duration: .87,
+            duration: .7,
             delay: 0.1,
             x: `0`,
             ease: 'power3.inOut',

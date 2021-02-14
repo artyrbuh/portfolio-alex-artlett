@@ -2,7 +2,7 @@ import React, {useContext, useEffect} from "react";
 import Layout from "../layout";
 import {WorkPageContext} from "../../templates/work-landing";
 import { ThemeDataContext } from '../../components/layout';
-import {slugify_array, as_obj} from "../../core/util/helpers";
+import {slugify_array, as_obj, shuffle} from "../../core/util/helpers";
 import { AALink } from "../../core/page-transition";
 import SkewScrollContainer from "./SkewScroll";
 import leftArrow from "../../assets/images/left-arrow.svg";
@@ -124,7 +124,8 @@ export const WorkList = () => {
                 ...workItems,
                 disabled: false,
                 count: count,
-                items: items,
+                //items: shuffle(items), 
+                items: items, 
                 inTransit: false,
             });
         }, 1100);

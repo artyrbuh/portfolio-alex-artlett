@@ -6,6 +6,8 @@ import { FilterButtons, FilterWrap } from '../components/ui/filter';
 import { as_obj } from '../core/util/helpers';
 import {TweenLite} from "gsap";
 import { PageTransition } from '../core/page-transition';
+import SkewScrollContainer from '../components/ui/SkewScroll';
+import { staggerItemsSkewUpDown } from '../core/animation';
 export const WorkPageContext = createContext(null);
 
 const WorkPage = () => {
@@ -105,13 +107,10 @@ export const WorkPageInner = ({children}) => {
   const themeData = useContext(ThemeDataContext);
 
   let { professions, technologies } = themeData.wordpressAcfOptions.options;
-
   technologies = technologies.map((a) => as_obj(a.technology));
   professions = professions.map((a) => as_obj(a.profession));
-
   let { filterList, workItems } = useContext(WorkPageContext);
-
-  let wiperOne, wiperTwo = useRef();
+  let wiperOne, wiperTwo, workList = useRef();
   
   useEffect(() => {
     if(workItems.initialClick === true) {
@@ -157,6 +156,26 @@ export const WorkPageInner = ({children}) => {
     }
   }, [filterList]);
 
+  useEffect(() => {
+    console.log(workList)
+  }, []);
+
+  let workLandingRef = useRef(null);
+  const [initialLoad, setInitialLoad] = useState(true);
+
+  useEffect(() => {
+    if(workItems.items.length > 0 && initialLoad) {
+      TweenLite.to(workLandingRef, {
+          duration: 0,
+          css: {opacity: 1}
+      });
+
+      staggerItemsSkewUpDown(workLandingRef.children, 0, 800, 1.25, 1.25, 3, 0);
+      
+      setInitialLoad(false);
+    }
+  }, [workItems.items.length]);
+
   return (
     <>
       <WorkBarNav>
@@ -169,18 +188,21 @@ export const WorkPageInner = ({children}) => {
         </h2>
 
         <FilterWrap>
-          <FilterButtons filters={technologies} />
-          <FilterButtons filters={professions} />
+            <FilterButtons filters={technologies} animateOnLoad={true} />
+            <FilterButtons filters={professions} animateOnLoad={true} />
         </FilterWrap>
       </WorkBarNav>
-      <WorkContainer classes="work-landing">
-        {children && children}
-        <WorkList/>
-      </WorkContainer>
-      <div className="work-landing--wipers">
-            <div className="work-landing--wiper" ref={el => wiperOne = el}></div>
-            <div className="work-landing--wiper" ref={el => wiperTwo = el}></div>
+
+      <SkewScrollContainer>
+        <div className={`container work-wrap work-landing`} ref={el => workLandingRef = el}>
+          <WorkList animateOnLoad={true} ref={el => workList = el}/>
         </div>
+      </SkewScrollContainer>
+
+      <div className="work-landing--wipers">
+        <div className="work-landing--wiper" ref={el => wiperOne = el}></div>
+        <div className="work-landing--wiper" ref={el => wiperTwo = el}></div>
+      </div>
     </>
   )
 }
