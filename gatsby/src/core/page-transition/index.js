@@ -41,7 +41,7 @@ export const PageTransition = ({ children, delay }) => {
 
         TweenLite.to([wiperTwo, wiperOne], {
             skewX: -3,
-            duration: .7,
+            duration: .9,
             delay: 0,
             x: `100%`,
             ease: 'power3.inOut',
@@ -52,7 +52,7 @@ export const PageTransition = ({ children, delay }) => {
 
         TweenLite.to([wiperOne, wiperTwo], {
             duration: 0,
-            delay: .5,
+            delay: .95,
             css: {display: "none"}
         });
     }
@@ -69,7 +69,7 @@ export const PageTransition = ({ children, delay }) => {
 
         TweenLite.to([wiperOne, wiperTwo], {
             skewX: 0,
-            duration: .7,
+            duration: .9,
             delay: 0.1,
             x: `0`,
             ease: 'power3.inOut',
@@ -93,7 +93,7 @@ export const PageTransition = ({ children, delay }) => {
 
 export const AALink = ({to, delay, children, className}) => {
     const {state, setState} = useContext(PageTransitionContext);
-    const time = delay !== undefined ? delay * 1000 : 700;
+    const time = delay !== undefined ? delay * 1000 : 950;
 
     const onClick = (e) => {
         e.preventDefault();

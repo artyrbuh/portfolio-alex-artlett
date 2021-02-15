@@ -90,7 +90,7 @@ export const FilterButtons = ({filters, classes, animateOnLoad = false}) => {
             });
 
             if(animateOnLoad) {
-                staggerItemsSkewUpDown(buttons.children, .15, 400, 0.4, 1.25, 3, 0);
+                staggerItemsSkewUpDown(buttons.children, .15, 400, 0.4, 1.25, 4, 0);
             }
             setInitialLoad(false);
         }

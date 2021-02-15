@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Layout from "../layout";
 import {WorkPageContext} from "../../templates/work-landing";
 import { ThemeDataContext } from '../../components/layout';
@@ -88,7 +88,13 @@ export const WorkList = () => {
     //abstracted functions for checking if post contains active tech or active professions filters
     const postHasSelectedTechFilters = (filters) => postHasSelectedFiltersOfType("tech", filters);
     const postHasSelectedProfessionFilters = (filters) => postHasSelectedFiltersOfType("professions", filters);
+    const [initialLoad, setInitialLoad] = useState(true);
 
+    useEffect(() => {
+        if(initialLoad) {
+            setInitialLoad(false);
+        }
+    }, [])
 
     //listen to changes for filters
     useEffect(() => {
@@ -98,8 +104,6 @@ export const WorkList = () => {
             disabled: true,
             inTransit: true,
         });
-
-        //console.log(workItemsRef.current.children[0].children)
 
         setTimeout(() => {
             let count = 0;
@@ -128,9 +132,7 @@ export const WorkList = () => {
                 items: items, 
                 inTransit: false,
             });
-        }, 1100);
-
-        
+        }, initialLoad ? 150 : 1100);
     }, [filterList]);
 
     return (

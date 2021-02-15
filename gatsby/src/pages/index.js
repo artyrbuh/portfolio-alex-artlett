@@ -8,7 +8,7 @@ import ContentBlock from "../components/ui/content-block";
 import ExperienceList, { ExperienceWrapper, ExperienceModalWithContext } from "../components/ui/experience-list";
 import { textAsSpans } from "../core/util/helpers";
 import { PageTransition, AALink } from "../core/page-transition";
-import { staggerItemsSkewUpDown, staggerItemsTo } from "../core/animation";
+import { fadeUpFrom, staggerItemsSkewUpDown, staggerItemsTo } from "../core/animation";
 import { TweenLite } from "gsap";
 import SkewScrollContainer from "../components/ui/SkewScroll";
 
@@ -118,11 +118,11 @@ export const HomeHeader = ({header}) => {
 
       TweenLite.from(getH1Pieces(), {
         y: `190%`,
-        delay: 1.45,
+        delay: 1.35,
         skewY: 7,
-        duration: .65,
+        duration: .5,
         stagger: {
-          amount: .35
+          amount: .3
         }
       });
 
@@ -132,9 +132,9 @@ export const HomeHeader = ({header}) => {
       });
 
       TweenLite.from(hugeText, {
-        delay: 1,
+        delay: .95,
         skewY: 7,
-        duration: .65,
+        duration: .6,
         y: `-400px`
       })
 
@@ -174,43 +174,54 @@ export const HeaderText = () => (
   </svg>
 );
 
-export const SelectedShowcase = ({selected_showcase}) => (
+export const SelectedShowcase = ({selected_showcase}) => {
+  const [initialLoad, setInitialLoad] = useState(true);
+  let showcase = useRef(null);
+
+  useEffect(() => {
+    if(initialLoad) {
+      fadeUpFrom(showcase, 2.25);
+      setInitialLoad(false);      
+    }
+  }, []);
   
-  <>
-    {selected_showcase.showcase.length ? (
-      <>
-        <div className="container selected-showcase--heading-wrap">
-          <div className="columns ">
-            <div className="column">
-              <p>{selected_showcase.heading}</p>
-            </div>
-            <div className="column has-text-right">
-              <AALink to={`/work`} className="hoverable-cta--wrap">
-                <span className="hoverable-cta">
-                  <span className="hoverable--text">{textAsSpans("View All")}</span>
-                  <span className="hoverable--text">{textAsSpans("View All")}</span>
-                </span>
-              </AALink>
+  return (
+    <div ref={el => showcase = el}>
+      {selected_showcase.showcase.length ? (
+        <>
+          <div className="container selected-showcase--heading-wrap">
+            <div className="columns ">
+              <div className="column">
+                <p>{selected_showcase.heading}</p>
+              </div>
+              <div className="column has-text-right">
+                <AALink to={`/work`} className="hoverable-cta--wrap">
+                  <span className="hoverable-cta">
+                    <span className="hoverable--text">{textAsSpans("View All")}</span>
+                    <span className="hoverable--text">{textAsSpans("View All")}</span>
+                  </span>
+                </AALink>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="container selected-showcase--wrap">
-          <div className="columns">
-            {selected_showcase.showcase.map((el, i) => <ShowcaseItem key={i} item={el.selected_work}/>)}
-            <div className="column is-half selected-showcase--cta">
-              <ViewAllWorkCTA/>
-            </div>
-            <div className="column is-quarter "></div>
-          </div>        
-        </div>
-      </>
-    ) : (
-      <>
-        Add Items
-      </>
-    )}
-  </>
-);
+          <div className="container selected-showcase--wrap">
+            <div className="columns">
+              {selected_showcase.showcase.map((el, i) => <ShowcaseItem key={i} item={el.selected_work}/>)}
+              <div className="column is-half selected-showcase--cta">
+                <ViewAllWorkCTA/>
+              </div>
+              <div className="column is-quarter "></div>
+            </div>        
+          </div>
+        </>
+      ) : (
+        <>
+          Add Items
+        </>
+      )}
+    </div>
+  );
+};
 
 export const ShowcaseItem = ({item}) => {
   const {post_name} = item;

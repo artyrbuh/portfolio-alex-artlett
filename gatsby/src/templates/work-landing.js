@@ -105,12 +105,13 @@ const WorkPage = () => {
 
 export const WorkPageInner = ({children}) => {
   const themeData = useContext(ThemeDataContext);
-
   let { professions, technologies } = themeData.wordpressAcfOptions.options;
   technologies = technologies.map((a) => as_obj(a.technology));
   professions = professions.map((a) => as_obj(a.profession));
   let { filterList, workItems } = useContext(WorkPageContext);
   let wiperOne, wiperTwo, workList = useRef();
+  let workLandingRef = useRef(null);
+  const [initialLoad, setInitialLoad] = useState(true);
   
   useEffect(() => {
     if(workItems.initialClick === true) {
@@ -157,20 +158,13 @@ export const WorkPageInner = ({children}) => {
   }, [filterList]);
 
   useEffect(() => {
-    console.log(workList)
-  }, []);
-
-  let workLandingRef = useRef(null);
-  const [initialLoad, setInitialLoad] = useState(true);
-
-  useEffect(() => {
     if(workItems.items.length > 0 && initialLoad) {
       TweenLite.to(workLandingRef, {
           duration: 0,
           css: {opacity: 1}
       });
 
-      staggerItemsSkewUpDown(workLandingRef.children, 0, 800, 1.25, 1.25, 3, 0);
+      staggerItemsSkewUpDown(workLandingRef.children, 0, 800, 1.25, 1.25, 4, 0);
       
       setInitialLoad(false);
     }
