@@ -140,7 +140,7 @@ export const WorkList = () => {
             {workItems.items.length ? (
                 <>
                     {workItems.items.map((el, i) => <WorkLandingPost item={el} key={i}/>)}   
-                    <div className={`work-post-wrap`}></div> 
+                    <div className={`work-post-wrap`} style={{height: 0}}></div> 
                 </>
             ) : (
                 <>

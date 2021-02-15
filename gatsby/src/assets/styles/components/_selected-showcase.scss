@@ -316,7 +316,7 @@
                 &:hover {
                     .showcase-cta {
                         .circle {
-                            transform: scale(4.5);
+                            transform: scale(3);
                         }
 
                         .showcase-cta__arrow {
@@ -328,6 +328,26 @@
                         top: 16px;
                         left: 16px;
                         opacity: 0.1;
+                    }
+                }
+
+                @include widescreen {
+                    &:hover {
+                        .showcase-cta {
+                            .circle {
+                                transform: scale(4.5);
+                            }
+                        }
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    &:hover {
+                        .showcase-cta {
+                            .circle {
+                                display: none;
+                            }
+                        }
                     }
                 }
             }

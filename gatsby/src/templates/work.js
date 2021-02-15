@@ -27,7 +27,7 @@ export default ({pageContext}) => {
                 <VideoWrapper>
                     <WorkLayout classes={`work-single work-single--${slug}`}>
                         <WorkBarNav>
-                            <AALink to={`/work`} className="back-cta">
+                            <AALink to={`/work`} className="back-cta triple-line-hover">
                                 <span className="arrow-wrap">
                                     <svg 
                                         width="32" 
@@ -48,7 +48,7 @@ export default ({pageContext}) => {
                                         <path fillRule="evenodd" clipRule="evenodd" d="M5 16C5 15.7348 5.10536 15.4804 5.29289 15.2929C5.48043 15.1054 5.73478 15 6 15H27C27.2652 15 27.5196 15.1054 27.7071 15.2929C27.8946 15.4804 28 15.7348 28 16C28 16.2652 27.8946 16.5196 27.7071 16.7071C27.5196 16.8946 27.2652 17 27 17H6C5.73478 17 5.48043 16.8946 5.29289 16.7071C5.10536 16.5196 5 16.2652 5 16Z" fill="black"/>
                                     </svg>
                                 </span>
-                                <h4 className="triple-line-hover">
+                                <h4>
                                     <span className="outer-container">
                                         <span className="inner-container">
                                             Back to my Selected work
