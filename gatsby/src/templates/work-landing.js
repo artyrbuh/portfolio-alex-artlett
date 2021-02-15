@@ -8,6 +8,7 @@ import {TweenLite} from "gsap";
 import { PageTransition } from '../core/page-transition';
 import SkewScrollContainer from '../components/ui/SkewScroll';
 import { staggerItemsSkewUpDown } from '../core/animation';
+import SEO from '../components/seo';
 export const WorkPageContext = createContext(null);
 
 const WorkPage = () => {
@@ -56,6 +57,7 @@ const WorkPage = () => {
     return (
       <PageTransition>
         <WorkLayout>
+            <SEO title="Work"/>
             <StaticQuery query={graphql`
                 {
                     wordpressPage(slug: {eq: "work"}) {

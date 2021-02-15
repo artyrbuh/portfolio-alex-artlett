@@ -11,6 +11,7 @@ import leftArrow from '../assets/images/left-arrow.svg'
 import { AALink, PageTransition } from '../core/page-transition';
 import {TweenLite} from "gsap";
 import { fadeUpFrom } from '../core/animation';
+import SEO from '../components/seo';
 
 const WorkSingleContext = createContext(null);
 
@@ -22,6 +23,7 @@ export default ({pageContext}) => {
     return (
         <PageTransition>
             <WorkSingleContext.Provider value={{featured_media, slug, title, layouts_work, main_technology, professions, technologies, project_year, previous, next, project_website}}>
+                <SEO title={title}/>
                 <VideoWrapper>
                     <WorkLayout classes={`work-single work-single--${slug}`}>
                         <WorkBarNav>
