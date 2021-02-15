@@ -30,7 +30,45 @@
     }
 
     .back-cta {
+        .arrow-wrap {
+            height: 32px;
+            width: 32px;
+            overflow: hidden;
+            position: relative;
+            display: inline-block;
+
+            svg {
+                position: absolute;
+                margin: auto;
+                transition: 0.35s;
+
+                &:first-child {
+                    left: 0;
+                }
+
+                &:last-child {
+                    left: 100%;
+                }
+            }
+        }
+
+        &:hover {
+            svg {
+                &:first-child {
+                    left: -100%;
+                }
+
+                &:last-child {
+                    left: 0;
+                }
+            }
+        }
+    
         @include mobile {
+            .arrow-wrap {
+                margin-right: 10px;
+            }
+
             svg,
             img,
             h4 {
@@ -40,7 +78,7 @@
             svg,
             img {
                 position: relative;
-                top: 7px;
+                top: -3px;
                 margin-right: 10px;
             }
 
