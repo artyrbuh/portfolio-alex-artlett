@@ -74,7 +74,6 @@ export const staggerInFromLeft = (refs, delay = 0, stagger = 0.3) => {
     TweenLite.to(refs, {
         duration: 0,
         x: `-100%`,
-        //css: {display: 'block'}
     });
 
 
@@ -111,5 +110,15 @@ export const staggerOutToRight = (refs, delay = 0, stagger = 0.3) => {
         x: `-100%`,
         ///css: {display: 'none'},
         duration: 0
+    });
+}
+
+export const fadeUpFrom = (ref, delay = 0, y = 50, duration = .35) => {
+    TweenLite.from(ref, {
+        opacity: 0,
+        y: y,
+        duration: duration,
+        delay: delay,
+        skewY: 3
     });
 }

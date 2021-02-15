@@ -9,6 +9,8 @@ import Close from '../components/ui/close';
 import ReactPlayer from 'react-player';
 import leftArrow from '../assets/images/left-arrow.svg'
 import { AALink, PageTransition } from '../core/page-transition';
+import {TweenLite} from "gsap";
+import { fadeUpFrom } from '../core/animation';
 
 const WorkSingleContext = createContext(null);
 
@@ -51,30 +53,87 @@ export default ({pageContext}) => {
 
 const WorkHeader = () =>  {
     const { title, featured_media, project_year, professions, technologies, project_website } = useContext(WorkSingleContext);
-    const containerRef = useRef();
-    const elRef = useRef();
+    let containerRef, featuredImageWrap, wiper, featuredImage, projectMeta, h1 = useRef();
+    const [initialLoad, setInitialLoad] = useState(true);
 
     useEffect(() => {
-        fitty(elRef.current, {
+        fitty(h1.current, {
             multiLine: false,
             minSize: 10
         });
     }, []);
 
+    useEffect(() => {
+        if(initialLoad) {
+            TweenLite.to(containerRef, {
+                delay: 0.5,
+                duration: 0,
+                css: {opacity: 1}
+            });
+
+            TweenLite.from(h1.current, {
+                delay: .9,
+                css: {display: 'block'}
+            });
+
+            /*
+            TweenLite.from(featuredImageWrap, {
+                x: `-130%`,
+                duration: .8,
+                delay: 0.8,
+                //skewX: -4,
+                opacity: 0
+            });
+            */
+
+            TweenLite.to(wiper, {
+                x: `100%`,
+                duration: .8,
+                delay: 0.8,
+            });
+
+            TweenLite.from(featuredImage, {
+                scale: 1.5,
+                duration: 1,
+                delay: 0.8,
+            });
+        
+        
+            TweenLite.from(h1.current, {
+                delay: 0.8,
+                skewY: 7,
+                duration: .65,
+                y: `-400px`
+            });
+
+            fadeUpFrom(projectMeta, 1.5);
+
+            setInitialLoad(false);
+        }
+    }, []);
+
     return (
-        <div className="work-single--header" ref={containerRef}>
+        <div className="work-single--header" ref={el => containerRef = el}>
             <div className="featured-image-wrap">
                 <h1 
-                    ref={elRef}
+                    ref={h1}
                     dangerouslySetInnerHTML={{__html: title}}
                 />
                 {featured_media ? (
-                    <img src={featured_media.source_url} className="featured-image"/>
+                    <div className="featured-image--wrap" ref={el => featuredImageWrap = el}>
+                        <div className="wiper" ref={el=> wiper = el}></div>
+                        <img 
+                            src={featured_media.source_url} 
+                            className="featured-image"
+                            ref={el => featuredImage = el}
+                        />
+                    </div>
                 ) : (
                     <div className="featured-image"></div>
                 )}
                 
             </div>
+            <div ref={el => projectMeta = el}>
                 <a href={project_website} target="_blank">
                     <h4>
                         <span className="">
@@ -94,7 +153,7 @@ const WorkHeader = () =>  {
                     <br/>
                     <InlineList list={technologies}/> 
                 </p>
-            
+            </div>
         </div>
     )
 };
@@ -114,9 +173,21 @@ const InlineList = ({list}) => (
 const WorkLayouts = () => {
     const { layouts_work } = useContext(WorkSingleContext);
 
+    const [initialLoad, setInitialLoad] = useState(true);
+    let workLayoutsBlock = useRef(null);
+
+    useEffect(() => {
+        if(initialLoad) {
+            if(layouts_work && layouts_work.length) {
+                fadeUpFrom(workLayoutsBlock, 1.75);
+            }
+            setInitialLoad(false);
+        }
+    }, []);
+
     if(layouts_work && layouts_work.length) {
         return (
-            <>
+            <div ref={el => workLayoutsBlock = el}>
                 {layouts_work.map((el, i) => {
                     switch(true) {
                         case el.id.includes("content_block"):
@@ -129,7 +200,7 @@ const WorkLayouts = () => {
                             return <WorkVideoBlock data={el} i={i} key={i}/>
                     }
                 })}    
-            </>
+            </div>
         );
         
     } else {
@@ -165,12 +236,12 @@ const WorkContentBlock = ({data, i}) => {
 }
 
 const WorkImagesBlock = ({data, i}) => {
-    
     /*
      * - Caption: .alignment .content
      * - Images: .image.source_url
      */
     const {caption, images, include_available_for_hire_cta} = data;
+
     
     if(images.length) {
         return (

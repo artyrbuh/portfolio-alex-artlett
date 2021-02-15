@@ -108,9 +108,6 @@ export const HomeHeader = ({header}) => {
   }
 
   useEffect(() => {
-    //effect
-    console.log(hugeText)
-    
     if(initialLoad) {
       //set visible
       TweenLite.to(hero, {
@@ -142,11 +139,6 @@ export const HomeHeader = ({header}) => {
       })
 
       setInitialLoad(false);      
-    }
-
-
-    return () => {
-      //cleanup
     }
   }, []);
 
