@@ -139,7 +139,8 @@ export const WorkList = () => {
         <>
             {workItems.items.length ? (
                 <>
-                    {workItems.items.map((el, i) => <WorkLandingPost item={el} key={i}/>)}    
+                    {workItems.items.map((el, i) => <WorkLandingPost item={el} key={i}/>)}   
+                    <div className={`work-post-wrap`}></div> 
                 </>
             ) : (
                 <>
