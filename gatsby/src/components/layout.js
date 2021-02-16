@@ -6,6 +6,7 @@ import "./layout.css"
 import Nav from "../components/nav/nav";
 import Contact from "../components/contact/contact";
 import Cursor from "./ui/cursor"
+import { isMobileOrTable } from "../core/util/helpers"
 
 export const ThemeDataContext = createContext(null);
 export const ActiveMenu = createContext(null);
@@ -99,7 +100,9 @@ const Layout = ({ children, classes }) => {
 
   return (
     <ThemeDataContext.Provider value={themeData}>
-      <Cursor />
+      {!isMobileOrTable() && (
+        <Cursor />
+      )}
       <ActiveMenu.Provider value={{toggleMainMenu, toggleContactMenu, isMenu, activeMenu, mainMenuActive, setMainMenuActive, contactMenuActive, setContactMenuActive, disabled, initialClick}}>
         <Nav/>
         <Contact/>

@@ -83,3 +83,11 @@ export const shuffle = (array) => {
 
   return array;
 }
+
+export const isMobileOrTable = () => {
+  if(typeof navigator !== "undefined") {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  } else {
+    return false;
+  }
+}
