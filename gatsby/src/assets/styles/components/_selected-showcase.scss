@@ -1,6 +1,4 @@
 .selected-showcase--heading-wrap {
-    @include scaling-val(30, 42, 30px, 42px, "margin-bottom");
-
     .columns {
         @extend .is-mobile;
 
@@ -26,7 +24,7 @@
 }
 
 .selected-showcase--wrap {
-    @include scaling-val(100, 147, 100px, 147px, "margin-bottom");
+    @include scaling-val(30, 72, 30px, 72px, "margin-bottom");
 
     position: relative;
     overflow: visible;
@@ -40,6 +38,9 @@
     }
 
     .columns {
+        @include scaling-val(30, 42, 30px, 42px, "padding-top");
+        @include scaling-val(60, 72, 60px, 72px, "padding-bottom");
+
         overflow-x: scroll;
         white-space: nowrap;
         align-items: center;
@@ -76,7 +77,7 @@
                     background-repeat: no-repeat;
                     transform: scale(1);
                     transition: all .5s ease-in-out;
-                    transition-delay: 0.45s;
+                    transition-delay: 0.3s;
                 }
 
                 .thumbnail-text-wrap {
