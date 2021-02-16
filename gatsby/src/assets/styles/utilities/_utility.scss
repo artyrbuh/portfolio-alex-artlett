@@ -83,3 +83,29 @@ $colors: (
         }
     }
 }
+
+%text-as-spans-hover {
+    span {
+        $delay: 0.05;
+        opacity: 1;
+        color: #fff;
+
+        @for $i from 1 through 10 {
+            &:nth-child(#{$i}) {
+                transition: color 0.2s;
+                transition-delay: #{$delay}s;
+            }
+
+            $delay : $delay + 0.05;
+        }
+    }
+
+    &:hover {
+        transform: translate(0px, 0px) skew(4deg,0) !important;
+        transition: 0.35s;
+
+        span {
+            color: $red;
+        }
+    }
+}

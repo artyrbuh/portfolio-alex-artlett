@@ -24,6 +24,21 @@
         transition-delay: 0.5s;
     }
 
+    &::before {
+        position: absolute;
+        content: attr(data-content);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: midnightblue;
+        text-decoration: underline;
+        white-space: nowrap;
+        overflow: hidden;
+        transition: width 275ms ease;
+    }
+
+
     &:hover,
     &.hover {
         //color: rgba($red, 0);
@@ -31,7 +46,7 @@
 
         .flourish-one,
         .flourish-two {
-            width: 100%;
+            //width: 100%;
         }
     }
 }

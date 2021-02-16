@@ -92,4 +92,13 @@
         pointer-events: none;
         cursor: unset;
     }
+
+    .burger {
+        transition: transform .35s;
+        transform: scale(1);
+    
+        &:hover {
+            transform: scale(0.9);
+        }
+    }
 }

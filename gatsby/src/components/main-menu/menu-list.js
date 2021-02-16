@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState, useRef} from 'react';
 import {ActiveMenu} from '../layout';
 import { staggerItemsSkewUpDown } from '../../core/animation';
 import { AALink } from '../../core/page-transition';
+import { textAsSpans } from '../../core/util/helpers';
 
 
 const MenuList = ({props}) => {
@@ -51,8 +52,7 @@ const MenuList = ({props}) => {
                                     to={`${el.object_slug === 'home' ? '/' : `/${el.object_slug}`}`}
                                     className="flourish-hover"
                                 >
-                                    {el.title}
-                                    <span className="flourish-one aa-red--text">{el.title}</span>
+                                    {textAsSpans(el.title)}
                                 </AALink>
                             ) : 
                             (
@@ -60,8 +60,7 @@ const MenuList = ({props}) => {
                                     onClick={(e) => openContactMenu(e)}
                                     className="flourish-hover"
                                 >
-                                    {el.title}
-                                    <span className="flourish-one aa-red--text">{el.title}</span>
+                                    {textAsSpans(el.title)}
                                 </a>
                             )}
                         </li>
