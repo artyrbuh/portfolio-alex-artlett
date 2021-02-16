@@ -73,7 +73,6 @@ exports.createPages = ({ graphql, actions }) => {
       // ==== END PAGES ====
  
     // ==== WORK (WORDPRESS NATIVE AND ACF) ====
-
     .then(() => {
       graphql(
         `
@@ -127,11 +126,9 @@ exports.createPages = ({ graphql, actions }) => {
                       content
                       heading
                       alignment
-                      call_to_action {
-                        target
-                        title
-                        url
-                      }
+                      cta_url
+                      cta_text
+                      jumbo_text
                     }
                   }
                 }

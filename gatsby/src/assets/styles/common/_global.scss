@@ -19,6 +19,10 @@ body {
     }
 }
 
+strong {
+    color: $black;
+}
+
 main,
 footer {
     //background-color: $white;
@@ -95,6 +99,10 @@ li {
     @include scaling-val(28, 34, 28px, 34px, "line-height");
 }
 
+p {
+    @include scaling-val(15, 20, 15px, 20px, "margin-bottom");
+}
+
 h1 {
     @extend .h1;
 }
@@ -105,4 +113,10 @@ h3 {
 
 h4 {
     @extend .h4;
+}
+
+p {
+    a {
+        @extend %body-href;
+    }
 }

@@ -5,14 +5,28 @@
         max-width: 590px;
 
         p {
-            @include scaling-font(25, 40, 25px, 40px);
-            @include scaling-val(33, 46, 33px, 46px, "line-height");
-    
-            letter-spacing: -0.04em;
+            &:last-child {
+                margin-bottom: 0 !important;
+            }
         }
 
         &.content-block--cta {
-            @include scaling-val(30, 40, 30px, 40px, "padding-top");
+            @include scaling-val(24, 32, 24px, 32px, "padding-top");
+        }
+    }
+
+    &.jumbo-font {
+        .content-block--content {
+            p {
+                @include scaling-font(25, 40, 25px, 40px);
+                @include scaling-val(33, 46, 33px, 46px, "line-height");
+        
+                letter-spacing: -0.04em;
+            }
+    
+            &.content-block--cta {
+                @include scaling-val(30, 40, 30px, 40px, "padding-top");
+            }
         }
     }
 

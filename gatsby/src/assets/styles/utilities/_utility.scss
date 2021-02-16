@@ -26,3 +26,60 @@ $colors: (
         transform: skewX(4deg);
     }
 }
+
+%body-href {
+    transition: .3s;
+    display: inline;
+    text-decoration:none;
+    color: $black;
+    padding-bottom: 5px;
+    background: linear-gradient(to right, $pale-red 0%, $pale-red 98%);
+    background-size:100% 2px;
+    background-repeat: no-repeat;
+    background-position:left 85%;
+    position: relative;
+    overflow: hidden;
+    
+    &:hover{
+        background-size:100% 14px;
+        color: $red;
+    }
+}
+
+%list {
+    padding-left: 20px;
+
+    li {
+        @include scaling-val(5, 10, 5px, 10px, "margin-bottom");
+
+        display: block;
+        position: relative;
+
+        &::before {
+            width: 10px;
+            height: 2px;
+            background-color: $black;
+            left: -20px;
+            position: absolute;
+            top: 15px;
+            content: "";
+        }
+
+        &:last-child {
+            @include scaling-val(15, 20, 15px, 20px, "margin-bottom");
+        }
+    }
+
+    @include mobile {
+        padding-left: 15px;
+
+        li {
+            &::before {
+                height: 1px;
+                top: 10px;
+                width: 7px;
+                left: -13px;
+            }
+        }
+    }
+}
