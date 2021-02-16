@@ -13,7 +13,7 @@ export const scaleInRotate = (ref, delay = 0) => {
 export const scaleOutRotate = (ref, delay = 0) => {
     TweenLite.to(ref, {
         delay, 
-        duration: 0.35,
+        duration: 0.45,
         ease: 'power3.out',
         scale: 0,
         rotate: 45

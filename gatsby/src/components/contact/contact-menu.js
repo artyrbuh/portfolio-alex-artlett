@@ -35,7 +35,7 @@ const ContactMenu = ({expanded}) => {
             
             TweenLite.from(getChildrenToAnimate(), {
                 delay: delay,
-                duration: .5,
+                duration: 1.2,
                 y: 170,
                 skewY: 9,
                 ease: 'power3.inOut',

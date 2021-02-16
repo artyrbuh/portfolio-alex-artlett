@@ -1,14 +1,13 @@
 import React, {useEffect, useState, useRef} from "react"
 import {graphql, StaticQuery} from 'gatsby';
 import Layout from "../components/layout"
-//import Image from "../components/image"
 import SEO from "../components/seo"
 import "../assets/styles/index.scss"
 import ContentBlock from "../components/ui/content-block";
 import ExperienceList, { ExperienceWrapper, ExperienceModalWithContext } from "../components/ui/experience-list";
 import { textAsSpans } from "../core/util/helpers";
 import { PageTransition, AALink } from "../core/page-transition";
-import { fadeUpFrom, staggerItemsSkewUpDown, staggerItemsTo } from "../core/animation";
+import { fadeUpFrom } from "../core/animation";
 import { TweenLite } from "gsap";
 import SkewScrollContainer from "../components/ui/SkewScroll";
 
@@ -227,58 +226,13 @@ export const ShowcaseItem = ({item}) => {
   const {post_name} = item;
   const {thumbnail_image, thumbnail_text} = item.acf;
   const colSize = thumbnail_text.length >= 3 ? 'is-full' : 'is-half';
-  let curtainOne, curtainTwo, thumbNailTexts = useRef(null);
-
-  const getThumbNailImgs = () => {
-    let els = [];
-    for(var i = 0; i < thumbNailTexts.current.children[0].children.length; i++) {
-      els.push(thumbNailTexts.current.children[0].children[i].children[0]);
-    }
-
-    return els;
-  }
-
-  const onMouseEnter = () => {
-    TweenLite.to(getThumbNailImgs(), {
-      duration: 0,
-      css: {
-        opacity: 1
-      }
-    });
-
-    TweenLite.to(getThumbNailImgs(), {
-      duration: 0,
-      y: 0,
-      skewY: 0,
-    });
-
-    staggerItemsSkewUpDown(getThumbNailImgs(), 0, `200%`);
-  };
-
-  const onMouseLeave = () => {
-    TweenLite.to(getThumbNailImgs(), {
-      duration: 0,
-      css: {
-        opacity: 1
-      }
-    });
-
-    staggerItemsTo(getThumbNailImgs(), 0, `-200%`);
-
-  };
 
   return (
-    <div 
-      className={`column ${colSize} work-element work-post--${post_name}`}
-      onMouseEnter={() => onMouseEnter()}
-      onMouseLeave={() => onMouseLeave()}
-    >
+    <div className={`column ${colSize} work-element work-post--${post_name}`}>
       <AALink to={`/work/${item.post_name}`}>
         <div className="showcase-inner">
           <div className="bg-image" style={{backgroundImage: `url(${thumbnail_image.source_url})`}}></div>
-          <div ref={el => curtainTwo = el} className="curtain aa-white--bg"></div>
-          <div ref={el => curtainOne = el} className="curtain aa-pale-red--bg"></div>
-          <div ref={thumbNailTexts} className="thumbnail-texts">
+          <div className="thumbnail-texts">
             {thumbnail_text.length && (
               <div className="thumbnail-text-wrap">
                 {thumbnail_text.map((el) => (
@@ -320,7 +274,6 @@ export const AboutSection = ({about_block}) => {
     <div className="container">
       <div className="columns">
         <div className="column">
-          {/*<Image stye/>*/}
         </div>
         <div className="column">
           <ContentBlock heading={heading} content={content}/>

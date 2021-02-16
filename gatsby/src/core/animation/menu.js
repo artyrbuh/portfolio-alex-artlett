@@ -64,7 +64,7 @@ export const slideCloseMenuLeft = (menuRef, menuInnerBG, menuInner) => {
             duration: .8,
             ease: 'power3.inOut',
             skewX: 4,
-            x: `-100%`,
+            x: `-110%`,
             stagger: {
               amount: 0.07
             }
@@ -73,6 +73,7 @@ export const slideCloseMenuLeft = (menuRef, menuInnerBG, menuInner) => {
 
     TweenLite.to(menuRef, 
         {
+            delay: 1,
             duration: 1,
             skewX: 0,
             skewY: 0,

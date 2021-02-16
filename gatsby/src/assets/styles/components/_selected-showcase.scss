@@ -100,8 +100,22 @@
                             height: auto;
                             max-height: 100%;
                             opacity: 0;
-                            //margin-top: 30px;
                             margin-bottom: 0;
+                            transition: 0.75s ease-in-out;
+                            transform: translateY(180%) skewY(9deg);
+                            opacity: 1;
+                        }
+
+                        &:nth-child(1) img {
+                            transition-delay: 0;
+                        }
+
+                        &:nth-child(2) img {
+                            transition-delay: .1s;
+                        }
+
+                        &:nth-child(3) img {
+                            transition-delay: .2s;
                         }
                     }
                 }
@@ -111,7 +125,36 @@
                 .bg-image {
                     transform: scale(0.95);
                     opacity: 0;
-                    transition-delay: 0;
+                    //transition-delay: 0;
+                }
+                .showcase-inner {
+                    .thumbnail-text-wrap {
+                        .thumbnail-text {
+                            img {
+                                transform: translateY(0) skewY(0);
+                            }
+
+                            &:nth-child(1) img {
+                                transition-delay: .2s;
+                            }
+    
+                            &:nth-child(2) img {
+                                transition-delay: .1s;
+                            }
+    
+                            &:nth-child(3) img {
+                                transition-delay: 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.work-post--vee-design {
+                .showcase-inner .thumbnail-text-wrap .thumbnail-text {
+                    &:first-child {
+                        margin-top: 20px;
+                    }
                 }
             }
 
@@ -120,6 +163,12 @@
                     .bg-image {
                         background-size: cover;
                     }
+                }
+            }
+
+            &.work-post--the-housemate-app {
+                .showcase-inner .thumbnail-text-wrap .thumbnail-text {
+                    margin-top: 30px;
                 }
             }
 
