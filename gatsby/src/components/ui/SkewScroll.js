@@ -16,7 +16,7 @@ const SkewScrollContainer = ({className, children}) => {
 
     const skewScrolling = (time) => {
         if (previousTimeRef.current != undefined) {
-            skewConfigs.current = window.scrollY;
+            skewConfigs.current = typeof window !== "undefined" ? window.scrollY : 0;
             skewConfigs.previous += (skewConfigs.current - skewConfigs.previous) * skewConfigs.ease;
             skewConfigs.rounded = Math.round(skewConfigs.previous * 100) / 100;
         

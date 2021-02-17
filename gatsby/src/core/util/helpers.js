@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 export function useWindowSize() {
   function getSize() {
     return {
-      width: window.innerWidth,
-      height: window.innerHeight
+      width: typeof window !== "undefined" ? window.innerWidth : 0,
+      height: typeof window !== "undefined" ? window.innerHeight: 0
     };
   }
 
@@ -14,9 +14,15 @@ export function useWindowSize() {
     function handleResize() {
       setWindowSize(getSize());
     }
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    if(typeof window !== "undefined") {
+      window.addEventListener("resize", handleResize);
+    }
+    
+    return () => { 
+      if(typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize)
+      }
+    };
   }, []);
 
   return windowSize;
@@ -38,12 +44,18 @@ export const as_obj = (name) => {
 export const getMousePos = (e) => {
   let posx = 0;
   let posy = 0;
-  if (!e) e = window.event;
-  if (e.clientX || e.clientY) {
-    posx = e.clientX;
-    posy = e.clientY;
+  if (!e) e = typeof window !== "undefined" ? window.event : null;
+
+  if(e !== null) {
+    if (e.clientX || e.clientY) {
+      posx = e.clientX;
+      posy = e.clientY;
+    }
+
+    return { x: posx, y: posy };
+  } else {
+    return {x: 0, y: 0};
   }
-  return { x: posx, y: posy };
 };
 
 
@@ -51,7 +63,11 @@ export const getMousePos = (e) => {
 export const lerp = (a, b, n) => (1 - n) * a + n * b;
 
 export const calcWinsize = () => {
-  return {width: window.innerWidth, height: window.innerHeight};
+  if(typeof window !== "undefined") {
+    return {width: window.innerWidth, height: window.innerHeight};
+  } else {
+    return {width: 0, height: 0};
+  }
 };
 
 export const distance = (x1,y1,x2,y2) => {
