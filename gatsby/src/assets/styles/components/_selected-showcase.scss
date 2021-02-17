@@ -25,7 +25,7 @@
 }
 
 .selected-showcase--wrap {
-    @include scaling-val(30, 72, 30px, 72px, "margin-bottom");
+    @include scaling-val(1, 72, 1px, 72px, "margin-bottom");
 
     position: relative;
     overflow: visible;
@@ -39,8 +39,8 @@
     }
 
     .columns {
-        @include scaling-val(30, 42, 30px, 42px, "padding-top");
-        @include scaling-val(60, 72, 60px, 72px, "padding-bottom");
+        @include scaling-val(1, 42, 1px, 42px, "padding-top");
+        @include scaling-val(53, 72, 53px, 72px, "padding-bottom");
 
         overflow-x: scroll;
         white-space: nowrap;
@@ -151,9 +151,17 @@
             }
 
             &.work-post--vee-design {
-                .showcase-inner .thumbnail-text-wrap .thumbnail-text {
-                    &:first-child {
-                        margin-top: 20px;
+                @include desktop {
+                    .showcase-inner .thumbnail-text-wrap .thumbnail-text {
+                        &:first-child {
+                            margin-top: 20px;
+                        }
+
+                        &:nth-child(2) {
+                            img {
+                                margin-top: 30px;
+                            }
+                        }
                     }
                 }
             }
@@ -167,8 +175,10 @@
             }
 
             &.work-post--the-housemate-app {
-                .showcase-inner .thumbnail-text-wrap .thumbnail-text {
-                    margin-top: 30px;
+                @include desktop {
+                    .showcase-inner .thumbnail-text-wrap .thumbnail-text {
+                        margin-top: 30px;
+                    }
                 }
             }
 
@@ -404,4 +414,26 @@
             }
         }
     }
+}
+
+.is-mobile-tablet {
+    .selected-showcase--wrap .showcase-inner .thumbnail-text-wrap {
+        display: none !important;
+    }
+    .selected-showcase--wrap .columns .column:hover {
+        .bg-image {
+            opacity: 1;
+        }
+    } 
+}
+
+@include mobile {
+    .selected-showcase--wrap .showcase-inner .thumbnail-text-wrap {
+        display: none !important;
+    }
+    .selected-showcase--wrap .columns .column:hover {
+        .bg-image {
+            opacity: 1;
+        }
+    } 
 }

@@ -381,6 +381,10 @@
                         transform: scale(0);
                         transition-delay: 0.15s;
                     }
+
+                    @include mobile {
+                        display: none;
+                    }
                 }
             }
         }
@@ -414,6 +418,24 @@
     &.work-post--mst-global {
         .work-post--detail .name h3 {
             max-width: 200px;
+        }
+    }
+
+    @include mobile {
+        .work-post--detail {
+            .name {
+                h3 {
+                    max-width: 200px;
+                }
+            }
+
+            .meta {
+                .meta-list {
+                    li {
+                        //
+                    }
+                }
+            }
         }
     }
 }

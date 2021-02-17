@@ -1,9 +1,8 @@
 .contact-button {
-    @include scaling-val(90, 130, 90px, 130px, "width");
-    @include scaling-val(90, 130, 90px, 130px, "height");
-    @include scaling-val(20, 50, 20px, 50px, "right");
-    @include scaling-val(100, 50, 100px, 50px, "top");
-
+    width: 130px;
+    height: 130px;
+    right: 50px;
+    top: 50px;
     border-radius: 200px;
     position: fixed;
     background-color: $black;
@@ -30,7 +29,6 @@
         left: 0;
         right: 0;
         bottom: 0;
-        //opacity: 0;
         pointer-events: none;
     }
 
@@ -47,7 +45,12 @@
         }
     }
 
-    @media (max-width: $desktop) {
+    @include mobile {
+        width: 90px;
+        height: 90px;
+        right: 20px;
+        top: 100px;
+
         .contact-text {
             transform: scale(0.75);
             top: 5px;

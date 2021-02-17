@@ -84,3 +84,11 @@
         }
     }
 }
+
+.is-mobile-tablet {
+    .experience-list {
+        .experience-list--hover {
+            display: none;
+        }
+    }
+}

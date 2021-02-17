@@ -89,6 +89,7 @@ const ExperienceList = ({experience_list}) => {
                             </li>
                         );
                     })}
+                    
                     <p 
                         className={`experience-list--hover ${showHover ? 'show' : ''}`}
                         ref={el => hover = el}

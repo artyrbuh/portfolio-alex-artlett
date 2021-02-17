@@ -16,6 +16,7 @@ body {
 
     @include mobile() {
         width: 100%;
+        overflow: hidden;
     }
 }
 

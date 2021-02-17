@@ -7,7 +7,7 @@
 }
 
 .work-single--header {
-    @include scaling-val(55, 142, 55px, 142px, "padding-bottom");
+    @include scaling-val(49, 126, 49px, 126px, "padding-bottom");
 
     padding-top: 56px;
     position: relative;
@@ -315,6 +315,12 @@
                     }
                 }
             }
+        }
+    }
+
+    @media (max-width: 1023px) {
+        p span.arrow {
+            top: 3px;
         }
     }
 }

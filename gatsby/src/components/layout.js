@@ -97,7 +97,7 @@ const Layout = ({ children, classes }) => {
 
   const toggleMainMenu = () => toggleMenu("main");
   const toggleContactMenu = () => toggleMenu("contact");
-
+  
   return (
     <ThemeDataContext.Provider value={themeData}>
       {!isMobileOrTable() && (
@@ -107,7 +107,7 @@ const Layout = ({ children, classes }) => {
         <Nav/>
         <Contact/>
       </ActiveMenu.Provider>
-      <div className={`${classes ? classes : ''}`}>
+      <div className={`${classes ? classes : ''} ${isMobileOrTable() ? 'is-mobile-tablet' : ''}`}>
         <main>{children}</main>
         <Footer/>
       </div>

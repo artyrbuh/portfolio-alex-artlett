@@ -23,7 +23,7 @@ const SkewScrollContainer = ({className, children}) => {
             const difference = skewConfigs.current  - skewConfigs.rounded;
             const acceleration = difference / size.width;
             const velocity = +acceleration;
-            const skew = velocity * 3.25;
+            const skew = velocity * 2.25;
             scrollContainer.current.style.transform = `skewY(${skew}deg)`;
         }
 

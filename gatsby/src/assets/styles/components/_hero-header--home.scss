@@ -17,7 +17,7 @@
     }
 
     h1 {
-        @include scaling-val(70, 100, 70px, 100px, "margin-bottom");
+        @include scaling-val(1, 100, 1px, 100px, "margin-bottom");
         //@extend .h1-jumbo;
 
         //max-width: 990px;
@@ -56,11 +56,12 @@
         position: absolute;
         top: 0;
         right: 0;
+        width: 88%;
     }
 
     @media (max-width: 1023px) {
         &.is-fullheight {
-            min-height: 70vh;
+            min-height: 80vh;
         }        
     }
 
