@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef, useContext, createContext} from "rea
 import {TweenLite} from "gsap";
 import { navigate } from "gatsby";
 
-export const PageTransitionContext = createContext(null);
+export const PageTransitionContext = createContext({});
 
 // In a component that wraps your page contents
 export const PageTransition = ({ children, delay }) => {

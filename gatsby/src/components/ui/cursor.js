@@ -62,7 +62,7 @@ const Cursor = () => {
             className={`
                 cursor ${cursorHover ? 'work-element' : ''}
                 ${hideCursor ? 'hide-cursor' : ''}
-                ${state.inTransit ? 'fully-hide-cursor' : ''}
+                ${typeof state !== "undefined" && state.inTransit ? 'fully-hide-cursor' : ''}
             `}
             ref={el => cursor = el}
             style={{transform: `translateX(${mouse.x}px) translateY(${mouse.y}px)`}}
