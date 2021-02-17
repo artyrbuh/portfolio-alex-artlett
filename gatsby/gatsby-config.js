@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Alexander Artlett`,
@@ -34,8 +38,8 @@ module.exports = {
       resolve: "gatsby-source-wordpress",
       options: {
         minimizeDeprecationNotice: true,
-        baseUrl: "alexanderartlett.lndo.site:8000",
-        protocol: "http",
+        baseUrl: process.env.BASE_URL,
+        protocol: process.env.PROTOCOL,
         hostingWPCOM: false,
         useACF: true,
         verboseOutput: false,
