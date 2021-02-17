@@ -363,9 +363,9 @@ const WorkFooterNav = ({}) => {
 
     return (
         <div className="columns work-footer-nav">
-            {next && (
+            {previous && (
                 <div className="column left">
-                    <AALink to={`/work/${next.slug}`}>
+                    <AALink to={`/work/${previous.slug}`}>
                         <p>
                             <span className="arrow">
                                 <svg 
@@ -387,17 +387,17 @@ const WorkFooterNav = ({}) => {
                                     <path fillRule="evenodd" clipRule="evenodd" d="M5 16C5 15.7348 5.10536 15.4804 5.29289 15.2929C5.48043 15.1054 5.73478 15 6 15H27C27.2652 15 27.5196 15.1054 27.7071 15.2929C27.8946 15.4804 28 15.7348 28 16C28 16.2652 27.8946 16.5196 27.7071 16.7071C27.5196 16.8946 27.2652 17 27 17H6C5.73478 17 5.48043 16.8946 5.29289 16.7071C5.10536 16.5196 5 16.2652 5 16Z" fill="black"/>
                                 </svg>  
                             </span>
-                            <span dangerouslySetInnerHTML={{__html: next.title}} className="dashing-hover-line"/>
+                            <span dangerouslySetInnerHTML={{__html: previous.title}} className="dashing-hover-line"/>
                         </p>
                     </AALink>
                 </div>
             )}
             
-            {previous && (
+            {next && (
                 <div className="column right">
-                    <AALink to={`/work/${previous.slug}`}>
+                    <AALink to={`/work/${next.slug}`}>
                         <p>
-                            <span dangerouslySetInnerHTML={{__html: previous.title}} className="dashing-hover-line"/>
+                            <span dangerouslySetInnerHTML={{__html: next.title}} className="dashing-hover-line"/>
                             <span className="arrow">
                                 <svg 
                                     width="32" 
