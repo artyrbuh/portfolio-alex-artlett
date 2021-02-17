@@ -1,4 +1,5 @@
-import React, {useEffect, useState, useRef} from "react";
+import React, {useEffect, useState, useRef, useContext} from "react";
+import { PageTransitionContext } from "../../core/page-transition";
 import { getMousePos } from "../../core/util/helpers";
 
 const Cursor = () => {
@@ -8,6 +9,9 @@ const Cursor = () => {
     const [cursorHover, setCursorHover] = useState(false);
     const [hideCursor, setHideCursor] = useState(false);
     const [mouse, setMouse] = useState({ x: 0, y: 0 });
+
+    const {state} = useContext(PageTransitionContext);
+
     
 
     const onMouseMove = e => {
@@ -56,6 +60,7 @@ const Cursor = () => {
             className={`
                 cursor ${cursorHover ? 'work-element' : ''}
                 ${hideCursor ? 'hide-cursor' : ''}
+                ${state.inTransit ? 'fully-hide-cursor' : ''}
             `}
             ref={el => cursor = el}
             style={{transform: `translateX(${mouse.x}px) translateY(${mouse.y}px)`}}

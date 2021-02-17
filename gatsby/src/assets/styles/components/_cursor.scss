@@ -95,11 +95,24 @@
         &:before {
             transform: scale(1);
         }
+
+        @include mobile {
+            .cursor--work-element {
+                transform: scale(0.55) rotate(-45deg);
+            }
+        }
     }
 
     &.hide-cursor {
         &:before {
             transform: scale(0);
+        }
+    }
+
+    &.fully-hide-cursor {
+        .cursor--work-element,
+        &:before {
+            transform: scale(0) !important;
         }
     }
 }
