@@ -21,20 +21,22 @@ const Cursor = () => {
     }
 
     const onMouseHover = e => {
-        document.querySelectorAll(".work-element").forEach((el) => {
-            el.addEventListener("mouseover", () => setCursorHover(true));
-            el.addEventListener("mouseout", () => setCursorHover(false));
-        });
-
-        document.querySelectorAll(".button").forEach((el) => {
-            el.addEventListener("mouseover", () => setHideCursor(true));
-            el.addEventListener("mouseout", () => setHideCursor(false));
-        });
+        if(typeof document !== 'undefined') {
+            document.querySelectorAll(".work-element").forEach((el) => {
+                el.addEventListener("mouseover", () => setCursorHover(true));
+                el.addEventListener("mouseout", () => setCursorHover(false));
+            });
+    
+            document.querySelectorAll(".button").forEach((el) => {
+                el.addEventListener("mouseover", () => setHideCursor(true));
+                el.addEventListener("mouseout", () => setHideCursor(false));
+            });
+        }
     }
 
 
     useEffect(() => {
-        if(typeof window !== 'undefined') {
+        if(typeof window !== 'undefined' && typeof document !== 'undefined') {
 
             window.addEventListener("mousemove", onMouseMove);
 
