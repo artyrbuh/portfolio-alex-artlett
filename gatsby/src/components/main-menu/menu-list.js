@@ -48,12 +48,24 @@ const MenuList = ({props}) => {
                     {menu.map((el, i) => (
                         <li key={i} className="menu-item">
                             {el.object_slug !== "contact" ? (
-                                <AALink 
-                                    to={`${el.object_slug === 'home' ? '/' : `/${el.object_slug}`}`}
-                                    className="flourish-hover"
-                                >
-                                    {textAsSpans(el.title)}
-                                </AALink>
+                                <>
+                                    {el.target === "_blank" ? (
+                                        <a 
+                                            href={el.url}
+                                            target="_blank"
+                                            className="flourish-hover"
+                                        >
+                                            {textAsSpans(el.title)}
+                                        </a>
+                                    ) : (
+                                        <AALink 
+                                            to={`${el.object_slug === 'home' ? '/' : `/${el.object_slug}`}`}
+                                            className="flourish-hover"
+                                        >
+                                            {textAsSpans(el.title)}
+                                        </AALink>
+                                    )}
+                                </>
                             ) : 
                             (
                                 <a 
