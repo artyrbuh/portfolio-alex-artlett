@@ -77,6 +77,9 @@ const WorkPage = () => {
                                         thumbnail_image {
                                             source_url
                                             alt_text
+                                            localFile{
+                                              publicURL
+                                            }
                                         }
                                     }
                                     post_title

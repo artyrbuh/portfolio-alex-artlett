@@ -38,10 +38,16 @@ const IndexPage = () => (
                           acf {
                             thumbnail_image {
                               source_url
+                              localFile {
+                                publicURL
+                              }
                             }
                             thumbnail_text {
                               text {
                                 source_url
+                                localFile {
+                                  publicURL
+                                }
                               }
                             }
                           }
@@ -231,7 +237,7 @@ export const ShowcaseItem = ({item}) => {
     <div className={`column ${colSize} work-element work-post--${post_name}`}>
       <AALink to={`/work/${item.post_name}`}>
         <div className="showcase-inner">
-          <div className="bg-image" style={{backgroundImage: `url(${thumbnail_image.source_url})`}}></div>
+          <div className="bg-image" style={{backgroundImage: `url(${thumbnail_image.localFile.publicURL})`}}></div>
           <div className="thumbnail-texts">
             {thumbnail_text.length && (
               <div className="thumbnail-text-wrap">

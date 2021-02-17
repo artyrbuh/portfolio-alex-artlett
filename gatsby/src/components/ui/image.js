@@ -4,7 +4,7 @@ const AAImage = ({image, hover}) => {
     return (
         <div className="aa-image">
             <img
-                src={image.source_url} 
+                src={image.localFile.publicURL} 
             />
         </div>
     )

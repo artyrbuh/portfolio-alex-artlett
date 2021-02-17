@@ -51,9 +51,7 @@ const MenuList = ({props}) => {
                                 <>
                                     {el.target === "_blank" ? (
                                         <a 
-                                            href={el.url}
-                                            target="_blank"
-                                            className="flourish-hover"
+                                            href={el.url.source_url} target="_blank" className="flourish-hover"
                                         >
                                             {textAsSpans(el.title)}
                                         </a>

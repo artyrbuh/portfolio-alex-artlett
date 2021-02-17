@@ -23,6 +23,9 @@ const Layout = ({ children, classes }) => {
           logo {
             url {
               source_url
+              localFile {
+                publicURL
+              }
             }
           }
           professions {
@@ -41,7 +44,6 @@ const Layout = ({ children, classes }) => {
                       classes
                       target
                       title
-                      url
                       object_slug
                   }
               }

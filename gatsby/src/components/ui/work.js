@@ -157,7 +157,7 @@ export const WorkLandingPost = ({item, key}) => {
 
     console.log(thumbnail_image)
 
-    const img = thumbnail_image !== null ? thumbnail_image.source_url : '';
+    const img = thumbnail_image !== null ? thumbnail_image.localFile.publicURL : '';
 
     return (
         <div className={`work-post-wrap`} key={key}>

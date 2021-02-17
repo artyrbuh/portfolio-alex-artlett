@@ -13,13 +13,14 @@ import {TweenLite} from "gsap";
 import { fadeUpFrom } from '../core/animation';
 import SEO from '../components/seo';
 
+
 const WorkSingleContext = createContext(null);
 
 export default ({pageContext}) => {
     const {previous, next} = pageContext;
     const {acf, featured_media, slug, title} = pageContext.content;
     const {layouts_work, main_technology, professions, technologies, project_year, project_website} = acf;
-
+    console.log(pageContext)
     return (
         <PageTransition>
             <WorkSingleContext.Provider value={{featured_media, slug, title, layouts_work, main_technology, professions, technologies, project_year, previous, next, project_website}}>
@@ -81,42 +82,31 @@ const WorkHeader = () =>  {
                 css: {opacity: 1}
             });
 
-            TweenLite.from(h1.current, {
-                delay: .9,
-                css: {display: 'block'}
-            });
-
-            /*
-            TweenLite.from(featuredImageWrap, {
-                x: `-130%`,
-                duration: .8,
-                delay: 0.8,
-                //skewX: -4,
-                opacity: 0
-            });
-            */
-
             TweenLite.to(wiper, {
+                delay: 1.3,
                 x: `100%`,
-                duration: .8,
-                delay: 0.8,
+                duration: 1,
             });
 
-            TweenLite.from(featuredImage, {
-                scale: 1.5,
-                duration: 1,
-                delay: 0.8,
-            });
-        
-        
             TweenLite.from(h1.current, {
-                delay: 0.8,
+                delay: 1.3,
                 skewY: 7,
-                duration: .65,
+                duration: .85,
                 y: `-400px`
             });
 
-            fadeUpFrom(projectMeta, 1.5);
+            TweenLite.from(featuredImage, {
+                delay: 1.3,
+                scale: 1.5,
+                duration: 1,
+            });
+
+            TweenLite.from(h1.current, {
+                delay: 1.4,
+                css: {display: 'block'}
+            });
+        
+            fadeUpFrom(projectMeta, 2);
 
             setInitialLoad(false);
         }
@@ -133,7 +123,7 @@ const WorkHeader = () =>  {
                     <div className="featured-image--wrap" ref={el => featuredImageWrap = el}>
                         <div className="wiper" ref={el=> wiper = el}></div>
                         <img 
-                            src={featured_media.source_url} 
+                            src={featured_media.localFile.publicURL} 
                             className="featured-image"
                             ref={el => featuredImage = el}
                         />
@@ -189,7 +179,7 @@ const WorkLayouts = () => {
     useEffect(() => {
         if(initialLoad) {
             if(layouts_work && layouts_work.length) {
-                fadeUpFrom(workLayoutsBlock, 1.75);
+                fadeUpFrom(workLayoutsBlock, 2.25);
             }
             setInitialLoad(false);
         }
@@ -351,7 +341,7 @@ const WorkVideoBlock = ({data, i}) => {
                     className="work-video-block--preview"
                     onClick={() => handleShow(youtube_url)}
                 >
-                    <img src={video_preview.source_url} />
+                    <img src={video_preview.localFile.publicURL} />
                     <svg className="play-btn" x="0px" y="0px" width="408.221px" height="408.221px" viewBox="0 0 408.221 408.221" >
                         <path d="M204.11,0C91.388,0,0,91.388,0,204.111c0,112.725,91.388,204.11,204.11,204.11c112.729,0,204.11-91.385,204.11-204.11    C408.221,91.388,316.839,0,204.11,0z M286.547,229.971l-126.368,72.471c-17.003,9.75-30.781,1.763-30.781-17.834V140.012    c0-19.602,13.777-27.575,30.781-17.827l126.368,72.466C303.551,204.403,303.551,220.217,286.547,229.971z"/>
                     </svg>

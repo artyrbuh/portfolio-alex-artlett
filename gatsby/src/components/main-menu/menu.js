@@ -15,7 +15,9 @@ const Menu = () => {
                                 classes
                                 target
                                 title
-                                url
+                                url {
+                                    source_url
+                                }
                                 object_slug
                             }
                         }

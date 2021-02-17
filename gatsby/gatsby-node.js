@@ -87,6 +87,15 @@ exports.createPages = ({ graphql, actions }) => {
                 content
                 featured_media {
                   source_url
+                  localFile {
+                    publicURL
+                    childImageSharp {
+                      fluid(pngQuality: 10) {
+                        originalImg
+                        src
+                      }
+                    }
+                  }
                 }
                 acf {
                   main_technology
@@ -100,6 +109,9 @@ exports.createPages = ({ graphql, actions }) => {
                       youtube_url
                       video_preview {
                         source_url
+                        localFile {
+                          publicURL
+                        }
                       }
                       include_available_for_hire_cta
                       caption {
@@ -117,6 +129,9 @@ exports.createPages = ({ graphql, actions }) => {
                       images {
                         image {
                           source_url
+                          localFile {
+                            publicURL
+                          }
                         }
                       }
                     }

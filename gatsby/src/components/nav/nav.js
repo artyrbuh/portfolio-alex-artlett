@@ -18,7 +18,7 @@ const Nav = () => {
                     <span className="nav--branding__designation">{designation}</span>    
                     <AALink to="/">
                         <img 
-                            src={logo.url.source_url}
+                            src={logo.url.localFile.publicURL}
                             className="logo"
                         />
                     </AALink>
