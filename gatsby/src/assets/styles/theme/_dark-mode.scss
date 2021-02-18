@@ -1,0 +1,41 @@
+.theme-wrap {
+    background-color: $black;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    li   {
+        transition: color 0.45s;
+    }
+}
+
+.dark-mode.theme-wrap {
+    background-color: $black;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    li {
+        color: $white;
+    }
+
+    footer .column--menu a {
+        span {
+            color: $white;
+        }
+
+        &:hover {
+            span {
+                color: $red;
+            }
+        }
+    }
+}
