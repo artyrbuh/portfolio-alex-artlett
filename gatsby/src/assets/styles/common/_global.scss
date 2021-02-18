@@ -20,6 +20,11 @@ body {
     }
 }
 
+::selection {
+    background-color: $pale-red;
+    color: $red;
+}
+
 .theme-wrap {
     background-color: $white;
 }
