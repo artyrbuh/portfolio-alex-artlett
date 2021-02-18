@@ -1,8 +1,11 @@
 import React from 'react';
 
-const AAImage = ({image, hover}) => {
+const AAImage = ({image, hover, className}) => {
     return (
-        <div className="aa-image">
+        <div 
+            className="aa-image"
+            {... className ? {className: className} : {}}
+        >
             <img
                 src={image.localFile.publicURL} 
             />

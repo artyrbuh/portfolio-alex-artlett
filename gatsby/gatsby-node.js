@@ -127,6 +127,8 @@ exports.createPages = ({ graphql, actions }) => {
                       }
                       include_available_for_hire_cta
                       images {
+                        make_as_window
+                        has_bg
                         image {
                           source_url
                           localFile {

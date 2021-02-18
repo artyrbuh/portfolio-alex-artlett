@@ -252,7 +252,23 @@ const WorkImagesBlock = ({data, i}) => {
                 <div className={`content-images-grid content-images--${images.length}`}>
                     {images.map((el, i) => (
                         <div className="work-content-images--image">
-                            <AAImage image={el.image}/>
+                            {el.make_as_window ? (
+                                <div className="image-window">
+                                    <div className="image-window--window">
+                                        <div className="image-window--window-header">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                        <AAImage image={el.image}/>
+                                    </div>
+                                </div>
+                            ) : (
+                                <AAImage 
+                                    image={el.image} 
+                                    className={el.has_bg ? 'has-bg' : ''}
+                                />
+                            )}
                         </div>
                     ))}
                 </div>

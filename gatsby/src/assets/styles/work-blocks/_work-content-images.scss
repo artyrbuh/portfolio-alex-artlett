@@ -16,6 +16,54 @@
             }
         }
 
+        .work-content-images--image {
+            .image-window {
+                @include scaling-val(40, 80, 40px, 80px, "padding-top");
+                @include scaling-val(40, 80, 40px, 80px, "padding-bottom");
+
+                background-color: $pale-red;
+                text-align: center;
+
+                .image-window--window {
+                    display: inline-block;
+                    padding-left: 40px;
+                    padding-right: 40px;
+
+                    img {
+                        border: 1px solid $black;
+                        border-bottom-left-radius: 5px;
+                        border-bottom-right-radius: 5px;
+                    }
+
+                    .image-window--window-header {
+                        height: 30px;
+                        width: 100%;
+                        background-color: $white;
+                        position: relative;
+                        border: 1px solid $black;
+                        border-top-left-radius: 5px;
+                        border-top-right-radius: 5px;
+                        text-align: left;
+    
+                        span {
+                            height: 15px;
+                            width: 15px;
+                            border-radius: 100%;
+                            border: 1px solid $black;
+                            display: inline-block;
+                            margin-left: 5px;
+                            position: relative;
+                            top: 3px;
+    
+                            &:first-child {
+                                margin-left: 7px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         @include desktop {
             &.content-images--1,
             &.content-images--2 {
