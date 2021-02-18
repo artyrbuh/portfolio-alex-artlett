@@ -101,19 +101,21 @@ const Layout = ({ children, classes }) => {
   const toggleContactMenu = () => toggleMenu("contact");
   
   return (
-    <ThemeDataContext.Provider value={themeData}>
-      {!isMobileOrTable() && (
-        <Cursor />
-      )}
-      <ActiveMenu.Provider value={{toggleMainMenu, toggleContactMenu, isMenu, activeMenu, mainMenuActive, setMainMenuActive, contactMenuActive, setContactMenuActive, disabled, initialClick}}>
-        <Nav/>
-        <Contact/>
-      </ActiveMenu.Provider>
-      <div className={`${classes ? classes : ''} ${isMobileOrTable() ? 'is-mobile-tablet' : ''}`}>
-        <main>{children}</main>
-        <Footer/>
-      </div>
-    </ThemeDataContext.Provider>
+    <div className="theme-wrap">
+      <ThemeDataContext.Provider value={themeData}>
+        {!isMobileOrTable() && (
+          <Cursor />
+        )}
+        <ActiveMenu.Provider value={{toggleMainMenu, toggleContactMenu, isMenu, activeMenu, mainMenuActive, setMainMenuActive, contactMenuActive, setContactMenuActive, disabled, initialClick}}>
+          <Nav/>
+          <Contact/>
+        </ActiveMenu.Provider>
+        <div className={`${classes ? classes : ''} ${isMobileOrTable() ? 'is-mobile-tablet' : ''}`}>
+          <main>{children}</main>
+          <Footer/>
+        </div>
+      </ThemeDataContext.Provider>
+    </div>
   );
 }
 

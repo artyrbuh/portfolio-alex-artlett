@@ -177,7 +177,7 @@ export const WorkPageInner = ({children}) => {
 
   return (
     <>
-      <WorkBarNav>
+      <WorkBarNav classes="work-landing-nav">
         <h2>
           selected work
           <span class="flourish-hover">

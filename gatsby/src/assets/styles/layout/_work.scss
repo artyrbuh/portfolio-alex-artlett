@@ -205,6 +205,21 @@
     }
 }
 
+@media (min-width: 1920px) {
+    .work-nav-bar.work-landing-nav {
+        padding: 50px 40px;
+        width: 475px;
+    }
+
+    .work-layout {
+        .work-wrap.work-landing,
+        footer .container {
+            left: 525px;
+            width: calc(100% - 525px);
+        }
+    } 
+}
+
 .work-wrap {
     &.work-landing {
         min-height: 100vh;
@@ -444,6 +459,7 @@
     @include scaling-val(46, 70, 46px, 70px, "margin-bottom");
 
     width: 100%;
+    max-width: 650px;
 
     .work-post--featured-img {
         background-color: $pale-red;
@@ -467,41 +483,402 @@
 
 
 //temp styles
-@include widescreen {
-    .work-post {
+//@include widescreen {
+    .work-post-wrap {
         width: 100%;
     
-        &.work-post--vee-design {
+        .work-post--vee-design {
+            @include desktop {
+                //max-width: 550px;
+            }
+
             .work-post--featured-img {
-                height: 513px;
+                height: 400px;
+            }
+
+            @media (max-width: 1300px) {
+                .work-post--featured-img {
+                    height: 300px;
+                }
+            }
+
+            @media (max-width: 500px) {
+                .work-post--featured-img {
+                    height: 260px;
+                }                
+            }
+
+            @media (max-width: 420px) {
+                .work-post--featured-img {
+                    height: 220px;
+                }                
             }
         }
 
-        &.work-post--assure-programs {
+        .work-post--assure-programs {
             .work-post--featured-img {
                 height: 428px;
             }
-        }
 
-        &.work-post--choremaster {
-            max-width: 396px;
-
-            .work-post--featured-img {
-                height: 231px;
+            @media (max-width: 500px) {
+                .work-post--featured-img {
+                    height: 280px;
+                }                
             }
         }
 
-        &.work-post--petrichor-co {
+        .work-post--the-housemate-app {
+            @include desktop {
+                max-width: 500px;
+            }
+
             .work-post--featured-img {
-                height: 316px;
+                height: 300px;
+            }
+
+            @media (max-width: 420px) {
+                .work-post--featured-img {
+                    height: 220px;
+                }                
             }
         }
 
-        &.work-post--panthera {
+        .work-post--lipsum-app {
+            @include desktop {
+                max-width: 500px;
+            }       
+            
+            @media (max-width: 420px) {
+                .work-post--featured-img {
+                    height: 220px;
+                }                
+            }
+        }
+
+        .work-post--petrichor-co {
+            max-width: 635px;
+
             .work-post--featured-img {
-                height: 316px;
+                height: 490px;
+            }
+
+            @media (max-width: 1300px) {
+                .work-post--featured-img {
+                    height: 400px;
+                }
+            }
+
+            @media (max-width: 500px) {
+                .work-post--featured-img {
+                    height: 330px;
+                }                
+            }
+
+            @media (max-width: 420px) {
+                .work-post--featured-img {
+                    height: 270px;
+                }                
+            }
+        }
+
+        .work-post--auscert-conference {
+            .work-post--featured-img {
+                height: 506px;
+            }
+
+            @media (max-width: 1450px) {
+                .work-post--featured-img {
+                    height: 406px;
+                }
+            }
+
+            @media (max-width: 500px) {
+                .work-post--featured-img {
+                    height: 410px;
+                }                
+            }
+
+            @media (max-width: 420px) {
+                .work-post--featured-img {
+                    height: 270px;
+                }                
+            }
+        }
+
+        .work-post--angularjs-tetris {
+            .work-post--featured-img {
+                height: 458px;
+            }
+
+            @media (max-width: 420px) {
+                .work-post--featured-img {
+                    height: 340px;
+                }                
+            }
+        }
+
+        .work-post--alex-artlett {
+            .work-post--featured-img {
+                height: 550px;
+            }
+
+            @media (max-width: 1450px) {
+                .work-post--featured-img {
+                    height: 450px;
+                }
+            }
+
+            @media (max-width: 500px) {
+                .work-post--featured-img {
+                    height: 400px;
+                }                
+            }
+
+            @media (max-width: 420px) {
+                .work-post--featured-img {
+                    height: 315px;
+                }                
+            }
+        }
+
+        .work-post--uqu {
+            @include desktop {
+                max-width: 500px;
+            }
+
+            .work-post--featured-img {
+                height: 400px;
+            }
+
+            @media (max-width: 420px) {
+                .work-post--featured-img {
+                    height: 340px;
+                }                
+            }
+        }
+
+        .work-post--panthera {
+            @include desktop {
+                //max-width: 500px;
+            }
+
+            .work-post--featured-img {
+                height: 560px;
+            }
+
+            @media (max-width: 1600px) {
+                .work-post--featured-img {
+                    height: 470px;
+                }
+            }
+
+            @media (max-width: 1450px) {
+                .work-post--featured-img {
+                    height: 400px;
+                }
+            }
+
+            @media (max-width: 1250px) {
+                .work-post--featured-img {
+                    height: 340px;
+                }
+            }
+
+            @media (max-width: 500px) {
+                .work-post--featured-img {
+                    height: 360px;
+                }
+            }
+
+            @media (max-width: 420px) {
+                .work-post--featured-img {
+                    height: 280px;
+                }                
+            }
+        }
+
+        .work-post--watch-my-wilderness {
+            .work-post--featured-img {
+                height: 400px;
+            }
+
+            @media (max-width: 1300px) {
+                .work-post--featured-img {
+                    height: 300px;
+                }
+            }
+
+            @media (max-width: 500px) {
+                .work-post--featured-img {
+                    height: 330px;
+                }                
+            }
+
+            @media (max-width: 420px) {
+                .work-post--featured-img {
+                    height: 220px;
+                }                
+            }
+        }
+
+        .work-post--mst-global {
+            .work-post--featured-img {
+                height: 580px;
+            }
+
+            @media (max-width: 1450px) {
+                .work-post--featured-img {
+                    height: 520px;
+                }
+            }
+
+            @media (max-width: 1300px) {
+                .work-post--featured-img {
+                    height: 420px;
+                }
+            }
+
+            @media (max-width: 500px) {
+                .work-post--featured-img {
+                    height: 460px;
+                }                
+            }
+
+            @media (max-width: 420px) {
+                .work-post--featured-img {
+                    height: 340px;
+                }                
+            }
+        }
+
+        .work-post--emissions-trading-research {
+            .work-post--featured-img {
+                height: 400px;
+            }
+
+            @media (max-width: 1450px) {
+                .work-post--featured-img {
+                    height: 350px;
+                }
+            }
+
+            @media (max-width: 500px) {
+                .work-post--featured-img {
+                    height: 300px;
+                }                
+            }
+
+            @media (max-width: 420px) {
+                .work-post--featured-img {
+                    height: 240px;
+                }                
+            }
+        }
+
+        .work-post--the-services-union {
+            .work-post--featured-img {
+                height: 420px;
+            }
+
+            @media (max-width: 1450px) {
+                .work-post--featured-img {
+                    height: 330px;
+                }
+            }
+
+            @media (max-width: 500px) {
+                .work-post--featured-img {
+                    height: 320px;
+                }                
+            }
+
+            @media (max-width: 420px) {
+                .work-post--featured-img {
+                    height: 230px;
+                }                
+            }
+        }
+
+        &:nth-child(even) {
+            .work-post--petrichor-co,
+            .work-post--mst-global {
+                @media (min-width: 1600px) {
+                    transform: translateX(-60px);
+                }
+            }
+        }
+    }
+//}
+
+@media (max-width: 1215px) {
+    .work-landing {
+        .work-post-wrap {
+            .work-post--vee-design,
+            .work-post--panthera {
+                max-width: 450px;
+            }
+
+            .work-post--petrichor-co {
+                max-width: 520px;
+            }
+
+            .work-post--watch-my-wilderness,
+            .work-post--mst-global {
+                max-width: 490px;
+            }
+
+            .work-post--alex-artlett {
+                max-width: 550px;
+            }
+
+            .work-post--alex-artlett,
+            .work-post--the-services-union {
+                max-width: 500px;
+            }
+
+            .work-post--auscert-conference,
+            .work-post--angularjs-tetris {
+                max-width: 540px;
+            }
+
+            .work-post--emissions-trading-research {
+                max-width: 530px;
             }
         }
     }
 }
 
+@include tablet {
+    .work-wrap.work-landing {
+        padding-top: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .work-landing {
+        .work-post-wrap {
+            .work-post--the-housemate-app {
+                max-width: 400px;
+            }
+
+            .work-post--lipsum-app,
+            .work-post--angularjs-tetris {
+                max-width: 500px;
+            }
+
+            .work-post--uqu {
+                max-width: 440px;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .work-landing {
+        .work-post-wrap {
+            .work-post {
+                max-width: 100% !important;
+            }
+        }
+    }
+}

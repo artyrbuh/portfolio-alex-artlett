@@ -12,12 +12,16 @@ body {
     width: 100%;
     //overflow-x: hidden;
     overscroll-behavior-y: none;
-    background-color: $white;
+    //background-color: $white;
 
     @include mobile() {
         width: 100%;
         overflow: hidden;
     }
+}
+
+.theme-wrap {
+    background-color: $white;
 }
 
 strong {
