@@ -76,7 +76,6 @@ const IndexPage = () => (
             }
           }
       `} render={props => {
-          console.log(props);
           const {about_block, experience_block, header, moving_text, selected_showcase} = props.allWordpressPage.edges[0].node.acf;
           
           return (
@@ -228,13 +227,13 @@ export const SelectedShowcase = ({selected_showcase}) => {
   );
 };
 
-export const ShowcaseItem = ({item}) => {
+export const ShowcaseItem = ({item, key}) => {
   const {post_name} = item;
   const {thumbnail_image, thumbnail_text} = item.acf;
   const colSize = thumbnail_text.length >= 3 ? 'is-full' : 'is-half';
 
   return (
-    <div className={`column ${colSize} work-element work-post--${post_name}`}>
+    <div className={`column ${colSize} work-element work-post--${post_name}`} key={key}>
       <AALink to={`/work/${item.post_name}`}>
         <div className="showcase-inner">
           <div className="bg-image" style={{backgroundImage: `url(${thumbnail_image.localFile.publicURL})`}}></div>

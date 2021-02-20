@@ -55,7 +55,6 @@ const Modal = ({isActive, children, closeMenu, classes}) => {
     const hideModal = () => {
         setDisabled(true);
         //wipe out everything
-        console.log('hide odal')
 
         //wipe in the background
         TweenLite.to(modalBG, {

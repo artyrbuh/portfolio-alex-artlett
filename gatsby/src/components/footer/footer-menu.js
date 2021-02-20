@@ -9,7 +9,6 @@ const FooterMenu = ({menu}) => {
                 <ul>
                     {
                         menu.map((el,i) => {
-                            console.log(el)
                             return (
                             <li key={i}>
                                 {el.classes !== "Email" ? (

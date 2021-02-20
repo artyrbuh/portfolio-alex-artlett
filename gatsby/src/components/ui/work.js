@@ -155,8 +155,6 @@ export const WorkLandingPost = ({item, key}) => {
     const {post_name, post_title, acf } = item;
     const {main_technology, professions, thumbnail_image} = acf;
 
-    console.log(thumbnail_image)
-
     const img = thumbnail_image !== null ? thumbnail_image.localFile.publicURL : '';
 
     return (

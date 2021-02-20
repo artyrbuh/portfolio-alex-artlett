@@ -15,7 +15,7 @@ const OffcanvasMenu = ({expanded}) => {
     let sideTextRef = useRef(null);
     let [delay, setDelay] = useState(0);
 
-    const sideText = () => `${name} - ${d.getFullYear()}`.split('').map((el) => <span>{el}</span>);
+    const sideText = () => `${name} - ${d.getFullYear()}`.split('').map((el, i) => <span key={i}>{el}</span>);
 
     useEffect(() => {
         if(activeMenu === "main") {

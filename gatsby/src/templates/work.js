@@ -184,11 +184,11 @@ const WorkHeader = () =>  {
 const InlineList = ({list}) => (
     <>
         {list.map((el, i) => (
-            <>
+            <span key={i}>
                 {(i === (list.length - 1) && list.length > 1) && ' & '}
                 {el}
                 {i === (list.length - 1) || i === (list.length - 2) ? '' : ', '}
-            </>
+            </span>
         ))} 
     </>
 )

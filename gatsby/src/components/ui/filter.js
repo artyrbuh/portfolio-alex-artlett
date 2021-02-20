@@ -57,7 +57,6 @@ export const FilterWrap = ({children}) => {
 
     const calcFiltersHeight = () => {
         const height = document.querySelector('.work-filters-wrap > div').clientHeight;
-        console.log(height);
         setHeight(`${height}px`);
     }
 

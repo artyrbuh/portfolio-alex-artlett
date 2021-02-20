@@ -78,7 +78,7 @@ export const distance = (x1,y1,x2,y2) => {
 }
 
 export const textAsSpans = (text) => {
-  return text.split('').map(el => <span>{el}</span>);
+  return text.split('').map((el,i) => <span key={i}>{el}</span>);
 }
 
 export const shuffle = (array) => {
