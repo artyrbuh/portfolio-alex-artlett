@@ -21,9 +21,12 @@ export default ({pageContext}) => {
     const {acf, featured_media, slug, title} = pageContext.content;
     const {layouts_work, main_technology, professions, technologies, project_year, project_website} = acf;
     console.log(pageContext)
+
+    const animationDelay = featured_media ? 1 : .500;
+
     return (
         <PageTransition>
-            <WorkSingleContext.Provider value={{featured_media, slug, title, layouts_work, main_technology, professions, technologies, project_year, previous, next, project_website}}>
+            <WorkSingleContext.Provider value={{featured_media, slug, title, layouts_work, main_technology, professions, technologies, project_year, previous, next, project_website, animationDelay}}>
                 <SEO title={title}/>
                 <VideoWrapper>
                     <WorkLayout classes={`work-single work-single--${slug}`}>
@@ -63,7 +66,7 @@ export default ({pageContext}) => {
 }
 
 const WorkHeader = () =>  {
-    const { title, featured_media, project_year, professions, technologies, project_website } = useContext(WorkSingleContext);
+    const { title, featured_media, project_year, professions, technologies, project_website, animationDelay } = useContext(WorkSingleContext);
     let containerRef, featuredImageWrap, wiper, featuredImage, projectMeta, h1 = useRef();
     const [initialLoad, setInitialLoad] = useState(true);
 
@@ -83,30 +86,30 @@ const WorkHeader = () =>  {
             });
 
             TweenLite.to(wiper, {
-                delay: 1.3,
+                delay: animationDelay + 0.3,
                 x: `100%`,
                 duration: 1,
             });
 
             TweenLite.from(h1.current, {
-                delay: 1.3,
+                delay: animationDelay + 0.3,
                 skewY: 7,
                 duration: .85,
                 y: `-400px`
             });
 
             TweenLite.from(featuredImage, {
-                delay: 1.3,
+                delay: animationDelay + 0.3,
                 scale: 1.5,
                 duration: 1,
             });
 
             TweenLite.from(h1.current, {
-                delay: 1.4,
+                delay: animationDelay + 0.4,
                 css: {display: 'block'}
             });
         
-            fadeUpFrom(projectMeta, 2);
+            fadeUpFrom(projectMeta, animationDelay + 1);
 
             setInitialLoad(false);
         }
@@ -114,27 +117,47 @@ const WorkHeader = () =>  {
 
     return (
         <div className="work-single--header" ref={el => containerRef = el}>
-            <div className="featured-image-wrap">
-                <h1 
-                    ref={h1}
-                    dangerouslySetInnerHTML={{__html: title}}
-                />
                 {featured_media ? (
-                    <div className="featured-image--wrap" ref={el => featuredImageWrap = el}>
-                        <div className="wiper" ref={el=> wiper = el}></div>
-                        <img 
-                            src={featured_media.localFile.publicURL} 
-                            className="featured-image"
-                            ref={el => featuredImage = el}
+                    <div className="work-single-header--inner">
+                        <h1 
+                            ref={h1}
+                            dangerouslySetInnerHTML={{__html: title}}
                         />
+                        <div className="featured-image--wrap" ref={el => featuredImageWrap = el}>
+                            <div className="wiper" ref={el=> wiper = el}></div>
+                            <img 
+                                src={featured_media.localFile.publicURL} 
+                                className="featured-image"
+                                ref={el => featuredImage = el}
+                            />
+                        </div>
                     </div>
                 ) : (
-                    <div className="featured-image"></div>
+                    <div className="header--no-image">
+                        <h1 
+                            ref={h1}
+                            dangerouslySetInnerHTML={{__html: title}}
+                        />
+                    </div>
                 )}
                 
-            </div>
             <div ref={el => projectMeta = el}>
-                <a href={project_website} target="_blank">
+                {project_website ? (
+                    <a href={project_website} target="_blank">
+                        <h4>
+                            <span className="">
+                                <span className="inner-container">
+                                    {title} ― {project_year}
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
+
+                                <img src={leftArrow}/>
+                            </span>
+                        </h4>
+                    </a>
+                ) : (
                     <h4>
                         <span className="">
                             <span className="inner-container">
@@ -147,7 +170,8 @@ const WorkHeader = () =>  {
                             <img src={leftArrow}/>
                         </span>
                     </h4>
-                </a>
+                )}
+
                 <p className="project-meta">
                     <InlineList list={professions}/>
                     <br/>
@@ -171,7 +195,7 @@ const InlineList = ({list}) => (
 )
 
 const WorkLayouts = () => {
-    const { layouts_work } = useContext(WorkSingleContext);
+    const { layouts_work, animationDelay } = useContext(WorkSingleContext);
 
     const [initialLoad, setInitialLoad] = useState(true);
     let workLayoutsBlock = useRef(null);
@@ -179,7 +203,7 @@ const WorkLayouts = () => {
     useEffect(() => {
         if(initialLoad) {
             if(layouts_work && layouts_work.length) {
-                fadeUpFrom(workLayoutsBlock, 2.25);
+                fadeUpFrom(workLayoutsBlock, animationDelay + 1.25);
             }
             setInitialLoad(false);
         }
@@ -260,14 +284,29 @@ const WorkImagesBlock = ({data, i}) => {
                                             <span></span>
                                             <span></span>
                                         </div>
-                                        <AAImage image={el.image}/>
+                                        {el.is_video ? (
+                                            <div>lol</div>
+                                        ) : (
+                                            <AAImage image={el.image}/>
+                                        )}
                                     </div>
                                 </div>
                             ) : (
-                                <AAImage 
-                                    image={el.image} 
-                                    className={el.has_bg ? 'has-bg' : ''}
-                                />
+                                <>
+                                    {el.is_video ? (
+                                        <div className={el.has_bg ? 'video-has-bg' : ''}>
+                                            <video autoplay="autoplay" muted="muted" loop="loop">
+                                                <source src={el.video.localFile.publicURL} type="video/mp4"></source>
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    ) : (
+                                        <AAImage 
+                                            image={el.image} 
+                                            className={el.has_bg ? 'has-bg' : ''}
+                                    />
+                                    )}
+                                </>
                             )}
                         </div>
                     ))}
@@ -357,7 +396,9 @@ const WorkVideoBlock = ({data, i}) => {
                     className="work-video-block--preview"
                     onClick={() => handleShow(youtube_url)}
                 >
-                    <img src={video_preview.localFile.publicURL} />
+                    {video_preview && (
+                        <img src={video_preview.localFile.publicURL} />
+                    )}
                     <svg className="play-btn" x="0px" y="0px" width="408.221px" height="408.221px" viewBox="0 0 408.221 408.221" >
                         <path d="M204.11,0C91.388,0,0,91.388,0,204.111c0,112.725,91.388,204.11,204.11,204.11c112.729,0,204.11-91.385,204.11-204.11    C408.221,91.388,316.839,0,204.11,0z M286.547,229.971l-126.368,72.471c-17.003,9.75-30.781,1.763-30.781-17.834V140.012    c0-19.602,13.777-27.575,30.781-17.827l126.368,72.466C303.551,204.403,303.551,220.217,286.547,229.971z"/>
                     </svg>

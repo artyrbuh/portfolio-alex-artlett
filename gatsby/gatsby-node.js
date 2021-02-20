@@ -129,6 +129,12 @@ exports.createPages = ({ graphql, actions }) => {
                       images {
                         make_as_window
                         has_bg
+                        is_video
+                        video {
+                          localFile {
+                            publicURL
+                          }
+                        }
                         image {
                           source_url
                           localFile {

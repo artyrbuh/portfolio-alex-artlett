@@ -1,6 +1,11 @@
 .work-content-images {
     @include scaling-val(76, 124, 76px, 124px, "margin-bottom");
 
+    .video-has-bg {
+        padding: 30px;
+        background-color: $pale-red;
+    }
+
     .content-images-grid {
         display: grid;
         grid-gap: 25px;
@@ -43,6 +48,7 @@
                         border: 1px solid $black;
                         border-top-left-radius: 5px;
                         border-top-right-radius: 5px;
+                        border-bottom: 0;
                         text-align: left;
     
                         span {

@@ -7,7 +7,7 @@
 }
 
 .work-single--header {
-    @include scaling-val(49, 126, 49px, 126px, "padding-bottom");
+    @include scaling-val(49, 100, 49px, 100px, "padding-bottom");
 
     padding-top: 56px;
     position: relative;
@@ -19,16 +19,31 @@
         text-align: center;
         display: inline-block;
         white-space: nowrap;
-        position: absolute;
-        top: 50px;
         z-index: 3;
+    }
 
-        @include mobile {
-            display: none !important;
+    .work-single-header--inner {
+        h1 {
+            position: absolute;
+            top: 50px;
+
+            @include mobile {
+                display: none !important;
+            }
+    
+            @include tablet {
+                display: block !important;
+            }
         }
+    }
 
-        @include tablet {
-            display: block !important;
+    .header--no-image {
+        height: 20vh;
+        display: flex;
+        align-items: center;
+
+        @include widescreen {
+            height: 35vh;
         }
     }
 
@@ -139,34 +154,40 @@
                 }
             }
         }
+    }
 
-        &:hover {
-            > span {
-                img {
-                    transform: rotate(180deg) skewY(0deg);
-                    right: 10px;
-                }
-
-                &::after {
-                    transform: scale(1);
-                }
-
-                .inner-container {
-                    span {
-                        width: 100%;
-                        right: unset;
-                        left: 0;
-    
-                        &:nth-child(3) {
-                            transition-delay: 0.35s;
+    a {
+        h4 {
+            &:hover {
+                &:hover {
+                    > span {
+                        img {
+                            transform: rotate(180deg) skewY(0deg);
+                            right: 10px;
                         }
-                        
-                        &:nth-child(2) {
-                            transition-delay: 0.25s;
+        
+                        &::after {
+                            transform: scale(1);
                         }
-                        
-                        &:nth-child(1) {
-                            transition-delay: 0.15s;
+        
+                        .inner-container {
+                            span {
+                                width: 100%;
+                                right: unset;
+                                left: 0;
+            
+                                &:nth-child(3) {
+                                    transition-delay: 0.35s;
+                                }
+                                
+                                &:nth-child(2) {
+                                    transition-delay: 0.25s;
+                                }
+                                
+                                &:nth-child(1) {
+                                    transition-delay: 0.15s;
+                                }
+                            }
                         }
                     }
                 }
@@ -184,7 +205,7 @@
     @include mobile {
         padding-top: 0;
 
-        .featured-image-wrap {
+        .work-single-header--inner {
             width: calc(100% + 30px);
             position: relative;
             left: -15px;

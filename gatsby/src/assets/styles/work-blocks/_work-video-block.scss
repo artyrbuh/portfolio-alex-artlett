@@ -4,6 +4,9 @@
     .work-video-block--preview {
         cursor: pointer;
         position: relative;
+        background-color: $pale-red;
+        width: 100%;
+        min-height: 600px;
 
         img {
             margin-bottom: 0;
