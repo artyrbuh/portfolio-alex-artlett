@@ -334,6 +334,25 @@
                             "maxlength": ""
                         },
                         {
+                            "key": "field_6027b76de44b8",
+                            "label": "Contract?",
+                            "name": "contract",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
                             "key": "field_5ff874499b4a6",
                             "label": "Position",
                             "name": "position",
@@ -473,7 +492,5 @@
     ],
     "active": true,
     "description": "",
-    "show_in_graphql": 1,
-    "graphql_field_name": "home",
-    "modified": 1610118235
+    "modified": 1613215619
 }

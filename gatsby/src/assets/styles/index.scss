@@ -9,6 +9,7 @@
 @import "./utilities/functions";
 @import "./utilities/mixin";
 @import "./utilities/animation";
+@import "./utilities/utility";
 @import "./common/global";
 
 //components
@@ -27,6 +28,10 @@
 @import './components/experience-list';
 @import './components/moving-text';
 @import './components/filters';
+@import './components/cursor';
+@import './components/hoverable-cta';
+@import './components/flourish-hover';
+@import './components/page-transitions';
 
 //layouts
 @import './layout/work';
@@ -38,3 +43,6 @@
 @import './work-blocks/work-video-block';
 @import './work-blocks/work-content-block';
 @import './work-blocks/work-content-images';
+
+//theme 
+//@import './theme/dark-mode';

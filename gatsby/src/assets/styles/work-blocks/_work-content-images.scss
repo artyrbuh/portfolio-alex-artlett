@@ -1,6 +1,11 @@
 .work-content-images {
     @include scaling-val(76, 124, 76px, 124px, "margin-bottom");
 
+    .video-has-bg {
+        padding: 30px;
+        background-color: $pale-red;
+    }
+
     .content-images-grid {
         display: grid;
         grid-gap: 25px;
@@ -10,6 +15,60 @@
     
             img {
                 margin-bottom: 0;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+        }
+
+        .work-content-images--image {
+            .image-window {
+                @include scaling-val(40, 80, 40px, 80px, "padding-top");
+                @include scaling-val(40, 80, 40px, 80px, "padding-bottom");
+
+                background-color: $pale-red;
+                text-align: center;
+
+                .image-window--window {
+                    display: inline-block;
+                    padding-left: 40px;
+                    padding-right: 40px;
+
+                    img {
+                        border: 1px solid $black;
+                        border-bottom-left-radius: 5px;
+                        border-bottom-right-radius: 5px;
+                    }
+
+                    .image-window--window-header {
+                        height: 30px;
+                        width: 100%;
+                        background-color: $white;
+                        position: relative;
+                        border: 1px solid $black;
+                        border-top-left-radius: 5px;
+                        border-top-right-radius: 5px;
+                        border-bottom: 0;
+                        text-align: left;
+    
+                        span {
+                            @include scaling-val(10, 15, 10px, 15px, "height");
+                            @include scaling-val(10, 15, 10px, 15px, "width");
+                            @include scaling-val(1, 3, 1px, 3px, "top");
+
+                            border-radius: 100%;
+                            border: 1px solid $black;
+                            display: inline-block;
+                            margin-left: 5px;
+                            position: relative;
+                            top: 3px;
+    
+                            &:first-child {
+                                margin-left: 7px;
+                            }
+                        }
+                    }
+                }
             }
         }
 

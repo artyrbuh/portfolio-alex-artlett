@@ -1,12 +1,15 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState, useRef} from "react";
 import {WorkPageContext} from '../../templates/work-landing';
+import AAButton from "./button";
+import {TweenLite} from "gsap";
+import { staggerItemsSkewUpDown } from "../../core/animation";
 
 export const FilterWrap = ({children}) => {
     const [hideFilters, setHideFilters] = useState(true);
     const [height, setHeight] = useState("unset");
-    const getWidth = () => window.innerWidth 
+    const getWidth = () => typeof window !== 'undefined' && typeof document !== 'undefined' ? window.innerWidth 
     || document.documentElement.clientWidth 
-    || document.body.clientWidth;
+    || document.body.clientWidth : 0;
     let currWidth = useCurrentWidth();
   
     //bind window width to state prop
@@ -54,14 +57,16 @@ export const FilterWrap = ({children}) => {
 
     const calcFiltersHeight = () => {
         const height = document.querySelector('.work-filters-wrap > div').clientHeight;
-        console.log(height);
         setHeight(`${height}px`);
     }
 
     return (
         <>
             <div className="toggle-filters" onClick={() => setHideFilters(!hideFilters)}>
-                <a>{`${hideFilters ? 'Show' : 'Hide'}`} filters</a>
+                <a className="flourish-hover">
+                    {`${hideFilters ? 'Show' : 'Hide'} filters`}
+                    <span className="flourish-one aa-black--text">{`${hideFilters ? 'Show' : 'Hide'} filters`}</span>
+                </a>
             </div>
             <div className="work-filters-wrap" style={{height}}>
                 <div>{children && children}</div>
@@ -70,22 +75,46 @@ export const FilterWrap = ({children}) => {
     );
 }
 
-export const FilterButtons = ({filters, classes}) => {
-    const { isFilterActive, toggleFilters, resetFilters, hasGroupOfFilters } = useContext(WorkPageContext);
+export const FilterButtons = ({filters, classes, animateOnLoad = false}) => {
+    const { isFilterActive, toggleFilters, resetFilters, hasGroupOfFilters, workItems } = useContext(WorkPageContext);
+    
+    let buttons = useRef(null);
+    const [initialLoad, setInitialLoad] = useState(true);
+
+    useEffect(() => {
+        if(initialLoad) {
+            TweenLite.to(buttons, {
+                duration: 0,
+                css: {opacity: 1}
+            });
+
+            if(animateOnLoad) {
+                staggerItemsSkewUpDown(buttons.children, .15, 400, 0.4, 1.25, 4, 0);
+            }
+            setInitialLoad(false);
+        }
+    }, [])
 
     if(filters.length) {
         return (
-            <ul className={`work-filters ${classes ? classes : ''}`}>
-                <li 
-                    onClick={() => resetFilters(filters)}
-                    className={`${!hasGroupOfFilters(filters) ? 'is-active' : ''}`}
-                >All</li>
+            <ul className={`work-filters ${classes ? classes : ''}`} ref={el => buttons = el}>
+                <li>
+                    <AAButton 
+                        action={() => !workItems.disabled && resetFilters(filters)} 
+                        title={`All`}
+                        classes={`${!hasGroupOfFilters(filters) ? 'is-active' : ''}`}
+                    />
+                </li>
+                
                 {filters.map((el, i) => (
-                    <li 
-                        key={i}
-                        onClick={() => toggleFilters(el.slug)}
-                        className={`${isFilterActive(el.slug) ? 'is-active' : ''}`}
-                    >{el.name}</li>
+                    <li key={i}>
+                        <AAButton 
+                            action={() => toggleFilters(el.slug)} 
+                            title={el.name}
+                            disabled={workItems.disabled}
+                            classes={`${isFilterActive(el.slug) ? 'is-active' : ''}`}
+                        />
+                    </li>
                 ))}
             </ul>
         );

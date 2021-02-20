@@ -1,6 +1,7 @@
 .hire-me-cta {
     position: relative;
     cursor: pointer;
+    z-index: 1;
 
     .hire-me-cta--wave {
         position: absolute;
@@ -21,6 +22,12 @@
     &.rotate {
         .hire-me-cta--text {
             animation: rotating 40s linear infinite;
+        }
+    }
+
+    &:hover {
+        .hire-me-cta--wave {
+            animation: wave-animation 1.75s linear infinite;
         }
     }
 }

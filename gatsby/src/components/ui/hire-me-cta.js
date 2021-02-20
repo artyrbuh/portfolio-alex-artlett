@@ -3,9 +3,6 @@ import React from "react";
 const defaultUrl = `mailto:hello@alexartlett.com.au?subject=I am interested in working with you&body=Greetings, my name is `;
 
 const HireMe = ({url = defaultUrl, rotate = true}) => {
-
-    console.log(rotate)
-
     return (
         <a href={url}>
             <div className={`hire-me-cta ${rotate ? 'rotate' : ''}`}>

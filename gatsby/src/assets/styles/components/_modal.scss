@@ -1,6 +1,9 @@
 .aa-modal {
     .modal-card {
         padding: 20px;
+        position: relative;
+        transform: scale(1);
+        opacity: 1;
 
         .modal-card-head {
             padding: 10px 20px;
@@ -15,6 +18,7 @@
                 font-weight: 700;
                 max-width: 125px;
                 line-height: 23.53px !important;
+                margin-bottom: 0 !important;
             }
 
             span {
@@ -49,8 +53,26 @@
                 &.designation {
                     @extend .mb-3;
 
+                    font-weight: bold;
+                }
+            }
+
+            p,
+            li {
+                @include scaling-font(16, 20, 16px, 20px);
+                @include scaling-val(24, 30, 24px, 30px, "line-height");
+
+                strong {
                     font-weight: 500;
                 }
+
+                a {
+                    @extend %body-href;
+                }
+            }
+
+            ul {
+                @extend %list;
             }
         }
 

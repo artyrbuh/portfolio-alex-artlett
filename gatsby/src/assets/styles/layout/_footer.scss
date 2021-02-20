@@ -26,5 +26,17 @@ footer {
 
     .column--menu {
         @extend .has-text-right;
+
+        a {
+            @extend %text-as-spans-hover;
+
+            span {
+                color: $black;
+            }
+
+            &:hover {
+                //color: $red;
+            }
+        }
     }
 }

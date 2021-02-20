@@ -2,12 +2,16 @@
     @include scaling-val(46, 91, 46px, 91px, "padding-bottom");
 
     position: relative;
+    opacity: 0;
 
     li {
-        @extend .button;
-
         margin-right: 5px;
         margin-bottom: 9px;
+        display: inline-block;
+
+        .button {
+            //display: inline-block;
+        }
 
         &:first-child {
             text-transform: unset;
@@ -38,7 +42,7 @@
     a {
         @extend %cta;
 
-        display: block;
+        display: inline-block;
         margin-bottom: 15px;
     }
 }

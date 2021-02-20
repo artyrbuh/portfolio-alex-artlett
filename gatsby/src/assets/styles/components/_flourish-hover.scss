@@ -1,0 +1,52 @@
+.flourish-hover {
+    position: relative;
+    transition: 0.55s;
+    //transition-delay: 0.75s;
+
+    .flourish-one,
+    .flourish-two {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+    }
+
+    .flourish-one {
+        transition: .5s;
+        transition-delay: 0.1s;
+    }
+
+    .flourish-two {
+        transition: .5s;
+        transition-delay: 0.5s;
+    }
+
+    &::before {
+        position: absolute;
+        content: attr(data-content);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: midnightblue;
+        text-decoration: underline;
+        white-space: nowrap;
+        overflow: hidden;
+        transition: width 275ms ease;
+    }
+
+
+    &:hover,
+    &.hover {
+        //color: rgba($red, 0);
+        transition-delay: 0;
+
+        .flourish-one,
+        .flourish-two {
+            //width: 100%;
+        }
+    }
+}
