@@ -7,6 +7,6 @@
     pointer-events: none;
     transition: .1s;
 
-    @include scaling-val(64, 220, 64px, 220px, "height");
-    @include scaling-val(10, 40, 10px, 40px, "top");
+    @include scaling-val(164, 320, 164px, 320px, "height");
+    @include scaling-val(50, 100, 50px, 100px, "top");
 }

@@ -1,4 +1,17 @@
 .work-single {
+    &.work-single--auscert-conference,
+    &.work-single--watch-my-wilderness {
+        .work-wrap {
+            .work-single--header {
+                .work-single-header--inner {
+                    h1 {
+                        color: $pale-red;
+                    }
+                }
+            }
+        }
+    }
+
     @include mobile {
         .work-nav-bar {
             margin-bottom: 0;

@@ -20,9 +20,8 @@ export default ({pageContext}) => {
     const {previous, next} = pageContext;
     const {acf, featured_media, slug, title} = pageContext.content;
     const {layouts_work, main_technology, professions, technologies, project_year, project_website} = acf;
-    console.log(pageContext)
 
-    const animationDelay = featured_media ? 1 : .500;
+    const animationDelay = featured_media ? 1 : .250;
 
     return (
         <PageTransition>
