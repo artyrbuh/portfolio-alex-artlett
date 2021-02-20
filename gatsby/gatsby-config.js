@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Alexander Artlett`,
@@ -27,15 +31,15 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/assets/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/assets/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     {
       resolve: "gatsby-source-wordpress",
       options: {
         minimizeDeprecationNotice: true,
-        baseUrl: "alexanderartlett.lndo.site:8000",
-        protocol: "http",
+        baseUrl: process.env.BASE_URL,
+        protocol: process.env.PROTOCOL,
         hostingWPCOM: false,
         useACF: true,
         verboseOutput: false,

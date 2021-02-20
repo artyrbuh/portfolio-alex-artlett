@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'gatsby';
+import { textAsSpans } from '../../core/util/helpers';
 
 const FooterMenu = ({menu}) => {
     return (
@@ -7,17 +8,21 @@ const FooterMenu = ({menu}) => {
             {menu.length ? (
                 <ul>
                     {
-                        menu.map((el,i) => (
+                        menu.map((el,i) => {
+                            return (
                             <li key={i}>
-                                {el.object_slug !== "email" ? (
-                                    <Link to={`${el.url}`} target="_blank">
-                                        {el.title}
+                                {el.classes !== "Email" ? (
+                                    <Link to={`${el.title}`} target="_blank" className="skew-hover">
+                                        {textAsSpans(el.classes.toString())}
                                     </Link>
                                 ) : (
-                                    <a href={el.url}>{el.title}</a>
+                                    <a href={`mailto:${el.title}`} className="skew-hover">
+                                        {textAsSpans(el.classes.toString())}
+                                    </a>
                                 )}
                             </li>
-                        ))
+                        )})
+                        
                     }
                 </ul>
             ): (

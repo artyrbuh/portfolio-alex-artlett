@@ -1,22 +1,28 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Layout from "../layout";
-import {Link} from "gatsby";
 import {WorkPageContext} from "../../templates/work-landing";
 import { ThemeDataContext } from '../../components/layout';
-import {slugify_array, as_obj} from "../../core/util/helpers";
+import {slugify_array, as_obj, shuffle} from "../../core/util/helpers";
+import { AALink } from "../../core/page-transition";
+import SkewScrollContainer from "./SkewScroll";
+import leftArrow from "../../assets/images/left-arrow.svg";
 
 export const WorkContainer = ({children, classes}) => {
     return (
-        <div className={`container work-wrap ${classes ? classes : ''}`}>
-            {children && children}
-        </div>
+        <SkewScrollContainer>
+            <div className={`container work-wrap ${classes ? classes : ''}`}>
+                {children && children}
+            </div>
+        </SkewScrollContainer>
     )
 }
 
 export const WorkBarNav = ({children, classes}) => {
     return (
         <div className={`work-nav-bar ${classes ? classes : ''}`}>
-            {children && children}
+            <div>
+                {children && children}
+            </div>
         </div>
     );
 }
@@ -29,7 +35,7 @@ export const WorkLayout = ({children, classes}) => {
     );
 }
 
-export const WorkList = ({}) => {
+export const WorkList = () => {
     const themeData = useContext(ThemeDataContext);
 
     //capture the proffession and technology filters, convert them into an object with name and slug
@@ -38,13 +44,14 @@ export const WorkList = ({}) => {
     professions = professions.map((a) => as_obj(a.profession));
     
     //capture work list and filters and functions from page context
-    let {work_list, filterList, hasGroupOfFilters, resetAllFilters} = useContext(WorkPageContext);
+    let {work_list, filterList, hasGroupOfFilters, resetAllFilters, workItems, setWorkItems} = useContext(WorkPageContext);
     work_list = work_list.map(el => el.work);
 
     //capture active filters of type (either active tech filters, or active profession filters)
     const activeFilterOfType = (type) => type.filter((el) => filterList.includes(el.slug)); 
     const activeTechFilters = () => activeFilterOfType(technologies);
     const activeProfessionFilters = () => activeFilterOfType(professions);
+
 
     //check if a individual post has currently applied filters
     const postHasSelectedFiltersOfType = (type, filters) => {
@@ -81,57 +88,93 @@ export const WorkList = ({}) => {
     //abstracted functions for checking if post contains active tech or active professions filters
     const postHasSelectedTechFilters = (filters) => postHasSelectedFiltersOfType("tech", filters);
     const postHasSelectedProfessionFilters = (filters) => postHasSelectedFiltersOfType("professions", filters);
-    let postCount = 0;
+    const [initialLoad, setInitialLoad] = useState(true);
 
-    return (
-        <>
-            {work_list.map((el, i) => {
+    useEffect(() => {
+        if(initialLoad) {
+            setInitialLoad(false);
+        }
+    }, [])
+
+    //listen to changes for filters
+    useEffect(() => {
+        //if change, temp disable filtering
+        setWorkItems({
+            ...workItems,
+            disabled: true,
+            inTransit: true,
+        });
+
+        setTimeout(() => {
+            let count = 0;
+            const items = work_list.filter((el) => {
                 if(filterList.length) {
                     let {professions, technologies} = el.acf;
                     professions = slugify_array(professions);
                     technologies = slugify_array(technologies);
-
+    
                     if(postHasSelectedTechFilters(technologies) && postHasSelectedProfessionFilters(professions)) {
-                        postCount++;
-
-                        return(
-                            <>
-                                <WorkLandingPost item={el} key={i}/>
-                            </>
-                        );
+                        count++;
+                        return el;
                     } 
                 } else {
-                    postCount++;
-
-                    return (   
-                        <>
-                            <WorkLandingPost item={el} key={i}/>
-                        </>
-                    );
+                    count++;
+                    return el;
                 }
-            })}
+            }); 
+            
+            //re enable
+            setWorkItems({
+                ...workItems,
+                disabled: false,
+                count: count,
+                //items: shuffle(items), 
+                items: items, 
+                inTransit: false,
+            });
+        }, initialLoad ? 150 : 1100);
+    }, [filterList]);
 
-            {postCount === 0 && (
+    return (
+        <>
+            {workItems.items.length ? (
+                <>
+                    {workItems.items.map((el, i) => <WorkLandingPost item={el} key={i}/>)}   
+                    <div className={`work-post-wrap`} style={{height: 0}}></div> 
+                </>
+            ) : (
                 <>
                     <p>No posts, please <span onClick={resetAllFilters}>reset the filters</span> and try again</p>
                 </>
-            )} 
+            )}
         </>
     )
 }
 
-export const WorkLandingPost = ({item}) => {
+export const WorkLandingPost = ({item, key}) => {
     const {post_name, post_title, acf } = item;
-    const {main_technology, professions} = acf;
+    const {main_technology, professions, thumbnail_image} = acf;
+
+    const img = thumbnail_image !== null ? thumbnail_image.localFile.publicURL : '';
 
     return (
-        <div className={`work-post-wrap`}>
-            <div className={`work-post work-post--${post_name}`}>
-                <Link to={`/work/${post_name}`}>
-                    <div className="work-post--featured-img"></div>
+        <div className={`work-post-wrap`} key={key}>
+            <div className={`work-post work-post--${post_name} work-element triple-line-hover`}>
+                <div className="work-post--wiper"></div>
+                <AALink to={`/work/${post_name}`}>
+                    <div className="work-post--featured-img" style={{backgroundImage: `url(${img}`}}></div>
                     <div className="work-post--detail">
                         <div className="name">
-                            <h3>{post_title}</h3>
+                            <h3>
+                                <span className="outer-container">
+                                    <span className="inner-container">
+                                        {post_title}
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </span>
+                                </span>
+                            </h3>
                         </div>
                         <div className="meta">
                             <ul className="meta-list">
@@ -148,10 +191,13 @@ export const WorkLandingPost = ({item}) => {
                                         ))}
                                     </>
                                 )}
+                                <div className="hover-arrow">
+                                    <img src={leftArrow}/>
+                                </div>
                             </ul>
                         </div>
                     </div>
-                </Link>
+                </AALink>
             </div>
         </div>
     )

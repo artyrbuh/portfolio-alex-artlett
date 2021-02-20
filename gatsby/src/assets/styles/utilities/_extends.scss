@@ -16,3 +16,114 @@
     color: $primary;
     text-transform: uppercase;
 }
+
+.dashing-hover-line {
+    position: relative;
+  
+    &::after {
+      content: "";
+      background-color: $black;
+      height: 3px;
+      width: 0%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transition: $transition;
+    }
+  
+    &:hover {
+      &::after {
+        width: 100%;
+        right: unset;
+        left: 0;
+      }
+    }
+  
+    &--primary {
+      &::after {
+        background-color: $red;
+      }
+    }
+  
+    &--secondary {
+      &::after {
+        background-color: $black;
+      }
+    }
+
+    &--white {
+        &::after {
+          background-color: $white;
+        }
+      }
+  }
+
+
+.triple-line-hover {
+  .outer-container {
+    display: inline-block;
+    padding-right: 50px;
+    overflow: hidden;
+    position: relative;
+    padding-top: 5px;
+
+    .inner-container {
+      overflow: hidden;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 6px;
+      
+      span {
+          content: "";
+          background-color: $black;
+          height: 3px;
+          width: 0%;
+          position: absolute;
+          bottom: 0;
+          right: 0;          
+  
+          &:nth-child(1) {
+              background-color: $pale-red;
+              transition: 0.45s;
+              transition-delay: 0.35s;
+          }
+          
+          &:nth-child(2) {
+              background-color: $red;
+              transition: 0.45s;
+              transition-delay: 0.25s;
+          }
+          
+          &:nth-child(3) {
+              background-color: $black;
+              transition: 0.45s;
+              transition-delay: 0.15s;
+          }
+      }
+    }
+  }
+
+  &:hover {
+    .outer-container {
+        .inner-container {
+            span {
+                width: 100%;
+                right: unset;
+                left: 0;
+
+                &:nth-child(3) {
+                    transition-delay: 0.35s;
+                }
+                
+                &:nth-child(2) {
+                    transition-delay: 0.25s;
+                }
+                
+                &:nth-child(1) {
+                    transition-delay: 0.15s;
+                }
+            }
+        }
+    }
+}
+}

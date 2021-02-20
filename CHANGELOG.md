@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.7.0
+- Animate EVERYTHING (within reason)
+- Add reusable animation components, utility classes, and functions
+- Create Page Transitions and related components
+- Begin Dark Mode (to be finished)
+- Add Skew Scroll Components
+- Finally fix app so that it pulls in images, rather than reference source urls
+- Apply general fixes to whole site
+
 ## 0.6.0
 - Develop Single Work Template (to be animated)
 - Refactor Work layout to use relative positioning 

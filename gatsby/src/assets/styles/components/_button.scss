@@ -1,3 +1,5 @@
+$btn-transition: 0.35s;
+
 .button {
     border-radius: 65px;
     background-color: transparent;
@@ -5,13 +7,156 @@
     line-height: 21px;
     letter-spacing: -0.04em;
     color: $black;
-    border-color: $black;
+    border-color: unset !important;
+    border: 0;
     text-transform: lowercase;
 
-    &.is-active,
+    .button--border {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        border-radius: 65px;
+    }
+
+    .button--border {
+        border: 1px solid $black;
+        transition: $btn-transition;
+        transition-delay: 0.25s;
+        overflow: hidden;
+
+        .button--bg {
+            background-color: $black;
+            width: 0;
+            height: 0;
+            position: absolute;
+            transition: width 0.4s ease-in-out, height 0.4s ease-in-out;
+            border-radius: 100%;
+            transform: translate(-50%, -50%);
+        }
+
+        .button--active-bg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+
+            > span {
+                width: 0;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: "";
+                transition: 0.75s;
+
+                &:nth-child(1) {
+                    //background-color: $pale-red;
+                    //transition-delay: 0.65s;
+                    display: none;
+                }
+
+                &:nth-child(2) {
+                    //background-color: $red;
+                    //transition-delay: 0.35s;
+                    display: none;
+                }
+
+                &:nth-child(3) {
+                    background-color: $black;
+                    //transition-delay: 0;
+                }
+            }
+        }
+    }
+
+    .button--text,
+    .button--border {
+        transform: scale(1);
+    }
+
+    .button--text {
+        transition: $btn-transition;
+        position: relative;
+
+        > span {
+            &:last-child {
+                color: $white;
+            }
+        }
+    }
+
     &:hover {
-        background-color: $black;
-        color: $white;
-        border-color: $black;
+        .button--text,
+        .button--border {
+            transform: scale(0.9);
+        }
+
+        .button--border {
+            .button--bg {
+                width: 275px;
+                height: 275px;
+            }
+        }
+    }
+
+    &.is-active {
+        transform: scale(1) !important;
+
+        .button--border {
+            .button--bg {
+                width: 275px;
+                height: 275px;
+            }
+        }
+
+        .button--active-bg {
+            > span {
+                width: 100%;
+                transition: 0 !important;
+                /*
+                &:nth-child(1) {
+                    background-color: $pale-red;
+                    transition-delay: 0;
+                }
+                &:nth-child(2) {
+                    background-color: $red;
+                    transition-delay: 0.15s;
+                }
+                */
+                &:nth-child(3) {
+                    background-color: $black;
+                    //transition-delay: 0.25s;
+                }
+            }
+        }
+
+        .button--text {
+            .hoverable--text {
+                &:first-child {
+                    > span {
+                        top: -20px;
+                    }
+                }
+
+                &:last-child {
+                    > span {
+                        top: 0;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+
+    &[disabled] {
+        pointer-events: none !important;
+        opacity: 1;
     }
 }

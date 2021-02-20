@@ -67,6 +67,8 @@ exports.createPages = ({ graphql, actions }) => {
             context: edge.node,
           })
         })
+
+        //resolve()
       })
       // ==== END PAGES ====
  
@@ -85,31 +87,30 @@ exports.createPages = ({ graphql, actions }) => {
                 content
                 featured_media {
                   source_url
+                  localFile {
+                    publicURL
+                    childImageSharp {
+                      fluid(pngQuality: 10) {
+                        originalImg
+                        src
+                      }
+                    }
+                  }
                 }
                 acf {
-                  technologies
-                  professions
                   main_technology
-                  project_year
+                  professions
                   project_website
+                  project_year
+                  technologies
                   layouts_work {
-                    ... on WordPressAcf_content_block {
+                    ... on WordPressAcf_video {
                       id
-                      include_available_for_hire_cta
-                      content
-                      alignment
-                      cta {
-                        url
-                        target
-                        title
-                      }
-                      heading
-                    }
-                    ... on WordPressAcf_images_block {
-                      id
-                      images {
-                        image {
-                          source_url
+                      youtube_url
+                      video_preview {
+                        source_url
+                        localFile {
+                          publicURL
                         }
                       }
                       include_available_for_hire_cta
@@ -118,17 +119,39 @@ exports.createPages = ({ graphql, actions }) => {
                         content
                       }
                     }
-                    ... on WordPressAcf_video {
+                    ... on WordPressAcf_images_block {
                       id
-                      include_available_for_hire_cta
-                      video_preview {
-                        source_url
-                      }
-                      youtube_url
                       caption {
                         alignment
                         content
                       }
+                      include_available_for_hire_cta
+                      images {
+                        make_as_window
+                        has_bg
+                        is_video
+                        video {
+                          localFile {
+                            publicURL
+                          }
+                        }
+                        image {
+                          source_url
+                          localFile {
+                            publicURL
+                          }
+                        }
+                      }
+                    }
+                    ... on WordPressAcf_content_block {
+                      id
+                      include_available_for_hire_cta
+                      content
+                      heading
+                      alignment
+                      cta_url
+                      cta_text
+                      jumbo_text
                     }
                   }
                 }
@@ -164,6 +187,7 @@ exports.createPages = ({ graphql, actions }) => {
         resolve()
       })
     })
+
     // ==== END WORK ====
   })
 }

@@ -135,14 +135,21 @@
     &.expanded {
         .burger {
             > div {
-                background-color: $white;
+                //background-color: $white;
             }
         }
     }
 
+    &.contact-menu-open {
+        transition: .15s;
+        transition-delay: .95s;
+        opacity: 0;
+        pointer-events: none;
+    }
+
     @include mobile {
         &.contact-menu-open {
-            background-color: $white;
+            //background-color: $white;
         }
 
         height: 70px;
