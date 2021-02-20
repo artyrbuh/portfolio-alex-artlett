@@ -244,7 +244,7 @@ export const ShowcaseItem = ({item}) => {
                 {thumbnail_text.map((el) => (
                   <div className="thumbnail-text">
                     <img 
-                      src={el.text.source_url} />
+                      src={el.text.localFile.publicURL} />
                   </div>
                 ))}
               </div>
