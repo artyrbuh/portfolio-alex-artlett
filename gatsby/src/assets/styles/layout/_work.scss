@@ -206,14 +206,31 @@
 }
 
 @media (min-width: 1920px) {
-    .work-nav-bar.work-landing-nav {
+    .work-nav-bar {
         padding: 50px 40px;
         width: 475px;
+
+        .back-cta {
+            .arrow-wrap {
+                height: 42px;
+                width: 42px;
+
+                svg {
+                    width: 42px !important;
+                    height: auto;
+                }
+            }
+
+            h4 {
+                font-size: 3.5rem !important;
+                line-height: 100% !important;
+            }
+        }
     }
 
     .work-layout {
-        .work-wrap.work-landing,
-        footer.work-landing-footer .container {
+        .work-wrap,
+        footer .container {
             left: 525px;
             width: calc(100% - 525px);
         }

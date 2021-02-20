@@ -12,13 +12,13 @@ const ContactMenuList = ({menu}) => {
                             className="column menu-item"
                             key={i}
                         >
-                            {el.object_slug !== "email" ? (
-                                <Link to={`${el.url}`} target="_blank">
-                                    {textAsSpans(el.title)}
+                            {el.object_slug !== "Email" ? (
+                                <Link to={`${el.title}`} target="_blank">
+                                    {textAsSpans(el.classes.toString())}
                                 </Link>
                             ) : (
-                                <a href={el.url}>
-                                    {textAsSpans(el.title)}
+                                <a ref={`mailto:${el.title}`}>
+                                    {textAsSpans(el.classes.toString())}
                                 </a>
                             )}
                         </div>

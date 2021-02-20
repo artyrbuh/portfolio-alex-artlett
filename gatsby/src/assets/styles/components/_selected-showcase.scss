@@ -172,9 +172,24 @@
                         background-size: cover;
                     }
                 }
+
+                &:hover {
+                    .showcase-inner {
+                        .bg-image {
+                            transform: scale(1.05);
+                        }
+                    }
+                }
             }
 
             &.work-post--the-housemate-app {
+                .thumbnail-text-wrap {
+                    .thumbnail-text {
+                        img {
+                            transform: translateY(225%) skewY(9deg);
+                        }
+                    }
+                }
                 @include desktop {
                     .showcase-inner .thumbnail-text-wrap .thumbnail-text {
                         margin-top: 30px;
@@ -250,8 +265,9 @@
                 }
 
                 &:nth-child(4n) {
-                    margin-bottom: unset;
                     @include scaling-val(0, 200, 0px, 200px, "margin-top");
+
+                    margin-bottom: unset;
                 }
             }
 

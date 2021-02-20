@@ -36,16 +36,16 @@ const Layout = ({ children, classes }) => {
           }
         }
       }
-      allWordpressWpApiMenusMenusItems(filter: {name: {eq: "Footer"}}) {
+      allWordpressWpApiMenusMenusItems(filter: {name: {eq: "Contact Menu"}}) {
           edges {
-              node {
-                  name
-                  items {
-                      classes
-                      target
-                      title
-                      object_slug
-                  }
+              node {  
+                name
+                items {
+                  classes
+                  target
+                  title
+                  object_slug
+                }
               }
           }
       }

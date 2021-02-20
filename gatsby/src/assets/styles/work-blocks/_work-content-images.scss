@@ -52,8 +52,10 @@
                         text-align: left;
     
                         span {
-                            height: 15px;
-                            width: 15px;
+                            @include scaling-val(10, 15, 10px, 15px, "height");
+                            @include scaling-val(10, 15, 10px, 15px, "width");
+                            @include scaling-val(1, 3, 1px, 3px, "top");
+
                             border-radius: 100%;
                             border: 1px solid $black;
                             display: inline-block;

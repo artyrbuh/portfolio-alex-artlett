@@ -33,7 +33,7 @@
             }
         }
 
-        &:last-child {
+        &:nth-last-child(2) {
             &::after {
                 display: none;
             }

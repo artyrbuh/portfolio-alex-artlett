@@ -8,19 +8,22 @@ const FooterMenu = ({menu}) => {
             {menu.length ? (
                 <ul>
                     {
-                        menu.map((el,i) => (
+                        menu.map((el,i) => {
+                            console.log(el)
+                            return (
                             <li key={i}>
-                                {el.object_slug !== "email" ? (
-                                    <Link to={`${el.url}`} target="_blank" className="skew-hover">
-                                        {textAsSpans(el.title)}
+                                {el.classes !== "Email" ? (
+                                    <Link to={`${el.title}`} target="_blank" className="skew-hover">
+                                        {textAsSpans(el.classes.toString())}
                                     </Link>
                                 ) : (
-                                    <a href={el.url} className="skew-hover">
-                                        {textAsSpans(el.title)}
+                                    <a href={`mailto:${el.title}`} className="skew-hover">
+                                        {textAsSpans(el.classes.toString())}
                                     </a>
                                 )}
                             </li>
-                        ))
+                        )})
+                        
                     }
                 </ul>
             ): (

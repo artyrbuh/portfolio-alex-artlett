@@ -104,7 +104,10 @@
         position: absolute;
         color: rgba(255, 255, 255, 0.7);
         bottom: 20px;
-        left: rem(27px);
+        //left: rem(27px);
+        display: block;
+        width: 100%;
+        text-align: center;
     }
 
     &.contact-menu {
