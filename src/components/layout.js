@@ -110,18 +110,20 @@ const Layout = ({ children, classes }) => {
 
   const toggleMainMenu = () => toggleMenu("main");
   const toggleContactMenu = () => toggleMenu("contact");
+
+  //${isMobileOrTable() ? 'is-mobile-tablet' : ''}
   
   return (
     <div className="theme-wrap" ref={el => themeWrap = el}>
       <ThemeDataContext.Provider value={themeData}>
-        {!isMobileOrTable() && (
+        {/*!isMobileOrTable() && (*/
           <Cursor />
-        )}
+        /*)*/}
         <ActiveMenu.Provider value={{toggleMainMenu, toggleContactMenu, isMenu, activeMenu, mainMenuActive, setMainMenuActive, contactMenuActive, setContactMenuActive, disabled, initialClick}}>
           <Nav/>
           <Contact/>
         </ActiveMenu.Provider>
-        <div className={`${classes ? classes : ''} ${isMobileOrTable() ? 'is-mobile-tablet' : ''}`}>
+        <div className={`${classes ? classes : ''}`}>
           <main>{children}</main>
           <Footer/>
         </div>
