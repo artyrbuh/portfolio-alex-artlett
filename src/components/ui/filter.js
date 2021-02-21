@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState, useRef} from "react";
 import {WorkPageContext} from '../../templates/work-landing';
 import AAButton from "./button";
-import {TweenLite} from "gsap";
+import gsap from "gsap";
 import { staggerItemsSkewUpDown } from "../../core/animation";
 
 export const FilterWrap = ({children}) => {
@@ -83,7 +83,7 @@ export const FilterButtons = ({filters, classes, animateOnLoad = false}) => {
 
     useEffect(() => {
         if(initialLoad) {
-            TweenLite.to(buttons, {
+            gsap.to(buttons, {
                 duration: 0,
                 css: {opacity: 1}
             });

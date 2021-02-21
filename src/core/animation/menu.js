@@ -1,20 +1,20 @@
-import {TweenLite} from 'gsap';
+import gsap from 'gsap';
 
 export const slideOpenMenuDown = (menuRef, menuInnerBG, menuInner, delay = 0) => {
-    TweenLite.to(menuRef, 
+    gsap.to(menuRef, 
         {
             css: {display: 'block'}
         }
     );
 
-    TweenLite.to([menuInnerBG, menuInner], {
+    gsap.to([menuInnerBG, menuInner], {
         duration: 0,
         opacity: 1,
         height: '100%',
         skewY: 0,
     });
 
-    TweenLite.from([menuInnerBG, menuInner], 
+    gsap.from([menuInnerBG, menuInner], 
         {
             delay: delay,
             duration: .8,
@@ -30,13 +30,13 @@ export const slideOpenMenuDown = (menuRef, menuInnerBG, menuInner, delay = 0) =>
 }
 
 export const slideOpenMenuRight = (menuRef, menuInnerBG, menuInner, delay = 0) => {
-    TweenLite.to(menuRef, 
+    gsap.to(menuRef, 
         {
             css: {display: 'block'},
         }
     );
 
-    TweenLite.to([menuInnerBG, menuInner], {
+    gsap.to([menuInnerBG, menuInner], {
         duration: 0,
         x: `0`,
         height: `100%`,
@@ -44,7 +44,7 @@ export const slideOpenMenuRight = (menuRef, menuInnerBG, menuInner, delay = 0) =
         skewX: 0,
     });
 
-    TweenLite.from([menuInnerBG, menuInner], 
+    gsap.from([menuInnerBG, menuInner], 
         {
             delay: delay,
             duration: .9,
@@ -59,7 +59,7 @@ export const slideOpenMenuRight = (menuRef, menuInnerBG, menuInner, delay = 0) =
 }
 
 export const slideCloseMenuLeft = (menuRef, menuInnerBG, menuInner) => {
-    TweenLite.to([menuInner, menuInnerBG], 
+    gsap.to([menuInner, menuInnerBG], 
         {
             duration: .8,
             ease: 'power3.inOut',
@@ -71,7 +71,7 @@ export const slideCloseMenuLeft = (menuRef, menuInnerBG, menuInner) => {
         }
     );
 
-    TweenLite.to(menuRef, 
+    gsap.to(menuRef, 
         {
             delay: 1,
             duration: 1,
@@ -83,7 +83,7 @@ export const slideCloseMenuLeft = (menuRef, menuInnerBG, menuInner) => {
 }
 
 export const slideCloseMenuUp = (menuRef, menuInnerBG, menuInner) => {
-    TweenLite.to([menuInner, menuInnerBG], 
+    gsap.to([menuInner, menuInnerBG], 
         {
             duration: .8,
             height: 0,
@@ -96,7 +96,7 @@ export const slideCloseMenuUp = (menuRef, menuInnerBG, menuInner) => {
         }
     );
 
-    TweenLite.to(menuRef, 
+    gsap.to(menuRef, 
         {
             duration: 1,
             skewY: 0,
@@ -106,7 +106,7 @@ export const slideCloseMenuUp = (menuRef, menuInnerBG, menuInner) => {
 }
 
 export const animateSideText = (sideTextRef, delay = .8, duration = .8) => {
-    TweenLite.from(sideTextRef.children, 
+    gsap.from(sideTextRef.children, 
         {
             delay: delay,
             duration: duration,

@@ -8,7 +8,7 @@ import ExperienceList, { ExperienceWrapper, ExperienceModalWithContext } from ".
 import { textAsSpans } from "../core/util/helpers";
 import { PageTransition, AALink } from "../core/page-transition";
 import { fadeUpFrom } from "../core/animation";
-import { TweenLite } from "gsap";
+import gsap from "gsap";
 import SkewScrollContainer from "../components/ui/SkewScroll";
 
 const IndexPage = () => (
@@ -114,13 +114,13 @@ export const HomeHeader = ({header}) => {
   useEffect(() => {
     if(initialLoad) {
       //set visible
-      TweenLite.to(hero, {
+      gsap.to(hero, {
         delay: 1,
         duration: 0,
         css: {visibility: 'visible'}
       });
 
-      TweenLite.from(getH1Pieces(), {
+      gsap.from(getH1Pieces(), {
         y: `190%`,
         delay: 1.35,
         skewY: 7,
@@ -130,12 +130,12 @@ export const HomeHeader = ({header}) => {
         }
       });
 
-      TweenLite.from(hugeText, {
+      gsap.from(hugeText, {
         delay: .9,
         css: {display: 'block'}
       });
 
-      TweenLite.from(hugeText, {
+      gsap.from(hugeText, {
         delay: .95,
         skewY: 7,
         duration: .6,
