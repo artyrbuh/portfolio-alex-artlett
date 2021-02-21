@@ -34,6 +34,17 @@ module.exports = {
         icon: `src/assets/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+          },
+          `gatsby-remark-lazy-load`,
+        ]
+      }
+    },
     `gatsby-plugin-netlify`,
     {
       resolve: "gatsby-source-wordpress",

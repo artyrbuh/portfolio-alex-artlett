@@ -309,7 +309,7 @@ const WorkImagesBlock = ({data, i}) => {
                                 <>
                                     {el.is_video ? (
                                         <div className={el.has_bg ? 'video-has-bg' : ''}>
-                                            <video autoplay="autoplay" muted="muted" loop="loop">
+                                            <video autoplay="autoplay" muted="muted" loop="loop" playsInline>
                                                 <source src={el.video.localFile.publicURL} type="video/mp4"></source>
                                                 Your browser does not support the video tag.
                                             </video>

@@ -38,7 +38,7 @@ const MenuList = ({props}) => {
 
             const skewY = isSafari() ? 0 : 9;
 
-            staggerItemsSkewUpDown(getChildrenToAnimate(), 0, 170, 0.3, .45, skewY);
+            staggerItemsSkewUpDown(getChildrenToAnimate(), .15, 170, 0.3, .45, skewY);
         }
     }, [activeMenu]);
 

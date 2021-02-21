@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.8.9 - HOTFIX
+- Use css to show hide rather than render conditionally with JavaScript
+- Add lazy load for images
+- Add playsinline attr so videos play on mobile
+- Alter home hero responsiveness
+- Alter animations on home page and menu
+
 ## 0.8.8 - HOTFIX
 - Revert gastby sass plugin version
 - Remove mobile detection to test if that is what is breaking mobile styles
