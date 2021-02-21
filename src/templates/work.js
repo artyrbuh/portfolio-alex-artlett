@@ -9,7 +9,7 @@ import Close from '../components/ui/close';
 import ReactPlayer from 'react-player';
 import leftArrow from '../assets/images/left-arrow.svg'
 import { AALink, PageTransition } from '../core/page-transition';
-import {TweenLite} from "gsap";
+import gsap from "gsap";
 import { fadeUpFrom } from '../core/animation';
 import SEO from '../components/seo';
 
@@ -78,32 +78,32 @@ const WorkHeader = () =>  {
 
     useEffect(() => {
         if(initialLoad) {
-            TweenLite.to(containerRef, {
+            gsap.to(containerRef, {
                 delay: 0.5,
                 duration: 0,
                 css: {opacity: 1}
             });
 
-            TweenLite.to(wiper, {
+            gsap.to(wiper, {
                 delay: animationDelay + 0.3,
                 x: `100%`,
                 duration: 1,
             });
 
-            TweenLite.from(h1.current, {
+            gsap.from(h1.current, {
                 delay: animationDelay + 0.3,
                 skewY: 7,
                 duration: .85,
                 y: `-400px`
             });
 
-            TweenLite.from(featuredImage, {
+            gsap.from(featuredImage, {
                 delay: animationDelay + 0.3,
                 scale: 1.5,
                 duration: 1,
             });
 
-            TweenLite.from(h1.current, {
+            gsap.from(h1.current, {
                 delay: animationDelay + 0.4,
                 css: {display: 'block'}
             });

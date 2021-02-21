@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect, useContext, createContext} from 'react'
 import ExperienceModal from './experience-modal';
-import {TweenLite} from 'gsap';
+import gsap from 'gsap';
 
 export const ExperienceContext = createContext(null);
 
@@ -49,12 +49,12 @@ const ExperienceList = ({experience_list}) => {
 
         setPrevY(y);
 
-        TweenLite.to(hover, {
+        gsap.to(hover, {
             skewY,
             ease: 'power3.inEaseOut',
         })
 
-        TweenLite.to(hover, {
+        gsap.to(hover, {
             duration: .45,
             delay: .1,
             y: y,
