@@ -13,6 +13,10 @@
                 max-width: 125px;
                 line-height: 21.53px !important;
                 margin-bottom: 0 !important;
+
+                @include mobile {
+                    max-width: unset;
+                }
             }
         }
 
