@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.8.5 - HOTFIX
+- Fix bug where mailto: does not work on main contact menu
+- Dynamically pull contact email on hire me component
+
 ## 0.8.4 - HOTFIX
 - General code clean up
 - Fix Safari specific issues with GSAP
