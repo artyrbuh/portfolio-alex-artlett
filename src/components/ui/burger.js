@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import { ActiveMenu } from '../layout';
-import { TimelineLite } from 'gsap';
+import gsap, { TimelineLite } from 'gsap';
 
 const Burger = () => {
     const [initialClick, setInitialClick] = useState(false);
@@ -20,7 +20,7 @@ const Burger = () => {
 
 
     const activateBurger = () => {
-        let tl = new TimelineLite({delay: .35});
+        let tl = gsap.timeline({delay: .35});
 
         tl.to([line1, line2, line3], .1, {
             ease: "power3.easeInOut",

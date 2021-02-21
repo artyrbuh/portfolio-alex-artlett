@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from "react";
-import {TweenLite} from "gsap";
+import gsap from "gsap";
 
 const Modal = ({isActive, children, closeMenu, classes}) => {
     let modal, modalBG, modalContents = useRef(null);
@@ -20,14 +20,14 @@ const Modal = ({isActive, children, closeMenu, classes}) => {
     const showModal = () => {
         setDisabled(true);
 
-        TweenLite.to(modal, 
+        gsap.to(modal, 
             {
                 css: {display: 'flex'}
             }
         );
 
         //wipe in the background
-        TweenLite.from(modalBG, {
+        gsap.from(modalBG, {
             delay: 0,
             duration: .8,
             height: 0,
@@ -37,7 +37,7 @@ const Modal = ({isActive, children, closeMenu, classes}) => {
         });
 
         //zoom in the modal card
-        TweenLite.from(modalContents, {
+        gsap.from(modalContents, {
             delay: 0.4,
             duration: .45,
             scale: 0.85,
@@ -57,7 +57,7 @@ const Modal = ({isActive, children, closeMenu, classes}) => {
         //wipe out everything
 
         //wipe in the background
-        TweenLite.to(modalBG, {
+        gsap.to(modalBG, {
             delay: 0,
             duration: .8,
             height: 0,
@@ -66,7 +66,7 @@ const Modal = ({isActive, children, closeMenu, classes}) => {
             ease: 'power3.inOut'
         });
         
-        TweenLite.to(modalContents, {
+        gsap.to(modalContents, {
             delay: 0,
             duration: .5,
             scale: 0.85,
@@ -75,7 +75,7 @@ const Modal = ({isActive, children, closeMenu, classes}) => {
             ease: 'power3.inOut',
         });
 
-        TweenLite.to(modal, 
+        gsap.to(modal, 
             {
                 delay: .85,
                 css: {display: 'none'},
@@ -83,7 +83,7 @@ const Modal = ({isActive, children, closeMenu, classes}) => {
             }
         );
 
-        TweenLite.to(modalBG, {
+        gsap.to(modalBG, {
             delay: .85,
             duration: 0,
             height: `100%`,
@@ -92,7 +92,7 @@ const Modal = ({isActive, children, closeMenu, classes}) => {
             ease: 'power3.inOut'
         });
 
-        TweenLite.to(modalContents, {
+        gsap.to(modalContents, {
             delay: .85,
             duration: 0,
             scale: 1,

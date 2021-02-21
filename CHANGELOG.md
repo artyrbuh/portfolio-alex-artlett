@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.8.3 - HOTFIX
+- add netlify plugin
+- Refactor GSAP code to use gsap 3 syntax
+
 ## 0.8.2 - HOTFIX
 - Change .env var names
 

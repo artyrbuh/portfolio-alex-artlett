@@ -4,7 +4,7 @@ import { ThemeDataContext } from '../components/layout';
 import {WorkContainer, WorkBarNav, WorkLayout, WorkList} from '../components/ui/work';
 import { FilterButtons, FilterWrap } from '../components/ui/filter';
 import { as_obj } from '../core/util/helpers';
-import {TweenLite} from "gsap";
+import gsap from "gsap";
 import { PageTransition } from '../core/page-transition';
 import SkewScrollContainer from '../components/ui/SkewScroll';
 import { staggerItemsSkewUpDown } from '../core/animation';
@@ -120,17 +120,17 @@ export const WorkPageInner = ({children}) => {
   
   useEffect(() => {
     if(workItems.initialClick === true) {
-      TweenLite.to([wiperOne, wiperTwo], {
+      gsap.to([wiperOne, wiperTwo], {
         css: {display: 'block'},
       });
 
-      TweenLite.to([wiperOne, wiperTwo], {
+      gsap.to([wiperOne, wiperTwo], {
         y: `-100%`,
         skewY: 6,
         duration: 0
       });
 
-      TweenLite.to([wiperOne, wiperTwo], {
+      gsap.to([wiperOne, wiperTwo], {
         y: `0%`,
         duration: .75,
         delay: 0.25,
@@ -142,7 +142,7 @@ export const WorkPageInner = ({children}) => {
         }
       });
 
-      TweenLite.to([wiperTwo, wiperOne], {
+      gsap.to([wiperTwo, wiperOne], {
         y: `100%`,
         delay: 1,
         duration: .8, 
@@ -152,7 +152,7 @@ export const WorkPageInner = ({children}) => {
         }
       });
 
-      TweenLite.to([wiperOne], {
+      gsap.to([wiperOne], {
         y: `-100%`,
         css: {display: 'none'},
         duration: 0,
@@ -164,7 +164,7 @@ export const WorkPageInner = ({children}) => {
 
   useEffect(() => {
     if(workItems.items.length > 0 && initialLoad) {
-      TweenLite.to(workLandingRef, {
+      gsap.to(workLandingRef, {
           duration: 0,
           css: {opacity: 1}
       });

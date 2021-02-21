@@ -1,7 +1,7 @@
-import {TweenLite} from 'gsap';
+import gsap from 'gsap';
 
 export const scaleInRotate = (ref, delay = 0) => {
-    TweenLite.to(ref, {
+    gsap.to(ref, {
         delay, 
         duration: 0.95,
         ease: 'elastic.out(1, 0.7)',
@@ -11,7 +11,7 @@ export const scaleInRotate = (ref, delay = 0) => {
 }
 
 export const scaleOutRotate = (ref, delay = 0) => {
-    TweenLite.to(ref, {
+    gsap.to(ref, {
         delay, 
         duration: 0.45,
         ease: 'power3.out',
@@ -21,7 +21,7 @@ export const scaleOutRotate = (ref, delay = 0) => {
 }
 
 export const bgColourChange = (ref, colour, delay = 0) => {
-    TweenLite.to(ref, {
+    gsap.to(ref, {
         delay, 
         duration: 0.35,
         ease: 'power3.out',
@@ -30,7 +30,7 @@ export const bgColourChange = (ref, colour, delay = 0) => {
 }
 
 export const staggerWidthsIn = (refs, delay = 0, stagger = 0.2) => {
-    TweenLite.from(refs, {
+    gsap.from(refs, {
         delay, 
         duration: 0.35,
         ease: 'power3.inOut',
@@ -43,7 +43,7 @@ export const staggerWidthsIn = (refs, delay = 0, stagger = 0.2) => {
 }
 
 export const staggerItemsSkewUpDown = (refs, delay = 0, y = 170, stagger = 0.3, duration = 1.2, skewY = 9, opacity = 1) => {
-    TweenLite.from(refs, {
+    gsap.from(refs, {
         delay: delay,
         duration: duration,
         y: y,
@@ -57,7 +57,7 @@ export const staggerItemsSkewUpDown = (refs, delay = 0, y = 170, stagger = 0.3, 
 }
 
 export const staggerItemsTo = (refs, delay = 0, y = -170, stagger = 0.3) => {
-    TweenLite.to(refs, {
+    gsap.to(refs, {
         delay: delay,
         duration: 1.2,
         y: y,
@@ -71,13 +71,13 @@ export const staggerItemsTo = (refs, delay = 0, y = -170, stagger = 0.3) => {
 
 export const staggerInFromLeft = (refs, delay = 0, stagger = 0.3) => {
 
-    TweenLite.to(refs, {
+    gsap.to(refs, {
         duration: 0,
         x: `-100%`,
     });
 
 
-    TweenLite.to(refs, {
+    gsap.to(refs, {
         delay: 0,
         duration: .75,
         x: `0`,
@@ -89,13 +89,13 @@ export const staggerInFromLeft = (refs, delay = 0, stagger = 0.3) => {
 }
 
 export const staggerOutToRight = (refs, delay = 0, stagger = 0.3) => {
-    TweenLite.to(refs, {
+    gsap.to(refs, {
         duration: 0,
         x: `0`,
         //css: {display: 'block'}
     });
 
-    TweenLite.to(refs, {
+    gsap.to(refs, {
         delay: 0,
         duration: .75,
         x: `100%`,
@@ -105,7 +105,7 @@ export const staggerOutToRight = (refs, delay = 0, stagger = 0.3) => {
         }
     });
 
-    TweenLite.to(refs, {
+    gsap.to(refs, {
         delay: 1,
         x: `-100%`,
         ///css: {display: 'none'},
@@ -114,7 +114,7 @@ export const staggerOutToRight = (refs, delay = 0, stagger = 0.3) => {
 }
 
 export const fadeUpFrom = (ref, delay = 0, y = 50, duration = .35) => {
-    TweenLite.from(ref, {
+    gsap.from(ref, {
         opacity: 0,
         y: y,
         duration: duration,

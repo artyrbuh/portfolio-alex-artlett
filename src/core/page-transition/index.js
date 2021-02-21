@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef, useContext, createContext} from "react";
-import {TweenLite} from "gsap";
+import gsap from "gsap";
 import { navigate } from "gatsby";
 
 export const PageTransitionContext = createContext({});
@@ -34,12 +34,12 @@ export const PageTransition = ({ children, delay }) => {
     }, [state.inTransit]);
 
     const slideIn = () => {
-        TweenLite.to([wiperOne, wiperTwo], {
+        gsap.to([wiperOne, wiperTwo], {
             skewY: 0,
             duration: 0    
         });
 
-        TweenLite.to([wiperTwo, wiperOne], {
+        gsap.to([wiperTwo, wiperOne], {
             skewX: -3,
             duration: .9,
             delay: 0,
@@ -50,7 +50,7 @@ export const PageTransition = ({ children, delay }) => {
             }
         });
 
-        TweenLite.to([wiperOne, wiperTwo], {
+        gsap.to([wiperOne, wiperTwo], {
             duration: 0,
             delay: .95,
             css: {display: "none"}
@@ -58,16 +58,16 @@ export const PageTransition = ({ children, delay }) => {
     }
 
     const slideOut = () => {
-        TweenLite.to([wiperOne, wiperTwo], {
+        gsap.to([wiperOne, wiperTwo], {
             css: {display: 'block'},
         });
-        TweenLite.to([wiperOne, wiperTwo], {
+        gsap.to([wiperOne, wiperTwo], {
             skewX: 3,
             x: `-110%`,
             duration: 0    
         });
 
-        TweenLite.to([wiperOne, wiperTwo], {
+        gsap.to([wiperOne, wiperTwo], {
             skewX: 0,
             duration: .9,
             delay: 0.1,

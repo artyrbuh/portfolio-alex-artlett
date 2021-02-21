@@ -2,7 +2,7 @@ import React, {useContext, useRef, useState, useEffect} from "react"
 import {ThemeDataContext, ActiveMenu} from '../layout';
 import ContactMenuList from "./contact-menu-list";
 import { slideOpenMenuRight, slideCloseMenuLeft, staggerItemsSkewUpDown, animateSideText} from "../../core/animation/menu";
-import { TweenLite } from "gsap";
+import gsap from "gsap";
 import { textAsSpans } from "../../core/util/helpers";
 
 const ContactMenu = ({expanded}) => {
@@ -33,7 +33,7 @@ const ContactMenu = ({expanded}) => {
             
             slideOpenMenuRight(menuRef, menuInnerBG, menuInner, delay);
             
-            TweenLite.from(getChildrenToAnimate(), {
+            gsap.from(getChildrenToAnimate(), {
                 delay: delay,
                 duration: 1.2,
                 y: 170,
