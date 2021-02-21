@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.8.1 - HOTFIX
+- Remove Gatsby directory
+
 ## 0.8.0
 - Move Gatsby src into root, remove WordPress from repo
 
