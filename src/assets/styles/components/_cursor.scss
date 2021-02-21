@@ -116,3 +116,9 @@
         }
     }
 }
+
+.is-mobile-tablet {
+    .cursor { 
+        display: none !important;
+    }
+}
