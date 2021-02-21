@@ -1,7 +1,11 @@
 # CHANGELOG
 
+## 0.8.8 - HOTFIX
+- Revert gastby sass plugin version
+- Remove mobile detection to test if that is what is breaking mobile styles
+
 ## 0.8.7 - HOTFIX
-- Change the version of gatsby-plugin-sass to see if it fixes netlify sass erro
+- Change the version of gatsby-plugin-sass to see if it fixes netlify sass error
 
 ## 0.8.6 - HOTFIX
 - Fix mobile styles on home and work single pages
