@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 
-export const slideOpenMenuDown = (menuRef, menuInnerBG, menuInner, delay = 0) => {
+export const slideOpenMenuDown = (menuRef, menuInnerBG, menuInner, delay = 0.1) => {
     gsap.to(menuRef, 
         {
             css: {display: 'block'}
