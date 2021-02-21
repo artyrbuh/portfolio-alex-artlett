@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext, useRef, useEffect }  from 'react';
 import {graphql, StaticQuery} from 'gatsby';
 import { ThemeDataContext } from '../components/layout';
-import {WorkContainer, WorkBarNav, WorkLayout, WorkList} from '../components/ui/work';
+import {WorkBarNav, WorkLayout, WorkList} from '../components/ui/work';
 import { FilterButtons, FilterWrap } from '../components/ui/filter';
 import { as_obj } from '../core/util/helpers';
 import gsap from "gsap";
@@ -114,7 +114,7 @@ export const WorkPageInner = ({children}) => {
   technologies = technologies.map((a) => as_obj(a.technology));
   professions = professions.map((a) => as_obj(a.profession));
   let { filterList, workItems } = useContext(WorkPageContext);
-  let wiperOne, wiperTwo, workList = useRef();
+  let wiperOne, wiperTwo = useRef();
   let workLandingRef = useRef(null);
   const [initialLoad, setInitialLoad] = useState(true);
   
@@ -194,7 +194,7 @@ export const WorkPageInner = ({children}) => {
 
       <SkewScrollContainer>
         <div className={`container work-wrap work-landing`} ref={el => workLandingRef = el}>
-          <WorkList animateOnLoad={true} ref={el => workList = el}/>
+          <WorkList animateOnLoad={true}/>
         </div>
       </SkewScrollContainer>
 

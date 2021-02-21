@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
 import { textAsSpans } from "../../core/util/helpers";
 
-const AAButton = ({url, target, title, classes, action, disabled}) => {
+const AAButton = ({url, target, title, classes, action, disabled, rel}) => {
     let button = useRef(null);
     let [bgPos, setBgPos] = useState({x: 0, y: 0});
 
@@ -19,6 +19,7 @@ const AAButton = ({url, target, title, classes, action, disabled}) => {
             className={`button hoverable-cta--wrap ${classes ? classes : ''}`}
             {... url ? {href: url} : {}}
             {... target ? {target: target} : {}}
+            {... rel ? {rel: rel} : {}}
             ref={el => button = el}
             onMouseEnter={setHoverPos}
             onMouseLeave={setHoverPos}

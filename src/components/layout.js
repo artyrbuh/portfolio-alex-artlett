@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react"
+import React, { useState, createContext, useEffect, useRef } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Footer from "./footer/footer"
@@ -7,11 +7,22 @@ import Nav from "../components/nav/nav";
 import Contact from "../components/contact/contact";
 import Cursor from "./ui/cursor"
 import { isMobileOrTable } from "../core/util/helpers"
+import gsap from "gsap";
 
 export const ThemeDataContext = createContext(null);
 export const ActiveMenu = createContext(null);
 
 const Layout = ({ children, classes }) => {
+  let themeWrap = useRef(null);
+
+  useEffect(() => {
+    gsap.to(themeWrap, {
+      duration: 0,
+      opacity: 1,
+      delay: 0.1
+    })
+  }, []);
+
   const ThemeData = useStaticQuery(graphql`
     query SiteTitleQuery {
       wordpressAcfOptions {
@@ -101,7 +112,7 @@ const Layout = ({ children, classes }) => {
   const toggleContactMenu = () => toggleMenu("contact");
   
   return (
-    <div className="theme-wrap">
+    <div className="theme-wrap" ref={el => themeWrap = el}>
       <ThemeDataContext.Provider value={themeData}>
         {!isMobileOrTable() && (
           <Cursor />
