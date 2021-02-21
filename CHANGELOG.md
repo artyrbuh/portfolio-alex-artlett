@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.8.0
+- Move Gatsby src into root, remove WordPress from repo
+
 ## 0.7.0
 - Animate EVERYTHING (within reason)
 - Add reusable animation components, utility classes, and functions
