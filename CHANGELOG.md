@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.8.2 - HOTFIX
+- Change .env var names
+
 ## 0.8.1 - HOTFIX
 - Remove Gatsby directory
 
