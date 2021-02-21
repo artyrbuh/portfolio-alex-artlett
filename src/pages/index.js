@@ -125,9 +125,9 @@ export const HomeHeader = ({header}) => {
         y: `190%`,
         delay: 1.35,
         skewY: 7,
-        duration: .5,
+        duration: .7,
         stagger: {
-          amount: .3
+          amount: .7
         }
       });
 
