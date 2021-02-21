@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.8.92 - HOTFIX
+- Re-alter animations 
+
 ## 0.8.91 - HOTFIX
 - Alter animations 
 
