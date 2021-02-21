@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.8.91 - HOTFIX
+- Alter animations 
+
 ## 0.8.9 - HOTFIX
 - Use css to show hide rather than render conditionally with JavaScript
 - Add lazy load for images
