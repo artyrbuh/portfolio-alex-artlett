@@ -124,10 +124,10 @@ export const HomeHeader = ({header}) => {
       gsap.from([getH1Pieces(h1), getH1Pieces(h1Mobile)], {
         y: `190%`,
         delay: 1.35,
-        skewY: 7,
-        duration: .7,
+        skewY: 10,
+        duration: .65,
         stagger: {
-          amount: .7
+          amount: .65
         }
       });
 

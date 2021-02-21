@@ -119,6 +119,6 @@ export const fadeUpFrom = (ref, delay = 0, y = 50, duration = .35) => {
         y: y,
         duration: duration,
         delay: delay,
-        skewY: 3
+        skewY: 1
     });
 }
