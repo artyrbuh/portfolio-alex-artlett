@@ -66,7 +66,7 @@
     
         @include mobile {
             .arrow-wrap {
-                margin-right: 10px;
+                position: absolute;
             }
 
             svg,
@@ -84,6 +84,7 @@
 
             h4 {
                 max-width: unset;
+                margin-left: 40px;
             }
         }
     }
