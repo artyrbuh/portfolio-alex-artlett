@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.8.6 - HOTFIX
+- Fix mobile styles on home and work single pages
+
 ## 0.8.5 - HOTFIX
 - Fix bug where mailto: does not work on main contact menu
 - Dynamically pull contact email on hire me component
