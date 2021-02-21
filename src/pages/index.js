@@ -122,9 +122,9 @@ export const HomeHeader = ({header}) => {
       });
 
       gsap.from([getH1Pieces(h1), getH1Pieces(h1Mobile)], {
-        y: `190%`,
+        y: `280`,
         delay: 1.35,
-        skewY: 10,
+        skewY: 8,
         duration: .65,
         stagger: {
           amount: .65
@@ -186,7 +186,7 @@ export const SelectedShowcase = ({selected_showcase}) => {
 
   useEffect(() => {
     if(initialLoad) {
-      fadeUpFrom(showcase, 2.25);
+      fadeUpFrom(showcase, 2.25, 50, .5);
       setInitialLoad(false);      
     }
   }, []);
