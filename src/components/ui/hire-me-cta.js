@@ -1,10 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
+import {ThemeDataContext} from '../layout';
 
-const defaultUrl = `mailto:hello@alexartlett.com.au?subject=I am interested in working with you&body=Greetings, my name is `;
+const subjectAndBody = `?subject=I am interested in working with you&body=Greetings, my name is `;
 
-const HireMe = ({url = defaultUrl, rotate = true}) => {
+const HireMe = ({rotate = true}) => {
+    const themeData = useContext(ThemeDataContext);
+    const email = themeData.wordpressAcfOptions.options.email;
+
+
     return (
-        <a href={url}>
+        <a href={`mailto:${email}${subjectAndBody}`}>
             <div className={`hire-me-cta ${rotate ? 'rotate' : ''}`}>
                 <HireMeText/>
                 <div className="hire-me-cta--wave">

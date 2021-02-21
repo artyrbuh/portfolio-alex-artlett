@@ -67,7 +67,7 @@ const ContactMenu = ({expanded}) => {
             <div ref={el => menuInner = el} className="offcanvas-menu--inner">
                 <div className="container wrap--contact-menu">
                     <div className="columns is-vcentered is-flex is-desktop menu" ref={el => menuItems = el}>
-                        <ContactMenuList menu={menu}/>
+                        <ContactMenuList menu={menu} email={email}/>
                     </div>
 
                     <a 

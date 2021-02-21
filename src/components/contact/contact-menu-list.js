@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'gatsby';
 import { textAsSpans } from '../../core/util/helpers';
 
-const ContactMenuList = ({menu}) => {
+const ContactMenuList = ({menu, email}) => {
     return (
         <>
             {menu.length ? (
@@ -12,12 +12,12 @@ const ContactMenuList = ({menu}) => {
                             className="column menu-item"
                             key={i}
                         >
-                            {el.object_slug !== "Email" ? (
+                            {el.classes !== "Email" ? (
                                 <Link to={`${el.title}`} target="_blank">
                                     {textAsSpans(el.classes.toString())}
                                 </Link>
                             ) : (
-                                <a ref={`mailto:${el.title}`}>
+                                <a href={`mailto:${el.title}`}>
                                     {textAsSpans(el.classes.toString())}
                                 </a>
                             )}
