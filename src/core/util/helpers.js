@@ -107,3 +107,11 @@ export const isMobileOrTable = () => {
     return false;
   }
 }
+
+export const isSafari = () => {
+  if(typeof navigator !== "undefined") {
+    return navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0
+  } else {
+    return false;
+  }
+}

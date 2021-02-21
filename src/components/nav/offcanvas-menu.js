@@ -13,7 +13,7 @@ const OffcanvasMenu = ({expanded}) => {
     let menuInner = useRef(null);
     let menuInnerBG = useRef(null);
     let sideTextRef = useRef(null);
-    let [delay, setDelay] = useState(0);
+    let [delay, setDelay] = useState(0.1);
 
     const sideText = () => `${name} - ${d.getFullYear()}`.split('').map((el, i) => <span key={i}>{el}</span>);
 

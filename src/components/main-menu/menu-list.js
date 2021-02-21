@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState, useRef} from 'react';
 import {ActiveMenu} from '../layout';
 import { staggerItemsSkewUpDown } from '../../core/animation';
 import { AALink } from '../../core/page-transition';
-import { textAsSpans } from '../../core/util/helpers';
+import { textAsSpans, isSafari } from '../../core/util/helpers';
 
 
 const MenuList = ({props}) => {
@@ -36,7 +36,9 @@ const MenuList = ({props}) => {
                 setDelay(2.2);
             }
 
-            staggerItemsSkewUpDown(getChildrenToAnimate(), 0, 170, 0.3, .45);
+            const skewY = isSafari() ? 0 : 9;
+
+            staggerItemsSkewUpDown(getChildrenToAnimate(), 0, 170, 0.3, .45, skewY);
         }
     }, [activeMenu]);
 

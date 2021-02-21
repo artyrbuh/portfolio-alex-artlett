@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.8.4 - HOTFIX
+- General code clean up
+- Fix Safari specific issues with GSAP
+- Create mobile specific home page hero text animation
+
 ## 0.8.3 - HOTFIX
 - add netlify plugin
 - Refactor GSAP code to use gsap 3 syntax

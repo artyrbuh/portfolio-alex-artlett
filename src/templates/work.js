@@ -66,7 +66,7 @@ export default ({pageContext}) => {
 
 const WorkHeader = () =>  {
     const { title, featured_media, project_year, professions, technologies, project_website, animationDelay } = useContext(WorkSingleContext);
-    let containerRef, featuredImageWrap, wiper, featuredImage, projectMeta, h1 = useRef();
+    let containerRef, wiper, featuredImage, projectMeta, h1 = useRef();
     const [initialLoad, setInitialLoad] = useState(true);
 
     useEffect(() => {
@@ -122,11 +122,12 @@ const WorkHeader = () =>  {
                             ref={h1}
                             dangerouslySetInnerHTML={{__html: title}}
                         />
-                        <div className="featured-image--wrap" ref={el => featuredImageWrap = el}>
+                        <div className="featured-image--wrap">
                             <div className="wiper" ref={el=> wiper = el}></div>
                             <img 
                                 src={featured_media.localFile.publicURL} 
                                 className="featured-image"
+                                alt={`${title} feature`}
                                 ref={el => featuredImage = el}
                             />
                         </div>
@@ -142,7 +143,7 @@ const WorkHeader = () =>  {
                 
             <div ref={el => projectMeta = el}>
                 {project_website ? (
-                    <a href={project_website} target="_blank">
+                    <a href={project_website} target="_blank" rel="noreferrer">
                         <h4>
                             <span className="">
                                 <span className="inner-container">
@@ -152,7 +153,10 @@ const WorkHeader = () =>  {
                                     <span></span>
                                 </span>
 
-                                <img src={leftArrow}/>
+                                <img 
+                                    src={leftArrow}
+                                    alt={`Back Arrow`}
+                                />
                             </span>
                         </h4>
                     </a>
@@ -166,7 +170,10 @@ const WorkHeader = () =>  {
                                 <span></span>
                             </span>
 
-                            <img src={leftArrow}/>
+                            <img 
+                                src={leftArrow}
+                                alt={`Back Arrow`}
+                            />
                         </span>
                     </h4>
                 )}
@@ -221,6 +228,9 @@ const WorkLayouts = () => {
 
                         case el.id.includes("video"):
                             return <WorkVideoBlock data={el} i={i} key={i}/>
+
+                        default: 
+                            return null;
                     }
                 })}    
             </div>
@@ -236,7 +246,7 @@ const WorkLayouts = () => {
 }
 
 const WorkContentBlock = ({data, i}) => {
-    const {content, cta, heading, include_available_for_hire_cta, alignment, cta_url, cta_text, jumbo_text} = data;
+    const {content, include_available_for_hire_cta, alignment, cta_url, cta_text, jumbo_text} = data;
 
     return (
         <div className={`work-block work-content-block ${alignment} ${jumbo_text === true ? 'jumbo-font' : ''}`}>
@@ -251,7 +261,12 @@ const WorkContentBlock = ({data, i}) => {
 
             {cta_url && (
                 <div className={`content-block--content content-block--cta`}>
-                    <AAButton url={cta_url} title={cta_text} target="_blank"/>
+                    <AAButton 
+                        url={cta_url} 
+                        title={cta_text} 
+                        target="_blank"
+                        rel="noreferrer"
+                    />
                 </div>
             )}
         </div>
@@ -396,7 +411,7 @@ const WorkVideoBlock = ({data, i}) => {
                     onClick={() => handleShow(youtube_url)}
                 >
                     {video_preview && (
-                        <img src={video_preview.localFile.publicURL} />
+                        <img src={video_preview.localFile.publicURL} alt="Video Preview"/>
                     )}
                     <svg className="play-btn" x="0px" y="0px" width="408.221px" height="408.221px" viewBox="0 0 408.221 408.221" >
                         <path d="M204.11,0C91.388,0,0,91.388,0,204.111c0,112.725,91.388,204.11,204.11,204.11c112.729,0,204.11-91.385,204.11-204.11    C408.221,91.388,316.839,0,204.11,0z M286.547,229.971l-126.368,72.471c-17.003,9.75-30.781,1.763-30.781-17.834V140.012    c0-19.602,13.777-27.575,30.781-17.827l126.368,72.466C303.551,204.403,303.551,220.217,286.547,229.971z"/>
@@ -414,7 +429,7 @@ const WorkVideoBlock = ({data, i}) => {
     );
 }
 
-const WorkFooterNav = ({}) => {
+const WorkFooterNav = () => {
     const { previous, next } = useContext(WorkSingleContext);
 
     return (

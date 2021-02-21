@@ -25,6 +25,7 @@ const IndexPage = () => (
                   acf {
                     header {
                       content
+                      content_mobile
                       heading
                     }
                     selected_showcase {
@@ -76,7 +77,7 @@ const IndexPage = () => (
             }
           }
       `} render={props => {
-          const {about_block, experience_block, header, moving_text, selected_showcase} = props.allWordpressPage.edges[0].node.acf;
+          const {about_block, experience_block, header, selected_showcase} = props.allWordpressPage.edges[0].node.acf;
           
           return (
               <Layout>
@@ -100,12 +101,12 @@ const IndexPage = () => (
 
 export const HomeHeader = ({header}) => {
   const [initialLoad, setInitialLoad] = useState(true);
-  let hero, h1, hugeText = useRef(null);
+  let hero, h1, h1Mobile, hugeText = useRef(null);
 
-  const getH1Pieces = () => {
+  const getH1Pieces = (ref) => {
     let pieces = [];
-    for(var i = 0; i < h1.children.length; i++) {
-      pieces.push(h1.children[i].children[0]);
+    for(var i = 0; i < ref.children.length; i++) {
+      pieces.push(ref.children[i].children[0]);
     }
 
     return pieces;
@@ -120,7 +121,7 @@ export const HomeHeader = ({header}) => {
         css: {visibility: 'visible'}
       });
 
-      gsap.from(getH1Pieces(), {
+      gsap.from([getH1Pieces(h1), getH1Pieces(h1Mobile)], {
         y: `190%`,
         delay: 1.35,
         skewY: 7,
@@ -161,6 +162,7 @@ export const HomeHeader = ({header}) => {
       <div className="hero-body">
         <div className="container">
           <h1 dangerouslySetInnerHTML={{__html: header.content}} ref={el => h1 = el}/>
+          <h1 dangerouslySetInnerHTML={{__html: header.content_mobile}} ref={el => h1Mobile = el} className="mobile"/>
         </div>
       </div>
     </section>
@@ -243,7 +245,9 @@ export const ShowcaseItem = ({item, key}) => {
                 {thumbnail_text.map((el) => (
                   <div className="thumbnail-text">
                     <img 
-                      src={el.text.localFile.publicURL} />
+                      src={el.text.localFile.publicURL} 
+                      alt={`thumbnail text`}
+                      />
                   </div>
                 ))}
               </div>
