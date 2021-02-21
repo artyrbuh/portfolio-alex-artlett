@@ -28,6 +28,10 @@ body {
 .theme-wrap {
     background-color: $white;
     opacity: 0;
+
+    &.is-mobile-tablet {
+        overflow: hidden;
+    }
 }
 
 strong {
