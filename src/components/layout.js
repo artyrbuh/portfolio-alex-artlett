@@ -6,7 +6,6 @@ import "./layout.css"
 import Nav from "../components/nav/nav";
 import Contact from "../components/contact/contact";
 import Cursor from "./ui/cursor"
-import { isMobileOrTable } from "../core/util/helpers"
 import gsap from "gsap";
 
 export const ThemeDataContext = createContext(null);
@@ -112,7 +111,7 @@ const Layout = ({ children, classes }) => {
   const toggleContactMenu = () => toggleMenu("contact");
   
   return (
-    <div className={`theme-wrap ${isMobileOrTable() ? 'is-mobile-tablet' : ''}`} ref={el => themeWrap = el}>
+    <div className={`theme-wrap`} ref={el => themeWrap = el}>
       <ThemeDataContext.Provider value={themeData}>
           <Cursor />
         <ActiveMenu.Provider value={{toggleMainMenu, toggleContactMenu, isMenu, activeMenu, mainMenuActive, setMainMenuActive, contactMenuActive, setContactMenuActive, disabled, initialClick}}>
