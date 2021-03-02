@@ -117,15 +117,7 @@
     }
 }
 
-/*
-.is-mobile-tablet {
-    .cursor { 
-        display: none !important;
-    }
-}
-*/
-
-@media (hover: none) {
+@media (any-pointer: coarse) {
     .cursor { 
         display: none !important;
     }
