@@ -85,7 +85,17 @@
     }
 }
 
+/*
 .is-mobile-tablet {
+    .experience-list {
+        .experience-list--hover {
+            display: none;
+        }
+    }
+}
+*/
+
+@media (hover: none) {
     .experience-list {
         .experience-list--hover {
             display: none;
