@@ -85,17 +85,7 @@
     }
 }
 
-/*
-.is-mobile-tablet {
-    .experience-list {
-        .experience-list--hover {
-            display: none;
-        }
-    }
-}
-*/
-
-@media (hover: none) {
+@media (any-pointer: coarse) {
     .experience-list {
         .experience-list--hover {
             display: none;

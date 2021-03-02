@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.8.95 - HOTFIX
+- Use “any-pointer” css to conditionally show mouse based elements
+
 ## 0.8.94 - HOTFIX
 - Use pure css to conditionally show mouse based elements
 
