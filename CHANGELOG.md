@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.8.93 - HOTFIX
+- Update featured image for  sharing
+
 ## 0.8.92 - HOTFIX
 - Re-alter animations 
 
