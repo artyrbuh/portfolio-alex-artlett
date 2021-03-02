@@ -4,9 +4,9 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Alexander Artlett`,
-    description: `Gatbsy build of Alexander Artlett's portfolio site`,
-    author: `@artyrbruh`,
+    title: `Alex Artlett`,
+    description: `Alex Artlett's Portfolio`,
+    author: `@artyrbuh`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
