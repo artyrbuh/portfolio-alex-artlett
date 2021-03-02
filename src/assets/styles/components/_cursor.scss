@@ -117,7 +117,15 @@
     }
 }
 
+/*
 .is-mobile-tablet {
+    .cursor { 
+        display: none !important;
+    }
+}
+*/
+
+@media (hover: none) {
     .cursor { 
         display: none !important;
     }
