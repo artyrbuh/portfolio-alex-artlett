@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.8.96 - HOTFIX
+- Fix menu animation on ios 
+
 ## 0.8.95 - HOTFIX
 - Use “any-pointer” css to conditionally show mouse based elements
 
